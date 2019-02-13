@@ -1,0 +1,353 @@
+.account-title {
+    font-size: 45px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+.account-subtitle{
+	font-size: 18px;
+	color: #9496B1;
+	font-weight: 500;
+}
+.pay-img{
+	position: absolute;
+    top: 20px;
+    right: 40px;
+    width: 200px;
+}
+.btn-login, .btn-signup{
+    border: 2px solid #7A0003;
+    padding: 10px 50px;
+    color: #7A0003;
+    font-weight: 500;
+    margin-right: 20px;
+    font-size: 16px;
+}
+.btn-login span, .btn-signup span{
+	font-size: 20px;
+    font-weight: 600;
+}
+.login-btns{
+	margin: 50px auto;
+}
+.btn-login:hover, .btn-login:focus, .btn-login.active, .btn-signup:hover, .btn-focus, .btn-signup.active{
+	color: #fff;
+	background: #7A0003;
+}
+/*.fluid-pay{
+	padding-left: 60px;
+	padding-right: 60px;
+}*/
+.recommended_bg_pay {
+    background: #fff;
+    padding: 30px 60px;
+    float: left;
+    background-color: #fff;
+    width: 100%;
+}
+.pay-left-border{
+	position: absolute;
+    border-left: 1px dashed #7A0003;
+    top: 35px;
+    left: -10px;
+    bottom: -57px;
+    border-color: #bebfc5;
+}
+.pay-user-bg{
+	position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: #282c3f;
+    box-shadow: 0 3px 5px 0 rgba(40,44,63,.4);
+    top: 34px;
+    left: -30px
+}
+.pay-marker-bg{
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: #282c3f;
+    box-shadow: 0 3px 5px 0 rgba(40,44,63,.4);
+    top: 15px;
+    left: -30px;
+}
+.pay-wallet-bg{
+	position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: #282c3f;
+    box-shadow: 0 3px 5px 0 rgba(40,44,63,.4);
+    top: 15px;
+    left: -30px;
+}
+.pay-user-bg span, .pay-marker-bg span, .pay-wallet-bg span{
+	 position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    color: #fff;
+    font-size: 25px;
+}
+.pay-form-control{
+	width: 30% !important;
+	height: 40px !important;
+	border-radius: 0px !important;
+	font-size: 15px !important;
+	border-color: #ddd !important;
+	padding-top: 0 !important;
+	color: #333 !important;
+}
+.pay-form-group{
+	margin-bottom: 10px;
+}
+.create-acc, .create-acc:hover, .login-form, .login-form:hover{
+	color: #7A0003;
+    cursor: pointer;
+    text-decoration: none;
+}
+.forgot-pass{
+	position: absolute;
+    right: 20px;
+    bottom: 26px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #5d8ed5;
+    transform: translateZ(0);
+    cursor: pointer;
+    will-change: transform;
+    transition: .2s ease;
+    left: 250px;
+}
+.forgot-pass, .terms a{
+	text-decoration: none !important;
+}
+.btn-pay-login-submit, .btn-pay-signup-submit{
+	width: 30%;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    border: none;
+    line-height: 50px;
+    font-size: 14px;
+    font-weight: 600;
+    height: 50px;
+    padding: 0 2rem;
+    color: #60b246;
+    letter-spacing: 0;
+    color: #fff;
+    background-color: #7A0003;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.12);
+}
+.btn-pay-login-submit:hover, .btn-pay-signup-submit:hover{
+	color:#fff;
+}
+.ref-code{
+	display: inline-block;
+    padding: 15px 0;
+    text-decoration: none !important;
+    font-size: 12px;
+    font-weight: 500;
+    color: #000;
+    text-decoration: underline !important;
+}
+.terms{
+    font-size: 12px;
+    color: #780000;
+    line-height: 18px;
+    margin-bottom: 10px;
+}
+.del-add-title, .payment-title{
+	color: #93959D;
+	font-size: 45px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+.pay-location-bg{
+	position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: #282c3f;
+    box-shadow: 0 3px 5px 0 rgba(40,44,63,.4);
+    top: 34px;
+    left: -30px
+}
+.pay-location-bg span{
+	 position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    color: #fff;
+    font-size: 25px;
+}
+input#phone, input#phone1, input#password, input#password1, input#name, input#email{
+	    border:1px solid #ddd !important;
+	    font-weight: normal;
+        padding: .5rem .75rem;
+}
+.cash-payment, .klarna-payment{
+    text-align: center;
+    padding: 20px;
+    border: 2px solid transparent;
+}
+.cash-payment:hover, .klarna-payment:hover{
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px #d4d5d9;
+    cursor: pointer;
+}
+.cash-payment p, .klarna-payment p{
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: 700;
+}
+.klarna-payment span{
+    font-size: 12px;
+}
+.cash-pay-form .pay-form-control{
+    width: 100% !important;
+}
+.btn-pay-cash-submit{
+    width: 100%;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    border: none;
+    line-height: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    height: 50px;
+    padding: 0 2rem;
+    letter-spacing: 0;
+    color: #fff;
+    background-color: #7A0003;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.12);
+}
+.btn-pay-cash-submit:hover{
+   color: #fff; 
+}
+.to_pay_delsumma {
+    font-size: 13px;
+    color: #464646;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.to_pay_betalnings{
+    font-size: 12px;
+}
+.to_pay_amt_delsumma{
+    float: right;
+    color: #333333;
+    font-weight: 700;
+    font-size: 14px;
+    margin-right: 10px;
+}
+.to_pay_amt_betalnings{
+    float: right;
+    color: #333333;
+    font-weight: 700;
+    font-size: 12px;
+    margin-right: 10px;
+}
+.style-tax{
+        margin-top: 20px;
+    font-size: 10px;
+    font-style: italic;
+}
+.skippa{
+    position: relative;
+    top: -30px;
+    color: #7A0003;
+    float: right;
+    right: 8px;
+}
+.logged-user p{
+    font-size: 20px;
+    font-weight: 700;
+}
+.markerade {
+    color: #780000;
+    padding: 0 10px;
+}
+.skickas {
+    margin: 0 auto;
+    font-weight: bold;
+    padding: 5px 10px 0;
+    color: #000;
+}
+.cash-pay-form{
+    margin-top: 15px;
+}
+.rest-border:after{
+        content: "";
+    position: absolute;
+    left: 17px;
+    bottom: 0;
+    background: #282c3f;
+    width: 40px;
+    height: 2px;
+}
+.img-resturant{
+        width: 100% !important;
+    }
+@media only screen and (max-width: 767px) and (min-width: 320px) {
+.account-title {
+    font-size: 36px !important;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+.btn-login, .btn-signup {
+    
+    padding: 10px !important;
+    margin-bottom: 14px;
+    width: 100%;
+    }
+    .del-add-title, .payment-title {
+    
+    font-size: 20px !important;
+    
+}
+.recommended_bg_pay {
+    background: #fff;
+    padding: 30px 20px !important;
+    float: left;
+    background-color: #fff;
+    width: 100%;
+}
+    .account-subtitle{
+        font-size: 15px;
+    }
+    .login-btns {
+        margin: 30px auto 0;
+    }
+    .cash-payment, .klarna-payment {
+        padding: 10px;
+    }
+    .pay-form-control, .btn-pay-login-submit, .btn-pay-signup-submit{
+        width: 100% !important;
+    }
+    .mobile{
+        padding: 0;
+        margin-top: 15px;
+    }
+    .login-form{
+        font-size: 18px !important;
+        margin-top: 10px;
+    }
+    .img-resturant{
+        width: 100% !important;
+    }
+    .rest-border p{
+        font-size: 15px !important;
+    }
+    .Växel{
+        width: 100% !important;
+    }
+}
+@media only screen and (max-width: 991px) and (min-width: 768px) {
+    .img-resturant{
+       width: 100% !important;
+    }
+}

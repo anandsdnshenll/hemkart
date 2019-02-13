@@ -1,0 +1,2400 @@
+<app-header></app-header>
+<div class="container_fluid offer_bg">
+
+    <!-- <div class="container"> -->
+
+       <section class="customer-logos slider">
+
+          <div class="slide"><a href="#"><img src="../../assets/images/offer_1.jpg"></a></div>
+
+          <div class="slide"><a href="#"><img src="../../assets/images/offer_2.jpg"></a></div>
+
+          <div class="slide"><a href="#"><img src="../../assets/images/offer_3.jpg"></a></div>
+
+           <div class="slide"><a href="#"><img src="../../assets/images/offer_4.jpg"></a></div>
+
+          <div class="slide"><a href="#"><img src="../../assets/images/offer_5.jpg"></a></div>
+
+          <div class="slide"><a href="#"><img src="../../assets/images/offer_6.jpg"></a></div>
+
+          <div class="slide"><a href="#"><img src="../../assets/images/offer_7.jpg"></a></div>
+
+          <div class="slide"><a href="#"><img src="../../assets/images/offer_8.jpg"></a></div>
+
+          <div class="slide"><a href="#"><img src="../../assets/images/offer_9.jpg"></a></div>
+
+          <div class="slide"><a href="#"><img src="../../assets/images/offer_10.jpg"></a></div>
+
+          <div class="slide"><a href="#"><img src="../../assets/images/offer_11.jpg"></a></div> 
+
+       </section>
+
+    <!-- </div> -->
+
+ </div>
+ <div class="container-fluid fluid-bg">
+
+    <div class="container product_list_hole_div" style="background: #fff;margin: 30px auto;">
+
+       <div class=" restaurants__tool-box-wrapper pickup">
+
+          <div class="search_hole_div">
+
+             <div class="search_fillter_div">  
+
+                <a class="search_tag" onclick="incHeight()">
+
+                <span class="search_span">
+
+                <i class="fa fa-search" onclick="incHeight()"></i>
+
+                </span>
+
+                <input id="search_box" type="text" placeholder="Sök...." >
+
+                </a>
+
+                <a class="filter_tag" id="hidden_a_id" >
+
+                <span class="filter_span">
+
+                <i class="fa fa-sliders fa-rotate-90" aria-hidden="true" onclick="incHeight1()"></i>
+
+                </span>
+
+                <input id="search_box1" type="button" value="FILTERS"  style="width: 10px;">
+
+                <span class="span_dropdown">
+
+                <i class="fa fa-chevron-down mob-chevron-down" onclick="incHeight1()"></i>
+
+                </span>
+
+                </a>                           
+
+             </div>
+
+             <div id="divShowHide" style="background-color: #fff; height: 0px;display: none;">
+                <div class="budget budget-offer">             
+
+                   <div style="margin:20px 0 25px 0;">
+
+                      <div class="form-group">
+
+                         <select class="form-control offer-select" id="sel1">
+
+                            <option>Erbjudanden</option>
+
+                            <option>fri leverans</option>
+
+                         </select>
+
+                      </div>
+
+                   </div>
+
+                   <h4>Välj mattyp</h4>
+
+                   <ul class="filter-column">
+
+                      <li>
+
+                         <label class="checkbox-box">
+
+                            <input type="checkbox" name="filter-quick" id="has_discount" value="has_discount">
+
+                            <span class="checkbox-element">
+
+                               <i class="checkmark">
+
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="8" height="6" viewBox="0 0 8 6">
+
+                                     <g class="svg-stroke-container">
+
+                                        <path fill="none" fill-rule="evenodd" stroke="#FFF" stroke-linecap="round" stroke-linejoin="round" d="M.5 3.333L3.073 5.5 7.5.5"></path>
+
+                                     </g>
+
+                                  </svg>
+
+                               </i>
+
+                            </span>
+
+                            <span class="checkbox-text">Korv</span>
+
+                         </label>
+
+                      </li>
+
+                      <li>
+
+                         <label class="checkbox-box">
+
+                            <input type="checkbox" name="filter-quick" id="has_discount" value="has_discount">
+
+                            <span class="checkbox-element">
+
+                               <i class="checkmark">
+
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="8" height="6" viewBox="0 0 8 6">
+
+                                     <g class="svg-stroke-container">
+
+                                        <path fill="none" fill-rule="evenodd" stroke="#FFF" stroke-linecap="round" stroke-linejoin="round" d="M.5 3.333L3.073 5.5 7.5.5"></path>
+
+                                     </g>
+
+                                  </svg>
+
+                               </i>
+
+                            </span>
+
+                            <span class="checkbox-text">Asiatiskt</span>
+
+                         </label>
+
+                      </li>
+
+                      <li>
+
+                         <label class="checkbox-box">
+
+                            <input type="checkbox" name="filter-quick" id="has_discount" value="has_discount">
+
+                            <span class="checkbox-element">
+
+                               <i class="checkmark">
+
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="8" height="6" viewBox="0 0 8 6">
+
+                                     <g class="svg-stroke-container">
+
+                                        <path fill="none" fill-rule="evenodd" stroke="#FFF" stroke-linecap="round" stroke-linejoin="round" d="M.5 3.333L3.073 5.5 7.5.5"></path>
+
+                                     </g>
+
+                                  </svg>
+
+                               </i>
+
+                            </span>
+
+                            <span class="checkbox-text">Bakelser</span>
+
+                         </label>
+
+                      </li>
+
+                      <li>
+
+                         <label class="checkbox-box">
+
+                            <input type="checkbox" name="filter-quick" id="has_discount" value="has_discount">
+
+                            <span class="checkbox-element">
+
+                               <i class="checkmark">
+
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="8" height="6" viewBox="0 0 8 6">
+
+                                     <g class="svg-stroke-container">
+
+                                        <path fill="none" fill-rule="evenodd" stroke="#FFF" stroke-linecap="round" stroke-linejoin="round" d="M.5 3.333L3.073 5.5 7.5.5"></path>
+
+                                     </g>
+
+                                  </svg>
+
+                               </i>
+
+                            </span>
+
+                            <span class="checkbox-text">Eritreansk</span>
+
+                         </label>
+
+                      </li>
+
+                      <li>
+
+                         <label class="checkbox-box">
+
+                            <input type="checkbox" name="filter-quick" id="has_discount" value="has_discount">
+
+                            <span class="checkbox-element">
+
+                               <i class="checkmark">
+
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="8" height="6" viewBox="0 0 8 6">
+
+                                     <g class="svg-stroke-container">
+
+                                        <path fill="none" fill-rule="evenodd" stroke="#FFF" stroke-linecap="round" stroke-linejoin="round" d="M.5 3.333L3.073 5.5 7.5.5"></path>
+
+                                     </g>
+
+                                  </svg>
+
+                               </i>
+
+                            </span>
+
+                            <span class="checkbox-text">Etiopisk</span>
+
+                         </label>
+
+                      </li>
+
+                      <li>
+
+                         <label class="checkbox-box">
+
+                            <input type="checkbox" name="filter-quick" id="has_discount" value="has_discount">
+
+                            <span class="checkbox-element">
+
+                               <i class="checkmark">
+
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="8" height="6" viewBox="0 0 8 6">
+
+                                     <g class="svg-stroke-container">
+
+                                        <path fill="none" fill-rule="evenodd" stroke="#FFF" stroke-linecap="round" stroke-linejoin="round" d="M.5 3.333L3.073 5.5 7.5.5"></path>
+
+                                     </g>
+
+                                  </svg>
+
+                               </i>
+
+                            </span>
+
+                            <span class="checkbox-text">Indisk</span>
+
+                         </label>
+
+                      </li>
+
+                      <li>
+
+                         <label class="checkbox-box">
+
+                            <input type="checkbox" name="filter-quick" id="has_discount" value="has_discount">
+
+                            <span class="checkbox-element">
+
+                               <i class="checkmark">
+
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="8" height="6" viewBox="0 0 8 6">
+
+                                     <g class="svg-stroke-container">
+
+                                        <path fill="none" fill-rule="evenodd" stroke="#FFF" stroke-linecap="round" stroke-linejoin="round" d="M.5 3.333L3.073 5.5 7.5.5"></path>
+
+                                     </g>
+
+                                  </svg>
+
+                               </i>
+
+                            </span>
+
+                            <span class="checkbox-text">Italienskt</span>
+
+                         </label>
+
+                      </li>
+
+                      <li>
+
+                         <label class="checkbox-box">
+
+                            <input type="checkbox" name="filter-quick" id="has_discount" value="has_discount">
+
+                            <span class="checkbox-element">
+
+                               <i class="checkmark">
+
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="8" height="6" viewBox="0 0 8 6">
+
+                                     <g class="svg-stroke-container">
+
+                                        <path fill="none" fill-rule="evenodd" stroke="#FFF" stroke-linecap="round" stroke-linejoin="round" d="M.5 3.333L3.073 5.5 7.5.5"></path>
+
+                                     </g>
+
+                                  </svg>
+
+                               </i>
+
+                            </span>
+
+                            <span class="checkbox-text">Godis</span>
+
+                         </label>
+
+                      </li>
+
+                      <li>
+
+                         <label class="checkbox-box">
+
+                            <input type="checkbox" name="filter-quick" id="has_discount" value="has_discount">
+
+                            <span class="checkbox-element">
+
+                               <i class="checkmark">
+
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="8" height="6" viewBox="0 0 8 6">
+
+                                     <g class="svg-stroke-container">
+
+                                        <path fill="none" fill-rule="evenodd" stroke="#FFF" stroke-linecap="round" stroke-linejoin="round" d="M.5 3.333L3.073 5.5 7.5.5"></path>
+
+                                     </g>
+
+                                  </svg>
+
+                               </i>
+
+                            </span>
+
+                            <span class="checkbox-text">Hamburgare</span>
+
+                         </label>
+
+                      </li>
+
+                      <li>
+
+                         <label class="checkbox-box">
+
+                            <input type="checkbox" name="filter-quick" id="has_discount" value="has_discount">
+
+                            <span class="checkbox-element">
+
+                               <i class="checkmark">
+
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="8" height="6" viewBox="0 0 8 6">
+
+                                     <g class="svg-stroke-container">
+
+                                        <path fill="none" fill-rule="evenodd" stroke="#FFF" stroke-linecap="round" stroke-linejoin="round" d="M.5 3.333L3.073 5.5 7.5.5"></path>
+
+                                     </g>
+
+                                  </svg>
+
+                               </i>
+
+                            </span>
+
+                            <span class="checkbox-text">Kebab</span>
+
+                         </label>
+
+                      </li>
+
+                      <li>
+
+                         <label class="checkbox-box">
+
+                            <input type="checkbox" name="filter-quick" id="has_discount" value="has_discount">
+
+                            <span class="checkbox-element">
+
+                               <i class="checkmark">
+
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="8" height="6" viewBox="0 0 8 6">
+
+                                     <g class="svg-stroke-container">
+
+                                        <path fill="none" fill-rule="evenodd" stroke="#FFF" stroke-linecap="round" stroke-linejoin="round" d="M.5 3.333L3.073 5.5 7.5.5"></path>
+
+                                     </g>
+
+                                  </svg>
+
+                               </i>
+
+                            </span>
+
+                            <span class="checkbox-text">Kolgrill</span>
+
+                         </label>
+
+                      </li>
+
+                      <li>
+
+                         <label class="checkbox-box">
+
+                            <input type="checkbox" name="filter-quick" id="has_discount" value="has_discount">
+
+                            <span class="checkbox-element">
+
+                               <i class="checkmark">
+
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="8" height="6" viewBox="0 0 8 6">
+
+                                     <g class="svg-stroke-container">
+
+                                        <path fill="none" fill-rule="evenodd" stroke="#FFF" stroke-linecap="round" stroke-linejoin="round" d="M.5 3.333L3.073 5.5 7.5.5"></path>
+
+                                     </g>
+
+                                  </svg>
+
+                               </i>
+
+                            </span>
+
+                            <span class="checkbox-text">Mackor</span>
+
+                         </label>
+
+                      </li>
+
+                      <li>
+
+                         <label class="checkbox-box">
+
+                            <input type="checkbox" name="filter-quick" id="has_discount" value="has_discount">
+
+                            <span class="checkbox-element">
+
+                               <i class="checkmark">
+
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="8" height="6" viewBox="0 0 8 6">
+
+                                     <g class="svg-stroke-container">
+
+                                        <path fill="none" fill-rule="evenodd" stroke="#FFF" stroke-linecap="round" stroke-linejoin="round" d="M.5 3.333L3.073 5.5 7.5.5"></path>
+
+                                     </g>
+
+                                  </svg>
+
+                               </i>
+
+                            </span>
+
+                            <span class="checkbox-text">Mexikansk</span>
+
+                         </label>
+
+                      </li>
+
+                      <li>
+
+                         <label class="checkbox-box">
+
+                            <input type="checkbox" name="filter-quick" id="has_discount" value="has_discount">
+
+                            <span class="checkbox-element">
+
+                               <i class="checkmark">
+
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="8" height="6" viewBox="0 0 8 6">
+
+                                     <g class="svg-stroke-container">
+
+                                        <path fill="none" fill-rule="evenodd" stroke="#FFF" stroke-linecap="round" stroke-linejoin="round" d="M.5 3.333L3.073 5.5 7.5.5"></path>
+
+                                     </g>
+
+                                  </svg>
+
+                               </i>
+
+                            </span>
+
+                            <span class="checkbox-text">Pasta</span>
+
+                         </label>
+
+                      </li>
+
+                      <li>
+
+                         <label class="checkbox-box">
+
+                            <input type="checkbox" name="filter-quick" id="has_discount" value="has_discount">
+
+                            <span class="checkbox-element">
+
+                               <i class="checkmark">
+
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="8" height="6" viewBox="0 0 8 6">
+
+                                     <g class="svg-stroke-container">
+
+                                        <path fill="none" fill-rule="evenodd" stroke="#FFF" stroke-linecap="round" stroke-linejoin="round" d="M.5 3.333L3.073 5.5 7.5.5"></path>
+
+                                     </g>
+
+                                  </svg>
+
+                               </i>
+
+                            </span>
+
+                            <span class="checkbox-text">Persisk</span>
+
+                         </label>
+
+                      </li>
+
+                      <li>
+
+                         <label class="checkbox-box">
+
+                            <input type="checkbox" name="filter-quick" id="has_discount" value="has_discount">
+
+                            <span class="checkbox-element">
+
+                               <i class="checkmark">
+
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="8" height="6" viewBox="0 0 8 6">
+
+                                     <g class="svg-stroke-container">
+
+                                        <path fill="none" fill-rule="evenodd" stroke="#FFF" stroke-linecap="round" stroke-linejoin="round" d="M.5 3.333L3.073 5.5 7.5.5"></path>
+
+                                     </g>
+
+                                  </svg>
+
+                               </i>
+
+                            </span>
+
+                            <span class="checkbox-text">Pizza</span>
+
+                         </label>
+
+                      </li>
+
+                      <li>
+
+                         <label class="checkbox-box">
+
+                            <input type="checkbox" name="filter-quick" id="has_discount" value="has_discount">
+
+                            <span class="checkbox-element">
+
+                               <i class="checkmark">
+
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="8" height="6" viewBox="0 0 8 6">
+
+                                     <g class="svg-stroke-container">
+
+                                        <path fill="none" fill-rule="evenodd" stroke="#FFF" stroke-linecap="round" stroke-linejoin="round" d="M.5 3.333L3.073 5.5 7.5.5"></path>
+
+                                     </g>
+
+                                  </svg>
+
+                               </i>
+
+                            </span>
+
+                            <span class="checkbox-text">Sallad</span>
+
+                         </label>
+
+                      </li>
+
+                      <li>
+
+                         <label class="checkbox-box">
+
+                            <input type="checkbox" name="filter-quick" id="has_discount" value="has_discount">
+
+                            <span class="checkbox-element">
+
+                               <i class="checkmark">
+
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="8" height="6" viewBox="0 0 8 6">
+
+                                     <g class="svg-stroke-container">
+
+                                        <path fill="none" fill-rule="evenodd" stroke="#FFF" stroke-linecap="round" stroke-linejoin="round" d="M.5 3.333L3.073 5.5 7.5.5"></path>
+
+                                     </g>
+
+                                  </svg>
+
+                               </i>
+
+                            </span>
+
+                            <span class="checkbox-text">Snacks</span>
+
+                         </label>
+
+                      </li>
+
+                      <li>
+
+                         <label class="checkbox-box">
+
+                            <input type="checkbox" name="filter-quick" id="has_discount" value="has_discount">
+
+                            <span class="checkbox-element">
+
+                               <i class="checkmark">
+
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="8" height="6" viewBox="0 0 8 6">
+
+                                     <g class="svg-stroke-container">
+
+                                        <path fill="none" fill-rule="evenodd" stroke="#FFF" stroke-linecap="round" stroke-linejoin="round" d="M.5 3.333L3.073 5.5 7.5.5"></path>
+
+                                     </g>
+
+                                  </svg>
+
+                               </i>
+
+                            </span>
+
+                            <span class="checkbox-text">Subway</span>
+
+                         </label>
+
+                      </li>
+
+                      <li>
+
+                         <label class="checkbox-box">
+
+                            <input type="checkbox" name="filter-quick" id="has_discount" value="has_discount">
+
+                            <span class="checkbox-element">
+
+                               <i class="checkmark">
+
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="8" height="6" viewBox="0 0 8 6">
+
+                                     <g class="svg-stroke-container">
+
+                                        <path fill="none" fill-rule="evenodd" stroke="#FFF" stroke-linecap="round" stroke-linejoin="round" d="M.5 3.333L3.073 5.5 7.5.5"></path>
+
+                                     </g>
+
+                                  </svg>
+
+                               </i>
+
+                            </span>
+
+                            <span class="checkbox-text">Sushi</span>
+
+                         </label>
+
+                      </li>
+
+                      <li>
+
+                         <label class="checkbox-box">
+
+                            <input type="checkbox" name="filter-quick" id="has_discount" value="has_discount">
+
+                            <span class="checkbox-element">
+
+                               <i class="checkmark">
+
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="8" height="6" viewBox="0 0 8 6">
+
+                                     <g class="svg-stroke-container">
+
+                                        <path fill="none" fill-rule="evenodd" stroke="#FFF" stroke-linecap="round" stroke-linejoin="round" d="M.5 3.333L3.073 5.5 7.5.5"></path>
+
+                                     </g>
+
+                                  </svg>
+
+                               </i>
+
+                            </span>
+
+                            <span class="checkbox-text">Tapas</span>
+
+                         </label>
+
+                      </li>
+
+                      <li>
+
+                         <label class="checkbox-box">
+
+                            <input type="checkbox" name="filter-quick" id="has_discount" value="has_discount">
+
+                            <span class="checkbox-element">
+
+                               <i class="checkmark">
+
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="8" height="6" viewBox="0 0 8 6">
+
+                                     <g class="svg-stroke-container">
+
+                                        <path fill="none" fill-rule="evenodd" stroke="#FFF" stroke-linecap="round" stroke-linejoin="round" d="M.5 3.333L3.073 5.5 7.5.5"></path>
+
+                                     </g>
+
+                                  </svg>
+
+                               </i>
+
+                            </span>
+
+                            <span class="checkbox-text">Tobak</span>
+
+                         </label>
+
+                      </li>
+
+                      <li>
+
+                         <label class="checkbox-box">
+
+                            <input type="checkbox" name="filter-quick" id="has_discount" value="has_discount">
+
+                            <span class="checkbox-element">
+
+                               <i class="checkmark">
+
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="8" height="6" viewBox="0 0 8 6">
+
+                                     <g class="svg-stroke-container">
+
+                                        <path fill="none" fill-rule="evenodd" stroke="#FFF" stroke-linecap="round" stroke-linejoin="round" d="M.5 3.333L3.073 5.5 7.5.5"></path>
+
+                                     </g>
+
+                                  </svg>
+
+                               </i>
+
+                            </span>
+
+                            <span class="checkbox-text">Vedugnspizza</span>
+
+                         </label>
+
+                      </li>
+
+                      <li>
+
+                         <label class="checkbox-box">
+
+                            <input type="checkbox" name="filter-quick" id="has_discount" value="has_discount">
+
+                            <span class="checkbox-element">
+
+                               <i class="checkmark">
+
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="8" height="6" viewBox="0 0 8 6">
+
+                                     <g class="svg-stroke-container">
+
+                                        <path fill="none" fill-rule="evenodd" stroke="#FFF" stroke-linecap="round" stroke-linejoin="round" d="M.5 3.333L3.073 5.5 7.5.5"></path>
+
+                                     </g>
+
+                                  </svg>
+
+                               </i>
+
+                            </span>
+
+                            <span class="checkbox-text">Vegansk</span>
+
+                         </label>
+
+                      </li>
+
+                      <li>
+
+                         <label class="checkbox-box">
+
+                            <input type="checkbox" name="filter-quick" id="has_discount" value="has_discount">
+
+                            <span class="checkbox-element">
+
+                               <i class="checkmark">
+
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="8" height="6" viewBox="0 0 8 6">
+
+                                     <g class="svg-stroke-container">
+
+                                        <path fill="none" fill-rule="evenodd" stroke="#FFF" stroke-linecap="round" stroke-linejoin="round" d="M.5 3.333L3.073 5.5 7.5.5"></path>
+
+                                     </g>
+
+                                  </svg>
+
+                               </i>
+
+                            </span>
+
+                            <span class="checkbox-text">Glutenfri </span>
+
+                         </label>
+
+                      </li>
+
+                   </ul>
+
+                </div>
+
+             </div>
+
+          </div>
+
+          <div class=" restaurants__tool-box pickup">
+
+             <div class="restaurants__location  has-new-filters">
+
+                <form id="delivery-information-postal-index-form" class="restaurants__location__form" method="GET">
+
+                   <button class="button--fake restaurants__location__cancel-icon">
+
+                      <svg class="svg-stroke-container" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+
+                         <path fill="#D70F64" fill-rule="evenodd" d="M8 9.016l6.886 6.795a.658.658 0 0 0 .923 0 .637.637 0 0 0 0-.91L9.01 8l6.799-6.902a.637.637 0 0 0 0-.91.659.659 0 0 0-.923 0L8 6.983 1.114.188a.659.659 0 0 0-.923 0 .637.637 0 0 0 0 .911L6.99 8 .19 14.9a.637.637 0 0 0 0 .911.658.658 0 0 0 .923 0L8 9.016z"></path>
+
+                      </svg>
+
+                   </button>
+
+                   <div class="address-search-container ">
+
+                      <div class=" ">
+
+                         <input type="text" class="restaurants__location__input cancelable__restaurants__location__input form-control" id="delivery-information-postal-index" name="location_set" placeholder="Enter your street address" value="" data-msg_error_not_found="Something went wrong! We do not recognise the address you entered. Please try again." data-msg_you_probably_mean="Does this postal code match your query?" data-msg_error_geolocation="It was not possible to detect your location" data-msg_error_empty="Please enter your street address" data-msg_error_postal_code="Please enter your street address and number" data-msg_error_vendor_empty_address="Enter your postal code to see if this restaurant delivers to you." autocomplete="off">
+
+                         <div class="address-suggestions">
+
+                            <ul></ul>
+
+                         </div>
+
+                      </div>
+
+                      <span class="locate-me">
+
+                         <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23">
+
+                            <g fill="none" fill-rule="evenodd">
+
+                               <path stroke="#D70F64" d="M11.5 22.5v-2.986l.471-.028a8.001 8.001 0 0 0 7.515-7.515l.028-.471H22.5h-2.986l-.028-.471a8.001 8.001 0 0 0-7.515-7.515l-.471-.028V.5v2.986l-.471.028a8.001 8.001 0 0 0-7.515 7.515l-.028.471H.5h2.986l.028.471a8.001 8.001 0 0 0 7.515 7.515l.471.028V22.5z"></path>
+
+                               <circle cx="11.5" cy="11.5" r="4" stroke="#D70F64"></circle>
+
+                               <circle cx="11.5" cy="11.5" r="1" fill="#D70F64"></circle>
+
+                            </g>
+
+                         </svg>
+
+                      </span>
+
+                   </div>
+
+                </form>
+
+             </div>
+             
+
+             <!-- <div class="delivery-toggle">
+
+                <span class="deliver_span">Hemkörning</span>
+
+                <label class="switch">
+
+                <input type="checkbox" checked="">
+
+                <span class="slider round" style="background-color: #ebebeb;"></span>
+
+                </label>
+
+                <span class="pick_span">Avhämtning</span>
+
+             </div> -->
+
+          </div>
+
+       </div>
+
+       <div class="restaurants__list">
+
+          <span class="head_span">Restauranger</span>
+
+          <section class="vendor-list-section opened ">
+
+             <ul class="vendor-list opened" data-title-pickup="" data-title-delivery="" data-title-background="" data-show-extra-tile-info="false" data-show-pick-up-distance="true">
+
+                <li >
+
+                   <div class="IJsqo">
+                      <div class="_1kXWW" style="">Bästa i städ</div>
+                   </div>
+
+                   <a href="#" data-flood-closed-message="" class="hreview-aggregate url">
+
+                      <figure class="vendor-tile closed item ">
+
+                         <picture style="top: -27px;">
+
+                            <div class="vendor-picture b-lazy b-loaded b-loaded" data-src="../../assets/images/66.jpg?width=400&amp;height=292|../../assets/images/66.jpg?width=800&amp;height=584" data-vendor-id="7190" style="background-image: url(&quot;../../assets/images/33.jpg?width=100&amp;height=584&quot;);">
+                            </div>
+                            <img class="res_logo_side" src="../../assets/images/1492986285-gidegrillen-logga.png">
+
+                         </picture>
+
+                         <figcaption class="vendor-info">
+
+                            <span class="headline">
+
+                               <span class="name fn">Gideonsbergsgrillen</span>
+
+                               <div class="ratings-component">
+
+                                  <span class="fa fa-star"></span>
+
+                                  <span class="rating-new">4.79</span>
+
+                                  <span class="count-new" data-count="(16)">
+
+                                  16
+
+                                  </span>
+
+                               </div>
+
+                            </span>
+
+                            <ul class="categories summary">
+
+                               <li>
+
+                                  <span class="budget-symbol--filled">Öppet</span>
+
+                               </li>
+
+                               <li class="vendor-characteristic">
+
+                                  <span>Hamburgare</span>
+
+                               </li>
+
+                            </ul>
+                            
+
+                         </figcaption>
+
+                         
+                         <!-- <div class="quick_view"><a href="">fler detaljer</a></div> -->
+                      </figure>
+
+                   </a>
+
+                </li>
+
+                <li>
+                   <div class="IJsqo" style="visibility: hidden;">
+                      <div class="_1kXWW">Bästa i städ</div>
+                   </div>
+                   <a href="#" data-flood-closed-message="" class="hreview-aggregate url">
+
+                      <figure class="vendor-tile closed item ">
+
+                         <picture>
+
+                            <div class="vendor-picture b-lazy b-loaded b-loaded" data-src="../../assets/images/67.jpg?width=400&amp;height=292|../../assets/images/67.jpg?width=800&amp;height=584" data-vendor-id="7582" style="background-image: url(&quot;../../assets/images/67.jpg?width=800&amp;height=584&quot;);"></div>
+                            <img class="res_logo_side" src="../../assets/images/1519338302-cpicy-hot.png">
+                         </picture>
+
+                         <figcaption class="vendor-info">
+
+                            <span class="headline">
+
+                               <span class="name fn">Spicy Hot</span>
+
+                               <div class="ratings-component">
+
+                                  <span class="fa fa-star"></span>
+
+                                  <span class="rating-new">4.75</span>
+
+                                  <span class="count-new" data-count="(6)">
+
+                                  6
+
+                                  </span>
+
+                               </div>
+
+                            </span>
+
+                            <ul class="categories summary">
+
+                               <li>
+
+                                  <span class="budget-symbol--filled">Öppet</span>
+
+                               </li>
+
+                               <li class="vendor-characteristic">
+
+                                  <span>Asiatiskt</span>
+
+                               </li>
+
+                            </ul>
+
+                            
+                         </figcaption>
+
+                                              
+                            <!-- <div class="quick_view"><a href="">fler detaljer</a></div> -->
+                      </figure>
+
+                   </a>
+
+                </li>
+
+                <li>
+
+                    <div class="IJsqo">
+
+                                <div class="_1kXWW" style="">Sponserad</div>
+
+                             </div>
+
+                   <a href="#" data-flood-closed-message="" class="hreview-aggregate url">
+
+                      <figure class="vendor-tile closed item ">
+
+                         <picture style="top: -27px;">
+
+                            <div class="vendor-picture b-lazy b-loaded b-loaded" data-src="../../assets/images/68.jpg?width=400&amp;height=292|../../assets/images/68.jpg?width=800&amp;height=584" data-vendor-id="7616" style="background-image: url(&quot;../../assets/images/68.jpg?width=800&amp;height=584&quot;);"></div>
+                            <img class="res_logo_side" src="../../assets/images/ppp.png">
+                         </picture>
+
+                         <figcaption class="vendor-info">
+
+                            <span class="headline">
+
+                               <span class="name fn">Pärlan Vedugn Pizza & Kolgrill</span>
+
+                               <div class="ratings-component">
+
+                                  <span class="fa fa-star"></span>
+
+                                  <span class="rating-new">4.75</span>
+
+                                  <span class="count-new" data-count="(14)">
+
+                                  14
+
+                                  </span>
+
+                               </div>
+
+                            </span>
+
+                            <ul class="categories summary">
+
+                               <li>
+
+                                  <span class="budget-symbol--filled">Öppet</span>                                    
+
+                               </li>
+
+                               <li class="vendor-characteristic">
+
+                                  <span>Kebab</span>                                    
+
+                                  <span>Kolgrill</span>
+
+                                  <span>Sallad</span>
+
+                                  <span>Vedugnspizza</span>
+
+                               </li>
+
+                            </ul>
+
+                         </figcaption>
+
+                         <!-- <div class="quick_view"><a href="">fler detaljer </a></div> -->
+
+                      </figure>
+
+                   </a>
+
+                </li>
+
+                
+
+                <li>
+                   <div class="IJsqo" style="visibility: hidden;">
+                      <div class="_1kXWW">Bästa i städ</div>
+                   </div>
+
+                   <a href="#" data-flood-closed-message="" class="hreview-aggregate url">
+
+                      <figure class="vendor-tile closed item ">
+
+                         <picture>
+
+                            <div class="vendor-picture b-lazy b-loaded b-loaded" data-src="../../assets/images/69.jpg?width=400&amp;height=292|../../assets/images/69.jpg?width=800&amp;height=584" data-vendor-id="7612" style="background-image: url(&quot;../../assets/images/69.jpg?width=800&amp;height=584&quot;);"></div>
+                            <img class="res_logo_side" src="../../assets/images/1441396333-jojo-jpg.png">
+                         </picture>
+
+                         <figcaption class="vendor-info">
+
+                            <span class="headline">
+
+                               <span class="name fn">Jojo's Pizzeria</span>
+
+                               <div class="ratings-component">
+
+                                  <span class="fa fa-star"></span>
+
+                                  <span class="rating-new">4.75</span>
+
+                                  <span class="count-new" data-count="(141)">
+
+                                  141
+
+                                  </span>
+
+                               </div>
+
+                            </span>
+
+                            <ul class="categories summary">
+
+                               <li>
+
+                                  <span class="budget-symbol--filled">Öppet</span>                     
+
+                               </li>
+
+                               <li class="vendor-characteristic">
+
+                                  <span>Pizza</span>
+
+                                  <span>Kebab</span>
+
+                                  <span>Pasta</span>
+
+                                  <span>Sallad</span>
+
+                                  <span>Hamburgare</span>
+
+                               </li>
+
+                            </ul>
+
+                            
+
+                         </figcaption>
+
+                         <!-- <div class="quick_view"><a href="">fler detaljer </a></div> -->
+
+                      </figure>
+
+                   </a>
+
+                </li>
+
+                <li>
+                   <div class="IJsqo" style="visibility: hidden;">
+                      <div class="_1kXWW">Bästa i städ</div>
+                   </div>
+                   <a href="#" data-flood-closed-message="" class="hreview-aggregate url">
+
+                      <figure class="vendor-tile closed item ">
+
+                         <picture>
+
+                            <div class="vendor-picture b-lazy b-loaded b-loaded" data-src="../../assets/images/66.jpg?width=400&amp;height=292|../../assets/images/66.jpg?width=800&amp;height=584" data-vendor-id="7976" style="background-image: url(&quot;../../assets/images/66.jpg?width=800&amp;height=584&quot;);"></div>
+                            <img class="res_logo_side" src="../../assets/images/1537265607-chucky2.2.png">
+                         </picture>
+
+                         <figcaption class="vendor-info">
+
+                            <span class="headline">
+
+                               <span class="name fn">Chucky Burger</span>
+
+                               <div class="ratings-component">
+
+                                  <span class="fa fa-star"></span>
+
+                                  <span class="rating-new">4.73</span>
+
+                                  <span class="count-new" data-count="(13)">
+
+                                  13
+
+                                  </span>
+
+                               </div>
+
+                            </span>
+
+                            <ul class="categories summary">
+
+                               <li>
+
+                                  <span class="budget-symbol--filled">Öppet</span>
+
+                               </li>
+
+                               <li class="vendor-characteristic">
+
+                                  <span>Hamburgare</span>
+
+                               </li>
+
+                            </ul>
+
+                                                 
+
+                         </figcaption>
+
+                            <!-- <div class="quick_view"><a href="">fler detaljer </a></div> -->                     
+
+                      </figure>
+
+                   </a>
+
+                </li>
+
+                <li>
+
+                   <div class="IJsqo" >
+
+                                <div class="_1kXWW" style="">Nyhet</div>
+
+                             </div>
+
+                   <a href="#" data-flood-closed-message="" class="hreview-aggregate url">
+
+                      <figure class="vendor-tile closed item ">
+
+                         <picture style="top: -27px;">
+
+                            <div class="vendor-picture b-lazy b-loaded b-loaded" data-src="../../assets/images/70.jpg?width=400&amp;height=292|../../assets/images/70.jpg?width=800&amp;height=584" data-vendor-id="7532" style="background-image: url(&quot;../../assets/images/70.jpg?width=800&amp;height=584&quot;);"></div>
+                            <img class="res_logo_side" src="../../assets/images/1516932391-Sturegatans-.png">
+                         </picture>
+
+                         <figcaption class="vendor-info">
+
+                            <span class="headline">
+
+                               <span class="name fn">Sturegatans Pizzeria</span>
+
+                               <div class="ratings-component">
+
+                                  <span class="fa fa-star"></span>
+
+                                  <span class="rating-new">4.64</span>
+
+                                  <span class="count-new" data-count="(7)">
+
+                                  7
+
+                                  </span>
+
+                               </div>
+
+                            </span>
+
+                            <ul class="categories summary">
+
+                               <li>
+
+                                  <span class="budget-symbol--filled">Öppet</span>
+
+                               </li>
+
+                               <li class="vendor-characteristic">
+
+                                  <span>Kebab</span>
+
+                                  <span>Pizza</span>
+
+                                  <span>Sallad</span>
+
+                                  <span>Glutenfri Pizza</span>
+
+                               </li>
+
+                            </ul>
+
+                           
+
+                         </figcaption>
+                         <!-- <div class="quick_view"><a href="">fler detaljer </a></div>
+                                -->
+                      </figure>
+
+                   </a>
+
+                </li>
+
+                <li>
+                   <div class="IJsqo" style="visibility: hidden;">
+                      <div class="_1kXWW">Bästa i städ</div>
+                   </div>
+                   <a href="#" data-flood-closed-message="" class="hreview-aggregate url">
+
+                      <figure class="vendor-tile closed item ">
+
+                         <picture>
+
+                            <div class="vendor-picture b-lazy b-loaded b-loaded" data-src="../../assets/images/71.jpg?width=400&amp;height=292|../../assets/images/71.jpg?width=800&amp;height=584" data-vendor-id="7533" style="background-image: url(&quot;../../assets/images/71.jpg?width=800&amp;height=584&quot;);"></div>
+                            <img class="res_logo_side" src="../../assets/images/1449015268-garlic-o-ginger.png">
+                         </picture>
+
+                         <figcaption class="vendor-info">
+
+                            <span class="headline">
+
+                               <span class="name fn">Garlic & Ginger</span>
+
+                               <div class="ratings-component">
+
+                                  <span class="fa fa-star"></span>
+
+                                  <span class="rating-new">4.54</span>
+
+                                  <span class="count-new" data-count="(12)">
+
+                                  12
+
+                                  </span>
+
+                               </div>
+
+                            </span>
+
+                            <ul class="categories summary">
+
+                               <li>
+
+                                  <span class="budget-symbol--filled">Öppet</span>                                    
+
+                               </li>
+
+                               <li class="vendor-characteristic">
+
+                                  <span>Asiatiskt</span>
+
+                               </li>
+
+                            </ul>
+
+                                                   
+
+                         </figcaption>
+
+                             <!--   <div class="quick_view"><a href="">fler detaljer </a></div> -->                 
+
+                      </figure>
+
+                   </a>
+
+                </li>
+
+                <li>
+                   <div class="IJsqo" style="visibility: hidden;">
+                      <div class="_1kXWW">Bästa i städ</div>
+                   </div>
+                   <a href="#" data-flood-closed-message="" class="hreview-aggregate url">
+
+                      <figure class="vendor-tile closed item ">
+
+                         <picture>
+
+                            <div class="vendor-picture b-lazy b-loaded b-loaded" data-src="../../assets/images/72.jpg?width=400&amp;height=292|../../assets/images/72.jpg?width=800&amp;height=584" data-vendor-id="7190" style="background-image: url(&quot;../../assets/images/72.jpg?width=800&amp;height=584&quot;);"></div>
+                            <img class="res_logo_side" src="../../assets/images/13.png">
+                         </picture>
+
+                         <figcaption class="vendor-info">
+
+                            <span class="headline">
+
+                               <span class="name fn">Didos Krog</span>
+
+                               <div class="ratings-component">
+
+                                  <span class="fa fa-star"></span>
+
+                                  <span class="rating-new" >Okänt</span>
+
+                                  <span class="count-new" data-count="(0)">
+
+                                  0
+
+                                  </span>
+
+                               </div>
+
+                            </span>
+
+                            <ul class="categories summary">
+
+                               <li>
+
+                                  <span class="budget-symbol--filled-warn">Stängt</span>
+
+                                  <!--        <span class="budget-symbol--filled">$</span>
+
+                                     <span class="budget-symbol--filled">$</span> -->
+
+                               </li>
+
+                               <li class="vendor-characteristic">
+
+                                  <span>Vegetariskt</span>
+
+                                  <span>Hemlagat</span>
+
+                                  <span>Korean</span>
+
+                                  <span>Middle Eastern</span>
+
+                                  <span>Mediterranean</span>
+
+                               </li>
+
+                            </ul>
+
+                           
+
+                         </figcaption>
+                      <!-- <div class="quick_view"><a href="">fler detaljer </a></div> -->
+                      </figure>
+
+                   </a>
+
+                </li>
+
+                <li>
+                   <div class="IJsqo" style="visibility: hidden;">
+                      <div class="_1kXWW">Bästa i städ</div>
+                   </div>
+
+                   <a href="#" data-flood-closed-message="" class="hreview-aggregate url">
+
+                      <figure class="vendor-tile closed item ">
+
+                         <picture>
+
+                            <div class="vendor-picture b-lazy b-loaded b-loaded" data-src="../../assets/images/73.jpg?width=400&amp;height=292|../../assets/images/73.jpg?width=800&amp;height=584" data-vendor-id="7190" style="background-image: url(&quot;../../assets/images/73.jpg?width=800&amp;height=584&quot;);"></div>
+                             <img class="res_logo_side" src="../../assets/images/12.png">
+                         </picture>
+
+                         <figcaption class="vendor-info">
+
+                            <span class="headline">
+
+                               <span class="name fn">Basilica Erikslund</span>
+
+                               <div class="ratings-component">
+
+                                  <span class="fa fa-star"></span>
+
+                                  <span class="rating-new">Okänt</span>
+
+                                  <span class="count-new" data-count="(0)">
+
+                                  0
+
+                                  </span>
+
+                               </div>
+
+                            </span>
+
+                            <ul class="categories summary">
+
+                               <li>
+
+                                  <span class="budget-symbol--filled-warn">Stängt</span>
+
+                                  <!-- <span>$</span>
+
+                                     <span>$</span> -->
+
+                               </li>
+
+                               <li class="vendor-characteristic">
+
+                                  <span>Vegetariskt</span>
+
+                                  <span>Meat</span>
+
+                                  <span>Kött</span>
+
+                                  <span>Home Made Food</span>
+
+                                  <span>Sandwiches</span>
+
+                               </li>
+
+                            </ul>
+
+                            
+
+                         </figcaption>
+
+                        <!--  <div class="quick_view"><a href="">fler detaljer </a></div> -->
+                      </figure>
+
+                   </a>
+
+                </li>
+
+                <li>
+                   <div class="IJsqo" style="visibility: hidden;">
+                      <div class="_1kXWW">Bästa i städ</div>
+                   </div>
+                   <a href="#" data-flood-closed-message="" class="hreview-aggregate url">
+
+                      <figure class="vendor-tile closed item ">
+
+                         <picture>
+
+                            <div class="vendor-picture b-lazy b-loaded b-loaded" data-src="../../assets/images/74.jpg?width=400&amp;height=292|../../assets/images/74.jpg?width=800&amp;height=584" data-vendor-id="7190" style="background-image: url(&quot;../../assets/images/74.jpg?width=800&amp;height=584&quot;);"></div>
+                            <img class="res_logo_side" src="../../assets/images/11.gif">
+                         </picture>
+
+                         <figcaption class="vendor-info">
+
+                            <span class="headline">
+
+                               <span class="name fn">Capri Pizzeria</span>
+
+                               <div class="ratings-component">
+
+                                  <span class="fa fa-star"></span>
+
+                                  <span class="rating-new">Okänt</span>
+
+                                  <span class="count-new" data-count="(0)">
+
+                                  0
+
+                                  </span>
+
+                               </div>
+
+                            </span>
+
+                            <ul class="categories summary">
+
+                               <li>
+
+                                  <span class="budget-symbol--filled-warn">Stängt</span>
+
+                                  <!--  <span class="budget-symbol--filled">$</span>
+
+                                     <span class="budget-symbol--filled">$</span> -->
+
+                               </li>
+
+                               <li class="vendor-characteristic">
+
+                                  <span>American</span>
+
+                               </li>
+
+                            </ul>
+
+                            
+
+                         </figcaption>
+
+                         <!-- <div class="quick_view"><a href="">fler detaljer </a></div> -->
+                      </figure>
+
+                   </a>
+
+                </li>
+
+                <li>
+                   <div class="IJsqo" style="visibility: hidden;">
+                      <div class="_1kXWW">Bästa i städ</div>
+                   </div>
+
+                   <a href="#" data-flood-closed-message="" class="hreview-aggregate url">
+
+                      <figure class="vendor-tile closed item ">
+
+                         <picture>
+
+                            <div class="vendor-picture b-lazy b-loaded b-loaded" data-src="../../assets/images/75.jpeg?width=400&amp;height=292|../../assets/images/75.jpeg?width=800&amp;height=584" data-vendor-id="7190" style="background-image: url(&quot;../../assets/images/75.jpeg?width=800&amp;height=584&quot;);"></div>
+                            <img class="res_logo_side" src="../../assets/images/10.png">
+                         </picture>
+
+                         <figcaption class="vendor-info">
+
+                            <span class="headline">
+
+                               <span class="name fn">Soya Sushi</span>
+
+                               <div class="ratings-component">
+
+                                  <span class="fa fa-star"></span>
+
+                                  <span class="rating-new">Okänt</span>
+
+                                  <span class="count-new" data-count="(0)">
+
+                                  0
+
+                                  </span>
+
+                               </div>
+
+                            </span>
+
+                            <ul class="categories summary">
+
+                               <li>
+
+                                  <span class="budget-symbol--filled">Öppet</span>
+
+                                  <!-- <span>$</span>
+
+                                     <span>$</span> -->
+
+                               </li>
+
+                               <li class="vendor-characteristic">
+
+                                  <span>Finger Food</span>
+
+                                  <span>Pizza</span>
+
+                               </li>
+
+                            </ul>
+
+                           
+
+                         </figcaption>
+
+                         <!-- <div class="quick_view"><a href="">fler detaljer </a></div> -->
+
+                         
+                      </figure>
+
+                   </a>
+
+                </li>
+
+                <li>
+                   <div class="IJsqo" style="visibility: hidden;">
+                      <div class="_1kXWW">Bästa i städ</div>
+                   </div>
+                   <a href="#" data-flood-closed-message="" class="hreview-aggregate url">
+
+                      <figure class="vendor-tile closed item ">
+
+                         <picture>
+
+                            <div class="vendor-picture b-lazy b-loaded b-loaded" data-src="../../assets/images/76.jpg?width=400&amp;height=292|../../assets/images/76.jpg?width=800&amp;height=584" data-vendor-id="7190" style="background-image: url(&quot;../../assets/images/76.jpg?width=800&amp;height=584&quot;);"></div>
+                            <img class="res_logo_side" src="../../assets/images/9.jpg">
+                         </picture>
+
+                         <figcaption class="vendor-info">
+
+                            <span class="headline">
+
+                               <span class="name fn">Melki's</span>
+
+                               <div class="ratings-component">
+
+                                  <span class="fa fa-star"></span>
+
+                                  <span class="rating-new">Okänt</span>
+
+                                  <span class="count-new" data-count="(0)">
+
+                                  0
+
+                                  </span>
+
+                               </div>
+
+                            </span>
+
+                            <ul class="categories summary">
+
+                               <li>
+
+                                  <span class="budget-symbol--filled">Öppet</span>
+
+                                  <!-- <span class="budget-symbol--filled">$</span>
+
+                                     <span>$</span> -->
+
+                               </li>
+
+                               <li class="vendor-characteristic">
+
+                                  <span>Vegetariskt</span>
+
+                                  <span>Finger Food</span>
+
+                                  <span>Street Food</span>
+
+                                  <span>Kött</span>
+
+                                  <span>Vietnamese</span>
+
+                               </li>
+
+                            </ul>
+
+                            
+
+                         </figcaption>
+
+                        <!-- <div class="quick_view"><a href="">fler detaljer </a></div> -->
+
+                      </figure>
+
+                   </a>
+
+                </li>
+
+                <li>
+                   <div class="IJsqo" style="visibility: hidden;">
+                      <div class="_1kXWW">Bästa i städ</div>
+                   </div>
+                   <a href="#" data-flood-closed-message="" class="hreview-aggregate url">
+
+                      <figure class="vendor-tile closed item ">
+
+                         <picture>
+
+                            <div class="vendor-picture b-lazy b-loaded b-loaded" data-src="../../assets/images/77.jpg?width=400&amp;height=292|../../assets/images/77.jpg?width=800&amp;height=584" data-vendor-id="7190" style="background-image: url(&quot;../../assets/images/77.jpg?width=800&amp;height=584&quot;);"></div>
+                            <img class="res_logo_side" src="../../assets/images/8.png">
+                         </picture>
+
+                         <figcaption class="vendor-info">
+
+                            <span class="headline">
+
+                               <span class="name fn">Hdmona Restaurang</span>
+
+                               <div class="ratings-component">
+
+                                  <span class="fa fa-star"></span>
+
+                                  <span class="rating-new">Okänt</span>
+
+                                  <span class="count-new" data-count="(0)">
+
+                                  0
+
+                                  </span>
+
+                               </div>
+
+                            </span>
+
+                            <ul class="categories summary">
+
+                               <li>
+
+                                  <span class="budget-symbol--filled">Öppet</span>
+
+                                  <!-- <span>$</span>
+
+                                     <span>$</span> -->
+
+                               </li>
+
+                               <li class="vendor-characteristic">
+
+                                  <span>Hamburgare</span>
+
+                                  <span>Hemlagat</span>
+
+                                  <span>Burgers</span>
+
+                                  <span>Home Made Food</span>
+
+                                  <span>Swedish</span>
+
+                               </li>
+
+                            </ul>
+
+                            
+
+                         </figcaption>
+
+                       <!--  <div class="quick_view"><a href="">fler detaljer</a></div> -->
+
+                      </figure>
+
+                   </a>
+
+                </li>
+
+                <li>
+
+                   <div class="IJsqo" >
+
+                                <div class="_1kXWW" style="">Bästa i städ</div>
+
+                   </div>
+
+                   <a href="#" data-flood-closed-message="" class="hreview-aggregate url">
+
+                      <figure class="vendor-tile closed item ">
+
+                         <picture style="top: -27px;">
+
+                            <div class="vendor-picture b-lazy b-loaded b-loaded" data-src="../../assets/images/78.jpeg?width=400&amp;height=292|../../assets/images/78.jpeg?width=800&amp;height=584" data-vendor-id="7190" style="background-image: url(&quot;../../assets/images/78.jpeg?width=800&amp;height=584&quot;);"></div>
+                            <img class="res_logo_side" src="../../assets/images/7.png">
+                         </picture>
+
+                         <figcaption class="vendor-info">
+
+                            <span class="headline">
+
+                               <span class="name fn">Erikslunds Grill (Utkörning Till 24:00!)</span>
+
+                               <div class="ratings-component">
+
+                                  <span class="fa fa-star"></span>
+
+                                  <span class="rating-new">4.17</span>
+
+                                  <span class="count-new" data-count="(3)">
+
+                                  3
+
+                                  </span>
+
+                               </div>
+
+                            </span>
+
+                            <ul class="categories summary">
+
+                               <li>
+
+                                  <span class="budget-symbol--filled-warn">Stängt</span>
+
+                                  <!--                                     <span class="budget-symbol--filled">$</span>
+
+                                     <span>$</span> -->
+
+                               </li>
+
+                               <li class="vendor-characteristic">
+
+                                  <span>Hamburgare</span>
+
+                                  <span>Pommes Frites</span>
+
+                                  <span>Kött</span>
+
+                                  <span>Sallad</span>
+
+                                  <span>American</span>
+
+                               </li>
+
+                            </ul>
+
+                           
+
+                         </figcaption>
+
+                        <!--  <div class="quick_view"><a href="">fler detaljer</a></div> -->
+
+                      </figure>
+
+                   </a>
+
+                </li>
+
+                <li>
+                   <div class="IJsqo" style="visibility: hidden;">
+                      <div class="_1kXWW">Bästa i städ</div>
+                   </div>
+                   <a href="#" data-flood-closed-message="" class="hreview-aggregate url">
+
+                      <figure class="vendor-tile closed item ">
+
+                         <picture>
+
+                            <div class="vendor-picture b-lazy b-loaded b-loaded" data-src="../../assets/images/79.jpg?width=400&amp;height=292|../../assets/images/79.jpg?width=800&amp;height=584" data-vendor-id="7190" style="background-image: url(&quot;../../assets/images/79.jpg?width=800&amp;height=584&quot;);"></div>
+                            <img class="res_logo_side" src="../../assets/images/6.png">
+                         </picture>
+
+                         <figcaption class="vendor-info">
+
+                            <span class="headline">
+
+                               <span class="name fn">Casablanca Kolgrillsbar</span>
+
+                               <div class="ratings-component">
+
+                                  <span class="fa fa-star"></span>
+
+                                  <span class="rating-new">5.00</span>
+
+                                  <span class="count-new" data-count="(1)">
+
+                                  1
+
+                                  </span>
+
+                               </div>
+
+                            </span>
+
+                            <ul class="categories summary">
+
+                               <li>
+
+                                  <span class="budget-symbol--filled-warn">Stängt</span>
+
+                                  <!-- <span class="budget-symbol--filled">$</span>
+
+                                     <span class="budget-symbol--filled">$</span> -->
+
+                               </li>
+
+                               <li class="vendor-characteristic">
+
+                                  <span>Vegetariskt</span>
+
+                                  <span>Starkt</span>
+
+                                  <span>Kött</span>
+
+                                  <span>Indian</span>
+
+                               </li>
+
+                            </ul>
+
+                            
+
+                         </figcaption>
+
+                       <!--  <div class="quick_view"><a href="">fler detaljer</a></div> -->
+
+                      </figure>
+
+                   </a>
+
+                </li>
+
+                <li>
+                   <div class="IJsqo" style="visibility: hidden;">
+                      <div class="_1kXWW">Bästa i städ</div>
+                   </div>
+                   <a href="#" data-flood-closed-message="" class="hreview-aggregate url">
+
+                      <figure class="vendor-tile closed item ">
+
+                         <picture>
+
+                            <div class="vendor-picture b-lazy b-loaded b-loaded" data-src="../../assets/images/80.jpg?width=400&amp;height=292|../../assets/images/80.jpg?width=800&amp;height=584" data-vendor-id="7190" style="background-image: url(&quot;../../assets/images/80.jpg?width=800&amp;height=584&quot;);"></div>
+                            <img class="res_logo_side" src="../../assets/images/5.png">
+                         </picture>
+
+                         <figcaption class="vendor-info">
+
+                            <span class="headline">
+
+                               <span class="name fn">Ceders Libanesiska Kök</span>
+
+                               <div class="ratings-component">
+
+                                  <span class="fa fa-star"></span>
+
+                                  <span class="rating-new">4.50</span>
+
+                                  <span class="count-new" data-count="(2)">
+
+                                  2
+
+                                  </span>
+
+                               </div>
+
+                            </span>
+
+                            <ul class="categories summary">
+
+                               <li>
+
+                                  <span class="budget-symbol--filled-warn">Stängt</span>
+
+                                  <!-- <span class="budget-symbol--filled">$</span>
+
+                                     <span>$</span> -->
+
+                               </li>
+
+                               <li class="vendor-characteristic">
+
+                                  <span>Street Food</span>
+
+                                  <span>Starkt</span>
+
+                                  <span>Tacos</span>
+
+                                  <span>Mexican</span>
+
+                               </li>
+
+                            </ul>
+
+                            
+
+                         </figcaption>
+
+                         <!-- <div class="quick_view"><a href="">fler detaljer</a></div> -->
+                      </figure>
+
+                   </a>
+
+                </li>
+
+                <li>
+                   <div class="IJsqo" style="visibility: hidden;">
+                      <div class="_1kXWW">Bästa i städ</div>
+                   </div>
+                   <a href="#" data-flood-closed-message="" class="hreview-aggregate url">
+
+                      <figure class="vendor-tile closed item ">
+
+                         <picture>
+
+                            <div class="vendor-picture b-lazy b-loaded b-loaded" data-src="../../assets/images/81.jpg?width=400&amp;height=292|../../assets/images/81.jpg?width=800&amp;height=584" data-vendor-id="7190" style="background-image: url(&quot;../../assets/images/81.jpg?width=800&amp;height=584&quot;);"></div>
+                            <img class="res_logo_side" src="../../assets/images/4_new.png">
+                         </picture>
+
+                         <figcaption class="vendor-info">
+
+                            <span class="headline">
+
+                               <span class="name fn">Laxmi Indisk</span>
+
+                               <div class="ratings-component">
+
+                                  <span class="fa fa-star"></span>
+
+                                  <span class="rating-new">4.50</span>
+
+                                  <span class="count-new" data-count="(4)">
+
+                                  4
+
+                                  </span>
+
+                               </div>
+
+                            </span>
+
+                            <ul class="categories summary">
+
+                               <li>
+
+                                  <span class="budget-symbol--filled-warn">Stängt</span>
+
+                                  <!-- <span class="budget-symbol--filled">$</span>
+
+                                     <span>$</span> -->
+
+                               </li>
+
+                               <li class="vendor-characteristic">
+
+                                  <span>Hamburgare</span>
+
+                                  <span>Pommes Frites</span>
+
+                                  <span>Sallad</span>
+
+                                  <span>American</span>
+
+                                  <span>Burgers</span>
+
+                               </li>
+
+                            </ul>
+
+                           
+
+                         </figcaption>
+
+                         <!-- <div class="quick_view"><a href="">fler detaljer</a></div> -->
+
+                      </figure>
+
+                   </a>
+
+                </li>
+
+                <li>
+                   <div class="IJsqo" style="visibility: hidden;">
+                      <div class="_1kXWW">Bästa i städ</div>
+                   </div>
+                   <a href="#" data-flood-closed-message="" class="hreview-aggregate url">
+
+                      <figure class="vendor-tile closed item ">
+
+                         <picture>
+
+                            <div class="vendor-picture b-lazy b-loaded b-loaded" data-src="../../assets/images/82.jpg?width=400&amp;height=292|../../assets/images/82.jpg?width=800&amp;height=584" data-vendor-id="7190" style="background-image: url(&quot;../../assets/images/82.jpg?width=800&amp;height=584&quot;);"></div>
+                            <img class="res_logo_side" src="../../assets/images/3.png">
+                         </picture>
+
+                         <figcaption class="vendor-info">
+
+                            <span class="headline">
+
+                               <span class="name fn">Rob's Burgers</span>
+
+                               <div class="ratings-component">
+
+                                  <span class="fa fa-star"></span>
+
+                                  <span class="rating-new">4.50</span>
+
+                                  <span class="count-new" data-count="(3)">
+
+                                  3
+
+                                  </span>
+
+                               </div>
+
+                            </span>
+
+                            <ul class="categories summary">
+
+                               <li>
+
+                                  <span class="budget-symbol--filled-warn">Stängt</span>
+
+                                  <!-- <span class="budget-symbol--filled">$</span>
+
+                                     <span>$</span> -->
+
+                               </li>
+
+                               <li class="vendor-characteristic">
+
+                                  <span>Sushi</span>
+
+                                  <span>Sushi</span>
+
+                               </li>
+
+                            </ul>
+
+                            
+
+                         </figcaption>
+
+                        <!--  <div class="quick_view"><a href="">fler detaljer</a></div> -->
+
+                      </figure>
+
+                   </a>
+
+                </li>
+
+                <li>
+                   <div class="IJsqo" style="visibility: hidden;">
+                      <div class="_1kXWW">Bästa i städ</div>
+                   </div>
+                   <a href="#" data-flood-closed-message="" class="hreview-aggregate url">
+
+                      <figure class="vendor-tile closed item ">
+
+                         <picture>
+
+                            <div class="vendor-picture b-lazy b-loaded b-loaded" data-src="../../assets/images/83.jpg?width=400&amp;height=292|../../assets/images/83.jpg?width=800&amp;height=584" data-vendor-id="7190" style="background-image: url(&quot;../../assets/images/83.jpg?width=800&amp;height=584&quot;);"></div>
+                            <img class="res_logo_side" src="../../assets/images/2.jpeg">
+                         </picture>
+
+                         <figcaption class="vendor-info">
+
+                            <span class="headline">
+
+                               <span class="name fn">Uddens Pizzeria</span>
+
+                               <div class="ratings-component">
+
+                                  <span class="fa fa-star"></span>
+
+                                  <span class="rating-new"> 4.29</span>
+
+                                  <span class="count-new" data-count="(7)">
+
+                                  7
+
+                                  </span>
+
+                               </div>
+
+                            </span>
+
+                            <ul class="categories summary">
+
+                               <li>
+
+                                  <span class="budget-symbol--filled-warn">Stängt</span>
+
+                                  <!-- <span class="budget-symbol--filled">$</span>
+
+                                     <span>$</span> -->
+
+                               </li>
+
+                               <li class="vendor-characteristic">
+
+                                  <span>Vegetariskt</span>
+
+                                  <span>Fisk</span>
+
+                                  <span>Sallad</span>
+
+                                  <span>Skaldjur</span>
+
+                                  <span>Healthy</span>
+
+                               </li>
+
+                            </ul>
+
+                            
+
+                         </figcaption>
+                         <!-- <div class="quick_view"><a href="">fler detaljer</a></div> -->
+                         
+                      </figure>
+
+                   </a>
+
+                </li>
+
+                <li>
+                   <div class="IJsqo" style="visibility: hidden;">
+                      <div class="_1kXWW">Bästa i städ</div>
+                   </div>
+
+                   <a href="#" data-flood-closed-message="" class="hreview-aggregate url">
+
+                      <figure class="vendor-tile closed item ">
+
+                         <picture>
+
+                            <div class="vendor-picture b-lazy b-loaded b-loaded" data-src="../../assets/images/84.jpg?width=400&amp;height=292|../../assets/images/84.jpg?width=800&amp;height=584" data-vendor-id="7190" style="background-image: url(&quot;../../assets/images/84.jpg?width=800&amp;height=584&quot;);"></div>
+                            <img class="res_logo_side" src="../../assets/images/1.png">
+                         </picture>
+
+                         <figcaption class="vendor-info">
+
+                            <span class="headline">
+
+                               <span class="name fn">Mexico Pizzeria ( Gratis Utkörning )</span>
+
+                               <div class="ratings-component">
+
+                                  <span class="fa fa-star"></span>
+
+                                  <span class="rating-new">4.13</span>
+
+                                  <span class="count-new" data-count="(49)">
+
+                                  49
+
+                                  </span>
+
+                               </div>
+
+                            </span>
+
+                            <ul class="categories summary">
+
+                               <li>
+
+                                  <span class="budget-symbol--filled-warn">Stängt</span>
+
+                                  <!-- <span class="budget-symbol--filled">$</span>
+
+                                     <span>$</span> -->
+
+                               </li>
+
+                               <li class="vendor-characteristic">
+
+                                  <span>Swedish</span>
+
+                               </li>
+
+                            </ul>
+
+                           
+
+                         </figcaption>
+
+                         <!-- <div class="quick_view"><a href="">fler detaljer</a></div> -->
+
+                      </figure>
+
+                   </a>
+
+                </li>
+
+             </ul>
+
+          </section>
+
+          <section class="vendor-list-section temp-closed hide">
+
+             <span class="title-flat">
+
+             NEXTGEN_PICKUP_TEMPORARILY_UNAVAILABLE
+
+             </span>
+
+             <ul class="vendor-list temp-closed" data-title-pickup="NEXTGEN_PICKUP_TEMPORARILY_UNAVAILABLE" data-title-delivery="Temporarily unavailable" data-title-background="" data-show-extra-tile-info="false" data-show-pick-up-distance="true">
+
+             </ul>
+
+          </section>
+
+       </div>
+
+    </div>
+
+  </div>
+  <app-footer></app-footer>

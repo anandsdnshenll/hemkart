@@ -1,0 +1,7104 @@
+
+/* CENTER ALIGNMENT IN SCREEN */
+.outerContainer {
+    display: table;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
+
+.innerContainer {
+    display: table-cell;
+    height: 100%;
+    width: 100%;
+    vertical-align: middle;
+}
+
+
+/* MODAL DIALOG CENTER PAGE */
+.cModalDialog {
+    height: 100%;
+    margin: 0 auto;
+}
+
+.cModalDialog .modal-content {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    /* -webkit-box-shadow: 0 0 10px #000000; */
+    /* -moz-box-shadow: 0 0 10px #000000; */
+    /* box-shadow: 0 0 10px #000000; */
+}
+
+.cModalDialog .close {
+    font-size: 35px;
+    text-shadow: none;
+    font-family: 'Open Sans', sans-serif !important;
+    font-family: 'Ubuntu', sans-serif !important;
+    font-family: 'Play', sans-serif !important;
+    font-family: 'Source Sans Pro', sans-serif !important;
+    opacity: 1;
+    font-weight: 400;
+    /* margin-top: -25px; */
+    /* margin-right: -15px; */
+}
+
+.cModalDialog .close:hover,
+.cModalDialog .close:focus {
+    outline: none;
+    color: #FC5529;
+}
+
+.cModalDialog .modal-content .modal-header {
+    border-bottom: 1px solid #ECECEC;
+    padding: 20px;
+}
+
+.cModalDialog .modal-content .modal-header h4.modal-title {
+    text-align: left;
+    /* font-weight: bold; */
+    font-size: 24px;
+    /* color: #000; */
+}
+
+.cModalDialog .modal-content .modal-header h4.modal-title img {
+    margin-right: 5px;
+}
+
+.cModalDialog .modal-content .modal-header h4.modal-title span {
+    vertical-align: middle;
+    color: #505050;
+    font-size: 21px;
+    font-weight: normal;
+}
+
+.cModalDialog .modal-content .modal-body {
+    padding: 24px 20px;
+    text-align: left;
+}
+
+.cModalDialog .modal-content .modal-footer {
+    border-top: 0px;
+    text-align: center;
+    padding: 20px;
+}
+
+.cModalDialog .modal-content .cModalLeftContainer {
+    float: left;
+    position: relative;
+}
+
+.cModalDialog .modal-content .cModalRightContainer {
+    float: right;
+    position: relative;
+}
+
+
+/* ELIMINATE PADDING */
+.noPadding {
+    padding: 0 !important;
+}
+
+.noLeftPadding {
+    padding-left: 0 !important;
+}
+
+.noRightPadding {
+    padding-Right: 0 !important;
+}
+
+.noHorizontalPadding {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.noTopPadding {
+    padding-top: 0 !important;
+}
+
+.noBottomPadding {
+    padding-bottom: 0 !important;
+}
+
+.noVerticalPadding {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+
+
+
+
+/* HEADER */
+section.cSection {
+    position: relative;
+}
+
+section.cSection.cSectionHeader {
+    z-index: 100;
+}
+
+section.cSection.cSectionHeader header {
+    position: fixed;
+    width: 100%;
+    background: white;
+    top: 0;
+    left: 0;
+}
+
+section.cSection.cSectionHeader header.sticky {
+    -webkit-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.cHeaderWrap {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: nowrap;
+    -moz-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    height: 60px;
+}
+
+.cHeaderWrap .cHeaderContainer {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 0 15px;
+}
+
+.cHeaderWrap .cHeaderContainer.cLeftContainer {
+    /* width: 20%; */
+    -webkit-justify-content: flex-start;
+    justify-content: flex-start;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.cHeaderWrap .cHeaderContainer.cMiddleContainer {
+    /* width: 20%; */
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.cHeaderWrap .cHeaderContainer.cRightContainer {
+    /* width: 30%; */
+    -webkit-justify-content: flex-end;
+    justify-content: flex-end;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.cHeaderWrap .cHeaderContainer img.cHeaderLogo {
+    height: 48px;
+    width: auto;
+}
+
+ul.cHeaderLinks {
+    position: relative;
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 0;
+    font-size: 0;
+}
+
+ul.cHeaderLinks li.cHeaderLink {
+    display: inline-block;
+    vertical-align: middle;
+    height: 27px;
+    line-height: 27px;
+    padding: 0 15px;
+    border-left: 1px solid #ececec;
+}
+
+section.cSection.cSectionHeader header.sticky ul.cHeaderLinks li.cHeaderLink {
+    height: 60px;
+    line-height: 60px;
+}
+
+ul.cHeaderLinks li.cHeaderLink.cUserAccountWrap {
+    cursor: pointer;
+}
+
+ul.cHeaderLinks li.cHeaderLink a {
+    font-size: 14px;
+    cursor: pointer;
+}
+
+ul.cHeaderLinks li.cHeaderLink span.cLinkIcon {
+    font-size: 18px;
+}
+
+ul.cHeaderLinks li.cHeaderLink.cUserAccountWrap.activeuser span.cLinkValue {
+    max-width: 100px;
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: middle;
+    text-overflow: ellipsis;
+}
+
+ul.cHeaderLinks li.cHeaderLink.cUserAccountWrap.activeuser span.cLinkIcon {
+    color: #FFFFFF;
+    display: inline-block;
+    vertical-align: middle;
+    background: #37b1c3;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    font-size: 12px;
+    width: 27px;
+    height: 27px;
+    line-height: 27px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* LANG SWITCHER */
+.cLangSwitchWrap {
+    position: relative;
+}
+
+.cLangSwitchWrap .cLangSwitch {
+    position: relative;
+}
+
+.cLangSwitchWrap .cLangSwitch a.active {
+    color: #333333;
+}
+
+.cLangSwitchWrap .cLangSwitch a {
+    color: #999999;
+    padding: 0 5px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.cLangSwitchWrap .cLangSwitch a ~ a 
+    {position: relative;
+}
+
+.cLangSwitchWrap .cLangSwitch a ~ a:before {
+    content: "";
+    position: absolute;
+    height: 30px;
+    width: 1px;
+    background: #333333;
+    left: 0;
+    margin-top: 0;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+
+
+
+/* THEME HEADER STYLE */
+section.cSection.cSectionHeader.cThemeHeader header {
+    background: #37b1c3;
+}
+
+.cThemeHeader .cHeaderWrap .cHeaderContainer img.cHeaderLogo {
+    -webkit-filter: brightness(0) invert(1);
+    -moz-filter: brightness(0) invert(1);
+    filter: brightness(0) invert(1);
+}
+
+section.cSection.cSectionHeader.cThemeHeader ul.cHeaderLinks li.cHeaderLink {
+    border-color: #FFFFFF;
+    height: 60px;
+    line-height: 60px;
+}
+
+section.cSection.cSectionHeader.cThemeHeader .cLangSwitchWrap .cLangSwitch a {
+    color: #FFFFFF;
+    opacity: 0.5;
+}
+
+section.cSection.cSectionHeader.cThemeHeader .cLangSwitchWrap .cLangSwitch a.active {
+    opacity: 1;
+}
+
+section.cSection.cSectionHeader.cThemeHeader .cLangSwitchWrap .cLangSwitch a ~ a:before {
+    background: #ffffff;
+}
+
+section.cSection.cSectionHeader.cThemeHeader a {
+    color: #FFFFFF;
+}
+
+
+
+
+/* SEARCH SECTION */
+section.cSection.cSectionSearch {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    -wenkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+    padding-top: 264px;
+    padding-bottom: 292px;
+}
+
+
+.cSection.cSectionSearch .cBgContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.cSection.cSectionSearch .cBgContainer img.bgImgLeft {
+        position: absolute;
+    left: -298px;
+    top: 58px;
+    -webkit-transform: rotateZ(220deg);
+    -moz-transform: rotateZ(220deg);
+    transform: rotateZ(0deg);
+    max-height: 572px;
+}
+
+.cSection.cSectionSearch .cBgContainer img.bgImgRight {
+    position: absolute;
+    right: -100px;
+    top: 0;
+}
+
+
+.cSectionSearch h2.cSectionHeading {
+    font-size: 48px;
+    margin: 0 auto 45px;
+    max-width: 960px;
+    text-align: center;
+    font-weight: 300;
+}
+
+.cSectionSearch .cSearchWrapper {
+    text-align: center;
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    max-width: 768px;
+    -webkit-box-shadow: 0 2px 28px 0 rgba(0,0,0,0.12);
+    -moz-box-shadow: 0 2px 28px 0 rgba(0,0,0,0.12);
+    box-shadow: 0 2px 28px 0 rgba(0,0,0,0.12);
+    background: #FFFFFF;
+}
+
+.cCarTypeWrapper {
+    position: relative;
+}
+
+.cCarTypeWrapper ul.cCarTypeList {
+    position: relative;
+    margin: 0 auto;
+    padding: 0;
+    list-style-type: none;
+    font-size: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -moz-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-align-content: start;
+    align-content: start;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+}
+
+.cCarTypeWrapper ul.cCarTypeList li.cCarType {
+    width: 25%;
+    max-width: 25%;
+    text-align: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    position: relative;
+    /* padding: 15px; */
+    border: 1px solid #ececec;
+    border-left: 0;
+    border-top: 0;
+    height: 150px;
+    cursor: pointer;
+}
+
+.cCarTypeWrapper ul.cCarTypeList li.cCarType:nth-of-type(4n) {
+    border-right: 0;
+}
+
+.cCarTypeWrapper ul.cCarTypeList li.cCarType a {
+    align-items: center;
+    justify-content: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    position: relative;
+}
+
+.cCarTypeWrapper ul.cCarTypeList li.cCarType a input.cRadioCarType {
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0 auto;
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    opacity: 0;
+    outline: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.cCarTypeWrapper ul.cCarTypeList li.cCarType a input.cRadioCarType ~ .cCarTypeContent {
+    align-items: center;
+    justify-content: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+}
+
+.cCarTypeWrapper ul.cCarTypeList li.cCarType a input.cRadioCarType ~ .cCarTypeContent:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #d2d2d2;
+    z-index: -1;
+    background: #37b1c3;
+    -webkit-transform: scale(0);
+    -moz-transform: scale(0);
+    transform: scale(0);
+    -webkit-transition: all 0.15s ease-in-out;
+    -moz-transition: all 0.15s ease-in-out;
+    transition: all 0.15s ease-in-out;
+    z-index: 0;
+}
+
+.cCarTypeWrapper ul.cCarTypeList li.cCarType a input.cRadioCarType:checked ~ .cCarTypeContent {
+    /* background: #37b1c3; */
+}
+
+.cCarTypeWrapper ul.cCarTypeList li.cCarType a input.cRadioCarType:checked ~ .cCarTypeContent:before {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    transform: scale(1);
+    background: #37b1c3;
+}
+
+.cCarTypeWrapper ul.cCarTypeList li.cCarType a input.cRadioCarType ~ .cCarTypeContent img.cCarTypeIcon {
+    height: 64px;
+    width: 64px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+.cCarTypeWrapper ul.cCarTypeList li.cCarType a input.cRadioCarType ~ .cCarTypeContent label.cCarTypeTitle {
+    font-size: 14px;
+    font-weight: 400;
+    color: #333333;
+    margin: 0 auto;
+    z-index: 1;
+}
+
+.cCarTypeWrapper ul.cCarTypeList li.cCarType a input.cRadioCarType:checked ~ .cCarTypeContent img.cCarTypeIcon {
+    -webkit-filter: brightness(0) invert(1);
+    -moz-filter: brightness(0) invert(1);
+    filter: brightness(0) invert(1);
+}
+
+.cCarTypeWrapper ul.cCarTypeList li.cCarType a input.cRadioCarType:checked ~ .cCarTypeContent label.cCarTypeTitle {
+    color: #FFFFFF;
+}
+
+
+.cSectionSearch .cSearchWrapper .cSearchInputWrapper {
+    position: relative;
+    padding: 16px;
+    width: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-justify-content: flex-start;
+    justify-content: flex-start;
+    -webkit-flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+}
+
+.cSectionSearch .cSearchWrapper .cSearchInputWrapper .cSearchInputBox {
+    height: 64px;
+    position: relative;
+    border: 1px solid #cccccc;
+    width: 525px;
+}
+
+.cSectionSearch .cSearchWrapper .cSearchInputWrapper .cSearchInputBox input.cSearchInput {
+    height: 100%;
+    width: 100%;
+    border: 0;
+    padding: 10px;
+    padding-left: 15px;
+    padding-right: 64px;
+    background: transparent;
+    z-index: 1;
+    position: relative;
+}
+
+.cSectionSearch .cSearchWrapper .cSearchInputWrapper .cSearchInputBox input.cSearchInput:focus {
+    outline-color: unset;
+}
+
+.cSectionSearch .cSearchWrapper .cSearchInputWrapper .cSearchInputBox label.cSearchTextPlaceholder {
+    position: absolute;
+    left: 15px;
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    transform: translateY(0);
+    font-weight: 400;
+    color: #cccccc;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+    top: 22px;
+    margin: 0 auto;
+    z-index: 0;
+}
+
+.cSectionSearch .cSearchWrapper .cSearchInputWrapper .cSearchInputBox input.cSearchInput:focus ~ label.cSearchTextPlaceholder{
+    -webkit-transform: translateX(150px) translateY(-33px) scale(0.72);
+    -moz-transform: translateX(150px) translateY(-33px) scale(0.72);
+    transform: translateX(150px) translateY(-33px) scale(0.72);
+    background: #FFFFFF;
+    z-index: 1;
+    color: #333333;
+}
+.cSectionSearch .cSearchWrapper .cSearchInputWrapper .cSearchInputBox input.cSearchInput:not([value=""]) ~ label.cSearchTextPlaceholder {
+    -webkit-transform: translateX(150px) translateY(-33px) scale(0.72);
+    -moz-transform: translateX(150px) translateY(-33px) scale(0.72);
+    transform: translateX(150px) translateY(-33px) scale(0.72);
+    background: #FFFFFF;
+    z-index: 1;
+    color: #333333;
+}
+/*.cSectionSearch .cSearchWrapper .cSearchInputWrapper .cSearchInputBox input.cSearchInput:focus >  label.cSearchTextPlaceholder,
+ .cSectionSearch .cSearchWrapper .cSearchInputWrapper .cSearchInputBox input.cSearchInput:not([value=""]) > label.cSearchTextPlaceholder {
+    -webkit-transform: translateX(150px) translateY(-33px) scale(0.72);
+    -moz-transform: translateX(150px) translateY(-33px) scale(0.72);
+    transform: translateX(150px) translateY(-33px) scale(0.72);
+    background: #FFFFFF;
+    z-index: 1;
+    color: #333333;
+}*/
+.cSectionSearch .cSearchWrapper .cSearchInputWrapper .cSearchInputBox span.cGeoLocator {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 64px;
+    line-height: 64px;
+    font-size: 27px;
+    /*color: #37b1c3;*/
+    z-index: 1;
+    border-left: 1px solid #cccccc;
+    cursor: pointer;
+}
+
+/*.cSectionSearch .cSearchWrapper .cSearchInputWrapper .cSearchInputBox input.cSearchInput:focus ~ label.cSearchTextPlaceholder ~ span.cGeoLocator {
+    border-color: #37b1c3;
+}*/
+
+.cSectionSearch .cSearchWrapper .cSearchInputWrapper .cSearchBtnWrap {
+    margin-left: 15px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    font-size: 13px;
+}
+
+.cSectionSearch .cSearchWrapper .cSearchInputWrapper .cSearchBtnWrap .cSubmitSearch {
+    background: #780300;
+    color: #FFFFFF;
+    height: 100%;
+    width: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+        font-family: KlarnaHeadline,"Helvetica Neue",Arial,Helvetica,sans-serif;
+    text-transform: uppercase;
+    cursor: pointer;
+    -webkit-transition: background 0.1s ease-in-out;
+    -moz-transition: background 0.1s ease-in-out;
+    transition: background 0.1s ease-in-out;
+    text-decoration: none;
+}
+
+.cSectionSearch .cSearchWrapper .cSearchInputWrapper .cSearchBtnWrap .cSubmitSearch:hover {
+    background: #780300;
+    text-decoration: none;
+}
+
+
+
+/* CITY SEARCH SECTION */
+section.cSection.cSectionCitySearch {
+    padding-top: 120px;
+}
+
+section.cSection.cSectionCitySearch .container {
+    padding-bottom: 50px;
+    border-bottom: 1px solid #ebebeb;
+}
+
+.cCitySearchWrapper h2.cSectionHeading {
+    text-align: center;
+    margin: 0 auto 30px;
+    position: relative;
+}
+
+.cCitySearchWrapper h2.cSectionHeading:before {
+    content: attr(data-ghost);
+    position: absolute;
+    right: 0;
+    left: 0;
+    opacity: 0.4;
+    font-size: 150px;
+    bottom: -50px;
+    color: #ececec;
+    z-index: -1;
+}
+
+ul.cCitySearchList {
+    position: relative;
+    list-style-type: none;
+    margin: 0 auto;
+    padding: 0;
+    font-size: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -moz-flex-wrap: wrap;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+}
+
+ul.cCitySearchList li.cCitySearch {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    position: relative;
+    width: -webkit-calc(33.33% - 10px);
+    width: -moz-calc(33.33% - 10px);
+    width: calc(33.33% - 10px);
+    height: 320px;
+    padding-bottom: 10px;
+}
+
+ul.cCitySearchList li.cCitySearch:nth-child(even) {
+    height: 240px;
+}
+
+ul.cCitySearchList li.cCitySearch a.cCitySearchLink {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+ul.cCitySearchList li.cCitySearch a.cCitySearchLink:before {
+    content:"";
+    position: absolute;
+    background: #000000;
+    height: 60%;
+    width: 100%;
+    /* z-index: 0; */
+    opacity: 0;
+    bottom: 0;
+    -webkit-box-shadow: 0 -20px 40px 5px #000000;
+    -moz-box-shadow: 0 -20px 40px 5px #000000;
+    box-shadow: 0 -20px 40px 5px #000000;
+}
+
+ul.cCitySearchList li.cCitySearch a.cCitySearchLink img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+
+ul.cCitySearchList li.cCitySearch a.cCitySearchLink h3.cCityName {
+    padding: 15px;
+    margin: 0 auto;
+    position: absolute;
+    bottom: 0;
+    color: #FFFFFF;
+    z-index: 2;
+}
+
+ul.cCitySearchList li.cCitySearch a.cCitySearchLink h3.cCityName:before {
+    content: attr(data-initial);
+    position: absolute;
+    font-size: 150px;
+    bottom: 0;
+    left: 0;
+   /* color: #37b1c3;*/
+    opacity: 0;
+}
+
+ul.cCitySearchList li.cCitySearch:hover a.cCitySearchLink:before {
+    opacity: 0.6;
+    z-index: 1;
+}
+
+ul.cCitySearchList li.cCitySearch:hover a.cCitySearchLink img {
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+ul.cCitySearchList li.cCitySearch:hover a.cCitySearchLink h3.cCityName:before {
+    opacity: 0.5;
+}
+
+
+
+/* HOW IT WORKS */
+section.cSection.cSectionProcessFlow {
+    text-align: center;
+    padding-top: 100px;
+}
+
+.cSection.cSectionProcessFlow .container {
+    padding-bottom: 30px;
+    /* border-bottom: 1px solid #ececec; */
+    /* width: 100%; */
+}
+
+.cSectionProcessFlow h2.cSectionHeading {
+    text-align: center;
+    margin: 0 auto 30px;
+    position: relative;
+}
+
+.cSectionProcessFlow h2.cSectionHeading:before {
+    content: attr(data-ghost);
+    position: absolute;
+    right: 0;
+    left: 0;
+    opacity: 0.4;
+    font-size: 150px;
+    bottom: -50px;
+    color: #ececec;
+    z-index: -1;
+}
+
+.cSection.cSectionProcessFlow .container img {
+    /* width: 100%; */
+}
+
+
+.cFlowStepContainer {
+    position: relative;
+    margin-top: 36px;
+}
+
+.cFlowStepContainer .cFlowStepImgWrapper {
+    position: relative;
+}
+
+.cFlowStepContainer .cFlowStepImgWrapper img {
+    height: 100px;
+    width: auto;
+}
+
+.cFlowStepContainer.cFlowArrows .cFlowStepImgWrapper:before,
+.cFlowStepContainer.cFlowArrows .cFlowStepImgWrapper:after {
+    content: "\f178";
+    font-family: FontAwesome;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    transform: translateY(-50%);
+    font-size: 30px;
+}
+
+.cFlowStepContainer.cFlowArrows .cFlowStepImgWrapper:after {
+    right: 0;
+    left: initial;
+}
+
+
+
+/* SECTION NEWS SUBSCRIPTION */
+section.cSection.cSectionNewsSubscription {
+    padding-top: 50px;
+}
+
+.cSection.cSectionNewsSubscription .container {
+    padding-bottom: 50px;
+    border-top: 1px solid #ebebeb;
+    padding-top: 50px;
+    /* border-bottom: 1px solid #ebebeb; */
+}
+
+.cSection.cSectionNewsSubscription h5 {
+    text-align: center;
+}
+
+.cSection.cSectionNewsSubscription h6 {
+    text-align: center;
+    font-weight: 700;
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.cNewsSubscribeForm {
+    margin-top: 18px;
+    position: relative;
+}
+
+.cNewsSubscribeWrapper {
+    position: relative;
+    padding: 15px 0;
+    width: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-justify-content: flex-start;
+    justify-content: flex-start;
+    -webkit-flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+}
+
+.cNewsSubscribeWrapper .cFormControlDiv {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    position: relative;
+    height: 48px;
+}
+
+.cNewsSubscribeWrapper .cFormControlDiv .cFormControl {
+    width: 100%;
+    border: 1px solid #cccccc;
+    position: relative;
+    padding: 0 15px;
+    z-index: 1;
+    background: transparent;
+}
+
+.cNewsSubscribeWrapper .cFormControlDiv ~ .cFormControlDiv {
+    margin-left: 15px;
+}
+
+.cNewsSubscribeWrapper .cFormControlDiv label.cFormControlLabel {
+    position: absolute;
+    left: 15px;
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    transform: translateY(0);
+    font-weight: 400;
+    color: #cccccc;
+    -webkit-transition: all 0.25s ease-in-out;
+    -moz-transition: all 0.25s ease-in-out;
+    transition: all 0.25s ease-in-out;
+    top: 15px;
+    margin: 0 auto;
+    z-index: 0;
+}
+
+.cNewsSubscribeWrapper .cFormControlDiv .cFormControl:focus {
+    outline: 0;
+    border-color: #37b1c3;
+}
+
+.cNewsSubscribeWrapper .cFormControlDiv .cFormControl:focus ~ label.cFormControlLabel,
+.cNewsSubscribeWrapper .cFormControlDiv .cFormControl:not([value=""]) ~ label.cFormControlLabel {
+    -webkit-transform: translateX(15px) translateY(-25px) scale(0.72);
+    -moz-transform: translateX(15px) translateY(-25px) scale(0.72);
+    transform: translateX(15px) translateY(-25px) scale(0.72);
+    background: #FFFFFF;
+    z-index: 1;
+    color: #333333;
+}
+
+a.cBtnNewsSubscribe {
+    text-align: center;
+    width: 100%;
+    line-height: 45px;
+    background: #37b1c3;
+    color: #FFFFFF;
+    -webkit-transition: background 0.1s ease-in-out;
+    -moz-transition: background 0.1s ease-in-out;
+    transition: background 0.1s ease-in-out;
+    cursor: pointer;
+}
+
+.cBtnNewsSubscribe:hover {
+    background: #2e93a2;
+}
+
+
+
+
+/* SECTION FOOTER */
+.cSection.cSectionFooter .cFooterTop {
+    position: relative;
+    padding: 20px 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    border-bottom: 1px solid #ebebeb;
+    border-top: 1px solid #ebebeb;
+}
+
+.cSection.cSectionFooter .cFooterTop .cFooterLogoWrap {
+    width: 150px;
+    position: relative;
+}
+
+.cSection.cSectionFooter .cFooterTop .cFooterLogoWrap a img.cHeaderLogo {
+    width: auto;
+    height: 40px;
+    /* -webkit-filter: grayscale(100%); */
+    /* -moz-filter: grayscale(100%); */
+    /* filter: grayscale(100%); */
+    /* opacity: 0.7; */
+}
+
+.cSection.cSectionFooter .cFooterTop .cFooterSocialLinksWrap {
+    width: 100%;
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-justify-content: flex-end;
+    justify-content: flex-end;
+}
+
+ul.cFooterSocialLinks {
+    position: relative;
+    list-style-type: none;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 0;
+    margin: 0;
+}
+
+ul.cFooterSocialLinks li {
+    list-style-type: none;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-self: center;
+    align-self: center;
+}
+
+ul.cFooterSocialLinks li ~ li {
+    margin-left: 10px;
+}
+
+ul.cFooterSocialLinks li a {
+    color: #ffffff;
+    font-size: 18px;
+    height: 36px;
+    width: 36px;
+    line-height: 36px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    /* background: #b7b7b7; */
+    background: #37b1c3;
+    display: inline-block;
+    text-align: center;
+    position: relative;
+}
+
+ul.cFooterSocialLinks li a i {
+    z-index: 1;
+    position: relative;
+}
+
+ul.cFooterSocialLinks li a:before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    /* background: #37b1c3; */
+    background: #2e93a2;
+    left: 0;
+    top: 0;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    z-index: 0;
+    -webkit-transition: all 0.15s ease;
+    -moz-transition: all 0.15s ease;
+    transition: all 0.15s ease;
+    -webkit-transform: scale(0);
+    -moz-transform: scale(0);
+    transform: scale(0);
+}
+
+ul.cFooterSocialLinks li a:hover:before {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    transform: scale(1);
+}
+
+.cSection.cSectionFooter .cFooterBottom {
+    position: relative;
+    padding: 20px 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+}
+
+.cSection.cSectionFooter .cFooterBottom .cFooterCopyrightsWrap {
+     /* width: 150px; */
+	width: 100%;
+    position: relative;
+    font-size: 14px;
+}
+
+.cSection.cSectionFooter .cFooterBottom .cFooterCopyrightsWrap p {
+    margin-bottom: 0;
+}
+
+.cSection.cSectionFooter .cFooterBottom .cFooterLinksWrap {
+    width: 100%;
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-justify-content: flex-end;
+    justify-content: flex-end;
+}
+
+ul.cFooterLinks {
+    position: relative;
+    list-style-type: none;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 0;
+    margin: 0;
+}
+
+ul.cFooterLinks li {
+    list-style-type: none;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-self: center;
+    align-self: center;
+}
+
+ul.cFooterLinks li ~ li {
+    margin-left: 10px;
+}
+
+ul.cFooterLinks li a {
+    color: #888888;
+    -webkit-transition: color 0.12s ease;
+    -moz-transition: color 0.12s ease;
+    transition: color 0.12s ease;
+}
+
+ul.cFooterLinks li a:hover {
+    color: #333333;
+}
+
+
+
+
+
+
+/* PAGE - 2 : MAP AND SEARCH RESULTS PAGE */
+section.cSection.cSectionSearchResults {
+    position: relative;
+    width: 100%;
+    height: -webkit-calc(100vh - 60px);
+    height: -moz-calc(100vh - 60px);
+    height: calc(100vh - 60px);
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 60px;
+}
+
+section.cSection.cSectionSearchResults .cSearchResultsLayout {
+    position: relative;
+    height: 100%;
+    background: #ffffff;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+section.cSection.cSectionSearchResults .cSearchResultsLayout .cResultsWrapper {
+    position: relative;
+    height: 100%;
+}
+
+section.cSection.cSectionSearchResults .cSearchResultsLayout .cResultsWrapper.cResultsLeftWrapper {
+    width: -webkit-calc(100% / 3);
+    width: -moz-calc(100% / 3);
+    width: calc(100% / 3);
+    overflow-y: auto;
+}
+
+section.cSection.cSectionSearchResults .cSearchResultsLayout .cResultsWrapper.cResultsRightWrapper {
+    width: -webkit-calc(200% / 3);
+    width: -moz-calc(200% / 3);
+    width: calc(200% / 3);
+}
+
+
+.cResultsFormWrapper {
+    position: relative;
+    padding: 15px;
+    padding-bottom: 0;
+}
+
+.cNoBg {
+    background: transparent !important;
+}
+
+.cForm {
+    position: relative;
+}
+
+.cForm .cFormGroup {
+    position: relative;
+    display: block;
+    margin-bottom: 15px;
+    font-size: 12px;
+    background: #FFFFFF;
+}
+
+.cForm .cFormGroup .cFormControl {
+    width: 100%;
+    border: 1px solid #cccccc;
+    position: relative;
+    padding: 10px;
+    z-index: 1;
+    background: transparent;
+}
+
+.cForm .cFormGroup textarea.cFormControl {
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 120px;
+}
+
+.cForm .cFormGroup .cFormControl.error {
+    border-color: #FF0000;
+}
+
+.cForm .cFormGroup label.cFormControlLabel {
+    position: absolute;
+    left: 15px;
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    transform: translateY(0);
+    font-weight: 400;
+    color: #cccccc;
+    -webkit-transition: all 0.15s ease-in-out;
+    -moz-transition: all 0.15s ease-in-out;
+    transition: all 0.15s ease-in-out;
+    top: 12px;
+    margin: 0 auto;
+    z-index: 0;
+}
+
+.cForm .cFormGroup .cFormControl:focus {
+    outline: 0;
+    border-color: #37b1c3;
+}
+
+.cForm .cFormGroup .cFormControl:focus ~ label.cFormControlLabel,
+.cForm .cFormGroup .cFormControl:not([value=""]) ~ label.cFormControlLabel {
+    -webkit-transform: translateX(15px) translateY(-22px) scale(0.72);
+    -moz-transform: translateX(15px) translateY(-22px) scale(0.72);
+    transform: translateX(15px) translateY(-22px) scale(0.72);
+    -webkit-transform-origin: left;
+    transform-origin: left;
+    background: #37b1c3;
+    z-index: 1;
+    color: #ffffff;
+}
+
+a.cBtnSearchResults {
+    display: block;
+    text-align: center;
+    width: 100%;
+    height: 40px;
+    font-size: 14px;
+    line-height: 45px;
+    background: #37b1c3;
+    color: #FFFFFF;
+    -webkit-transition: background 0.1s ease-in-out;
+    -moz-transition: background 0.1s ease-in-out;
+    transition: background 0.1s ease-in-out;
+    cursor: pointer;
+}
+
+.cBtnSearchResults:hover {
+    background: #2e93a2;
+}
+
+
+
+.cResultsListWrapper {
+    position: relative;
+    padding: 15px;
+    /* background: #ececec; */
+}
+
+.cResultsListWrapper .cResultsSummary {
+    position: relative;
+    margin-bottom: 15px;
+    padding: 10px 0;
+    background: #FFFFFF;
+    border-bottom: 1px solid #ECECEC;
+}
+
+.cResultsListWrapper .cResultsSummary p {
+    position: relative;
+    font-size: 0;
+    margin: 0 auto;
+}
+
+.cResultsListWrapper .cResultsSummary p span {
+    display: inline-block;
+    width: 50%;
+    vertical-align: top;
+    font-size: 12px;
+}
+
+.cResultsListWrapper .cResultsSummary p span.cSearchResultsLocation {
+    font-weight: bold;
+}
+
+.cResultsListWrapper .cResultsSummary p span.cSearchResultsCount {
+    text-align: right;
+}
+
+.cResultsListWrapper .cResultsSummary p span.cSearchResultsCount strong {
+    font-weight: bold;
+}
+
+
+
+
+ul.cSearchResults {
+    padding: 0;
+    margin: 0 -10px;
+    list-style-type: none;
+    position: relative;
+    font-size: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: wrap;
+    -moz-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+ul.cSearchResults li.cSearchResult {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    /* -webkit-box-flex: 1; */
+    /* -ms-flex: 1 1 auto; */
+    /* flex: 1 1 auto; */
+    margin: 0 10px;
+    margin-bottom: 20px;
+    width: -webkit-calc((100% / 4) - 20px);
+    width: -moz-calc((100% / 4) - 20px);
+    width: calc((100% /4 ) - 20px);
+}
+
+ul.cSearchResults li.cSearchResult a.cSearchResultLink {
+    width: 100%;
+    -webkit-align-items: flex-start;
+    align-items: flex-start;
+    -webkit-justify-content: center;
+    justify-content: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    position: relative;
+    cursor: pointer;
+}
+
+.cResultContentWrapper {
+    position: relative;
+    width: 100%;
+    /* height: 90px; */
+    padding: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+.cResultContentWrapper .cResultImageWrapper {
+    width: 100%;
+    width: auto;
+    height: auto;
+    background: #37b1c3;
+    position: relative;
+    border: 0px solid #ffffff;
+    overflow: hidden;
+}
+
+.cResultContentWrapper .cResultImageWrapper img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    position: relative;
+    /* -webkit-filter: brightness(0) invert(1); */
+    /* -moz-filter: brightness(0) invert(1); */
+    /* filter: brightness(0) invert(1); */
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition: all 0.1s ease;
+    -moz-transition: all 0.1s ease;
+    transition: all 0.1s ease;
+}
+
+ul.cSearchResults li.cSearchResult a.cSearchResultLink:hover .cResultContentWrapper .cResultImageWrapper img {
+    -webkit-transform: scale(1.05);
+    -moz-transform: scale(1.05);
+    transform: scale(1.05);
+}
+
+.cResultContentWrapper .cResultContent {
+    /* width: -webkit-calc(100% - 92px); */
+    /* width: -moz-calc(100% - 92px); */
+    /* width: calc(100% - 92px); */
+    width: 100%;
+    position: relative;
+    padding: 15px 0;
+    /* padding-right: 5px; */
+    background: #ffffff;
+}
+
+.cResultContentWrapper .cResultContent .cResultHeader {
+    position: relative;
+}
+
+.cResultContentWrapper .cResultContent .cResultHeader h3.cResultTitle {
+    position: relative;
+    margin: 2px auto 0;
+    font-size: 15px;
+    font-weight: bold;
+    color: #37b1c3;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.cResultContentWrapper .cResultContent .cResultBody {
+    position: relative;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+.cResultContentWrapper .cResultContent .cResultBody p {
+    margin: 0 auto;
+    font-size: 12px;
+    color: #333333;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.cResultContentWrapper .cResultContent .cResultFooter {
+    position: relative;
+}
+
+.cResultContentWrapper .cResultContent .cResultFooter span {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 10px;
+    color: #333333;
+    /* font-family: 'Montserrat', sans-serif; */
+    width: 50%;
+}
+
+.cResultContentWrapper .cResultContent .cResultFooter span > span.cClosed {
+    color: #FF0000;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+.cResultContentWrapper .cResultContent .cResultFooter span > span.cOpened {
+    color: #000000;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+.cResultContentWrapper .cResultContent .cResultFooter span.cResultInMap {
+    text-align: right;
+}
+
+.cResultContentWrapper .cResultContent .cResultFooter span.cResultInMap button {
+    background: transparent;
+    border: 1px solid #37b1c3;
+    color: #37b1c3;
+    line-height: 15px;
+    border-radius: 3px;
+}
+
+.cResultContentWrapper .cResultContent .cResultFooter span.cResultInMap button:focus,
+.cResultContentWrapper .cResultContent .cResultFooter span.cResultInMap button:hover {
+    outline: none;
+    background: #37b1c3;
+    color: #FFFFFF;
+}
+
+
+
+
+.cSuggestionWrapper {
+    position: relative;
+}
+
+.cSuggestionWrapper label {
+    padding: 0 15px;
+    padding-right: 0;
+    margin: 0 auto;
+    vertical-align: middle;
+    height: 48px;
+    line-height: 48px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+}
+
+ul.cSuggestionList {
+    position: relative;
+    padding: 0;
+    margin: 0 auto;
+    list-style-type: none;
+    font-size: 0;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+ul.cSuggestionList li.cSuggestion {
+    float: left;
+}
+
+ul.cSuggestionList li.cSuggestion a.cSuggestionLink {
+    font-size: 14px;
+    display: block;
+    height: 48px;
+    line-height: 48px;
+    padding: 0 15px;
+}
+
+ul.cSuggestionList li.cSuggestion a.cSuggestionLink:hover {
+    background: #ececec;
+}
+
+
+
+
+.cResultsMapWrapper {
+    position: relative;
+    width: 100%;
+    height: -webkit-calc(100% - 48px);
+    height: -moz-calc(100% - 48px);
+    height: calc(100% - 48px);
+}
+
+.cResultsMapWrapper.fullHeightMap {
+    height: 100%;
+}
+
+.cResultsMapWrapper #cSearchResultsMap {
+    height: 100%;
+    width: 100%;
+}
+
+
+
+
+
+/* SEARCH RESULTS PAGE - ALTERNATE */
+.cSection.cSectionMap {
+    width: 100%;
+    margin-top: 60px;
+    /* height: -webkit-calc(100vh - 60px); */
+    /* height: -moz-calc(100vh - 60px); */
+    /* height: calc(100vh - 60px); */
+    height: 300px;
+}
+
+#cSearchResultsMap {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.cFormWrapper.cSearchFormWrapper {
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    width: 420px;
+    background: #FFFFFF;
+    z-index: 1;
+    padding: 15px;
+    -webkit-box-shadow: 0 2px 28px 0 rgba(0,0,0,0.12);
+    -moz-box-shadow: 0 2px 28px 0 rgba(0,0,0,0.12);
+    box-shadow: 0 2px 28px 0 rgba(0,0,0,0.12);
+}
+
+.cFormWrapper.cSearchFormWrapper h2.cFormTitle {
+    margin: 0 auto 10px;
+    font-size: 18px;
+    text-align: center;
+    text-transform: uppercase;
+    /* font-family: 'Montserrat', sans-serif; */
+}
+
+.cFormWrapper.cSearchFormWrapper .cFormGroup:last-child {
+    margin-bottom: 0;
+}
+
+
+.cSection.cSectionResults {
+    padding-top: 20px;
+    padding-bottom: 60px;
+}
+
+.cSectionResults h2.cSectionHeading {
+    text-align: center;
+    margin: 0 auto 30px;
+    position: relative;
+}
+
+.cSectionResults h2.cSectionHeading:before {
+    content: attr(data-ghost);
+    position: absolute;
+    right: 0;
+    left: 0;
+    opacity: 0.4;
+    font-size: 150px;
+    bottom: -50px;
+    color: #ececec;
+    z-index: -1;
+}
+
+
+
+.cFormWrapper.cSearchInlineFormIWrapper {
+    position: relative;
+}
+
+.cFormWrapper.cSearchInlineFormIWrapper h2.cFormTitle {
+    display: none;
+}
+
+.cFormWrapper.cSearchInlineFormIWrapper .cForm .cFormGroup {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+}
+
+.cFormWrapper.cSearchInlineFormIWrapper .cForm.cSearchForm {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-justify-content: flex-start;
+    justify-content: flex-start;
+    -webkit-flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    width: 100%;
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+}
+
+.cFormWrapper.cSearchInlineFormIWrapper .cForm .cFormGroup ~ .cFormGroup {
+    margin-left: 18px;
+}
+
+
+
+
+
+ul.cSearchResults.cListMode {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+ul.cSearchResults.cListMode li.cSearchResult {
+    width: 100%;
+    margin: 0 auto;
+    padding: 15px 0;
+}
+
+ul.cSearchResults.cListMode li.cSearchResult ~ li.cSearchResult {
+    border-top: 1px solid #cccccc;
+}
+
+
+ul.cSearchResults.cListMode li.cSearchResult a.cSearchResultLink .cResultContentWrapper {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+}
+
+ul.cSearchResults.cListMode li.cSearchResult a.cSearchResultLink .cResultContentWrapper .cResultImageWrapper {
+    width: 240px;
+}
+
+ul.cSearchResults.cListMode li.cSearchResult a.cSearchResultLink .cResultContentWrapper .cResultContent .cResultHeader h3.cResultTitle {
+    font-size: 21px;
+}
+
+ul.cSearchResults.cListMode li.cSearchResult a.cSearchResultLink .cResultContentWrapper .cResultContent .cResultHeader .cResultRatingsWrapper {
+    float: right;
+    position: relative;
+}
+
+ul.cSearchResults.cListMode li.cSearchResult a.cSearchResultLink .cResultContentWrapper .cResultContent .cResultHeader .cResultRatingsWrapper span {
+    font-size: 15px;
+    display: block;
+}
+
+ul.cSearchResults.cListMode li.cSearchResult a.cSearchResultLink .cResultContentWrapper .cResultContent .cResultHeader .cResultRatingsWrapper span.cResultReview {
+    color: #000000;
+    text-align: center;
+    margin-top: 5px;
+}
+
+ul.cSearchResults.cListMode li.cSearchResult a.cSearchResultLink .cResultContentWrapper .cResultContent {
+    padding: 5px;
+    padding-left: 15px;
+    width: -webkit-calc(100% - 30px);
+    width: -moz-calc(100% - 30px);
+    width: calc(100% - 30px);
+}
+
+ul.cSearchResults.cListMode li.cSearchResult a.cSearchResultLink .cResultContentWrapper .cResultContent .cResultBody {
+    margin-bottom: 0;
+}
+
+ul.cSearchResults.cListMode li.cSearchResult a.cSearchResultLink .cResultContentWrapper .cResultContent .cResultBody p {
+    font-size: 15px;
+}
+
+ul.cSearchResults.cListMode li.cSearchResult a.cSearchResultLink .cResultContentWrapper .cResultContent .cResultFooter span {
+    font-size: 15px;
+    width: 30%;
+}
+
+ul.cSearchResults.cListMode li.cSearchResult a.cSearchResultLink .cResultContentWrapper .cResultContent .cResultFooter span.cSearchResultTime {
+    width: 70%;
+}
+
+ul.cSearchResults.cListMode li.cSearchResult a.cSearchResultLink .cResultContentWrapper .cResultContent .cResultFooter span.cResultInMap button {
+    height: 40px;
+    line-height: 39px;
+    padding: 0px 21px;
+    /* visibility: hidden; */
+}
+
+
+
+
+
+
+/* HEADER FORM */
+.cHeaderSearchFormWrapper {
+    position: relative;
+    height: 42px;
+    line-height: 42px;
+    padding: 0 15px;
+}
+
+.cHeaderSearchForm {
+    position: relative;
+    font-size: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.cHeaderSearchForm > div {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1;
+}
+
+.cHeaderSearchForm > div.cHeaderInputWrapper {
+    height: 42px;
+    line-height: 42px;
+    width: 350px;
+}
+
+.cHeaderSearchForm > div.cHeaderInputWrapper input.cHeaderInputControl {
+    font-size: 12px;
+    height: 100%;
+    background: transparent;
+    border: 1px solid #dddddd;
+    border-right: 0;
+    width: 100%;
+    padding: 0 10px;
+    padding-right: 42px;
+    -webkit-border-radius: 4px 0 0 4px;
+    -moz-border-radius: 4px 0 0 4px;
+    border-radius: 4px 0 0 4px;
+}
+
+.cHeaderSearchForm > div.cHeaderInputWrapper input.cHeaderInputControl:focus {
+    outline: 0;
+}
+
+.cHeaderSearchForm > div.cHeaderInputWrapper input.cHeaderInputControl ~ label.cHeaderInputLabel {
+    position: absolute;
+    left: 10px;
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    transform: translateY(0);
+    font-weight: 400;
+    color: #cccccc;
+    -webkit-transition: all 0.12s ease-in-out;
+    -moz-transition: all 0.12s ease-in-out;
+    transition: all 0.12s ease-in-out;
+    top: 0px;
+    margin: 0 auto;
+    z-index: -1;
+    font-size: 12px;
+}
+
+.cHeaderSearchForm > div.cHeaderInputWrapper input.cHeaderInputControl:focus ~ label.cHeaderInputLabel,
+.cHeaderSearchForm > div.cHeaderInputWrapper input.cHeaderInputControl:not([value=""]) ~ label.cHeaderInputLabel {
+    -webkit-transform: translateX(0px) translateY(-10px) scale(0.72);
+    -moz-transform: translateX(0px) translateY(-10px) scale(0.72);
+    transform: translateX(0px) translateY(-10px) scale(0.72);
+    background: #37b1c3;
+    z-index: 1;
+    color: #ffffff;
+    line-height: 21px;
+}
+
+.cHeaderSearchForm > div.cHeaderInputWrapper span.cHeaderGeoLocation {
+    height: 42px;
+    font-size: 18px;
+    position: absolute;
+    right: 0;
+    width: 42px;
+    top: 0;
+    text-align: center;
+    color: #37b1c3;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.cHeaderSearchForm > div.cHeaderCarTypeWrapper {
+    width: 160px;
+    height: 42px;
+}
+
+.cHeaderSearchForm > div.cHeaderCarTypeWrapper .cHeaderCarTypeDropdown {
+    position: relative;
+    height: 100%;
+}
+
+.cHeaderSearchForm > div.cHeaderCarTypeWrapper .cHeaderCarTypeDropdown a.cTriggerDropdown {
+    font-size: 25px;
+    display: block;
+    height: 100%;
+    width: 100%;
+    line-height: 42px;
+    text-align: center;
+    color: #37b1c3;
+    background: #FFFFFF;
+    border: 1px solid #dddddd;
+    cursor: pointer;
+    padding: 0 6px;
+}
+
+.cHeaderSearchForm > div.cHeaderCarTypeWrapper .cHeaderCarTypeDropdown a.cTriggerDropdown span {
+    font-size: 12px;
+    vertical-align: top;
+    margin: 0 auto;
+    position: relative;
+    display: inline-block;
+    line-height: 42px;
+    color: #333333;
+    padding-left: 5px;
+}
+
+.cHeaderSearchForm > div.cHeaderCarTypeWrapper .cHeaderCarTypeDropdown a.cTriggerDropdown img {
+    height: 100%;
+    /* width: 100%; */
+    object-fit: contain;
+    object-position: center;
+    position: relative;
+    margin-top: -7px;
+}
+
+.cHeaderSearchForm > div.cHeaderCarTypeWrapper .cHeaderCarTypeDropdown a.cTriggerDropdown ~ ul.cHeaderCarTypes {
+    position: absolute;
+    padding: 0;
+    margin: 0 auto;
+    left: 0;
+    top: 42px;
+    width: 100%;
+    display: none;
+    background: #FFFFFF;
+}
+
+.cHeaderSearchForm > div.cHeaderCarTypeWrapper .cHeaderCarTypeDropdown a.cTriggerDropdown ~ ul.cHeaderCarTypes li.cHeaderCarType {
+    position: relative;
+}
+
+.cHeaderSearchForm > div.cHeaderCarTypeWrapper .cHeaderCarTypeDropdown a.cTriggerDropdown ~ ul.cHeaderCarTypes li.cHeaderCarType a {
+    position: relative;
+    display: block;
+    padding: 3px 15px;
+}
+
+.cHeaderSearchForm > div.cHeaderCarTypeWrapper .cHeaderCarTypeDropdown a.cTriggerDropdown ~ ul.cHeaderCarTypes li.cHeaderCarType a img.cHeaderCarTypeIcon {
+    height: 30px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.cHeaderSearchForm > div.cHeaderCarTypeWrapper .cHeaderCarTypeDropdown a.cTriggerDropdown ~ ul.cHeaderCarTypes li.cHeaderCarType a label.cHeaderCarTypeTitle {
+    font-size: 12px;
+    color: #333333;
+    font-weight: 400;
+    margin: 0 auto;
+    margin-left: 5px;
+    vertical-align: middle;
+}
+
+.cHeaderSearchForm > div.cHeaderCarTypeWrapper .cHeaderCarTypeDropdown:hover a.cTriggerDropdown ~ ul.cHeaderCarTypes {
+    /* display: block; */
+}
+
+.cHeaderSearchForm > div.cHeaderCarTypeWrapper .cHeaderCarTypeDropdown a.cTriggerDropdown ~ ul.cHeaderCarTypes li.cHeaderCarType:hover > a {
+    background: #f5f5f5;
+}
+
+.cHeaderSearchForm > div.cHeaderCarTypeWrapper select {
+    display: none;
+}
+
+.cHeaderSearchForm > div.cHeaaderBtnWrapper {
+    width: 42px;
+    height: 42px;
+    background: #37b1c3;
+    border-left: 0px solid #ffffff;
+    -webkit-border-radius: 0 4px 4px 0;
+    -moz-border-radius: 0 4px 4px 0;
+    border-radius: 0 4px 4px 0;
+}
+
+.cHeaderSearchForm > div.cHeaaderBtnWrapper a.cHeaderSearchBtn {
+    position: relative;
+    display: block;
+    font-size: 21px;
+    color: #FFFFFF;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    line-height: 42px;
+    cursor: pointer;
+}
+
+
+
+
+
+/* STORE DETAILS PAGE */
+section.cSection.cSectionStore {
+    margin-top: 60px;
+    padding: 5px 0;
+    background: #f7f7f7;
+}
+
+.cSection.cSectionStore .cStoreWrapper {
+    position: relative;
+    margin: 0 auto;
+    padding: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: nowrap;
+    -moz-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-align-content: start;
+    align-content: start;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-justify-content: space-between;
+    -moz-justify-content: space-between;
+    justify-content: space-between;
+    margin: 10px;
+    background: #FFFFFF;
+    -webkit-box-shadow: 0 2px 28px 0 rgba(0,0,0,0.12);
+    -moz-box-shadow: 0 2px 28px 0 rgba(0,0,0,0.12);
+    box-shadow: 0 2px 28px 0 rgba(0,0,0,0.12);
+}
+
+.cSection.cSectionStore .cStoreWrapper .cStoreDiv {
+    /** -webkit-box-flex: 1; */
+    /* -ms-flex: 1 1 auto; */
+    /* flex: 1 1 auto; */
+    /* width: 25%; */
+    /* max-width: 25%; */
+    position: relative;
+    margin: 15px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: nowrap;
+    -moz-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-align-content: start;
+    align-content: start;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+}
+
+
+.cStoreGeneralInfo,
+.cStoreContactInfo {
+    min-width: 280px;
+}
+
+.cStoreHoursInfo {
+    min-width: 120px;
+}
+
+.cStoreAboutInfo {
+    min-width: 150px;
+}
+
+
+.cSection.cSectionStore .cStoreWrapper .cStoreDiv .cStoreCol {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative;
+}
+
+.cSection.cSectionStore .cStoreWrapper .cStoreDiv .cStoreCol.cStoreColIcon {
+    width: 120px;
+}
+
+.cSection.cSectionStore .cStoreWrapper .cStoreDiv .cStoreCol.cStoreColContent {
+    width: -webkit-calc(100% - 120px);
+    width: -moz-calc(100% - 120px);
+    width: calc(100% - 120px);
+    -webkit-flex-wrap: wrap;
+    -moz-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-align-content: start;
+    align-content: start;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    padding: 0px 10px;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+}
+
+
+.cStoreLogoWrapper {
+    position: relative;
+    width: 100%;
+}
+
+.cStoreLogoWrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    position: relative;
+}
+
+.cStoreAddressWrapper {
+    position: relative;
+}
+
+.cStoreAddressWrapper h2.cStoreName {
+    position: relative;
+    font-size: 18px;
+    margin: 0 auto 5px;
+    /* white-space: nowrap; */
+    /* overflow: hidden; */
+    /* text-overflow: ellipsis; */
+}
+
+.cStoreAddressWrapper p.cStoreAddress {
+    position: relative;
+    font-size: 12px;
+    margin-bottom: 0;
+}
+
+.cStoreRateWrapper {
+    position: relative;
+    font-size: 0;
+    line-height: 1;
+}
+
+.cStoreRateWrapper .cStoreRateHere {
+    display: inline-block;
+    vertical-align: bottom;
+    position: relative;
+    /* float: left; */
+    width: 50%;
+    font-size: 0;
+}
+
+.cStoreRateWrapper .cStoreRateHere a.cTriggerCustomerReview {
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.cStoreRateWrapper .cStoreReviewCustomer {
+    display: inline-block;
+    vertical-align: bottom;
+    position: relative;
+    /* float: right; */
+    width: 50%;
+    text-align: right;
+    font-size: 0;
+}
+
+.cStoreRateWrapper .cStoreReviewCustomer span {
+    position: relative;
+    font-size: 12px;
+    display: block;
+    line-height: 1;
+}
+
+.cTriggerReviewsModal {
+    cursor: pointer;
+}
+
+.cStoreRateWrapper .cStoreReviewCustomer span.cStoreRatings {
+    color: #37b1c3;
+}
+
+
+.cStoreMapWrapper {
+    position: relative;
+    width: 100%;
+}
+
+.cStoreMapWrapper img {
+    width: 100%;
+    height: auto;
+    position: relative;
+}
+
+.cStoreContactWrapper {
+    position: relative;
+}
+
+.cStoreContactWrapper h2.cStoreContactTitle {
+    position: relative;
+    margin: 0 auto 7px;
+    font-size: 18px;
+}
+
+.cStoreContactWrapper p {
+    font-size: 12px;
+    margin-bottom: 0;
+    position: relative;
+    word-break: break-all;
+}
+
+.cStoreContactWrapper p i {
+    color: #37b1c3;
+}
+
+.cStoreSocialWrapper {
+    position: relative;
+    font-size: 0;
+}
+
+.cStoreSocialWrapper span.cStoreSocialLink {
+    height: 30px;
+    width: 30px;
+    line-height: 30px;
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+}
+
+.cStoreSocialWrapper span ~ span {
+    margin-left: 5px;
+}
+
+
+.cStoreSocialWrapper span.cStoreSocialLink a {
+    color: #ffffff;
+    font-size: 18px;
+    height: 100%;
+    width: 100%;
+    line-height: 30px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    /* background: #b7b7b7; */
+    background: #37b1c3;
+    display: inline-block;
+    text-align: center;
+    position: relative;
+}
+
+.cStoreSocialWrapper span.cStoreSocialLink a i {
+    z-index: 1;
+    position: relative;
+    font-size: 15px;
+    height: 100%;
+    width: 100%;
+    vertical-align: top;
+    line-height: inherit;
+}
+
+.cStoreSocialWrapper span.cStoreSocialLink a:before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    /* background: #37b1c3; */
+    background: #2e93a2;
+    left: 0;
+    top: 0;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    z-index: 0;
+    -webkit-transition: all 0.15s ease;
+    -moz-transition: all 0.15s ease;
+    transition: all 0.15s ease;
+    -webkit-transform: scale(0);
+    -moz-transform: scale(0);
+    transform: scale(0);
+}
+
+.cStoreSocialWrapper span.cStoreSocialLink a:hover:before {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    transform: scale(1);
+}
+
+
+
+
+
+.cSection.cSectionStore .cStoreWrapper .cStoreDiv .cStoreCol.cStoreColFull {
+    width: 100%;
+    -webkit-flex-wrap: wrap;
+    -moz-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-align-content: start;
+    align-content: start;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    /* -webkit-justify-content: space-between; */
+    /* justify-content: space-between; */
+}
+
+.cStoreHoursInfo h2.cStoreHoursTitle {
+    position: relative;
+    margin: 0 0 4px;
+    font-size: 18px;
+}
+
+.cStoreHoursListWrapper {
+    position: relative;
+}
+
+ul.cStoreHoursList {
+    position: relative;
+    margin: 0 auto;
+    list-style-type: none;
+    padding: 0;
+    font-size: 0;
+}
+
+ul.cStoreHoursList li.cStoreHours {
+    position: relative;
+    /* text-transform: uppercase; */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-justify-content: flex-start;
+    justify-content: flex-start;
+    -webkit-flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    width: 100%;
+}
+
+ul.cStoreHoursList li.cStoreHours ~ li.cStoreHours {
+    /* margin-top: 3px; */
+}
+
+ul.cStoreHoursList li.cStoreHours > span:first-child {
+    width: 48px;
+    font-size: 10px;
+    position: relative;
+}
+
+ul.cStoreHoursList li.cStoreHours > span:last-child {
+    color: #37b1c3;
+    font-weight: 600;
+    font-size: 10px;
+}
+
+ul.cStoreHoursList li.cStoreHours span.cClosed {
+    color: #FF0000;
+}
+
+.cStoreAboutInfo h2.cStoreAboutTitle {
+    position: relative;
+    margin: 0 0 10px;
+    font-size: 18px;
+}
+
+.cStoreAboutWrapper {
+    position: relative;
+}
+
+.cStoreAboutWrapper p {
+    font-size: 12px;
+}
+
+.cStoreAboutWrapper #show_store_info_popup {
+    cursor: pointer;
+}
+
+
+
+
+
+/* SECTION BOOKING */
+section.cSection.cSectionBooking {
+    padding-bottom: 20px;
+    /* padding-top: 15px; */
+    background: #f7f7f7;
+}
+
+.cServiceBookingWrapper {
+    position: relative;
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    /* margin: 15px auto; */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: nowrap;
+    -moz-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-align-content: start;
+    align-content: start;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+}
+
+.cServiceBookingWrapper .cServiceBooking {
+    position: relative;
+    -webkit-flex-wrap: wrap;
+    -moz-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-align-content: start;
+    align-content: start;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    padding: 0px;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    background: #FFFFFF;
+    margin: 0 10px;
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
+}
+
+.cServiceBookingWrapper .cServiceBooking:nth-child(2) {
+    /* margin: 0; */
+}
+
+.cServicesWrapper {
+    width: 25%;
+    -webkit-order: 1;
+    -moz-order: 1;
+    order: 1;
+    /* -webkit-align-self: flex-start; */
+    /* align-self: flex-start; */
+}
+
+.cCalendarWrapper {
+    width: 50%;
+    -webkit-order: 2;
+    -moz-order: 2;
+    order: 2;
+    margin: 0 !important;
+    -webkit-align-self: flex-start;
+    align-self: flex-start;
+}
+
+.cSlotsWrapper {
+    width: 25%;
+    -webkit-order: 3;
+    -moz-order: 3;
+    order: 3;
+}
+
+.cServicesWrapper h2.cServiceSectionHeading {
+    position: relative;
+    margin: 0 auto;
+    background: #37b1c3;
+    width: 100%;
+    text-align: center;
+    padding: 12px 5px;
+    color: #FFFFFF;
+    font-size: 21px;
+}
+
+
+
+/* SERVICE OPTIONS LIST */
+ul.cServiceOptionsList {
+    position: relative;
+    padding: 0;
+    margin: 0 auto;
+    font-size: 0;
+    list-style-type: none;
+}
+
+ul.cServiceOptionsList li.cServiceOption {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    width: 50%;
+    text-align: center;
+    padding: 5px 7px;
+    height: 80px;
+    border-bottom: 3px solid #f7f7f7;
+}
+
+ul.cServiceOptionsList li.cServiceOption .cServiceOptionLabel {
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+ul.cServiceOptionsList li.cServiceOption ~ li.cServiceOption {
+    border-left: 3px solid #f7f7f7;
+}
+
+
+/* SERVICE CAR TYPE CHANGE */
+.cServiceCarTypeForm > div.cServiceCarTypeWrapper {
+    width: 100%;
+    height: 42px;
+    min-width: 120px;
+}
+
+.cServiceCarTypeForm > div.cServiceCarTypeWrapper .cServiceCarTypeDropdown {
+    position: relative;
+    height: 100%;
+}
+
+.cServiceCarTypeForm > div.cServiceCarTypeWrapper .cServiceCarTypeDropdown a.cTriggerDropdown {
+    font-size: 25px;
+    display: block;
+    height: 100%;
+    width: 100%;
+    line-height: 42px;
+    text-align: center;
+    color: #37b1c3;
+    background: #FFFFFF;
+    border: 1px solid #dddddd;
+    cursor: pointer;
+    padding: 0 2px;
+}
+
+.cServiceCarTypeForm > div.cServiceCarTypeWrapper .cServiceCarTypeDropdown a.cTriggerDropdown span {
+    font-size: 12px;
+    vertical-align: top;
+    margin: 0 auto;
+    position: relative;
+    display: inline-block;
+    line-height: 42px;
+    color: #333333;
+    padding-left: 5px;
+}
+
+.cServiceCarTypeForm > div.cServiceCarTypeWrapper .cServiceCarTypeDropdown a.cTriggerDropdown img {
+    height: auto;
+    width: 36px;
+    object-fit: contain;
+    object-position: center;
+    position: relative;
+    margin-top: 4px;
+    vertical-align: top;
+    display: inline-block;
+}
+
+.cServiceCarTypeForm > div.cServiceCarTypeWrapper .cServiceCarTypeDropdown a.cTriggerDropdown ~ ul.cServiceCarTypes {
+    position: absolute;
+    padding: 0;
+    margin: 0 auto;
+    left: 0;
+    top: 41px;
+    width: 100%;
+    display: none;
+    background: #FFFFFF;
+    text-align: left;
+    z-index: 2;
+    border: 1px solid #dddddd;
+    list-style-type: none;
+}
+
+.cServiceCarTypeForm > div.cServiceCarTypeWrapper .cServiceCarTypeDropdown a.cTriggerDropdown ~ ul.cServiceCarTypes li.cServiceCarType {
+    position: relative;
+}
+
+.cServiceCarTypeForm > div.cServiceCarTypeWrapper .cServiceCarTypeDropdown a.cTriggerDropdown ~ ul.cServiceCarTypes li.cServiceCarType a {
+    position: relative;
+    display: block;
+    padding: 2px 5px;
+}
+
+.cServiceCarTypeForm > div.cServiceCarTypeWrapper .cServiceCarTypeDropdown a.cTriggerDropdown ~ ul.cServiceCarTypes li.cServiceCarType a img.cServiceCarTypeIcon {
+    height: 30px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.cServiceCarTypeForm > div.cServiceCarTypeWrapper .cServiceCarTypeDropdown a.cTriggerDropdown ~ ul.cServiceCarTypes li.cServiceCarType a label.cServiceCarTypeTitle {
+    font-size: 12px;
+    color: #333333;
+    font-weight: 400;
+    margin: 0 auto;
+    margin-left: 5px;
+    vertical-align: middle;
+}
+
+.cServiceCarTypeForm > div.cServiceCarTypeWrapper .cServiceCarTypeDropdown:hover a.cTriggerDropdown ~ ul.cServiceCarTypes {
+    /* display: block; */
+}
+
+.cServiceCarTypeForm > div.cServiceCarTypeWrapper .cServiceCarTypeDropdown a.cTriggerDropdown ~ ul.cServiceCarTypes li.cServiceCarType:hover > a {
+    background: #f5f5f5;
+}
+
+.cServiceCarTypeForm > div.cServiceCarTypeWrapper select {
+    display: none;
+}
+
+
+
+/* COMBO BOOK SWITCH */
+.cComboBookSwitch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.cComboBookSwitch input {
+    display:none;
+}
+
+.cSlider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.cSlider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .cSlider {
+    background-color: #37b1c3;
+}
+
+input:focus + .cSlider {
+    box-shadow: 0 0 1px #37b1c3;
+}
+
+input:checked + .cSlider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.cSlider.cRoundType {
+    border-radius: 34px;
+}
+
+.cSlider.cRoundType:before {
+    border-radius: 50%;
+}
+
+
+#merchant_service_groups p.cNoService {
+    margin: 0 auto;
+    padding: 15px;
+    text-align: center;
+    font-size: 27px;
+    font-weight: bold;
+    opacity: 0.15;
+    position: relative;
+}
+
+#merchant_service_groups p.cNoService span {
+    font-size: 100px;
+    display: block;
+    line-height: 1;
+    position: relative;
+}
+
+
+/* SERVICES */
+.cServiceBookingWrapper .cServiceBooking .cServiceGroupWrapper {
+    height: 520px;
+    max-height: 520px;
+    overflow-y: auto;
+    position: relative;
+}
+
+.cServiceBookingWrapper .cServiceBooking .cServiceGroupWrapper.cComboMode {
+    /* max-height: 440px; */
+    /* height: 440px; */
+}
+
+.cServicesWrapper .cServiceGroup {
+    position: relative;
+    border: 0px solid #37b1c3;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    padding: 10px 0;
+}
+
+.cServicesWrapper .cServiceGroup h3.cServiceCatTitle {
+    position: relative;
+    margin: 0 auto;
+    font-size: 18px;
+    /* text-transform: uppercase; */
+    padding: 10px 15px;
+    color: #37b1c3;
+    font-weight: 600;
+}
+
+.cServicesWrapper .cServiceGroup .cServiceListWrapper {
+    position: relative;
+    /* padding-left: 18px; */
+}
+
+.cServiceListWrapper ul.cServiceList {
+    padding: 0;
+    margin: 0 auto;
+    list-style-type: none;
+    position: relative;
+}
+
+.cServiceListWrapper ul.cServiceList li.cService {
+    position: relative;
+    padding: 0;
+    border-bottom: 1px solid #F3F3F3;
+    cursor: pointer;
+    -webkit-transition: background 0.1s ease-in-out;
+    -moz-transition: background 0.1s ease-in-out;
+    transition: background 0.1s ease-in-out;
+}
+
+.cServiceListWrapper ul.cServiceList li.cService input.cRadioBtnService {
+    display: none;
+}
+
+.cServiceListWrapper ul.cServiceList li.cService input.cCheckboxComboBook {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    z-index: -1;
+}
+
+.cServiceListWrapper ul.cServiceList li.cService a.cServiceLink {
+    position: relative;
+    color: #333333;
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 12px 15px;
+}
+
+.cServiceListWrapper ul.cServiceList li.cService:not(.cComboService) input.cRadioBtnService:checked ~ a.cServiceLink {
+    background: #ECECEC;
+}
+
+.cServiceListWrapper ul.cServiceList li.cService a.cServiceLink:hover {
+    background: #F3F3F3;
+}
+
+.cServiceListWrapper ul.cServiceList li.cService.active a.cServiceLink {
+    background: #ECECEC;
+}
+
+.cServiceListWrapper ul.cServiceList li.cService a.cServiceLink:after {
+    content:"\f054";
+    font-family: FontAwesome;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    transform: translateY(-50%);
+    -webkit-transition: -webkit-transform 0.1s ease-in-out;
+    transition: -webkit-transform 0.1s ease-in-out;
+    -moz-transition: -moz-transform 0.1s ease-in-out;
+    transition: transform 0.1s ease-in-out;
+    z-index: 1;
+}
+
+.cServiceListWrapper ul.cServiceList li.cService a.cServiceLink:hover:after {
+    color: #37b1c3;
+    -webkit-transform: translateY(-50%) scale(1.5);
+    -moz-transform: translateY(-50%) scale(1.5);
+    transform: translateY(-50%) scale(1.5);
+}
+
+.cServiceListWrapper ul.cServiceList li.cService.cComboService a.cServiceLink:after {
+    content: "\f10c";
+    -webkit-transform: translateY(-50%) scale(1.5);
+    -moz-transform: translateY(-50%) scale(1.5);
+    transform: translateY(-50%) scale(1.5);
+}
+
+.cServiceListWrapper ul.cServiceList li.cService.cComboService input.cCheckboxComboBook:checked ~ a.cServiceLink:after {
+    content: "\f192";
+}
+
+.cServiceListWrapper ul.cServiceList li.cService a.cServiceLink h4.cServiceTitle {
+    margin: 0px auto 0px;
+    color: #000000;
+    font-weight: 600;
+    position: relative;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.cServiceListWrapper ul.cServiceList li.cService a.cServiceLink .cServiceBody {
+    position: relative;
+    font-size: 0;
+}
+
+.cServiceListWrapper ul.cServiceList li.cService a.cServiceLink .cServiceBody span {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 11px;
+}
+
+.cServiceListWrapper ul.cServiceList li.cService a.cServiceLink .cServiceBody span ~ span {
+    margin-left: 10px;
+}
+
+.cServiceListWrapper ul.cServiceList li.cService a.cServiceLink .cServiceBody span.cServiceDuration {
+    font-weight: 600;
+    position: relative;
+}
+
+.cServiceListWrapper ul.cServiceList li.cService a.cServiceLink .cServiceBody span.cServiceCost {
+    position: relative;
+}
+
+.cServiceListWrapper ul.cServiceList li.cService a.cServiceLink .cServiceBody span.cServiceInfoLink {
+    position: relative;
+    color: #37b1c3;
+    z-index: 1;
+}
+
+.cServiceListWrapper ul.cServiceList li.cService a.cServiceLink ~ .cServiceMoreInfo {
+    display: none;
+    margin: 5px auto;
+    color: #888888;
+    font-size: 12px;
+    padding: 0 15px;
+}
+
+.cServicesWrapper .cServiceGroup:last-child {
+    border-bottom-width: 0px;
+}
+
+.cServiceOptionFooter {
+    position: relative;
+    padding: 10px;
+    text-align: center;
+    display: none;
+}
+
+.cServiceComboBookControl {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    background: #37b1c3;
+    color: #FFFFFF;
+    font-size: 33px;
+    -webkit-border-radius: 60px;
+    -moz-border-radius: 60px;
+    border-radius: 60px;
+    cursor: pointer;
+}
+
+
+.cCalendarWrapper h2.cCalendarSectionHeading {
+    position: relative;
+    margin: 0 auto;
+    background: #37b1c3;
+    width: 100%;
+    text-align: center;
+    padding: 12px 5px;
+    color: #FFFFFF;
+    font-size: 21px;
+    pointer-events: none;
+}
+
+
+/* BOOKING CALENDAR */
+.sCalendar {
+    position: relative;
+    border: 0px solid #37b1c3;
+    border-top-width: 0;
+}
+
+.sCalendar .sCalendarLoader {
+    display: none;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    /* background: #000000; */
+    z-index: 1;
+}
+
+.sCalendar .sCalendarLoader i {
+    font-size: 100px;
+    color: #37b1c3;
+}
+
+.sCalendar.cal_loading .sCalendarLoader {
+    display: initial;
+}
+
+.sCalendar .sCalendarHeader {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: nowrap;
+    -moz-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+}
+
+.sCalendar .sCalendarHeader > div {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    text-align: center;
+    height: 54px;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.sHeaderNav {
+    position: relative;
+}
+
+.sHeaderNav span.sHeaderNavLink {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 36px;
+    cursor: pointer;
+}
+
+.sHeaderNav span.sHeaderNavLink.sNavCenter {
+    font-size: 15px;
+    margin: 0 10px;
+    text-transform: uppercase;
+    cursor: initial;
+    width: 150px;
+}
+
+.sCalendar .sCalendarBody {
+    position: relative;
+}
+
+.sCalendarMonthWrapper {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -moz-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-align-content: start;
+    align-content: start;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+.sCalendarMonthWrapper > div {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -moz-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-align-content: start;
+    align-content: start;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+}
+
+.sCalendarMonthWrapper > div > .sCalendarRow ul.sCalendaRowList {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: nowrap;
+    -moz-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-align-content: start;
+    align-content: start;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    list-style-type: none;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.sCalendarMonthWrapper > div > .sCalendarRow {
+    width: 100%;
+}
+
+.sCalendarMonthWrapper > div > .sCalendarRow ul.sCalendaRowList li.sCalendarRowItem {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    width: -webkit-calc(100% / 7);
+    width: -moz-calc(100% / 7);
+    width: calc(100% / 7);
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+    height: 78px;
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 5px;
+    /* border: 1px solid #37b1c3; */
+}
+
+.sCalendarMonthWrapper > div > .sCalendarRow.sHeaderMode ul.sCalendaRowList li.sCalendarRowItem {
+    text-transform: capitalize;
+    font-weight: 600;
+}
+
+.sCalendarMonthWrapper > div > .sCalendarRow.sBodyMode ul.sCalendaRowList li.sCalendarRowItem {
+    /* -webkit-justify-content: flex-end; */
+    /* justify-content: flex-end; */
+    /* -webkit-align-items: flex-start; */
+    /* align-items: flex-start; */
+    cursor: pointer;
+}
+
+.sCalendarMonthWrapper > div > .sCalendarRow.sBodyMode ul.sCalendaRowList li.sCalendarRowItem.cOtherMonth {
+    opacity: 0.3;
+}
+
+.sCalendarMonthWrapper > div > .sCalendarRow.sBodyMode ul.sCalendaRowList li.sCalendarRowItem .sCalendarCell {
+    display: inline-block;
+    height: 60px;
+    width: 60px;
+    line-height: 60px;
+    text-align: center;
+    -webkit-border-radius: 60px;
+    -moz-border-radius: 60px;
+    border-radius: 60px;
+    vertical-align: middle;
+    position: relative;
+    border: 1px solid transparent;
+}
+
+.sCalendarMonthWrapper > div > .sCalendarRow.sBodyMode ul.sCalendaRowList li.sCalendarRowItem.cToday .sCalendarCell {
+    color: #37b1c3;
+    border-color: #37b1c3;
+    /* font-weight: bold; */
+}
+
+.sCalendarMonthWrapper > div > .sCalendarRow.sBodyMode ul.sCalendaRowList li.sCalendarRowItem.active .sCalendarCell {
+    background: #37b1c3;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.sCalendarMonthWrapper > div > .sCalendarRow.sBodyMode ul.sCalendaRowList li.sCalendarRowItem.cHoliday .sCalendarCell {
+    opacity: 0.5;
+    background: #E5E5E5;
+    color: #888888;
+    border-color: #E5E5E5;
+    cursor: not-allowed;
+    /* pointer-events: none; */
+}
+
+.sCalendarMonthWrapper > div > .sCalendarRow.sBodyMode ul.sCalendaRowList li.sCalendarRowItem.cOtherMonth .sCalendarCell,
+.sCalendarMonthWrapper > div > .sCalendarRow.sBodyMode ul.sCalendaRowList li.sCalendarRowItem.cPastDay .sCalendarCell {
+    cursor: not-allowed;
+}
+
+.sCalendarMonthWrapper > div > .sCalendarRow.sBodyMode ul.sCalendaRowList li.sCalendarRowItem.cAvailableDay:not(.cHoliday):hover .sCalendarCell {
+    border-color: #37b1c3;
+}
+
+
+/* SLOTS BOOKING */
+.cSlotsWrapper h2.cSlotSectionHeading {
+    position: relative;
+    margin: 0 auto;
+    background: #37b1c3;
+    width: 100%;
+    text-align: center;
+    padding: 12px 5px;
+    color: #FFFFFF;
+    font-size: 21px;
+}
+
+.cSlotsListWrapper {
+    position: relative;
+    overflow-y: auto;
+    max-height: 535px;
+    height: 535px;
+}
+
+.cSlotsListWrapper ul.cSlotsList {
+    position: relative;
+    list-style-type: none;
+    margin: 0 auto;
+    padding: 0;
+    -webkit-flex-wrap: wrap;
+    -moz-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-align-content: start;
+    align-content: start;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    padding-top: 0;
+}
+
+.cSlotsListWrapper ul.cSlotsList li.cNoSlotItem {
+    padding: 15px;
+    text-align: center;
+    position: relative;
+}
+
+.cSlotsListWrapper ul.cSlotsList li.cNoSlotItem p {
+    margin: 0 auto;
+    font-weight: bold;
+    opacity: 0.15;
+    font-size: 27px;
+    position: relative;
+}
+
+.cSlotsListWrapper ul.cSlotsList li.cNoSlotItem p span {
+    margin: 0 auto;
+    font-weight: bold;
+    /* opacity: 0.3; */
+    font-size: 100px;
+    position: relative;
+    display: block;
+    line-height: 1;
+}
+
+.cSlotsListWrapper ul.cSlotsList li.cSlotItem {
+    width: 100%;
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 5px;
+}
+
+.cSlotsListWrapper ul.cSlotsList li.cSlotItem a.cSlotItemLink {
+    text-align: center;
+    position: relative;
+    display: block;
+    width: 100%;
+    /* height: 40px; */
+    padding: 0 10px;
+    cursor: pointer;
+    height: 36px;
+    line-height: 36px;
+    border: 1px solid #37b1c3;
+}
+
+.cSlotsListWrapper ul.cSlotsList li.cSlotItem a.cSlotItemLink.active {
+    background: #37b1c3;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.cSlotsListWrapper ul.cSlotsList li.cSlotItem a.cSlotItemLink span.cSlotTimeLabel {
+    color: #333333;
+    /* margin-top: -10px; */
+    position: relative;
+    display: block;
+}
+
+.cSlotsListWrapper ul.cSlotsList li.cSlotItem a.cSlotItemLink:before {
+    content: "";
+    display: none;
+    position: absolute;
+    height: 1px;
+    width: -webkit-calc(100% - 75px);
+    width: -moz-calc(100% - 75px);
+    width: -webkit-calc(100% - 75px);
+    right: 15px;
+    background: #37b1c3;
+    top: 0;
+}
+
+.cSlotsListWrapper ul.cSlotsList li.cSlotItem.cSlotBooked a.cSlotItemLink {
+    border-color: transparent;
+    background: #ECECEC;
+    cursor: not-allowed;
+}
+
+.cSlotsListWrapper ul.cSlotsList li.cSlotItem.cSlotBooked a.cSlotItemLink span.cSlotTimeLabel {
+    color: #aaaaaa;
+}
+
+
+.cSlotsBookingControlWrapper {
+    position: relative;
+    padding: 10px;
+    text-align: center;
+}
+
+.cSlotBookControl {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+    /* height: 60px; */
+    /* line-height: 60px; */
+    background: #37b1c3;
+    color: #FFFFFF;
+    font-size: 18px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.cSlotBookControl:hover {
+    background: #1b7d8c;
+}
+
+
+
+/* INFORMATION PAGE */
+.cSection.cSectionInformation {
+    margin-top: 60px;
+    padding-top: 20px;
+    padding-bottom: 30px;
+}
+
+.cInfoWrapper {
+    position: relative;
+    font-size: 0;
+    height: inherit;
+}
+
+.cInfoWrapper .cInfoCol {
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+}
+
+.cInfoWrapper .cInfoCol.cInfoLinksWrapper {
+    width: 300px;
+    height: 100%;
+    border-right: 0px solid #888888;
+    position: absolute;
+    /* top: 0; */
+    /* left: 0; */
+}
+
+.cInfoWrapper .cInfoCol.cInfoLinksWrapper.cFixed {
+    position: fixed;
+    left: initial;
+    top: 100px;
+}
+
+.cInfoWrapper .cInfoCol.cInfoContentWrapper {
+    width: -webkit-calc(100% - 300px);
+    width: -moz-calc(100% - 300px);
+    width: calc(100% - 300px);
+    margin-left: 300px;
+    padding-left: 30px;
+    border-left: 1px solid #cccccc;
+    min-height: 480px;
+}
+
+ul.cInfoLinksList {
+    list-style-type: none;
+    margin: 0 auto;
+    padding: 0;
+    text-align: right;
+    position: relative;
+    padding-top: 10px;
+}
+
+ul.cInfoLinksList li.cInfoLink {
+    position: relative;
+}
+
+ul.cInfoLinksList li.cInfoLink a {
+    position: relative;
+    color: #333333;
+    display: block;
+    height: 54px;
+    line-height: 54px;
+    width: 100%;
+    padding: 0 30px;
+    font-size: 18px;
+}
+
+ul.cInfoLinksList li.cInfoLink.cActive a {
+    color: #000000;
+    font-weight: 600;
+}
+
+ul.cInfoLinksList li.cInfoLink a:hover {
+    color: #37b1c3;
+}
+
+.cInfoContentList {
+    position: relative;
+}
+
+.cInfoContentList .cInfoContent {
+    display: none;
+}
+
+.cInfoContentList .cInfoContent.cVisible {
+    display: block;
+}
+
+.cInfoContentList .cInfoContent h2.cInfoHeading {
+    position: relative;
+}
+
+.cInfoContentList .cInfoContent .cInfoBody {
+    position: relative;
+    font-size: 14px;
+}
+
+.cInfoHeader {
+    position: relative;
+    text-align: center;
+    padding: 50px 15px;
+}
+
+.cInfoHeader h2.cInfoHeading {
+    position: relative;
+    margin: 0 auto;
+    font-size: 60px;
+}
+
+.cInfoContentList .cInfoContent h2.cInfoHeading {
+    display: none;
+}
+
+.cInfoInnerWrapper {
+    position: relative;
+}
+
+.cInfoInnerWrapper ~ .cInfoInnerWrapper {
+    margin-top: 50px;
+}
+
+.cInfoInnerWrapper h3.cInfoInnerTitle {
+    position: relative;
+    color: #37b1c3;
+    font-weight: bold;
+}
+
+.cInfoInnerWrapper p {
+    font-family: 'Lato', sans-serif;
+    font-size: 15px;
+    letter-spacing: 0.5pt;
+    word-spacing: 2px;
+    line-height: 1.5;
+    margin-bottom: 18px;
+}
+
+.cInfoInnerWrapper ul.cInfoInnerPoints {
+    list-style-type: circle;
+}
+
+.cInfoInnerWrapper ul.cInfoInnerPoints li {
+    margin-bottom: 15px;
+}
+
+.cInfoInnerWrapper h4.cInnerSubTitle {
+    color: #000000;
+}
+
+
+
+
+/* CBTN */
+.cTextDanger {
+    color: #F44336;
+}
+
+.cBtn {
+    cursor: pointer;
+    background: transparent;
+    border: 1px solid;
+    height: 48px;
+    /* line-height: 48px; */
+    padding: 0 15px;
+    outline: none !important;
+}
+
+.cBtn.cBtnDefault {
+    border-color: #333333;
+    color: #333333;
+}
+
+.cBtn.cBtnDefault:hover {
+    background: #333333;
+    color: #FFFFFF;
+}
+
+.cBtn.cBtnTheme {
+    border-color: #34b2c4;
+    color: #34b2c4;
+}
+
+.cBtn.cBtnTheme:hover {
+    background: #34b2c4;
+    color: #FFFFFF;
+}
+
+.cBtn.cBtnThemeRed {
+    border-color: #F44336;
+    color: #F44336;
+}
+
+.cBtn.cBtnThemeRed:hover {
+    background: #F44336;
+    color: #FFFFFF;
+}
+
+.cCartFooterBtns {
+    position: relative;
+    padding: 0px 0 15px;
+}
+
+.cCartFooterBtns a {
+    display: block;
+    text-align: center;
+    line-height: 44px;
+    text-transform: uppercase;
+}
+
+.cBtn.cBtnTheme.cBtnInverse {
+    color: #FFFFFF;
+    background: #34b2c4;
+}
+
+.cBtn.cBtnTheme.cBtnInverse:hover {
+    background: #258d9c;
+}
+
+.cBtn.cSmall {
+    height: 36px;
+}
+
+.cBtn.cBtnBlock {
+    width: 100%;
+}
+
+
+/* ALIGNMENTS */
+.cTextLeft {
+    text-align: left !important;
+}
+
+.cTextRight {
+    text-align: right !important;
+}
+
+.cTextCenter {
+    text-align: center !important;
+}
+
+
+
+/* MODAL CAR TYPES */
+.cModalCarTypesWrapper {
+    position: relative;
+}
+
+.cModalCarTypesWrapper ul.cModalCarTypes {
+    position: relative;
+    margin: 0 auto;
+    padding: 0;
+    list-style-type: none;
+    font-size: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -moz-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-align-content: start;
+    align-content: start;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+}
+
+.cModalCarTypesWrapper ul.cModalCarTypes li.cModalCarType {
+    width: 25%;
+    max-width: 25%;
+    text-align: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    position: relative;
+    /* padding: 15px; */
+    border: 1px solid #ececec;
+    border-left: 0;
+    border-top: 0;
+    height: 120px;
+    cursor: pointer;
+}
+
+.cModalCarTypesWrapper ul.cModalCarTypes li.cModalCarType:nth-of-type(4n) {
+    border-right: 0;
+}
+
+.cModalCarTypesWrapper ul.cModalCarTypes li.cModalCarType a {
+    align-items: center;
+    justify-content: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    position: relative;
+}
+
+.cModalCarTypesWrapper ul.cModalCarTypes li.cModalCarType a input.cRadioModalCarType {
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0 auto;
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    opacity: 0;
+    outline: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.cModalCarTypesWrapper ul.cModalCarTypes li.cModalCarType a input.cRadioModalCarType ~ .cModalCarTypeContent {
+    align-items: center;
+    justify-content: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+}
+
+.cModalCarTypesWrapper ul.cModalCarTypes li.cModalCarType a input.cRadioModalCarType ~ .cModalCarTypeContent:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #d2d2d2;
+    z-index: -1;
+    background: #37b1c3;
+    -webkit-transform: scale(0);
+    -moz-transform: scale(0);
+    transform: scale(0);
+    -webkit-transition: all 0.15s ease-in-out;
+    -moz-transition: all 0.15s ease-in-out;
+    transition: all 0.15s ease-in-out;
+    z-index: 0;
+}
+
+.cModalCarTypesWrapper ul.cModalCarTypes li.cModalCarType a input.cRadioModalCarType:checked ~ .cModalCarTypeContent {
+    /* background: #37b1c3; */
+}
+
+.cModalCarTypesWrapper ul.cModalCarTypes li.cModalCarType a input.cRadioModalCarType:checked ~ .cModalCarTypeContent:before {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    transform: scale(1);
+    background: #37b1c3;
+}
+
+.cModalCarTypesWrapper ul.cModalCarTypes li.cModalCarType a input.cRadioModalCarType ~ .cModalCarTypeContent img.cModalCarTypeIcon {
+    height: 42px;
+    width: 42px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+.cModalCarTypesWrapper ul.cModalCarTypes li.cModalCarType a input.cRadioModalCarType ~ .cModalCarTypeContent label.cModalCarTypeTitle {
+    font-size: 14px;
+    font-weight: 400;
+    color: #333333;
+    margin: 0 auto;
+    z-index: 1;
+}
+
+.cModalCarTypesWrapper ul.cModalCarTypes li.cModalCarType a input.cRadioModalCarType:checked ~ .cModalCarTypeContent img.cModalCarTypeIcon {
+    -webkit-filter: brightness(0) invert(1);
+    -moz-filter: brightness(0) invert(1);
+    filter: brightness(0) invert(1);
+}
+
+.cModalCarTypesWrapper ul.cModalCarTypes li.cModalCarType a input.cRadioModalCarType:checked ~ .cModalCarTypeContent label.cModalCarTypeTitle {
+    color: #FFFFFF;
+}
+
+
+
+
+/* CMODAL FORM */
+.cModalForm {
+    position: relative;
+}
+
+.cForm.cModalForm .cFormGroup .cFormControl {
+    height: 48px;
+    line-height: 48px;
+    padding: 0 15px;
+}
+
+.cForm.cModalForm .cFormGroup .cFormControl.error {
+    border-color: #FF0000;
+}
+
+.cForm.cModalForm .cFormGroup label.cFormControlLabel {
+    top: 15px;
+}
+
+.cForm.cModalForm .cFormGroup:last-child {
+    margin-bottom: 0;
+}
+
+.cForm.cModalForm .cFormGroup .cBtnLink {
+    color: #333333;
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.cRegistrationForm, .cForgotPasswordForm, .cOtpVerificationForm {
+    display: none;
+}
+
+
+
+/* MODAL ADDONS */
+#modal_addons .modal-header {
+    padding: 6px 15px;
+}
+
+#modal_addons .modal-header h4.modal-title {
+    font-size: 21px;
+}
+
+#modal_addons .modal-body {
+    padding: 15px 0 0;
+    border-bottom: 1px solid #ECECEC;
+}
+
+#modal_addons .modal-footer {
+    padding: 10px 15px;
+}
+
+.cAddonsWrapper {
+    position: relative;
+    font-size: 0;
+    height: 100%;
+    /* min-height: 300px; */
+}
+
+.cAddonsWrapper .cAddonsCol {
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+}
+
+.cAddonsWrapper .cAddonsCol.cAddonsLinksWrapper {
+    width: 200px;
+    height: 100%;
+    border-right: 0px solid #888888;
+    position: absolute;
+    overflow-y: auto;
+    /* top: 0; */
+    /* left: 0; */
+}
+
+.cAddonsWrapper .cAddonsCol.cAddonsLinksWrapper.cFixed {
+    position: fixed;
+    left: initial;
+    top: 100px;
+}
+
+.cAddonsWrapper .cAddonsCol.cAddonsContentWrapper {
+    width: -webkit-calc(100% - 200px);
+    width: -moz-calc(100% - 200px);
+    width: calc(100% - 200px);
+    margin-left: 200px;
+    /* padding-left: 15px; */
+    border-left: 1px solid #ececec;
+    min-height: 200px;
+}
+
+ul.cAddonsLinksList {
+    list-style-type: none;
+    margin: 0 auto;
+    padding: 0;
+    text-align: center;
+    position: relative;
+    padding-top: 50px;
+}
+
+ul.cAddonsLinksList li.cAddonsLink {
+    position: relative;
+    padding: 5px 0;
+    border-bottom: 0px solid #cccccc;
+}
+
+ul.cAddonsLinksList li.cAddonsLink a {
+    position: relative;
+    color: #333333;
+    display: block;
+    /* height: 40px; */
+    /* line-height: 54px; */
+    width: 100%;
+    padding: 8px 15px;
+    font-size: 15px;
+}
+
+ul.cAddonsLinksList li.cAddonsLink.cActive a {
+    color: #000000;
+    font-weight: 600;
+    background: #34b2c4;
+}
+
+ul.cAddonsLinksList li.cAddonsLink:not(.cActive) a:hover {
+    color: #37b1c3;
+}
+
+.cAddonsContentList {
+    position: relative;
+}
+
+.cAddonsContentList .cAddonsContent {
+    display: none;
+}
+
+.cAddonsContentList .cAddonsContent.cVisible {
+    display: block;
+}
+
+.cAddonsContentList .cAddonsContent h2.cAddonsHeading {
+    position: relative;
+    font-size: 18px;
+    padding: 11px;
+    margin: 0 auto;
+    font-weight: bold;
+    border-bottom: 0px solid #cccccc;
+}
+
+.cAddonsContentList .cAddonsContent h2.cAddonsHeading span.cAddonsCategory {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 400;
+    color: #37b1c3;
+    vertical-align: middle;
+}
+
+.cAddonsContentList .cAddonsContent .cAddonsBody {
+    position: relative;
+    font-size: 14px;
+}
+
+ul.cAddonsList {
+    position: relative;
+    list-style-type: none;
+    padding: 0;
+    margin: 0 auto;
+}
+
+ul.cAddonsList li.cAddon {
+    position: relative;
+    font-size: 15px;
+    /* margin-bottom: 10px; */
+    cursor: pointer;
+    padding: 10px 12px;
+    border-bottom: 1px solid #ECECEC;
+}
+
+ul.cAddonsList li.cAddon:hover {
+    background: #ECECEC;
+}
+
+ul.cAddonsList li.cAddon input.cAddonCheckbox {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    margin: 0 auto;
+    /* visibility: hidden; */
+    z-index: 1;
+    opacity: 0;
+    cursor: pointer;
+}
+
+ul.cAddonsList li.cAddon a.cAddonLink {
+    display: block;
+    width: 100%;
+    position: relative;
+    color: #333333;
+    font-size: 14px;
+    padding: 5px 0;
+}
+
+ul.cAddonsList li.cAddon a.cAddonLink span.cAddonCost {
+    color: #34b2c4;
+    display: block;
+    font-size: 12px;
+    line-height: 1;
+}
+
+ul.cAddonsList li.cAddon a.cAddonLink:before {
+    content: "\f10c";
+    font-family: fontAwesome;
+    position: absolute;
+    right: 0;
+    font-size: 24px;
+    top: 50%;
+    line-height: 1;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    transform: translateY(-50%);
+    color: #37b1c3;
+}
+
+ul.cAddonsList li.cAddon input.cAddonCheckbox:checked ~ a.cAddonLink:before {
+    content: "\f192";
+}
+
+
+
+
+/* SERVICE CART */
+.cServiceCartWrapper {
+    position: relative;
+}
+
+.cServiceCartWrapper.open:before {
+    content: "";
+    background: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 10001;
+}
+
+.cServiceCartWrapper .cServiceCartContent {
+    position: fixed;
+    top: 0;
+    right: 0;
+    margin: 0 auto;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    height: 100%;
+    width: 340px;
+    padding: 0px 0px;
+    /* opacity: 0; */
+    display: block;
+    -moz-transform: translate3d(380px, 0, 0);
+    -webkit-transform: translate3d(380px, 0, 0);
+    transform: translate3d(380px, 0, 0);
+    -webkit-transition: transform .25s ease;
+    -webkit-transition: -webkit-transform .25s ease;
+    -moz-transition: transform .25s ease;
+    -moz-transition: -moz-transform .25s ease;
+    transition: -webkit-transform .25s ease;
+    transition: transform .25s ease;
+    transition: transform .25s ease,-webkit-transform .25s ease;
+    z-index: 10001;
+    background: #FFFFFF;
+}
+
+.cServiceCartWrapper .cServiceCartContent .cServiceCartHeader {
+    position: relative;
+    margin: 0px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    padding: 20px 15px;
+    border-bottom: 1px solid rgba(129,129,129,0.2);
+}
+
+.cServiceCartWrapper .cServiceCartContent .cServiceCartHeader .cCartTitle {
+    margin: 0 auto;
+    font-size: 18px;
+    color: #000000;
+    position: relative;
+    font-weight: normal;
+}
+
+.cServiceCartWrapper .cServiceCartContent .cServiceCartHeader .cCartTitle > .cCloseServiceCart {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 21px;
+    width: 21px;
+    cursor: pointer;
+}
+
+.cServiceCartWrapper .cServiceCartContent .cServiceCartHeader .cCartTitle > .cCloseServiceCart:before,
+.cServiceCartWrapper .cServiceCartContent .cServiceCartHeader .cCartTitle > .cCloseServiceCart:after {
+    content: "";
+    position: absolute;
+    height: 2px;
+    width: 21px;
+    background: #000000;
+    top: 50%;
+    -webkit-transform: translateY(-50%) rotate3d(0, 0, 0, 0);
+    -moz-transform: translateY(-50%) rotate3d(0, 0, 0, 0);
+    transform: translateY(-50%) rotate3d(0, 0, 0, 0);
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    -webkit-transition: all 0.12s ease 0s;
+    -moz-transition: all 0.12s ease 0s;
+    transition: all 0.12s ease 0s;
+}
+
+.cServiceCartWrapper .cServiceCartContent .cServiceCartHeader .cCartTitle > .cCloseServiceCart:hover:before {
+    -webkit-transform: translateY(-50%) rotate3d(0, 0, 1, 45deg);
+    -moz-transform: translateY(-50%) rotate3d(0, 0, 1, 45deg);
+    transform: translateY(-50%) rotate3d(0, 0, 1, 45deg);
+}
+
+.cServiceCartWrapper .cServiceCartContent .cServiceCartHeader .cCartTitle > .cCloseServiceCart:hover:after {
+    -webkit-transform: translateY(-50%) rotate3d(0, 0, 1, -45deg);
+    -moz-transform: translateY(-50%) rotate3d(0, 0, 1, -45deg);
+    transform: translateY(-50%) rotate3d(0, 0, 1, -45deg);
+}
+
+.cServiceCartWrapper .cServiceCartContent .cServiceCartBody {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    width: 100%;
+    height: 100%;
+}
+
+.cServiceCartWrapper .cServiceCartContent .cServiceCartBody.hasScroll {
+    /* max-height: -webkit-calc(100vh - 310px); */
+    /* max-height: calc(100vh - 310px); */
+    overflow: auto;
+    margin-right: -15px;
+    padding: 0;
+    padding-right: 5px;
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    width: 99%;
+    height: 100%;
+    position: relative;
+}
+
+
+/* SCROLLBAR CSS */
+.hasScroll::-webkit-scrollbar {
+    width: 4px;
+}
+.hasScroll::-webkit-scrollbar-track {
+    /* background: #01848f; */
+    background: rgba(0,0,0,0.25);
+    /* border-left: 8px solid #ffffff; */
+    /* border-right: 8px solid #ffffff; */
+    visibility: hidden;
+    transition: all 0.2s linear 0s;
+}
+.hasScroll::-webkit-scrollbar-thumb {
+    /* background: linear-gradient(to right, #bd2359, #ef4581); */
+    background: rgba(0,0,0,0.25);
+    /* border-left: 5px solid #ffffff; */
+    /* border-right: 5px solid #ffffff; */
+    visibility: hidden;
+    transition: all 0.2s linear 0s;
+}
+.hasScroll:hover::-webkit-scrollbar-track,
+.hasScroll:hover::-webkit-scrollbar-thumb {
+	visibility: visible;
+}
+
+
+.cCartMerchantHeaderWrapper {
+    position: relative;
+}
+
+.cCartMerchantHeaderWrapper .cCartMerchantHeader {
+    position: relative;
+    padding: 10px 0;
+    /* border-bottom: 3px solid #34b2c4; */
+    background: #34b2c4;
+}
+
+.cCartMerchantHeaderWrapper .cCartMerchantHeader .cCartMerchantLeft {
+    display: inline-block;
+    width: 280px;
+    padding: 0 15px;
+    position: relative;
+    vertical-align: middle;
+}
+
+.cCartMerchantHeaderWrapper .cCartMerchantHeader h3.cCartMerchantTitleWrapper {
+    margin: 0 auto;
+    font-size: 15px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #ffffff;
+    /* text-align: center; */
+}
+
+.cCartMerchantHeaderWrapper .cCartMerchantHeader h3.cCartMerchantTitleWrapper span {
+    display: block;
+}
+
+.cCartMerchantHeaderWrapper .cCartMerchantHeader h3.cCartMerchantTitleWrapper span.cCartMerchantCity {
+    font-size: 12px;
+    color: #000000;
+    text-transform: initial;
+}
+
+.cCartMerchantHeaderWrapper .cCartMerchantHeader .cCartMerchantRight {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+}
+
+.cServiceCartWrapper .cServiceCartContent .cServiceCartFooter {
+    /* position: absolute; */
+    /* bottom: 0; */
+    /* left: 0; */
+    padding: 0 15px;
+    width: 100%;
+    border: 2px solid rgba(129,129,129,0.2);
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+}
+
+.cServiceCartWrapper .cServiceCartContent .cServiceCartFooter .cCartSummary {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.cServiceCartWrapper.open .cServiceCartContent {
+    -webkit-transform: translate3d(0px, 0, 0);
+    -moz-transform: translate3d(0px, 0, 0);
+    transform: translate3d(0px, 0, 0);
+    -webkit-transition: transform .25s ease;
+    -webkit-transition: -webkit-transform .25s ease;
+    -moz-transition: transform .25s ease;
+    -moz-transition: -moz-transform .25s ease;
+    transition: -webkit-transform .25s ease;
+    transition: transform .25s ease;
+    transition: transform .25s ease,-webkit-transform .25s ease;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+ul.cCartItems {
+    position: relative;
+    margin: 0 auto;
+    padding: 0;
+    list-style-type: none;
+    font-size: 0;
+}
+
+ul.cCartItems li.cCartItem {
+    position: relative;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+ul.cCartItems li.cCartItem:not(.noCartService):hover {
+    background: #F0F0F0;
+}
+
+ul.cCartItems li.cCartItem .cCartItemContent {
+    position: relative;
+    padding: 10px 33px 0px 15px;
+}
+
+ul.cCartItems li.cCartItem .cCartItemContent h3.cCartItemName {
+    position: relative;
+    margin: 0 auto 5px;
+    font-size: 15px;
+    color: #000000;
+}
+
+ul.cCartItems li.cCartItem .cCartItemContent p {
+    margin: 0 auto;
+    font-size: 12px;
+    position: relative;
+}
+
+ul.cCartItems li.cCartItem .cCartItemContent p span ~ span {
+    margin-left: 10px;
+}
+
+ul.cCartItems li.cCartItem .cCartItemContent .cCartItemAddons {
+    position: relative;
+    margin-top: 5px;
+}
+
+ul.cCartItems li.cCartItem .cCartItemContent .cCartItemAddons label.cLabel {
+    font-size: 10px;
+    font-weight: 400;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 5px 10px;
+    background: #37b1c3;
+    margin-right: 5px;
+}
+
+ul.cCartItems li.cCartItem .cCartItemRemove {
+    position: absolute;
+    width: 33px;
+    height: 33px;
+    line-height: 33px;
+    right: 0;
+    top: 0;
+    text-align: center;
+    /* padding: 5px; */
+    cursor: pointer;
+}
+
+ul.cCartItems li.cCartItem .cCartItemRemove span.cRemoveItemCart {
+    cursor: pointer;
+    font-size: 15px;
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+}
+
+ul.cCartItems li.cCartItem .cCartItemRemove span.cRemoveComboItemCart {
+    cursor: pointer;
+    font-size: 15px;
+}
+
+ul.cCartItems li.cCartItem p.cCartItemPrice {
+    margin-bottom: 0;
+    font-size: 18px;
+    padding: 0 15px 5px;
+    text-align: right;
+    position: relative;
+    color: #000000;
+    font-weight: bold;
+}
+
+ul.cCartItems li.cCartItem p.cCartItemPrice span {
+    color: #333333;
+    /* font-weight: normal; */
+    font-size: 12px;
+    opacity: 0.8;
+}
+
+.noCartService {
+    padding: 15px;
+    position: relative;
+}
+
+.cCartSummary {
+    position: relative;
+}
+
+.cCartSummary label {
+    font-size: 18px;
+    margin-bottom: 0;
+    font-weight: 600;
+    position: relative;
+}
+
+.cCartSummary label ~ span {
+    float: right;
+    font-size: 24px;
+    font-weight: bold;
+    color: #000000;
+    line-height: 1;
+}
+
+.cCartSummary label ~ span small {
+    color: #333333;
+    opacity: 0.7;
+    font-size: 60%;
+}
+
+
+/* CHECKOUT PAGE */
+section.cSection.cSectionCheckout {
+    padding-top: 150px;
+    padding-bottom: 50px;
+}
+
+.cSectionCheckout h2.cSectionHeading {
+    text-align: center;
+    margin: 0 auto 20px;
+    position: relative;
+}
+
+.cSectionCheckout .cSectionSubHeading {
+    text-align: center;
+    margin: 0px auto 30px;
+    position: relative;
+    font-size: 18px;
+}
+
+.cSectionCheckout h2.cSectionHeading:before {
+    content: attr(data-ghost);
+    position: absolute;
+    right: 0;
+    left: 0;
+    opacity: 0.4;
+    font-size: 150px;
+    bottom: -50px;
+    color: #ececec;
+    z-index: -1;
+}
+
+.cCheckoutWrapper {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+}
+
+.cCheckoutWrapper .cCheckoutEmptyWrapper {
+    position: relative;
+    text-align: center;
+    width: 100%;
+    padding: 120px 0;
+}
+
+.cCheckoutWrapper .cCheckoutEmptyWrapper p {
+    margin: 0 auto;
+    font-size: 30px;
+    opacity: 0.7;
+}
+
+.cCheckoutWrapper .cCheckoutEmptyWrapper:before {
+    content: "\f140";
+    font-family: "Ionicons";
+    position: absolute;
+    z-index: 0;
+    font-size: 200px;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    opacity: 0.1;
+}
+
+.cCheckoutWrapper .cCheckoutDiv {
+    position: relative;
+    width: 50%;
+}
+
+.cCheckoutWrapper .cCheckoutDiv.checkoutFormDiv {
+    padding-left: 30px;
+}
+
+.cCheckoutWrapper .cCheckoutDiv.checkoutCartDiv {
+    /* padding-left: 30px; */
+    border: 0px solid #cccccc;
+    z-index: 1;
+}
+
+.cCheckoutWrapper .cCheckoutDiv.checkoutCartDiv h3.cSectionTitle {
+    margin: 0 auto;
+    padding: 15px;
+    border-bottom: 1px solid #cccccc;
+}
+
+.checkoutCartDiv .cCartMerchantHeaderWrapper .cCartMerchantHeader .cCartMerchantLeft {
+    width: -webkit-calc(100% - 50px);
+    width: -moz-calc(100% - 50px);
+    width: calc(100% - 50px);
+}
+
+
+.checkoutCartDiv .cCartMerchantHeader {
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
+}
+
+.checkoutCartDiv ul.cCartItems {
+    margin-top: 25px;
+}
+
+.checkoutCartDiv ul.cCartItems li.cCartItem {
+    border: 0;
+    -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,0.12);
+    -moz-box-shadow: 0 2px 10px 0 rgba(0,0,0,0.12);
+    box-shadow: 0 2px 10px 0 rgba(0,0,0,0.12);
+    margin: 25px auto;
+}
+
+.checkoutCartDiv ul.cCartItems li.cCartItem .cCartItemRemove {
+    background: #FFFFFF;
+    border: 1px solid #ECECEC;
+    margin-top: -12px;
+    margin-right: -12px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,0.12);
+    -moz-box-shadow: 0 2px 10px 0 rgba(0,0,0,0.12);
+    box-shadow: 0 2px 10px 0 rgba(0,0,0,0.12);
+}
+
+
+
+
+/* CUSTOMER PAGES */
+.cSection.cSectionCustomer {
+    margin-top: 60px;
+    padding-top: 20px;
+    padding-bottom: 30px;
+}
+
+.cUserWrapper {
+    position: relative;
+    font-size: 0;
+    height: inherit;
+}
+
+.cUserWrapper .cUserCol {
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+}
+
+.cUserWrapper .cUserCol.cUserLinksWrapper {
+    width: 300px;
+    height: 100%;
+    border-right: 0px solid #888888;
+    position: absolute;
+    /* top: 0; */
+    /* left: 0; */
+}
+
+.cUserWrapper .cUserCol.cUserLinksWrapper.cFixed {
+    position: fixed;
+    left: initial;
+    top: 100px;
+}
+
+.cUserWrapper .cUserCol.cUserContentWrapper {
+    width: -webkit-calc(100% - 300px);
+    width: -moz-calc(100% - 300px);
+    width: calc(100% - 300px);
+    margin-left: 300px;
+    padding-left: 30px;
+    border-left: 1px solid #cccccc;
+    min-height: 480px;
+}
+
+ul.cUserLinksList {
+    list-style-type: none;
+    margin: 0 auto;
+    padding: 0;
+    text-align: right;
+    position: relative;
+    padding-top: 10px;
+}
+
+ul.cUserLinksList li.cUserLink {
+    position: relative;
+}
+
+ul.cUserLinksList li.cUserLink a {
+    position: relative;
+    color: #333333;
+    display: block;
+    height: 54px;
+    line-height: 54px;
+    width: 100%;
+    padding: 0 30px;
+    font-size: 18px;
+}
+
+ul.cUserLinksList li.cUserLink.cActive a {
+    color: #000000;
+    font-weight: 600;
+}
+
+ul.cUserLinksList li.cUserLink a:hover {
+    color: #37b1c3;
+}
+
+.cUserContentList {
+    position: relative;
+}
+
+.cUserContentList .cUserContent {
+    display: none;
+}
+
+.cUserContentList .cUserContent.cVisible {
+    display: block;
+}
+
+.cUserContentList .cUserContent h2.cUserHeading {
+    position: relative;
+}
+
+.cUserContentList .cUserContent .cUserBody {
+    position: relative;
+    font-size: 14px;
+}
+
+.cUserHeader {
+    position: relative;
+    text-align: center;
+    padding: 50px 15px;
+}
+
+.cUserHeader h2.cUserHeading {
+    position: relative;
+    margin: 0 auto;
+    font-size: 60px;
+}
+
+.cUserContentList .cUserContent h2.cUserHeading {
+    display: none;
+}
+
+
+
+/* BOOKING HISTORY LIST */
+.cBookingHistoryWrapper {
+    position: relative;
+}
+
+ul.cBookingList {
+    position: relative;
+    margin: 0 auto;
+    padding: 0;
+    list-style-type: none;
+    font-size: 0;
+}
+
+ul.cBookingList li.cBooking {
+    position: relative;
+    padding: 15px;
+    margin-bottom: 15px;
+    -webkit-box-shadow: 0 2px 9px 0 rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 2px 9px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 9px 0 rgba(0, 0, 0, 0.1);
+}
+
+ul.cBookingList li.cBooking span.cDeleteBooking {
+    position: absolute;
+    cursor: pointer;
+    right: -15px;
+    top: -15px;
+    font-size: 15px;
+    background: #FFFFFF;
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    line-height: 30px;
+    text-align: center;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+    -webkit-box-shadow: 0 2px 9px 0 rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 2px 9px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 9px 0 rgba(0, 0, 0, 0.1);
+}
+
+ul.cBookingList li.cBooking .cBookingSummaryWrapper {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: nowrap;
+    -moz-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-align-content: start;
+    align-content: start;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+}
+
+.cBookingSummaryWrapper .cBookingDiv {
+    position: relative;
+}
+
+.cBookingSummaryWrapper .cBookingDiv.cBookingCreatedAt {
+    width: 60px;
+}
+
+.cBookingCreatedAt span {
+    display: block;
+    position: relative;
+    font-size: 18px;
+    /* text-align: center; */
+    line-height: 1;
+    color: #AAAAAA;
+}
+
+.cBookingCreatedAt span.cBookingMonth {
+    /* font-size: 15px; */
+    text-transform: uppercase;
+}
+
+.cBookingCreatedAt span.cBookingDate {
+    font-size: 30px;
+    font-weight: bold;
+    color: #333333;
+    line-height: 24px;
+}
+
+.cBookingCreatedAt span.cBookingDay {
+    font-size: 10px;
+    color: #000000;
+    margin-top: 10px;
+}
+
+.cBookingCreatedAt span.cBookingTime {
+    color: #000000;
+    font-size: 13px;
+}
+
+.cBookingSummaryWrapper .cBookingDiv.cBookingInfo {
+    width: -webkit-calc(100% - 160px);
+    width: -moz-calc(100% - 160px);
+    width: calc(100% - 160px);
+}
+
+.cBookingInfo h5.cBookingId {
+    position: relative;
+    margin: 0 auto;
+}
+
+.cBookingInfo h5.cBookingId span {
+    color: #37b1c3;
+    font-weight: bold;
+}
+
+.cBookingInfo h3.cBookingMerchant {
+    margin: 0 auto;
+    position: relative;
+    color: #000000;
+}
+
+.cBookingInfo span.cBookingServiceCount {
+    font-size: 12px;
+    position: relative;
+    color: #000000;
+    font-weight: bold;
+    display: block;
+    margin: 5px auto;
+    text-transform: uppercase;
+}
+
+.cBookingInfo .cBtn {
+    font-size: 12px;
+    height: 30px;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 27px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+
+.cBookingSummaryWrapper .cBookingDiv.cBookingTotal {
+    width: 100px;
+    text-align: center;
+    -webkit-align-self: center;
+    align-self: center;
+}
+
+.cBookingTotal p.cBookingPrice {
+    font-weight: bold;
+    margin: 0 auto;
+    font-size: 24px;
+    color: #000000;
+    position: relative;
+    line-height: 1.2;
+}
+
+.cBookingTotal p.cBookingPrice span.cBookingTotalLabel {
+    display: block;
+    font-size: 14px;
+    color: #909090;
+    font-weight: normal;
+    /* text-transform: uppercase; */
+}
+
+.cBookingTotal p.cBookingPrice span.cBookingPriceUnit {
+    /* font-weight: normal; */
+    /* font-size: 15px; */
+    margin-left: 2px;
+}
+
+.cBookingSummaryWrapper .cBookingDiv.cBookingIndicator {
+    width: 140px;
+    -webkit-align-self: center;
+    align-self: center;
+    text-align: center;
+    padding: 0 5px;
+}
+
+.cBookingIndicator span.cBookingStatus {
+    font-size: 14px;
+    position: relative;
+    display: block;
+}
+
+.cBookingIndicator span.cBookingStatus:before {
+    content: "";
+    width: 12px;
+    height: 12px;
+    position: relative;
+    background: #000000;
+    display: inline-block;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    margin-right: 2px;
+}
+
+.cBookingIndicator span.cBookingStatus.cStatusPending {
+    color: #FFC107;
+}
+
+.cBookingIndicator span.cBookingStatus.cStatusPending:before {
+    background: #FFC107;
+}
+
+.cBookingIndicator span.cBookingStatus.cStatusCancelled {
+    color: #F44336;
+}
+
+.cBookingIndicator span.cBookingStatus.cStatusCancelled:before {
+    background: #F44336;
+}
+
+.cBookingIndicator span.cBookingStatus.cStatusConfirmed {
+    color: #CDDC39;
+}
+
+.cBookingIndicator span.cBookingStatus.cStatusConfirmed:before {
+    background: #CDDC39;
+}
+
+.cBookingIndicator span.cBookingStatus.cStatusCompleted {
+    color: #9E9E9E;
+}
+
+.cBookingIndicator span.cBookingStatus.cStatusCompleted:before {
+    background: #9E9E9E;
+}
+
+
+
+
+/* PAGINATION */
+.cPagination {
+    font-size: 15px;
+    position: relative;
+}
+
+.cPagination>li>a, .cPagination>li>span {
+    color: #37b1c3;
+}
+
+.cPagination>.active>a,
+.cPagination>.active>a:focus,
+.cPagination>.active>a:hover,
+.cPagination>.active>span,
+.cPagination>.active>span:focus,
+.cPagination>.active>span:hover {
+    background-color: #37b1c3;
+    border-color: #37b1c3;
+}
+
+
+
+/* STORE REVIEWS POPUP */
+.cModalStoreReviewsWrapper {
+    position: relative;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+ul.cStoreReviews {
+    position: relative;
+    padding: 15px;
+    margin: 0 auto;
+    list-style-type: none;
+    font-size: 0;
+}
+
+ul.cStoreReviews li.cStoreReview {
+    position: relative;
+    border: 0px solid #EBEBEB;
+    margin-bottom: 20px;
+    -webkit-box-shadow: 0 2px 9px 0 rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 2px 9px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 9px 0 rgba(0, 0, 0, 0.2);
+    -webkit-border-radius: 9px;
+    -moz-border-radius: 9px;
+    border-radius: 9px;
+}
+
+.cStoreReviewWrapper {
+    position: relative;
+}
+
+.cStoreReviewWrapper .cStoreReviewDiv {
+    position: relative;
+}
+
+.cStoreReviewWrapper .cStoreReviewDiv.cStoreReviewHeader {
+    padding: 10px 15px;
+    border-bottom: 1px solid #ebebeb;
+    width: 100%;
+}
+
+.cStoreReviewHeader .cReviewCustomerDiv {
+    position: relative;
+    width: -webkit-calc(100% - 80px);
+    width: -wmoz-calc(100% - 80px);
+    width: -webkit-calc(100% - 80px);
+    display: inline-block;
+    vertical-align: middle;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.cStoreReviewHeader span {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+}
+
+.cStoreReviewHeader span.cCustomerInitials {
+    font-size: 12px;
+    height: 30px;
+    width: 30px;
+    line-height: 30px;
+    /* background: #000000; */
+    color: #37b1c3;
+    text-align: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    margin-right: 5px;
+    border: 1px solid;
+    font-weight: bold;
+}
+
+.cStoreReviewHeader span.cCustomerName {
+    font-weight: bold;
+    font-size: 15px;
+    text-transform: uppercase;
+    font-family: 'Lato', sans-serif;
+    white-space: nowrap;
+    width: -webkit-calc(100% - 50px);
+    width: -moz-calc(100% - 50px);
+    width: calc(100% - 50px);
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.cStoreReviewHeader .cReviewRatingDiv {
+    position: relative;
+    font-size: 18px;
+    color: #37b1c3;
+    width: 80px;
+    /* margin-top: 5px; */
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.cStoreReviewWrapper .cStoreReviewDiv.cStoreReviewBody {
+    display: block;
+    padding: 15px;
+}
+
+.cStoreReviewBody p {
+    margin: 0 auto;
+    font-size: 14px;
+}
+
+.cStoreReviewWrapper .cStoreReviewDiv.cStoreReviewFooter {
+    padding: 10px 15px;
+    border-top: 1px solid #EBEBEB;
+}
+
+.cStoreReviewFooter span.cCustomerDate {
+    position: relative;
+    font-size: 14px;
+}
+
+
+
+/* MODAL RATE AND REVIEW */
+.cStarWrapper {
+    position: relative;
+}
+
+.cStarWrapper input[type="radio"] {
+    /* display: none; */
+    margin: 0 auto;
+    /* opacity: 0; */
+    /* visibility: hidden; */
+    -webkit-appearance: none;
+    height: 20px;
+    line-height: 20px;
+    cursor: pointer;
+    outline: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+.cStarWrapper input[type="radio"]:before {
+    content: "\2606";
+    visibility: visible;
+    opacity: 1;
+    line-height: 20px;
+    font-size: 18px;
+    color: #000000;
+}
+
+.cStarWrapper input[type="radio"].fullstar:before {
+    content: "\2605" !important;
+    visibility: visible;
+    opacity: 1;
+    line-height: 20px;
+    font-size: 18px;
+    color: #34b2c4;
+}
+
+
+
+
+/* SINGLE BOOKING INFO PAGE */
+.cSection.cSectionBookingInfoHead {
+    margin-top: 60px;
+}
+
+.cSectionBookingInfoHead.noBookingId {
+    padding-top: 150px;
+    padding-bottom: 150px;
+}
+
+.cBookingHeader {
+    position: relative;
+    text-align: center;
+    padding: 36px 15px;
+}
+
+.cBookingHeader h2.cBookingHeading {
+    position: relative;
+    margin: 0 auto;
+    font-size: 45px;
+}
+
+
+.cBookingInfoWrapper {
+    position: relative;
+    margin-bottom: 30px;
+    -webkit-box-shadow: 0 1px 5px 2px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 1px 5px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 5px 2px rgba(0, 0, 0, 0.1);
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+}
+
+.cBookingInfoWrapper .cBookingInfoDiv {
+    position: relative;
+    display: block;
+}
+
+.cBookingInfoWrapper .cBookingInfoDiv.bookingInfoHeader {
+    padding: 0;
+    border-bottom: 1px solid #ECECEC;
+    /* background: #333333; */
+}
+
+.bookingInfoHeader h3.bookingInfoTitle {
+    margin: 0 auto;
+    font-size: 18px;
+    text-transform: uppercase;
+    position: relative;
+    /* color: #FFFFFF; */
+    padding: 15px;
+}
+
+.bookingInfoHeader h3.bookingInfoTitle i {
+    margin-right: 5px;
+}
+
+.cBookingInfoWrapper .cBookingInfoDiv.bookingInfoBody h4.bookingInfoSubtitle {
+    margin: 0 auto;
+    font-size: 21px;
+    margin: 0 auto 20px;
+    font-weight: bold;
+}
+
+.cBookingInfoWrapper .cBookingInfoDiv.bookingInfoBody {
+    padding: 15px;
+    border: 0px solid #CCCCCC;
+    border-top-width: 0;
+}
+
+.cBookingInfoWrapper .cBookingInfoDiv.bookingInfoBody p {
+    position: relative;
+    font-size: 15px;
+    margin-bottom: 6px;
+}
+
+.cBookingInfoWrapper .cBookingInfoDiv.bookingInfoBody p span {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+}
+
+.cBookingInfoWrapper .cBookingInfoDiv.bookingInfoBody p span.bookingInfoLabel {
+    color: #000000;
+    min-width: 140px;
+}
+
+.cBookingInfoWrapper .cBookingInfoDiv.bookingInfoBody p span.bookingInfoLabelIcon {
+    color: #37b1c3;
+    font-size: 21px;
+    width: 30px;
+}
+
+.cBookingInfoWrapper .cBookingInfoDiv.bookingInfoBody p span.bookingInfoValue {
+    font-weight: 600;
+}
+
+.cBookingInfoWrapper .cBookingInfoDiv.bookingInfoBody p:last-child {
+    margin-bottom: 0;
+}
+
+.cSection.cSectionBookingServices .cBookingInfoWrapper .cBookingInfoDiv.bookingInfoBody {
+    padding: 0;
+    border-width: 0; 
+}
+
+.cSectionBookingServices .cTable {
+    margin-bottom: 0;
+}
+
+.cSectionBookingServices .cTable.table td,
+.cSectionBookingServices .cTable.table th {
+    border-color: #ECECEC;
+}
+
+
+
+span.cBookingInfoStatus.cStatusBooked {
+    color: #333333;
+}
+
+
+span.cBookingInfoStatus.cStatusCancelled {
+    color: #F44336;
+}
+
+
+span.cBookingInfoStatus.cStatusCompleted {
+    color: #8BC34A;
+}
+
+.cSectionBookingServices .cTable .cAddonBtn {
+    display: inline-block;
+    margin-bottom: 5px;
+    padding: 5px 10px;
+    font-weight: 500;
+    font-size: 14px;
+    border: 1px solid #37b1c3;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    color: #37b1c3;
+}
+
+
+.cCancelFullBooking {
+    margin-top: -7px;
+}
+
+
+
+
+/* RESPONSIVE ELEMENTS */
+ul.cHeaderLinks li.cHeaderLink.cRespSearchWrap {
+    display: none;
+}
+
+ul.cSearchResults.cListMode li.cSearchResult a.cSearchResultLink .cResultRespWrapper {
+    display: none;
+}
+
+ul.cSearchResults.cListMode li.cSearchResult a.cSearchResultLink .cResultRespWrapper .cRespRatingsWrapper {
+    position: relative;
+    display: block;
+    width: 100%;
+}
+
+ul.cSearchResults.cListMode li.cSearchResult a.cSearchResultLink .cResultRespWrapper .cRespRatingsWrapper span {
+    font-size: 12px;
+    display: inline-block;
+    float: left;
+    margin-top: 7px;
+}
+
+ul.cSearchResults.cListMode li.cSearchResult a.cSearchResultLink .cResultRespWrapper .cRespRatingsWrapper span.cResultReview {
+    color: #000000;
+    text-align: center;
+    margin-left: 10px;
+}
+
+ul.cSearchResults.cListMode li.cSearchResult a.cSearchResultLink .cResultRespWrapper .cRespRatingsWrapper span.cResultInMap {
+    float: right;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+.cResultRespWrapper .cRespRatingsWrapper span.cResultInMap button {
+    background: transparent;
+    border: 1px solid #37b1c3;
+    color: #37b1c3;
+    line-height: 15px;
+    border-radius: 3px;
+}
+
+.cResultRespWrapper .cRespRatingsWrapper span.cResultInMap button:focus,
+.cResultRespWrapper .cRespRatingsWrapper span.cResultInMap button:hover {
+    outline: none;
+    background: #37b1c3;
+    color: #FFFFFF;
+}
+
+
+ul.cSearchResults.cListMode li.cSearchResult a.cSearchResultLink .cResultRespWrapper .cRespRatingsWrapper span.cResultInMap button {
+    height: 30px;
+    line-height: 18px;
+    padding: 0px 15px;
+    /* visibility: hidden; */
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.cRespCheckoutCartWrapper {
+    display: none;
+    position: relative;
+    -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,0.12);
+    -moz-box-shadow: 0 2px 10px 0 rgba(0,0,0,0.12);
+    box-shadow: 0 2px 10px 0 rgba(0,0,0,0.12);
+}
+
+.cRespCheckoutCartWrapper .cRespCheckoutCartDiv {
+    display: block;
+    position: relative;
+}
+
+.cRespCheckoutCartWrapper .cRespCheckoutCartDiv.cRespCartHeader {
+    border-bottom: 1px solid #dfdfdf;
+}
+
+.cRespCheckoutCartWrapper .cRespCheckoutCartDiv.cRespCartHeader h3.cRespCartTitle {
+    margin: 0 auto;
+    padding: 15px;
+    font-size: 18px;
+    text-transform: uppercase;
+    background: #37b1c3;
+    color: #FFFFFF;
+}
+
+.cRespCheckoutCartWrapper .cRespCheckoutCartDiv.cRespCartBody {
+    padding: 15px;
+}
+
+.cRespCheckoutCartWrapper .cRespCheckoutCartDiv.cRespCartBody h2.cRespCartSectionTitle {
+    margin: 0 auto 10px;
+    font-size: 21px;
+    font-weight: bold;
+    color: #37b1c3;
+}
+
+.cRespCheckoutCartWrapper .cRespCheckoutCartDiv.cRespCartBody span {
+    display: block;
+    font-size: 15px;
+    position: relative;
+    color: #000000;
+}
+
+.cRespCheckoutCartWrapper .cRespCheckoutCartDiv.cRespCartBody span i {
+    width: 18px;
+    display: inline-block;
+}
+
+.cRespCheckoutCartWrapper .cRespCheckoutCartDiv.cRespCartBody p {
+    margin-bottom: 0;
+    margin-top: 0px;
+    position: relative;
+    font-size: 18px;
+    color: #000000;
+    font-weight: bold;
+    text-align: right;
+}
+
+.cRespCheckoutCartWrapper .cRespCheckoutCartDiv.cRespCartBody p label {
+    margin-bottom: 0;
+    position: relative;
+    float: left;
+}
+
+.cRespCheckoutCartWrapper .cRespCheckoutCartDiv.cRespCartBody p small {
+    font-weight: 400;
+}
+
+.cRespCheckoutCartWrapper .cRespCheckoutCartDiv.cRespCartFooter {
+    padding: 15px;
+    border-top: 1px solid #e5e5e5;
+    text-align: right;
+}
+
+
+span.cRespFloatingBtn {
+    display: none;
+    font-size: 21px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin-right: -30px;
+    background: #37b1c3;
+    color: #FFFFFF;
+    line-height: 30px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    cursor: pointer;
+    z-index: 100;
+}
+
+.cInfoWrapper .cInfoCol.cInfoLinksWrapper.cRespOpen,
+.cInfoWrapper .cInfoCol.cInfoLinksWrapper.cFixed.cRespOpen {
+    -webkit-transform: translateX(0px);
+    -moz-transform: translateX(0px);
+    transform: translateX(0px);
+}
+
+
+.cUserWrapper .cUserCol.cUserLinksWrapper.cRespOpen,
+.cUserWrapper .cUserCol.cUserLinksWrapper.cFixed.cRespOpen {
+    -webkit-transform: translateX(0px);
+    -moz-transform: translateX(0px);
+    transform: translateX(0px);
+}
+
+
+.cRespBookingTable {
+    display: none;
+}
+
+.cRespBtnLabel {
+    display: none;
+}
+
+
+
+.cRespStoreSlider {
+    display: none;
+}
+
+.cRespCalToggle {
+    display: none;
+    cursor: pointer;
+    height: 42px;
+    width: 42px;
+    line-height: 42px;
+    color: #37b1c3;
+    border: 1px solid #37b1c3;
+    -webkit-border-radius: 42px;
+    -moz-border-radius: 42px;
+    border-radius: 42px;
+    font-size: 24px;
+}
+
+.cCartIconWrapper .cLinkIcon i {
+    font-size: 0;
+}
+
+ul.cHeaderLinks li.cHeaderLink.cCartIconWrapper span.cLinkValue {
+    color: #FFFFFF;
+    display: inline-block;
+    vertical-align: middle;
+    background: #FF9800;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    font-size: 12px;
+    width: 27px;
+    height: 27px;
+    line-height: 27px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* The checkboxcontainer */
+.checkboxcontainer {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 12px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; 
+   font-weight: normal;
+}
+
+/* Hide the browser's default checkbox */
+.checkboxcontainer input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.checkboxcontainer:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.checkboxcontainer input:checked ~ .checkmark {
+  background-color: #37b1c3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.checkboxcontainer input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.checkboxcontainer .checkmark:after {
+  left: 9px;
+  top: 4px;
+  width: 7px;
+  height: 13px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+/* RESPONSIVE STYLES */
+
+@media screen and (max-width: 1199px) {
+    .cHeaderWrap .cHeaderContainer {
+        padding: 0;
+    }
+    
+    .cHeaderWrap .cHeaderContainer.cLeftContainer {
+        padding-left: 15px;
+    }
+    
+    .cHeaderSearchForm > div.cHeaderInputWrapper {
+        width: 300px;
+    }
+}
+
+@media screen and (max-width: 1440px) {
+    .cSection.cSectionSearch .cBgContainer img.bgImgRight {
+    position: absolute;
+    right: -100px;
+    top: 0;
+    width: 877px !important;
+    height: 637px !important;
+}
+}
+@media screen and (max-width: 1024px) {
+    .cHeaderWrap .cHeaderContainer.cMiddleContainer {
+        padding: 0;
+    }
+    
+    .cHeaderSearchForm > div.cHeaderInputWrapper {
+        /* width: 350px; */
+    }
+    
+    .cHeaderSearchForm > div.cHeaderCarTypeWrapper {
+        width: 150px;
+    }
+    
+    .cSection.cSectionSearch .cBgContainer img.bgImgLeft {
+            left: -310px;
+    top: 40px;
+    max-height: 545px;
+}
+    }
+    
+    .cSection.cSectionSearch .cBgContainer img.bgImgRight {
+       right: -120px;
+    top: 1px;
+    /*max-height: 607px;*/
+    /*width: 1145px !important;
+    height: 637px !important;*/
+    }
+    
+    .cSectionSearch h2.cSectionHeading {
+        font-size: 45px;
+    }
+    
+    
+    /* BOOKING PAGE */
+    .cSection.cSectionStore .cStoreWrapper .cStoreDiv {
+        margin: 10px;
+    }
+    
+    .cSection.cSectionStore .cStoreWrapper .cStoreDiv ~ .cStoreDiv {
+        margin-left: 0;
+    }
+
+
+@media screen and (max-width: 991px) {    
+    .cHeaderSearchForm > div.cHeaderInputWrapper {
+        width: 270px;
+    }
+    
+    .cHeaderSearchForm > div.cHeaderCarTypeWrapper {
+        width: 120px;
+    }
+    
+    .cHeaderSearchForm > div.cHeaderCarTypeWrapper .cHeaderCarTypeDropdown a.cTriggerDropdown {
+        padding: 0 2px;
+    }
+    
+    .cHeaderSearchForm > div.cHeaderCarTypeWrapper .cHeaderCarTypeDropdown a.cTriggerDropdown ~ ul.cHeaderCarTypes li.cHeaderCarType a {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+    
+    ul.cHeaderLinks li.cHeaderLink.cUserAccountWrap {
+        padding-left: 0;
+        border-width: 0;
+    }
+    
+    ul.cHeaderLinks li.cHeaderLink.cUserAccountWrap.activeuser span.cLinkValue {
+        max-width: 70px;
+    }
+    
+    
+    ul.cCitySearchList li.cCitySearch {
+        height: 270px;
+    }
+    
+    ul.cCitySearchList li.cCitySearch:nth-child(even) {
+        height: 200px;
+    }
+    
+    
+    /* INFORMATION AND CUSTOMER PAGES */
+    .cInfoHeader,
+    .cUserHeader {
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+    
+    .cInfoHeader h2.cInfoHeading,
+    .cUserHeader h2.cUserHeading {
+        font-size: 48px;
+    }
+    
+    .cInfoWrapper .cInfoCol.cInfoLinksWrapper,
+    .cUserWrapper .cUserCol.cUserLinksWrapper {
+        width: 240px;
+    }
+    
+    .cInfoWrapper .cInfoCol.cInfoContentWrapper,
+    .cUserWrapper .cUserCol.cUserContentWrapper {
+        width: -webkit-calc(100% - 240px);
+        width: -moz-calc(100% - 240px);
+        width: calc(100% - 240px);
+        margin-left: 240px;
+        min-height: 420px;
+    }
+    
+}
+
+@media screen and (max-width: 870px) {
+    .cHeaderSearchForm > div.cHeaderInputWrapper {
+        width: 235px;
+    }
+    
+    .cHeaderSearchForm > div.cHeaderCarTypeWrapper {
+        width: 90px;
+    }
+    
+    .cHeaderSearchForm > div.cHeaderCarTypeWrapper .cHeaderCarTypeDropdown a.cTriggerDropdown img {
+        display: none;
+    }
+    
+    .cHeaderSearchForm > div.cHeaderCarTypeWrapper .cHeaderCarTypeDropdown a.cTriggerDropdown span {
+        padding-left: 0;
+    }
+    
+    .cHeaderSearchForm > div.cHeaderCarTypeWrapper .cHeaderCarTypeDropdown a.cTriggerDropdown ~ ul.cHeaderCarTypes li.cHeaderCarType a {
+        padding: 10px 5px;
+    }
+    
+    .cHeaderSearchForm > div.cHeaderCarTypeWrapper .cHeaderCarTypeDropdown a.cTriggerDropdown ~ ul.cHeaderCarTypes li.cHeaderCarType a img.cHeaderCarTypeIcon {
+        display: none;
+    }
+    
+    ul.cHeaderLinks li.cHeaderLink.cUserAccountWrap.activeuser span.cLinkValue {
+        max-width: 50px;
+    }
+    
+    
+    
+    /* SLOT BOOKING PAGE */    
+    .cRespStoreSlider {
+        display: inline-block;
+        position: relative;
+        vertical-align: middle;
+    }
+    
+    .cSection.cSectionStore .cStoreWrapper {
+        display: block;
+    }
+    
+    .cSection.cSectionStore .cStoreWrapper .cStoreDiv {
+        position: absolute;
+        top: 0;
+        height: 100%;
+        width: -webkit-calc(100% - 150px);
+        width: -moz-calc(100% - 150px);
+        width: calc(100% - 150px);
+        left: 150px;
+        margin: 0 auto;
+        padding: 5px;
+        border: 1px solid #37b1c3;
+        border-left-width: 0;
+    }
+    
+    .cSection.cSectionStore .cStoreWrapper .cStoreDiv.cRespActiveCard {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+    }
+    
+    .cSection.cSectionStore .cStoreWrapper .cStoreDiv.cRespHideCard {
+        display: none;
+    }
+
+    ul.cRespSliderLinks {
+        position: relative;
+        padding: 0;
+        margin: 0 auto;
+        list-style-type: none;
+        width: 150px;
+    }
+
+    ul.cRespSliderLinks li {
+        padding: 6px 10px;
+        font-size: 12px;
+        background: #37b1c3;
+        color: #FFFFFF;
+        cursor: pointer;
+    }
+
+    ul.cRespSliderLinks li ~ li {
+        border-top: 1px solid #eeeeee;
+    }
+
+    ul.cRespSliderLinks li.active {
+        background: #21656f;
+    }
+    
+    .cStoreMapWrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        position: relative;
+    }
+
+    .cStoreHoursInfo h2.cStoreHoursTitle {
+        display: none;
+    }
+
+    .cStoreHoursListWrapper {
+        margin-top: 5px;
+    }
+    
+    
+    
+    .cCalendarWrapper h2.cCalendarSectionHeading,
+    .cServicesWrapper h2.cServiceSectionHeading,
+    .cSlotsWrapper h2.cSlotSectionHeading {
+        font-size: 14px;
+    }
+    
+    
+    .cServicesWrapper {
+        width: 35%;
+    }
+
+    .cSlotsWrapper {
+        width: 20%;
+    }
+    
+    .cSlotsListWrapper {
+        max-height: 508px;
+        height: 508px;
+    }
+    
+    ul.cServiceOptionsList li.cServiceOption {
+        display: block;
+        width: 100%;
+        padding: 5px;
+        height: 54px;
+        text-align: left;
+    }
+
+    ul.cServiceOptionsList li.cServiceOption .cServiceOptionLabel {
+        display: inline-block;
+        vertical-align: middle;
+        position: relative;
+        margin-right: 5px;
+        /* width: 70px; */
+        text-align: left;
+        margin-top: 10px;
+    }
+
+    ul.cServiceOptionsList li.cServiceOption .cServiceOptionControl {
+        position: relative;
+        float: right;
+        /* width: -webkit-calc(100% - 80px); */
+        /* width: -moz-calc(100% - 80px); */
+        /* width: calc(100% - 80px); */
+        text-align: right;
+    }
+
+    .cServicesWrapper .cServiceGroup h3.cServiceCatTitle {
+        font-size: 15px;
+        padding: 10px;
+    }
+
+    .cServiceListWrapper ul.cServiceList li.cService a.cServiceLink {
+        padding: 10px;
+    }
+
+    .cServiceListWrapper ul.cServiceList li.cService a.cServiceLink h4.cServiceTitle {
+        font-size: 12px;
+    }
+
+    .cServiceListWrapper ul.cServiceList li.cService a.cServiceLink:after {
+        right: 10px;
+    }
+    
+    
+    .sCalendarMonthWrapper > div > .sCalendarRow ul.sCalendaRowList li.sCalendarRowItem {
+        height: 72px;
+    }
+
+    .sCalendarMonthWrapper > div > .sCalendarRow.sBodyMode ul.sCalendaRowList li.sCalendarRowItem .sCalendarCell {
+        height: 48px;
+        line-height: 48px;
+        width: 48px;
+        font-size: 14px;
+    }
+    
+    .cSlotsListWrapper ul.cSlotsList li.cSlotItem a.cSlotItemLink {
+        height: 30px;
+        line-height: 30px;
+    }
+
+    .cSlotsListWrapper ul.cSlotsList li.cSlotItem a.cSlotItemLink span.cSlotTimeLabel {
+        font-size: 12px;
+    }
+
+    .cServiceBookingWrapper .cServiceBooking .cServiceGroupWrapper {
+        max-height: 450px;
+        height: 450px;
+    }   
+    
+    .cSlotsBookingControlWrapper {
+        padding: 5px;
+    } 
+    
+    .cSlotBookControl {
+        font-size: 14px;
+        padding: 10px 5px;
+    }    
+    
+}
+
+
+@media screen and (max-width: 768px) {
+    body.cart_open {
+        position: fixed;
+        overflow: hidden;
+    }
+    
+    .cCartIconWrapper .cLinkIcon {
+        font-size: 0 !important;
+        vertical-align: middle;
+    }
+    
+    .cCartIconWrapper .cLinkIcon i {
+        font-size: 21px;
+        vertical-align: middle;
+    }
+    
+    .cServiceCartWrapper .cServiceCartContent {
+        /* height: 100vh; */
+    }    
+    
+    .cServiceCartWrapper .cServiceCartContent .cServiceCartHeader .cCartTitle > .cCloseServiceCart:before {
+        -webkit-transform: translateY(-50%) rotate3d(0, 0, 1, 45deg);
+        -moz-transform: translateY(-50%) rotate3d(0, 0, 1, 45deg);
+        transform: translateY(-50%) rotate3d(0, 0, 1, 45deg);
+    }
+
+    .cServiceCartWrapper .cServiceCartContent .cServiceCartHeader .cCartTitle > .cCloseServiceCart:after {
+        -webkit-transform: translateY(-50%) rotate3d(0, 0, 1, -45deg);
+        -moz-transform: translateY(-50%) rotate3d(0, 0, 1, -45deg);
+        transform: translateY(-50%) rotate3d(0, 0, 1, -45deg);
+    }
+    
+    
+    section.cSection.cSectionCheckout {
+        padding-top: 100px;
+    }
+    
+    .cSectionCheckout h2.cSectionHeading {
+        font-size: 27px;
+        margin-bottom: 30px;
+    }
+    .cSectionCheckout .cSectionSubHeading {     
+        font-size: 15px;
+    }
+    
+    .cSectionCheckout h2.cSectionHeading:before {
+        font-size: 100px;
+        bottom: -27px;
+    }
+    
+    .cCheckoutWrapper .cCheckoutDiv.checkoutFormDiv {
+        padding-left: 18px;
+    }
+    
+    
+    /* BOOKING LIST PAGE */
+    .cBookingInfo h3.cBookingMerchant {
+        font-size: 21px;
+    }
+
+    .cBookingTotal p.cBookingPrice {
+        font-size: 21px;
+    }
+    
+    
+    /* SLOT BOOKING PAGE */
+    .cServiceBookingWrapper {
+        -webkit-flex-wrap: wrap;
+        -moz-flex-wrap: wrap;
+        flex-wrap: wrap;
+    }
+
+    .cCalendarWrapper {
+        width: 100%;
+        -webkit-order: 1;
+        -moz-order: 1;
+        order: 1;
+        margin: 0 10px 10px !important;
+    }
+
+    .cServicesWrapper {
+        -webkit-order: 2;
+        -moz-order: 2;
+        order: 2;
+        width: -webkit-calc(100% - 210px);
+        width: -moz-calc(100% - 210px);
+        width: calc(100% - 210px);
+    }
+
+    .cSlotsWrapper {
+        width: 180px;
+        margin-left: 0 !important;
+    }
+    
+    .cServiceBookingWrapper .cServiceBooking .cServiceGroupWrapper {
+        max-height: 478px;
+        height: 478px;
+    }
+    
+    
+    .cCalendarWrapper h2.cCalendarSectionHeading,
+    .cServicesWrapper h2.cServiceSectionHeading,
+    .cSlotsWrapper h2.cSlotSectionHeading {
+        font-size: 15px;
+    }
+    
+    .cCalendarWrapper h2.cCalendarSectionHeading {
+        font-size: 0;
+        /* display: none; */
+        padding: 0;
+        height: 42px;
+        background: #FFFFFF;
+        color: #333333;
+        border-bottom: 1px solid #ECECEC;
+        cursor: pointer;
+        pointer-events: initial;
+    }
+
+    .cCalendarWrapper h2.cCalendarSectionHeading:before {
+        content: attr(data-label);
+        font-size: 15px;
+        /* text-align: left; */
+        display: inline-block;
+        vertical-align: middle;
+        position: absolute;
+        left: 10px;
+        top: 12px;
+    }
+    
+    .cCalendarWrapper h2.cCalendarSectionHeading:after {
+        font-size: 15px;
+        font-family: "Ionicons";
+        content: "\f2ab";
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: 10px;
+        position: absolute;
+        right: 10px;
+        top: 6px;
+        border: 1px solid #37b1c3;
+        height: 30px;
+        width: 30px;
+        line-height: 30px;
+        color: #37b1c3;
+        -webkit-border-radius: 30px;
+        -moz-border-radius: 30px;
+        border-radius: 30px;
+    }
+    
+    .cCalendarWrapper h2.cCalendarSectionHeading.cRespCloseCal:after {
+        content: "\f2c0";
+        border-color: #FF0000;
+        color: #FF0000;
+    }
+    
+    .sCalendar .sCalendarLoader i {
+        font-size: 42px;
+    }
+    
+    .sCalendar .sCalendarHeader {
+        padding: 0px 12px;
+    }
+    
+    .cRespCalToggle {
+        display: initial;
+    }
+
+    .sCalendar {
+        /* display: none; */
+        height: 0;
+        -webkit-transform: scaleY(0);
+        -moz-transform: scaleY(0);
+        transform: scaleY(0);
+        -webkit-transform-origin: top;
+        -moz-transform-origin: top;
+        transform-origin: top;
+        -webkit-transition: all 0.1s ease-in-out 0s;
+        -moz-transition: all 0.1s ease-in-out 0s;
+        transition: all 0.1s ease-in-out 0s;
+    }
+    
+    .sCalendar .sCalendarHeader > div:not(.sHeaderMiddleContainer) {
+        -webkit-box-flex: initial;
+        -ms-flex: initial;
+        flex: initial;
+        display: none;
+    }
+
+    .sCalendar .sCalendarHeader > div.sHeaderMiddleContainer {
+        width: 100%;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-align-items: center;
+        align-items: center;
+    }
+
+    .sCalendar .sCalendarHeader > div.sHeaderRightContainer {
+        width: 50px;
+    }
+    
+    .sCalendar.sRespCalOpen {
+        /* display: -webkit-box; */
+        /* display: -ms-flexbox; */
+        /* display: flex; */
+        height: auto;
+        -webkit-transform: scaleY(1);
+        -moz-transform: scaleY(1);
+        transform: scaleY(1);
+    }
+    
+    
+    /* SLOT BOOKING PAGE */
+    ul.cServiceOptionsList li.cServiceOption {
+        display: inline-block;
+        width: 50%;
+        padding: 5px 7px;
+        height: 80px;
+        text-align: center;
+    }
+
+    ul.cServiceOptionsList li.cServiceOption .cServiceOptionLabel {
+        display: block;
+        vertical-align: middle;
+        position: relative;
+        margin-right: 0;
+        width: 100%;
+        text-align: center;
+        margin-top: 0;
+    }
+
+    ul.cServiceOptionsList li.cServiceOption .cServiceOptionControl {
+        position: relative;
+        float: none;
+        /* width: -webkit-calc(100% - 80px); */
+        /* width: -moz-calc(100% - 80px); */
+        /* width: calc(100% - 80px); */
+        text-align: center;
+    }
+    
+    
+}
+
+@media screen and (max-width: 767px) {
+    .container.cNoContainerpadding {
+        padding-left: 10px;
+        padding-right: 10px;
+        width: 100%;
+    }
+    
+    ul.cHeaderLinks li.cHeaderLink.cUserAccountWrap.activeuser ul.dropdown-menu {
+        position: fixed;
+        left: 0;
+        top: 60px;
+        border-width: 0;
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        border-radius: 0;
+        width: 100%;
+        margin: 0 auto;
+        border-top: 1px solid #ECECEC;
+    }
+    
+    
+    /* BUTTONS */
+    .cBtn {
+        height: 42px;
+    }
+    
+    a.cBtnNewsSubscribe {
+        line-height: 40px;
+    }
+    
+    .cCartFooterBtns a {
+        line-height: 40px;
+    }
+    
+    
+    ul.cHeaderLinks li.cHeaderLink.cRespSearchWrap {
+        display: inline-block;
+        cursor: pointer;
+    }
+    
+    .cHeaderWrap .cHeaderContainer.cMiddleContainer {
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        height: 60px;
+        background: #37b1c3;
+        z-index: 1000;
+        -webkit-transform-origin-y: top;
+        -moz-transform-origin-y: top;
+        transform-origin-y: top;
+        -webkit-transform: scale(0);
+        -moz-transform: scale(0);
+        transform: scaleY(0);
+        -webkit-transition: all 0.15s ease-in-out;
+        -moz-transition: all 0.15s ease-in-out;
+        transition: all 0.15s ease-in-out;
+    }
+    
+    .cHeaderWrap .cHeaderContainer.cMiddleContainer.cOpen {
+        -webkit-transform: scaleY(1);
+        -moz-transform: scaleY(1);
+        transform: scaleY(1);
+    }
+    
+    .cHeaderSearchFormWrapper {
+        width: 100%;
+    }
+    
+    .cHeaderSearchForm > div.cHeaderInputWrapper {
+        width: -webkit-calc(100% - 135px);
+        width: -moz-calc(100% - 135px);
+        width: calc(100% - 135px);
+    }
+    
+    .cHeaderSearchForm > div.cHeaderInputWrapper input.cHeaderInputControl {
+        color: #FFFFFF;
+        border-color: #FFFFFF;
+        border-width: 1px;
+    }
+
+    .cHeaderSearchForm > div.cHeaderInputWrapper input.cHeaderInputControl ~ label.cHeaderInputLabel {
+        color: #FFFFFF;
+        opacity: 0.5;
+    }
+
+    .cHeaderSearchForm > div.cHeaderInputWrapper input.cHeaderInputControl:focus ~ label.cHeaderInputLabel,
+    .cHeaderSearchForm > div.cHeaderInputWrapper input.cHeaderInputControl:not([value=""]) ~ label.cHeaderInputLabel {
+        opacity: 1;
+        background: #FFFFFF;
+        color: black;
+    }
+    
+    .cHeaderSearchForm > div.cHeaderInputWrapper span.cHeaderGeoLocation {
+        color: #FFFFFF;
+    }
+
+    .cHeaderSearchForm > div.cHeaaderBtnWrapper {
+        border: 1px solid #FFFFFF;
+        border-left-width: 0;
+    }
+    
+    .cHeaderWrap .cHeaderContainer img.cHeaderLogo {
+        height: 36px;
+    }
+    
+    ul.cHeaderLinks li.cHeaderLink {
+        height: 36px;
+        line-height: 36px;
+    }
+    
+    ul.cHeaderLinks li.cHeaderLink.cUserAccountWrap:not(.activeuser) span.cLinkValue {
+        display: none;
+    }
+    
+    ul.cHeaderLinks li.cHeaderLink.cUserAccountWrap.activeuser span.cLinkIcon {
+        width: 36px;
+        height: 36px;
+        line-height: 36px;
+    }
+    
+    ul.cHeaderLinks li.cHeaderLink.cUserAccountWrap.activeuser span.cLinkValue {
+        display: none;
+    }
+    
+    ul.cHeaderLinks li.cHeaderLink.cCartIconWrapper span.cLinkIcon {
+        /* visibility: hidden; */
+        /* width: 30px; */
+        /* height: 27px; */
+        /* line-height: 27px; */
+        /* display: inline-block; */
+        /* overflow: hidden; */
+        /* vertical-align: middle; */
+        /* text-align: center; */
+    }
+    
+    ul.cHeaderLinks li.cHeaderLink.cCartIconWrapper span.cLinkIcon:before {
+        /* content: "\f3f8"; */
+        /* font-family: "Ionicons"; */
+        /* display: inline-block; */
+        /* visibility: visible; */
+    }
+    
+    ul.cHeaderLinks li.cHeaderLink.cCartIconWrapper span.cLinkIcon {
+        /* vertical-align: middle; */
+        /** display: inline-block; */
+    }
+    
+    
+    
+    .cSection.cSectionSearch .cBgContainer img.bgImgLeft {
+        left: -240px;
+        top: 120px;
+        max-height: 250px;
+    }
+    
+    section.cSection.cSectionSearch {
+        padding-top: 120px;
+        padding-bottom: 100px;
+    }
+    
+    .cSectionSearch h2.cSectionHeading {
+        font-size: 36px;
+        margin-bottom: 30px;
+    }
+    
+    .cSectionSearch .cSearchWrapper .cSearchInputWrapper .cSearchInputBox {
+        width: -webkit-calc(100% - 140px);
+        width: -moz-calc(100% - 140px);
+        width: calc(100% - 140px);
+    }
+    
+    .cSectionSearch .cSearchWrapper .cSearchInputWrapper .cSearchInputBox input.cSearchInput:focus ~ label.cSearchTextPlaceholder,
+    .cSectionSearch .cSearchWrapper .cSearchInputWrapper .cSearchInputBox input.cSearchInput:not([value=""]) ~ label.cSearchTextPlaceholder {
+        -webkit-transform: translateX(0px) translateY(-33px) scale(0.72);
+        -moz-transform: translateX(0px) translateY(-33px) scale(0.72);
+        transform: translateX(0px) translateY(-33px) scale(0.72);
+    }
+    
+    .cSectionSearch .cSearchWrapper .cSearchInputWrapper .cSearchBtnWrap .cSubmitSearch {
+        padding: 0 5px;
+    }
+    
+    
+    
+    
+    section.cSection.cSectionCitySearch {
+        padding-top: 100px;
+    }
+    
+    
+    .cCitySearchWrapper h2.cSectionHeading,
+    .cSectionProcessFlow h2.cSectionHeading {
+        font-size: 24px;
+    }
+    
+    .cCitySearchWrapper h2.cSectionHeading:before,
+    .cSectionProcessFlow h2.cSectionHeading:before {
+        font-size: 120px;
+        bottom: -27px;
+    }
+    
+    section.cSection.cSectionCitySearch .container.cNoContainerpadding {
+        padding-right: 0;
+    }
+    
+    ul.cCitySearchList li.cCitySearch,
+    ul.cCitySearchList li.cCitySearch:nth-child(even) {
+        height: 200px;
+    }
+    
+    ul.cCitySearchList li.cCitySearch a.cCitySearchLink h3.cCityName {
+        font-size: 18px;
+    }
+    
+    ul.cCitySearchList li.cCitySearch a.cCitySearchLink h3.cCityName:before {
+        font-size: 120px;
+    }
+    
+    
+    
+    
+    .cNewsSubscribeWrapper {
+        -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    }
+    
+    .cNewsSubscribeWrapper .cFormControlDiv ~ .cFormControlDiv {
+        margin-left: auto;
+        margin-top: 15px;
+    }
+    
+    
+    
+    /* SEARCH RESULTS PAGE */
+    .cSection.cSectionResults {
+        padding-top: 0;
+    }
+    
+    .cResultsListWrapper {
+        padding-left: 0;
+        padding-right: 0;
+        padding-top: 0;
+    }
+    
+    .cResultsListWrapper .cResultsSummary {
+        margin-bottom: 0;
+        padding: 15px 0;
+        border-bottom: 0px solid #ECECEC;
+    }
+    
+    ul.cSearchResults.cListMode {
+        padding: 10px;
+        background: #ECECEC;
+        margin-left: -10px;
+        margin-right: -10px;
+        padding-top: 0;
+    }
+    
+    ul.cSearchResults.cListMode li.cSearchResult {
+        -webkit-box-shadow: 0 0px 10px 2px rgba(0, 0, 0, 0.1);
+        -moz-box-shadow: 0 0px 10px 2px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 0px 10px 2px rgba(0, 0, 0, 0.1);
+        padding: 0;
+        margin: 10px auto 5px;
+    }
+    
+    ul.cSearchResults.cListMode li.cSearchResult ~ li.cSearchResult {
+        border-top-width: 0;
+    }
+    
+    ul.cSearchResults.cListMode li.cSearchResult a.cSearchResultLink .cResultContentWrapper .cResultContent {
+        padding-left: 5px;
+    }
+    
+    ul.cSearchResults.cListMode li.cSearchResult a.cSearchResultLink .cResultContentWrapper .cResultImageWrapper {
+        width: 160px;
+        padding: 5px;
+        background: #FFFFFF;
+    }
+    
+    ul.cSearchResults.cListMode li.cSearchResult a.cSearchResultLink .cResultContentWrapper .cResultContent .cResultHeader h3.cResultTitle {
+        font-size: 18px;
+        margin-top: 5px;
+        margin-bottom: 10px;
+    }
+    
+    ul.cSearchResults.cListMode li.cSearchResult a.cSearchResultLink .cResultContentWrapper .cResultContent .cResultBody p {
+        font-size: 12px;
+    }
+    
+    ul.cSearchResults.cListMode li.cSearchResult a.cSearchResultLink .cResultContentWrapper .cResultContent .cResultFooter span {
+        font-size: 12px;
+        margin-top: 0;
+        width: auto;
+    }
+    
+    ul.cSearchResults.cListMode li.cSearchResult a.cSearchResultLink .cResultContentWrapper .cResultContent .cResultHeader .cResultRatingsWrapper,
+    ul.cSearchResults.cListMode li.cSearchResult a.cSearchResultLink .cResultContentWrapper .cResultContent .cResultFooter span.cResultInMap {
+        display: none;
+    }
+    
+    ul.cSearchResults.cListMode li.cSearchResult a.cSearchResultLink .cResultContentWrapper .cResultContent .cResultFooter span.cSearchResultTime {
+        width: 100%;
+        margin-top: 5px;
+    }
+    
+    ul.cSearchResults.cListMode li.cSearchResult a.cSearchResultLink .cResultRespWrapper {
+        display: inherit;
+        width: 100%;
+        background: #FFFFFF;
+        padding: 10px;
+        border-top: 0px solid #d6d6d6;
+        margin-top: 2px;
+    }
+    
+    
+    
+    /* CHECKOUT CART */
+    .cSectionCheckout h2.cSectionHeading {
+        margin-bottom: 36px;
+    }
+    
+    .cCheckoutWrapper {
+        -webkit-flex-wrap: wrap;
+        -moz-flex-wrap: wrap;
+        flex-wrap: wrap;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+
+    .cCheckoutWrapper .cCheckoutDiv {
+        width: 100%;
+    }
+    
+    .cCheckoutCartWrapper {
+        display: none;
+    }
+    
+    .cRespCheckoutCartWrapper {
+        display: block;
+    }
+    
+    .cCheckoutWrapper .cCheckoutDiv.checkoutFormDiv {
+        padding-left: 0;
+        margin-top: 36px;
+    }
+    
+    
+    
+    /* INFORMATION AND CUSTOMER PAGES */    
+    .cInfoHeader,,
+    .cUserHeader {
+        padding-top: 0px;
+        padding-bottom: 24px;
+    }
+    
+    .cInfoHeader h2.cInfoHeading,
+    .cUserHeader h2.cUserHeading {
+        font-size: 36px;
+    }
+    
+    span.cRespFloatingBtn {
+        display: block;
+    }
+    
+    .cInfoWrapper .cInfoCol.cInfoLinksWrapper,
+    .cInfoWrapper .cInfoCol.cInfoLinksWrapper.cFixed,
+    .cUserWrapper .cUserCol.cUserLinksWrapper,
+    .cUserWrapper .cUserCol.cUserLinksWrapper.cFixed {
+        position: fixed;
+        left: 0;
+        top: 120px;
+        width: 200px;
+        height: auto;
+        z-index: 50;
+        -webkit-transform: translateX(-200px);
+        -moz-transform: translateX(-200px);
+        transform: translateX(-200px);
+        -webkit-transition: transform .25s ease;
+        -webkit-transition: -webkit-transform .25s ease;
+        -moz-transition: transform .25s ease;
+        -moz-transition: -moz-transform .25s ease;
+        transition: -webkit-transform .25s ease;
+        transition: transform .25s ease;
+        transition: transform .25s ease,-webkit-transform .25s ease;
+    }
+    
+    .cInfoWrapper .cInfoCol.cInfoContentWrapper,
+    .cUserWrapper .cUserCol.cUserContentWrapper {
+        margin-left: 0;
+        border-left-width: 0px;
+        width: 100%;
+        /* padding: 0 15px; */
+        padding: 0;
+        min-height: 300px;
+    }
+    
+    ul.cInfoLinksList,
+    ul.cUserLinksList {
+        background: #FFFFFF;
+        -webkit-box-shadow: 0 2px 9px 0 rgba(0, 0, 0, 0.1);
+        -moz-box-shadow: 0 2px 9px 0 rgba(0, 0, 0, 0.1);
+        box-shadow: 0 2px 9px 0 rgba(0, 0, 0, 0.1);
+        padding: 0;
+    }
+    
+    ul.cInfoLinksList li.cInfoLink ~ li.cInfoLink,
+    ul.cUserLinksList li.cUserLink ~ li.cUserLink {
+        border-top: 1px solid #ECECEC;
+    } 
+    
+    ul.cInfoLinksList li.cInfoLink a,
+    ul.cUserLinksList li.cUserLink a {
+        position: relative;
+        color: #333333;
+        display: block;
+        height: 42px;
+        line-height: 42px;
+        width: 100%;
+        padding: 0 18px;
+        font-size: 15px;
+    }
+    
+    
+    /* SINGLE BOOKING DETAILS PAGE */
+    .cBookingHeader h2.cBookingHeading {
+        font-size: 36px;
+    }
+    
+    .cSectionBookingSummary,
+    .cSectionBookingCustomer,
+    .cSectionBookingMerchant,
+    .cSectionBookingNotes,
+    .cSectionBookingServices {
+        padding: 0 15px;
+    }
+    
+    .cBookingInfoWrapper {
+        margin: 0 auto 18px;
+        padding: 0 !important;
+    }
+    
+    .bookingInfoHeader h3.bookingInfoTitle {
+        font-size: 15px;
+        padding: 12px;
+    }
+    
+    .cBookingInfoWrapper .cBookingInfoDiv.bookingInfoBody {
+        padding: 12px;
+    }
+    
+    .cBookingInfoWrapper .cBookingInfoDiv.bookingInfoBody h4.bookingInfoSubtitle {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+    
+    .cBookingInfoWrapper .cBookingInfoDiv.bookingInfoBody p {
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+    
+    .cBookingInfoWrapper .cBookingInfoDiv.bookingInfoBody p span.bookingInfoLabelIcon {
+        font-size: 18px;
+        width: 24px;
+    }
+    
+    .cSectionBookingServices .cTable thead {
+        display: none;
+    }
+    
+    .cSectionBookingServices .cTable.table td,
+    .cSectionBookingServices .cTable.table th {
+        font-size: 14px;
+        padding: 15px;
+    }
+    
+    .cSectionBookingServices .cTable.table span.cBookingItemTitle {
+        font-weight: 500;
+        font-size: 15px;
+        color: #37b1c3;
+        margin-bottom: 10px;
+        display: block;
+    }
+    
+    .cSectionBookingServices .cTable.table td.cRespHideCell {
+        display: none;
+    }
+    
+    .cSectionBookingServices .cTable.table td .cRespBookingTable {
+        display: block;
+    }
+    
+    .cSectionBookingServices .cTable.table td .cRespBookingTable p {
+        margin-bottom: 2px;
+        font-size: 12px;
+    }
+    
+    .cSectionBookingServices .cTable.table td .cRespBookingTable p.cancel_btn {
+        font-size: 0;
+    }
+    
+    .cSectionBookingServices .cTable .cAddonBtn {
+        font-size: 12px;
+        padding: 2px 5px;
+        font-weight: 400;
+    }
+    
+    .cRespBtnLabel {
+        display: inline-block !important;
+        font-size: 12px;
+        line-height: 1;
+    }
+    
+    .cSectionBookingServices .cBtn.cSmall {
+        height: 30px;
+    }
+    
+    
+    /* MODAL */    
+    .cModalDialog .modal-content .modal-header {
+        padding: 12px;
+    }
+    
+    .cModalDialog .modal-content .modal-header h4.modal-title {
+        font-size: 18px;
+    }
+    
+    .cModalDialog .modal-content .modal-body {
+        padding: 18px 12px;
+    }
+    
+    .cModalDialog .modal-content .modal-footer {
+        padding: 12px;
+    }
+    
+    .cModalCarTypesWrapper ul.cModalCarTypes li.cModalCarType {
+        height: 100px;
+    }
+    
+    .cModalCarTypesWrapper ul.cModalCarTypes li.cModalCarType a input.cRadioModalCarType ~ .cModalCarTypeContent label.cModalCarTypeTitle {
+        font-size: 12px;
+    }
+    
+    .cModalDialog .close {
+        font-size: 27px;
+        margin-top: 3px;
+    }
+    
+    
+    /* BOOKING PAGE MODAL */
+    #modal_store_aboutus .modal-body #store_full_description {
+        max-height: 300px;
+        overflow: auto;
+    }
+
+    #modal_store_aboutus .modal-body #store_full_description p {
+        font-size: 12px;
+    }
+    
+    ul.cStoreReviews {
+        padding: 5px;
+    }
+    
+    
+    .cAddonsWrapper .cAddonsCol.cAddonsLinksWrapper {
+        display: none;
+    }
+
+    .cAddonsWrapper .cAddonsCol.cAddonsContentWrapper {
+        margin-left: 0;
+        border-left-width: 0;
+        width: 100%;
+    }
+    
+    .cAddonsContentList {
+        max-height: 300px;
+        overflow-y: auto;
+    }
+    
+    .cAddonsContentList .cAddonsContent {
+        display: block;
+        padding-bottom: 20px;
+    }
+    
+    .cAddonsContentList .cAddonsContent:first-child {
+        padding-top: 0;
+    }
+    
+    .cAddonsContentList .cAddonsContent h2.cAddonsHeading {
+        font-size: 15px;
+    }
+
+    .cAddonsContentList .cAddonsContent:last-child ul.cAddonsList li.cAddon:last-child {
+        border-bottom-width: 0;
+    }
+    
+}
+
+@media screen and (max-width: 640px) {
+    .cSection.cSectionSearch .cBgContainer img.bgImgLeft {
+        left: -120px;
+        top: 150px;
+        max-height: 160px;
+        -webkit-transform: rotateZ(230deg);
+        -moz-transform: rotateZ(230deg);
+        transform: rotateZ(230deg);
+    }
+    
+    .cSection.cSectionSearch .cBgContainer img.bgImgRight {
+            right: 0px;
+    /* top: 80px; */
+   /* max-height: 400px;
+    width: 578px !important;
+    height: 637px !important;*/
+    }
+    
+    .cSectionSearch .cSearchWrapper .cSearchInputWrapper .cSearchInputBox {
+        width: -webkit-calc(100% - 80px);
+        width: -moz-calc(100% - 80px);
+        width: calc(100% - 80px);
+    }
+    
+    .cSectionSearch .cSearchWrapper .cSearchInputWrapper .cSearchBtnWrap .cSubmitSearch {
+        visibility: hidden;
+        position: relative;
+        overflow: hidden;
+        width: 64px;
+    }
+    
+    .cSectionSearch .cSearchWrapper .cSearchInputWrapper .cSearchBtnWrap .cSubmitSearch:before {
+        content: "\f4a5";
+        font-family: "Ionicons";
+        visibility: visible;
+        background: #780300;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        font-size: 27px;
+        line-height: 64px;
+    }
+    
+    section.cSection.cSectionCitySearch {
+        padding-top: 75px;
+    }
+    
+    section.cSection.cSectionCitySearch .container {
+        border-bottom-width: 0;
+        padding-bottom: 30px;
+    }
+    
+    ul.cCitySearchList li.cCitySearch {
+        width: -webkit-calc(50% - 10px);
+        width: -moz-calc(50% - 10px);
+        width: calc(50% - 10px);
+    }
+    
+    .cFlowStepContainer .cFlowStepImgWrapper img {
+        height: 60px;
+    }
+    
+    .cFlowStepContainer .cFlowStepContent h3.cFlowStepTitle {
+        font-size: 18px;
+    }
+    
+    .cFlowStepContainer.cFlowArrows .cFlowStepImgWrapper:before,
+    .cFlowStepContainer.cFlowArrows .cFlowStepImgWrapper:after {
+        font-size: 21px;
+    }
+    
+    
+    .cSection.cSectionFooter .cFooterBottom {
+        -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    }
+    
+    .cSection.cSectionFooter .cFooterBottom .cFooterCopyrightsWrap {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+    
+    .cSection.cSectionFooter .cFooterBottom .cFooterLinksWrap {
+        -webkit-justify-content: center;
+        justify-content: center;
+    }
+    
+    
+    
+    /* INFORMATION AND CUSTOMER PAGES */
+    .cInfoHeader h2.cInfoHeading,
+    .cUserHeader h2.cUserHeading {
+        font-size: 30px;
+    }
+    
+    .cInfoContentList .cInfoContent .cInfoBody,
+    .cUserContentList .cUserContent .cUserBody {
+        font-size: 12px;
+    }
+    
+    .cInfoInnerWrapper h3.cInfoInnerTitlem,
+    .cUserInnerWrapper h3.cUserInnerTitle {
+        font-size: 18px;
+    }
+    
+    .cInfoInnerWrapper h4.cInnerSubTitle,
+    .cUserInnerWrapper h4.cInnerSubTitle {
+        font-size: 15px;
+    }
+    
+    .cInfoInnerWrapper p,
+    .cUserInnerWrapper p {
+        font-size: 12px;
+        line-height: 1.4;
+    }
+    
+    
+    /* SLOT BOOKING PAGE */
+    ul.cRespSliderLinks {
+        width: 30px;
+    }
+    
+    ul.cRespSliderLinks li {
+        font-size: 0;
+    }
+    
+    ul.cRespSliderLinks li i {
+        font-size: 12px;
+    }
+    
+    .cSection.cSectionStore .cStoreWrapper .cStoreDiv {
+        width: -webkit-calc(100% - 30px);
+        width: -moz-calc(100% - 30px);
+        width: calc(100% - 30px);
+        left: 30px;
+    }
+    
+    .cSection.cSectionStore .cStoreWrapper .cStoreDiv .cStoreCol.cStoreColIcon {
+        width: 100px;
+    }
+    
+    .cSection.cSectionStore .cStoreWrapper .cStoreDiv .cStoreCol.cStoreColContent {
+        width: -webkit-calc(100% - 100px);
+        width: -moz-calc(100% - 100px);
+        width: calc(100% - 100px);
+    }
+    
+}
+
+@media screen and (max-width: 480px) {    
+    ul.cHeaderLinks li.cHeaderLink.cCartIconWrapper span.cLinkIcon {
+        font-size: 12px;
+    }
+    
+    section.cSection.cSectionSearch {
+        padding-top: 80px;
+        padding-bottom: 80px;
+    }
+    
+    
+    .cSection.cSectionSearch .cBgContainer img.bgImgLeft {
+        left: -100px;
+        top: 100px;
+        max-height: 120px;
+        /* -webkit-transform: rotateZ(270deg); */
+        /* -moz-transform: rotateZ(270deg); */
+        /* transform: rotateZ(270deg); */
+    }
+    
+    .cSection.cSectionSearch .cBgContainer img.bgImgRight {
+       /* max-height: 324px;
+        width: 379px !important;
+    height: 324px !important;*/
+    max-height: 359px;
+    width: auto !important;
+    height: auto !important;
+    }
+    
+    
+    .cSectionSearch h2.cSectionHeading {
+        font-size: 30px;
+        margin-bottom: 20px;
+        text-shadow: 1px 2px 5px #FFFFFF;
+    }
+    
+    .cSectionSearch .cSearchWrapper .cSearchInputWrapper {
+        padding: 0px;
+    }
+    
+    .cSectionSearch .cSearchWrapper .cSearchInputWrapper .cSearchInputBox {
+        width: -webkit-calc(100% - 60px);
+        width: -moz-calc(100% - 60px);
+        width: calc(100% - 60px);
+        border-right-width: 0;
+        border-width: 0;
+    }
+    
+    .cSectionSearch .cSearchWrapper .cSearchInputWrapper .cSearchInputBox input.cSearchInput {
+        font-size: 12px;
+        padding-left: 8px;
+    }
+    
+    .cSectionSearch .cSearchWrapper .cSearchInputWrapper .cSearchInputBox label.cSearchTextPlaceholder {
+        font-size: 12px;
+        left: 8px;
+        top: 24px;
+    }
+    
+    .cSectionSearch .cSearchWrapper .cSearchInputWrapper .cSearchInputBox span.cGeoLocator {
+        background: #FFFFFF;
+        border-right-width: 0;
+    }
+    
+    .cSectionSearch .cSearchWrapper .cSearchInputWrapper .cSearchBtnWrap {
+        margin-left: 0px;
+    }
+    
+    
+    
+    .cCitySearchWrapper h2.cSectionHeading,
+    .cSectionProcessFlow h2.cSectionHeading {
+        font-size: 21px;
+    }
+    
+    .cCitySearchWrapper h2.cSectionHeading:before,
+    .cSectionProcessFlow h2.cSectionHeading:before {
+        font-size: 90px;
+        bottom: -24px;
+    }
+    
+    ul.cCitySearchList li.cCitySearch,
+    ul.cCitySearchList li.cCitySearch:nth-child(even) {
+        height: 150px;
+    }
+    
+    ul.cCitySearchList li.cCitySearch a.cCitySearchLink h3.cCityName {
+        font-size: 15px;
+    }
+    
+    ul.cCitySearchList li.cCitySearch a.cCitySearchLink h3.cCityName:before {
+        font-size: 90px;
+    }
+    
+    
+    section.cSection.cSectionProcessFlow div[class*="col-"] {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    
+    .cFlowStepContainer .cFlowStepContent h3.cFlowStepTitle {
+        font-size: 15px;
+    }
+    
+    ul.cFooterLinks {
+        -webkit-flex-wrap: wrap;
+        -moz-flex-wrap: wrap;
+        flex-wrap: wrap;
+        -webkit-justify-content: center;
+        justify-content: center;
+    }
+    
+    ul.cFooterLinks li {
+        margin-bottom: 5px;
+    }
+    
+    ul.cFooterLinks li ~ li {
+        border-left: 2px solid #888888;
+        padding-left: 10px;
+    }
+    
+    
+    
+    /* BOOKING LIST PAGE */
+    ul.cBookingList li.cBooking {
+        padding: 10px 10px 5px;
+    }
+    
+    ul.cBookingList li.cBooking .cBookingSummaryWrapper {
+        -webkit-flex-wrap: wrap;
+        -moz-flex-wrap: wrap;
+        flex-wrap: wrap;
+    }
+
+    .cBookingSummaryWrapper .cBookingDiv.cBookingInfo {
+        width: -webkit-calc(100% - 60px);
+        width: -moz-calc(100% - 60px);
+        width: calc(100% - 60px);
+    }
+    
+    .cBookingInfo h3.cBookingMerchant {
+        font-size: 18px;
+        margin-top: 2px;
+    }
+
+    .cBookingSummaryWrapper .cBookingDiv.cBookingTotal {
+        width: 100%;
+        -webkit-align-self: initial;
+        align-self: initial;
+        text-align: right;
+        margin-top: 10px;
+        padding-top: 5px;
+        border-top: 1px solid #ECECEC;
+    }
+    
+    .cBookingTotal p.cBookingPrice {
+        font-size: 18px;
+    }
+
+    .cBookingTotal p.cBookingPrice span.cBookingTotalLabel {
+        display: inline-block;
+        vertical-align: middle;
+        float: left;
+    }
+    
+    
+    
+    /* SLOT BOOKING PAGE */
+    .cSlotsWrapper {
+        width: 140px;
+    }
+
+    .cServicesWrapper {
+        width: -webkit-calc(100% - 170px);
+        width: -moz-calc(100% - 170px);
+        width: calc(100% - 170px);
+    }
+    
+}
+
+@media screen and (max-width: 425px) {
+    ul.cSearchResults.cListMode li.cSearchResult a.cSearchResultLink .cResultContentWrapper .cResultImageWrapper {
+        width: 120px;
+    }
+    
+    .cResultContentWrapper .cResultImageWrapper img {
+        object-fit: contain;
+        object-position: top;
+    }
+    
+    .cSlotsListWrapper {
+        max-height: 394px;
+        height: 394px;
+    }
+    
+    ul.cServiceOptionsList li.cServiceOption {
+        display: block;
+        width: 100%;
+        padding: 5px;
+        height: 42px;
+        text-align: left;
+    }
+    
+    ul.cServiceOptionsList li.cServiceOption ~ li.cServiceOption {
+        border-left-width: 0;
+    }
+
+    ul.cServiceOptionsList li.cServiceOption .cServiceOptionLabel {
+        display: inline-block;
+        vertical-align: middle;
+        position: relative;
+        margin-right: 5px;
+        width: auto;
+        text-align: left;
+        margin-top: 5px;
+        font-size: 10px;
+    }
+
+    ul.cServiceOptionsList li.cServiceOption .cServiceOptionControl {
+        position: relative;
+        float: right;
+        /* width: -webkit-calc(100% - 80px); */
+        /* width: -moz-calc(100% - 80px); */
+        /* width: calc(100% - 80px); */
+        text-align: right;
+    }
+    
+    ul.cServiceOptionsList li.cServiceOption:first-child .cServiceOptionLabel {
+        display: none;
+    }
+
+    ul.cServiceOptionsList li.cServiceOption:first-child .cServiceOptionControl {
+        width: 100%;
+    }
+
+    .cComboBookSwitch {
+        height: 24px;
+        width: 50px;
+    }
+
+    .cSlider:before {
+        height: 18px;
+        width: 18px;
+        bottom: 3px;
+    }
+
+    input:checked + .cSlider:before {
+        -webkit-transform: translateX(24px);
+        -ms-transform: translateX(24px);
+        transform: translateX(24px);
+    }
+    
+    .cServiceCarTypeForm > div.cServiceCarTypeWrapper {
+        min-width: 116px;
+        height: 30px;
+    }
+    
+    .cServiceCarTypeForm > div.cServiceCarTypeWrapper .cServiceCarTypeDropdown a.cTriggerDropdown {
+        line-height: 30px;
+    }
+    
+    .cServiceCarTypeForm > div.cServiceCarTypeWrapper .cServiceCarTypeDropdown a.cTriggerDropdown img {
+        width: 30px;
+        margin-top: 0px;
+    }
+
+    .cServiceCarTypeForm > div.cServiceCarTypeWrapper .cServiceCarTypeDropdown a.cTriggerDropdown span {
+        line-height: 30px;
+    }
+    
+    .cServiceBookingWrapper .cServiceBooking .cServiceGroupWrapper {
+        max-height: 360px;
+        height: 360px;
+    }
+    
+    .cServicesWrapper .cServiceGroup h3.cServiceCatTitle {
+        padding: 10px 5px;
+    }
+    
+    .cServiceListWrapper ul.cServiceList li.cService a.cServiceLink {
+        padding: 10px 5px;
+    }
+    
+    .cServiceListWrapper ul.cServiceList li.cService a.cServiceLink:after {
+        right: 5px;
+    }
+
+    .sCalendarMonthWrapper > div > .sCalendarRow.sHeaderMode ul.sCalendaRowList li.sCalendarRowItem {
+        font-size: 12px;
+    }
+    
+    .sCalendarMonthWrapper > div > .sCalendarRow ul.sCalendaRowList li.sCalendarRowItem {
+        height: 48px;
+        padding: 3px;
+    }
+
+    .sCalendarMonthWrapper > div > .sCalendarRow.sBodyMode ul.sCalendaRowList li.sCalendarRowItem .sCalendarCell {
+        height: 36px;
+        line-height: 36px;
+        width: 36px;
+        font-size: 12px;
+    }
+    
+}
+
+@media screen and (max-width: 360px) {
+    .cServiceCartWrapper .cServiceCartContent {
+        width: 300px;
+        -webkit-transform: translate3d(100%, 0, 0);
+        -moz-transform: translate3d(100%, 0, 0);
+        transform: translate3d(100%, 0, 0);
+    }
+    
+    .cCartMerchantHeaderWrapper .cCartMerchantHeader .cCartMerchantLeft {
+        width: 240px;
+    }
+}
+
+@media (pointer: coarse) {
+    .cServiceListWrapper ul.cServiceList li.cService a.cServiceLink:hover:after {
+        color: #333333;
+        -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        transform: translateY(-50%);
+    }
+    
+    @media screen and (max-width: 375px) {
+        .cServiceListWrapper ul.cServiceList li.cService:not(.cComboService) a.cServiceLink:after {
+            /* display: none; */
+        }
+        
+        .cServiceListWrapper ul.cServiceList li.cService a.cServiceLink .cServiceBody span.cServiceInfoLink,
+        .cServiceListWrapper ul.cServiceList li.cService a.cServiceLink .cServiceBody span.cServiceDuration {
+            width: 100%;
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 320px) {
+        .cServiceListWrapper ul.cServiceList li.cService a.cServiceLink h4.cServiceTitle {
+            word-break: break-all;
+        }
+    }
+}

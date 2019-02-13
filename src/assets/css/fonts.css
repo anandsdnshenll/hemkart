@@ -1,0 +1,91 @@
+@font-face{
+    font-family:KlarnaHeadline;
+    src:url(../fonts/KlarnaHeadline-Light.eot);
+    src:url(../fonts/KlarnaHeadline-Light.eot?#iefix) format("embedded-opentype"),url(../fonts/KlarnaHeadline-Light.woff2) format("woff2"),url(../fonts/KlarnaHeadline-Light.woff) format("woff"),
+    url(../fonts/KlarnaHeadline-Light.ttf) format("truetype");
+    font-weight:400;
+    font-style:normal;
+}
+@font-face{font-family:KlarnaHeadline;
+    src:url(../fonts/KlarnaHeadline-LightItalic.eot);
+    src:url(../fonts/KlarnaHeadline-LightItalic.eot?#iefix) format("embedded-opentype"),
+    url(../fonts/KlarnaHeadline-LightItalic.woff2) format("woff2"),
+    url(../fonts/KlarnaHeadline-LightItalic.woff) format("woff"),
+    url(../fonts/KlarnaHeadline-LightItalic.ttf) format("truetype");
+    font-weight:400;
+    font-style:italic;
+}
+@font-face{font-family:KlarnaSans;
+    src:url(../fonts/KlarnaSans-Bold.eot);
+    src:url(../fonts/KlarnaSans-Bold.eot?#iefix) format("embedded-opentype"),
+    url(../fonts/KlarnaSans-Bold.woff2) format("woff2"),
+    url(../fonts/KlarnaSans-Bold.woff) format("woff"),
+    url(../fonts/KlarnaSans-Bold.ttf) format("truetype");
+    font-weight:700;
+    font-style:normal;
+}
+@font-face{font-family:KlarnaSans;
+    src:url(../fonts/KlarnaSans-BoldItalic.eot);
+    src:url(../fonts/KlarnaSans-BoldItalic.eot?#iefix) format("embedded-opentype"),
+    url(../fonts/KlarnaSans-BoldItalic.woff2) format("woff2"),
+    url(../fonts/KlarnaSans-BoldItalic.woff) format("woff"),
+    url(../fonts/KlarnaSans-BoldItalic.ttf) format("truetype");
+    font-weight:700;
+    font-style:italic;
+}
+@font-face{font-family:KlarnaSans;
+    src:url(../fonts/KlarnaSans-Light.eot);
+    src:url(../fonts/KlarnaSans-Light.eot?#iefix) format("embedded-opentype"),
+    url(../fonts/KlarnaSans-Light.woff2) format("woff2"),
+    url(../fonts/KlarnaSans-Light.woff) format("woff"),
+    url(../fonts/KlarnaSans-Light.ttf) format("truetype");
+    font-weight:200;
+    font-style:normal;
+}
+@font-face{font-family:KlarnaSans;
+    src:url(../fonts/KlarnaSans-LightItalic.eot);
+    src:url(../fonts/KlarnaSans-LightItalic.eot?#iefix) format("embedded-opentype"),
+    url(../fonts/KlarnaSans-LightItalic.woff2) format("woff2"),url(../fonts/KlarnaSans-LightItalic.woff) format("woff"),
+    url(../fonts/KlarnaSans-LightItalic.ttf) format("truetype");
+    font-weight:200;font-style:italic;
+}
+@font-face{font-family:KlarnaSans;
+    src:url(../fonts/KlarnaSans-Medium.eot);
+    src:url(../fonts/KlarnaSans-Medium.eot?#iefix) format("embedded-opentype"),
+    url(../fonts/KlarnaSans-Medium.woff2) format("woff2"),
+    url(../fonts/KlarnaSans-Medium.woff) format("woff"),
+    url(../fonts/KlarnaSans-Medium.ttf) format("truetype");
+    font-weight:500;
+    font-style:normal;}
+    @font-face{font-family:KlarnaSans;
+        src:url(../fonts/KlarnaSans-MediumItalic.eot);
+        src:url(../fonts/KlarnaSans-MediumItalic.eot?#iefix) format("embedded-opentype"),
+        url(../fonts/KlarnaSans-MediumItalic.woff2) format("woff2"),
+        url(../fonts/KlarnaSans-MediumItalic.woff) format("woff"),
+        url(../fonts/KlarnaSans-MediumItalic.ttf) format("truetype");
+        font-weight:500;
+        font-style:italic;
+    }@font-face{font-family:KlarnaSans;
+        src:url(../fonts/KlarnaSans-Regular.eot);
+        src:url(../fonts/KlarnaSans-Regular.eot?#iefix) format("embedded-opentype"),
+        url(../fonts/KlarnaSans-Regular.woff2) format("woff2"),
+        url(../fonts/KlarnaSans-Regular.woff) format("woff"),
+        url(../fonts/KlarnaSans-Regular.ttf) format("truetype");
+        font-weight:400;
+        font-style:normal;
+    }
+    @font-face{font-family:KlarnaSans;
+        src:url(../fonts/KlarnaSans-RegularItalic.eot);
+        src:url(../fonts/KlarnaSans-RegularItalic.eot?#iefix) format("embedded-opentype"),
+        url(../fonts/KlarnaSans-RegularItalic.woff2) format("woff2"),url(../fonts/KlarnaSans-RegularItalic.woff) format("woff"),url(../fonts/KlarnaSans-RegularItalic.ttf) format("truetype");font-weight:400;font-style:italic}@font-face{font-family:KlarnaIcons;src:url(../fonts/KlarnaIcons.eot?txgrew);src:url(../fonts/KlarnaIcons.eot?txgrew#iefix) format("embedded-opentype"),url(../fonts/KlarnaIcons.ttf?txgrew) format("truetype"),url(../fonts/KlarnaIcons.woff?txgrew) format("woff"),url(../fonts/KlarnaIcons.svg?txgrew#KlarnaIcons) format("svg");font-weight:400;
+            font-style:normal;
+    }
+    #wpadminbar{position:fixed!important;}
+    body.admin-bar.f-topbar-fixed .sticky.fixed{margin-top:2.28571rem;}
+    .wp-caption>figcaption{max-width:100%;font-size:.8rem;color:#999;padding:.25rem 0;}
+    p.wp-caption-text{font-size:90%;color:#666;padding:.71429rem 0;}.alignleft{float:left;padding-right:1rem;margin:0;}
+    .alignright{float:right;padding-left:1rem;margin:0;}
+    .aligncenter{display:block;margin-left:auto;margin-right:auto;}
+    .screen-reader-text{clip:rect(1px,1px,1px,1px);position:absolute!important;height:1px;width:1px;overflow:hidden;}
+    .screen-reader-text:focus{background-color:#f1f1f1;border-radius:3px;-webkit-box-shadow:0 0 2px 2px rgba(0,0,0,.6);box-shadow:0 0 2px 2px rgba(0,0,0,.6);clip:auto!important;color:#21759b;display:block;font-size:14px;font-size:.875rem;font-weight:700;height:auto;left:5px;line-height:normal;padding:15px 23px 14px;text-decoration:none;top:5px;width:auto;z-index:100000;}/*!
+/*navbar css*/
