@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { Router, Route,ActivatedRoute } from '@angular/router';
@@ -13,6 +13,7 @@ declare var $: any;
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  @ViewChild('input_geo_location') postalCodeDiv: ElementRef;
   screenHeight: any;
   screenWidth: any;
   searchs = false;
@@ -107,9 +108,9 @@ export class HeaderComponent implements OnInit {
           var z=str.search('"/>');
           var val=str.slice(n,85);
           this.postalcode=val;
-          this.cSearchForm.get('search_address').setValue(val);
+          this.cSearchForm.controls['search_address'].setValue(val);
+          this.postalCodeDiv.nativeElement.focus()
           setTimeout(() => this.spinnerService.hide(), 1500);
-          //this.valu();
         });
       });
     } else {
