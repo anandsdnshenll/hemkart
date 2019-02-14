@@ -1,10 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { Router, Route,ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/core/services/user.service';
 import { UsersService } from 'src/app/core';
 import { HeaderService } from 'src/app/header.service';
+
+
+
 
 declare var $: any;
 @Component({
@@ -13,6 +16,7 @@ declare var $: any;
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  @ViewChild('input_geo_location') postalCodeDiv: ElementRef;
   screenHeight: any;
   screenWidth: any;
   searchs = false;
@@ -73,13 +77,12 @@ export class HeaderComponent implements OnInit {
           var str =this.result; 
           var n = parseInt(str.search("value"))+7;
           var z=str.search('"/>');
-          //console.log(this.result,"n=>",n,"end=>",z)
           console.log(str.slice(n,85));
           var val=str.slice(n,85);
           this.postalcode=val;
-          this.cSearchForm.get('search_address').setValue(val);
+          this.cSearchForm.controls['search_address'].setValue(val);
+          this.postalCodeDiv.nativeElement.focus()
           setTimeout(() => this.spinnerService.hide(), 1500);
-          //this.valu();
         });
       });
     } else {

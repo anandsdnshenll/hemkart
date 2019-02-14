@@ -149,7 +149,7 @@
           <form [formGroup]="cSearchForm" (ngSubmit)="onSearch()"  id="search_form" class="cSearchForm">
             <div class="cSearchInputWrapper">
               <div class="cSearchInputBox">
-                <input type="text" id="input_geo_location" placeholder=""  formControlName="search_address" class="cSearchInput cGeoLocationInput"
+                <input type="text" #input_geo_location placeholder=""  formControlName="search_address" class="cSearchInput cGeoLocationInput"
                   autocomplete="off" value="">
                 <input type="hidden" value="" name="address"> 
                 <!-- formControlName="search_address_city"> -->
