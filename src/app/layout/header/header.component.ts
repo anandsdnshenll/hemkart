@@ -21,6 +21,9 @@ export class HeaderComponent implements OnInit {
   result:any;
   postalcode:any='';
   title="";
+  registerForm: FormGroup;
+  submitted = false;
+  userName: any;
   constructor(
     private fb: FormBuilder,
     private spinnerService: Ng4LoadingSpinnerService,
@@ -44,19 +47,48 @@ export class HeaderComponent implements OnInit {
     });
     console.log("header",this.activeRoute);
     console.log(this.activeRoute.snapshot['_routerState'].url); 
+
+    this.registerForm = this.fb.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      email: ['', Validators.compose([Validators.required, Validators.email, Validators.pattern(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)])],
+      mobileNumber: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(6)]]
+    });
   }
+
+  get f() { return this.registerForm.controls; }
+
+  onSubmit() {
+    this.submitted = true;
+    // stop here if form is invalid
+    if (this.registerForm.invalid) {
+        return;
+    }
+    this.user.clientRegister(this.registerForm.value).subscribe(data => {
+      if(data.code == 1) {
+        this.user.clientLogin(this.registerForm.value).subscribe(data => {
+          localStorage.setItem("user_profile", JSON.stringify(data.details.details));
+          localStorage.setItem("token", data.details.token);
+          localStorage.setItem("userName", data.details.details.first_name);
+          this.userName = localStorage.getItem("userName");
+          this.registerForm.reset();
+        });
+      } else {
+        this.registerForm.reset();
+      }
+    });
+  }
+
   onSearch() {
-    // this.router.navigate(['team', 33, 'user', 11], {relativeTo: route});
     this.searchs = true;
     this.spinnerService.show();
-    console.log(this.cSearchForm);
     if (this.cSearchForm.invalid) {
       setTimeout(() => this.spinnerService.hide(), 700);
       return;
     }
     else {
       setTimeout(() => this.spinnerService.hide(), 1000);
-      console.log(this.cSearchForm.value);
       this.router.navigate(['/products/'], { queryParams: { area: this.cSearchForm.value.search_address } });
     }
 
@@ -65,16 +97,14 @@ export class HeaderComponent implements OnInit {
     this.spinnerService.show();
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
-        console.log("latitude=>", position.coords.latitude);
-        console.log("longitude=>", position.coords.longitude)
+        // console.log("latitude=>", position.coords.latitude);
+        // console.log("longitude=>", position.coords.longitude)
         this.user.getpcode(position.coords.latitude,position.coords.longitude).subscribe(data => {
           this.result = data;
           console.log(data);
           var str =this.result; 
           var n = parseInt(str.search("value"))+7;
           var z=str.search('"/>');
-          //console.log(this.result,"n=>",n,"end=>",z)
-          console.log(str.slice(n,85));
           var val=str.slice(n,85);
           this.postalcode=val;
           this.cSearchForm.get('search_address').setValue(val);
