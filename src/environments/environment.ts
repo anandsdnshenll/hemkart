@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  api_url: 'https://xn--hemkrtochklart-ypb.se/api/'
+  api_url: 'https://xn--hemkrtochklart-ypb.se/api/',
+   image_url:'https://xn--hemkrtochklart-ypb.se/'
 };
 
 /*

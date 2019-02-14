@@ -28,6 +28,7 @@
               "src/assets/css/fonts.css",
               "src/assets/css/style.css",
               "src/assets/css/main.css",
+			  "src/assets/css/product.css",
               "src/assets/css/slide-out-form.css"
             ],
             "scripts": [
