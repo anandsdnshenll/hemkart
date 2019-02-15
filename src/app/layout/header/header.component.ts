@@ -122,7 +122,7 @@ export class HeaderComponent implements OnInit {
     $(document).ready(function () {
       $(window).scroll(function () {
         if (parseInt($(window).scrollTop()) > 50) {
-          $('.nav-desktop').find('a.navbar-brand').find('img').attr('src', '../../../assets/images/1428568091-Attachment-1.png');
+          $('.nav-desktop').find('a.navbar-brand').find('img').attr('src', './assets/images/1428568091-Attachment-1.png');
           //$('.nav-desktop').find('img').attr('height','22px !important');
           //change src../assets/images/1428568091-Attachment-1.png
           //$('#custom-nav').addClass('affix');
@@ -131,7 +131,7 @@ export class HeaderComponent implements OnInit {
         } else {
           //$('#custom-nav').removeClass('affix');
           $(".navbar-fixed-top").removeClass("top-nav-collapse");
-          $('.navbar-brand').find('img').attr('src', '../../../assets/images/w_logo.png');
+          $('.navbar-brand').find('img').attr('src', './assets/images/w_logo.png');
           // $('.nav-desktop').find('img').attr('height','33px');
         }
       });
@@ -139,12 +139,12 @@ export class HeaderComponent implements OnInit {
         if ($(".nav-mob").offset().top > 50) {
           //$('#custom-nav').addClass('affix');
           $(".navbar-fixed-top").addClass("top-nav-collapse");
-          $('.nav-mob').find('.navbar-brand img').attr('src', '../../../assets/images/1428568091-Attachment-1.png'); //change src
+          $('.nav-mob').find('.navbar-brand img').attr('src', './assets/images/1428568091-Attachment-1.png'); //change src
           // $('.nav-desktop').find('img').attr('height','22px !important');
         } else {
           // $('#custom-nav').removeClass('affix');
           $(".navbar-fixed-top").removeClass("top-nav-collapse");
-          $('.nav-mob').find('.navbar-brand img').attr('src', '../../../assets/images/w_logo.png');
+          $('.nav-mob').find('.navbar-brand img').attr('src', './assets/images/w_logo.png');
           // $('.nav-desktop').find('img').attr('height','33px !important');
         }
       });
