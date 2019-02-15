@@ -6,12 +6,12 @@
         <span class="icon-bar icon_bg"></span>
         <span class="icon-bar icon_bg"></span>
       </button>
-      <a class="navbar-brand" href="#"><img class="logo_img" src="../../../assets/images/w_logo.png"></a>
+      <a class="navbar-brand" href="#"><img class="logo_img" src="./assets/images/w_logo.png"></a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
         <li class="cta-open" style=" border-left: 0px !important;"><a style="color: #ffffff !important;"><span class="glyphicon glyphicon-user"></span>
-            <span class="logg_class" style="font-size: 1.2rem;">Logga in</span></a></li>
+            <span class="logg_class" style="font-size: 1.2rem;" >{{ userName ? userName: 'Logga in' }}</span></a></li>
         <li class="catr_icon"><a><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
       </ul>
     </div>
@@ -20,7 +20,7 @@
 <nav class="navbar navbar-cont navbar-fixed-top visible-xs nav-mob">
   <div class="container-fluid nav-cont" style="padding: 0;">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#"><img style="height: 22px;" src="../../../assets/images/w_logo.png"></a>
+      <a class="navbar-brand" href="#"><img style="height: 22px;" src="./assets/images/w_logo.png"></a>
     </div>
     <a  class="pull-left cta-open" style="padding: 20px !important;line-height: 0;color: #ffffff;"><span class="glyphicon glyphicon-user"></span>
     </a>
@@ -35,7 +35,7 @@
 </nav>
 <section class="toggle-form" style="padding: 0px !important">
   <div class="formwrap px-4">
-    <div class="icon-close pos-a"><img class="close_img" src="../../../assets/images/59836.svg" style="
+    <div class="icon-close pos-a"><img class="close_img" src="./assets/images/59836.svg" style="
               width: 18px; margin-left: 13px;"
         alt="Close Button"></div>
     <div class="row">
@@ -44,7 +44,7 @@
         <span class="or_sing">eller</span><a class="sing_up_tag cta-open1">skapa ett konto</a>
       </div>
       <div class="col-md-6 col-sm-6 col-xs-4">
-        <img class="side_img" src="../../../assets/images/Image-login_btpq7r.png" style="width: 76px; float: right;">
+        <img class="side_img" src="./assets/images/Image-login_btpq7r.png" style="width: 76px; float: right;">
       </div>
     </div>
     <div class="from_class">
@@ -77,7 +77,7 @@
 </section>
 <section class="toggle-form1" style="padding: 0px !important">
   <div class="formwrap1 px-4">
-    <div class="icon-close1 pos-a"><img src="../../../assets/images/59836.svg" style="
+    <div class="icon-close1 pos-a"><img src="./assets/images/59836.svg" style="
               width: 18px; margin-left: 13px;"
         alt="Close Button"></div>
     <div class="row">
@@ -86,43 +86,70 @@
         <span class="or_sing">or</span><a class="sing_up_tag cta-open">Logga in</a>
       </div>
       <div class="col-md-6 col-sm-6 col-xs-6">
-        <img class="side_img" src="../../../assets/images/Image-login_btpq7r.png" style="width: 76px; float: right;">
+        <img class="side_img" src="./assets/images/Image-login_btpq7r.png" style="width: 76px; float: right;">
       </div>
     </div>
     <div class="from_class">
-      <form action="#" method="post" role="form" data-toggle="validator">
+      <form  [formGroup]="registerForm" (ngSubmit)="onSubmit()" role="form" data-toggle="validator">
         <div class="form-group" style="margin-bottom:0px;">
           <div class="phone_div">
-            <input type="text" id="phone1" name="phone" class="form-control phone_num required" data-error="Please enter a valid phone number"
+            <input type="text" formControlName="firstName"  id="phone1" name="phone" class="form-control phone_num required" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" data-error="Please enter a valid phone number"
+              required>
+            <div class="empty_div"></div>
+            <label for="phone" class="phone_label control-label">
+              Efternamn</label>
+              <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                <div *ngIf="f.firstName.errors.required">Please enter a valid FirstName</div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group" style="margin-bottom:0px;">
+          <div class="phone_div">
+            <input type="text" formControlName="lastName"  id="phone1" name="phone" class="form-control phone_num required" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" data-error="Please enter a valid phone number"
               required>
             <div class="empty_div"></div>
             <label for="phone" class="phone_label control-label">
               Förnamn</label>
+              <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                <div *ngIf="f.lastName.errors.required">Please enter a valid LastName</div>
+            </div>
           </div>
         </div>
         <div class="form-group" style="margin-bottom:0px;">
           <div class="passwors_div">
-            <input type="text" id="name" name="name" class="form-control phone_num required" data-error="Please enter a your name"
+              <input type="number" formControlName="mobileNumber"  id="phone1" name="mobileNumber" class="form-control phone_num required" [ngClass]="{ 'is-invalid': submitted && f.mobileNumber.errors }" data-error="Please enter a valid phone number"
               required>
             <div class="empty_div"></div>
             <label for="phone" class="phone_label control-label">
               Mobilnummer</label>
+              <div *ngIf="submitted && f.mobileNumber.errors" class="invalid-feedback">
+                <div *ngIf="f.mobileNumber.errors.required">Please enter a valid phone number</div>
+            </div>
           </div>
         </div>
+        <!-- div.error-box(color='menugreen',*ngIf="(loginForm.controls['email'].hasError('required') || loginForm.controls['email'].hasError('email')) && loginForm.controls['email'].touched") * Valid Email is required! -->
+
         <div class="form-group" style="margin-bottom:0px;">
           <div class="passwors_div">
-            <input type="email" id="email" name="email" class="form-control phone_num required" data-error="Please enter a valid email"
+              <input type="email" formControlName="email"  id="phone1" name="email" class="form-control phone_num required" [ngClass]="{ 'is-invalid': submitted && (f.email.errors) }" data-error="Please enter a valid email"
               required>
             <div class="empty_div"></div>
             <label for="phone" class="phone_label control-label">Mailadress</label>
+            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                <div *ngIf="f.email.errors.required">Please enter a valid Email</div>
+                <div *ngIf="f.email.touched && f.email.dirty && f.email.invalid && f.email.errors.email">Email must be a valid email address</div>
+            </div>
           </div>
         </div>
         <div class="form-group" style="margin-bottom:0px;">
           <div class="passwors_div">
-            <input type="password" id="password1" name="password" class="form-control phone_num required" data-error="Please enter a valid password"
+            <input type="password" id="password1" formControlName="password" name="password" class="form-control phone_num required" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" data-error="Please enter a valid password"
               required>
             <div class="empty_div"></div>
             <label for="phone" class="phone_label control-label">Lösenord</label>
+            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                <div *ngIf="f.password.errors.required">Please enter a valid password</div>
+            </div>
           </div>
         </div>
         <div class="referral_div">
@@ -189,7 +216,7 @@
       </div>
       <div class="modal-body">
         <div class="col-md-6 col-sm-6 col-xs-6 left_img_div" style="    text-align: right;">
-          <img src="../../../assets/images/icon.png">
+          <img src="./assets/images/icon.png">
         </div>
         <div class="col-md-6 col-sm-6 col-xs-6 right_cont_div">
           <span class="today_span">Dagens lunch!</span>
