@@ -5777,7 +5777,7 @@ select {
 
 	margin-top: -3px;
 
-	background-image: url("../image/ic-arrow-down-pink.svg");
+	/* background-image: url("../images/ic-arrow-down-pink.svg"); */
 
 	background-repeat: no-repeat;
 
@@ -7501,7 +7501,7 @@ ul.dotted li:before {
 
 	overflow: hidden;
 
-	background: rgba(0, 0, 0, 0.04) url(../../img/logo/logo-simple.svg) center no-repeat
+	/* background: rgba(0, 0, 0, 0.04) url(../../img/logo/logo-simple.svg) center no-repeat */
 
 }
 
@@ -7723,7 +7723,7 @@ ul.dotted li:before {
 
 	background-color: #ebebeb;
 
-	background-image: url(../../img/logo/logo-simple-darker.svg)
+	/* background-image: url(../../img/logo/logo-simple-darker.svg) */
 
 }
 
@@ -13637,7 +13637,7 @@ ul.dotted li:before {
 
 	overflow: hidden;
 
-	background: rgba(0, 0, 0, 0.04) url(../../img/logo/logo-simple.svg) center no-repeat;
+	/* background: rgba(0, 0, 0, 0.04) url(../../img/logo/logo-simple.svg) center no-repeat; */
 
 	background-size: 56px 48px
 
@@ -13885,7 +13885,7 @@ ul.dotted li:before {
 
 	background-color: #ebebeb;
 
-	background-image: url(../../img/logo/logo-simple-darker.svg)
+	/* background-image: url(../../img/logo/logo-simple-darker.svg) */
 
 }
 
@@ -17278,7 +17278,7 @@ ul.dotted li:before {
 
 	background-color: rgba(0, 0, 0, 0.04);
 
-	background-image: url("../../img/logo/logo-simple.svg");
+	/* background-image: url("../../img/logo/logo-simple.svg"); */
 
 	background-position: center;
 
@@ -18946,7 +18946,7 @@ ul.dotted li:before {
 
 	position: relative;
 
-	background: #fff url("../../img/tracking-card/tracking-card-map-bg.svg");
+	/* background: #fff url("../../img/tracking-card/tracking-card-map-bg.svg"); */
 
 	background-size: cover;
 
@@ -23808,7 +23808,7 @@ ul.dotted li:before {
 
 		min-height: 450px;
 
-		background-image: url("../../img//cuisine/links-cuisine-bg.jpg");
+		/* background-image: url("../../img//cuisine/links-cuisine-bg.jpg"); */
 
 		background-position: center;
 
@@ -27706,7 +27706,7 @@ td.summary__item__quantity {
 
 	line-height: 2.14;
 
-	background-image: url("../../img/cart/bg_add-toggle-2x.png");
+	/* background-image: url("../../img/cart/bg_add-toggle-2x.png"); */
 
 	background-size: 51px 33px
 
@@ -28082,7 +28082,7 @@ tr.summary__item__row_mobile .summary__item__icon i.summary__item__icon__disable
 
 	right: -2px;
 
-	background-image: url("../../img/cart/bg_delete-toggle-2x.png");
+	/* background-image: url("../../img/cart/bg_delete-toggle-2x.png"); */
 
 	background-size: 28px 33px;
 
@@ -29586,7 +29586,7 @@ tr.summary__item__row_mobile .summary__item__icon i.summary__item__icon__disable
 
 .charity-banner {
 
-	background: url("../../img/charity/charity-banner.png");
+	/* background: url("../../img/charity/charity-banner.png"); */
 
 	width: 246px;
 
@@ -30366,7 +30366,7 @@ tr.summary__item__row_mobile .summary__item__icon i.summary__item__icon__disable
 
 .facebook-button__logo {
 
-	background-image: url(../../img/logo/fb-logo.svg);
+	/* background-image: url(../../img/logo/fb-logo.svg); */
 
 	background-position: left;
 
@@ -30522,7 +30522,7 @@ tr.summary__item__row_mobile .summary__item__icon i.summary__item__icon__disable
 
 .modal-close-button {
 
-	background-image: url(../../img/icons/ic-modal-close.svg);
+	/* background-image: url(../../img/icons/ic-modal-close.svg); */
 
 	background-repeat: no-repeat
 
@@ -32874,7 +32874,7 @@ tr.summary__item__row_mobile .summary__item__icon i.summary__item__icon__disable
 
 	position: absolute;
 
-	background-image: url(../../img/icons/ic-modal-close.svg);
+	/* background-image: url(../../img/icons/ic-modal-close.svg); */
 
 	background-repeat: no-repeat;
 

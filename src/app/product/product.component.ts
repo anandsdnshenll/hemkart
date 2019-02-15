@@ -7,6 +7,7 @@ import { UsersService } from '../core';
 
 import { Location } from '@angular/common'
 import * as $ from 'jquery';
+import { environment } from 'src/environments/environment';
 declare var $: any;
 @Component({
   selector: 'app-product',
@@ -20,7 +21,8 @@ export class ProductComponent implements OnInit {
   datam: any = [];
   data: any = [];
   datas: any = [];
-  lists:any=[];
+  lists: any = [];
+  img_url:string=environment.image_url;
   constructor(
     private fb: FormBuilder,
     private spinnerService: Ng4LoadingSpinnerService,
@@ -36,11 +38,12 @@ export class ProductComponent implements OnInit {
     console.log(this.area);
     this.users.getArea(this.area).subscribe(data => {
       this.lists = data.details;
-      if (this.datas.list!='') {
-        this.datam=this.lists.list;
+      if (this.datas.list != '') {
+        this.datam = this.lists.list;
       }
-      console.log(this.datam)
-      setTimeout(() => this.spinnerService.hide(), 5000);
+      setTimeout(() => this.spinnerService.hide(), 8000);
+      console.log(this.datam);
+
       //this.valu();
     });
   }
@@ -50,9 +53,9 @@ export class ProductComponent implements OnInit {
   ngAfterViewInit() {
 
     $(document).ready(function () {
-      $(window).on('load', function () {
-        $('.offer_bg').show();
-      });
+      //   $(window).on('load', function () {
+      //     $('.offer_bg').show();
+      //   });
 
       $('.customer-logos').slick({
 
