@@ -33,18 +33,18 @@ export class HeaderComponent implements OnInit {
     setTimeout(() => this.spinnerService.hide(),800);
     
   }
-  ngOnInit() {
-    this.cSearchForm = this.fb.group({
-      search_address: ['', Validators.required],
-      search_address_city: ['']
-    });
-    this.headerService.title.subscribe(title => {
-      this.title = title;
-      console.log(title);
-    });
-    console.log("header",this.activeRoute);
-    console.log(this.activeRoute.snapshot['_routerState'].url); 
-  }
+  // ngOnInit() {
+  //   this.cSearchForm = this.fb.group({
+  //     search_address: ['', Validators.required],
+  //     search_address_city: ['']
+  //   });
+  //   this.headerService.title.subscribe(title => {
+  //     this.title = title;
+  //     console.log(title);
+  //   });
+  //   console.log("header",this.activeRoute);
+  //   console.log(this.activeRoute.snapshot['_routerState'].url); 
+  // }
   onSearch() {
     // this.router.navigate(['team', 33, 'user', 11], {relativeTo: route});
     this.searchs = true;
