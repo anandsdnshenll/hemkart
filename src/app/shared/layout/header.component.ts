@@ -21,6 +21,7 @@ export class HeaderComponent implements OnInit {
   result:any;
   postalcode:any='';
   title="";
+  userName: string;
   constructor(
     private fb: FormBuilder,
     private spinnerService: Ng4LoadingSpinnerService,
@@ -31,7 +32,8 @@ export class HeaderComponent implements OnInit {
   ) {
     this.spinnerService.show();
     setTimeout(() => this.spinnerService.hide(),800);
-    
+    this.userName = localStorage.getItem("userName") ? localStorage.getItem("userName") : "";
+ 
   }
   ngOnInit() {
     // this.cSearchForm = this.fb.group({

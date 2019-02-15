@@ -3,9 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
+  production: true,
   api_url: 'https://xn--hemkrtochklart-ypb.se/api/',
-   image_url:'https://xn--hemkrtochklart-ypb.se/'
+  image_url:'https://xn--hemkrtochklart-ypb.se/'
 };
 
 /*

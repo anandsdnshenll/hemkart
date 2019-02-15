@@ -5,7 +5,7 @@
         alt="Close Button"></div>
     <div class="row">
       <div class="col-md-6 col-sm-6 col-xs-6">
-        <p class="text-white mt-4 h3">Logga in</p>
+        <p class="text-white mt-4 h3">{{ userName ? userName: 'Logga in' }}</p>
         <span class="or_sing">eller</span><a class="sing_up_tag cta-open1">skapa ett konto</a>
       </div>
       <div class="col-md-6 col-sm-6 col-xs-6">
@@ -32,7 +32,7 @@
         </div>
         <p class="text-center margin-top-s" style="visibility: hidden; margin-bottom: 0px;"><small>Genom att klicka på
             "Skicka" accepterar du <a href="/terms/">Användarvillkor</a>.</small></p>
-        <p class="margin-0"><button type="submit" class="btn btn-lg orange w-100 margin-top-s">Logga in</button></p>
+        <p class="margin-0"><button type="submit" class="btn btn-lg orange w-100 margin-top-s">{{ userName ? userName: 'Logga in' }}</button></p>
       </form>
     </div>
   </div>
@@ -49,7 +49,7 @@
 
         <p class="text-white mt-4 h3">Bli Medlem</p>
 
-        <span class="or_sing">or</span><a class="sing_up_tag cta-open">Logga in</a>
+        <span class="or_sing">or</span><a class="sing_up_tag cta-open">{{ userName ? userName: 'Logga in' }}</a>
 
       </div>
 
@@ -264,8 +264,7 @@
 
       <ul class="nav navbar-nav navbar-right">
 
-        <li class="cta-open"><a href="#"><span class="glyphicon glyphicon-user"></span> <span style="font-size: 1.2rem;">Logga
-              in</span></a></li>
+        <li class="cta-open"><a href="#"><span class="glyphicon glyphicon-user"></span> <span style="font-size: 1.2rem;">{{ userName ? userName: 'Logga in' }}</span></a></li>
 
         <li class="catr_icon"><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
 

@@ -17,7 +17,9 @@ export class ApiService {
     return  throwError(error.error);
   }
   get(path: string, params: HttpParams = new HttpParams()): Observable<any> {
-    return this.http.get(`${environment.api_url}${path}`, { params })
+    return this.http.get(`${environment.api_url}${path}`, { params, headers: {
+            'Access-Control-Allow-Origin': '*'
+        }})
       .pipe(catchError(this.formatErrors));
   }
 

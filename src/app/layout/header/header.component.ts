@@ -23,8 +23,10 @@ export class HeaderComponent implements OnInit {
   postalcode:any='';
   title="";
   registerForm: FormGroup;
+  LoginForm: FormGroup;
   submitted = false;
   userName: any;
+  erroMsg: any;
   constructor(
     private fb: FormBuilder,
     private spinnerService: Ng4LoadingSpinnerService,
@@ -35,7 +37,8 @@ export class HeaderComponent implements OnInit {
   ) {
     this.spinnerService.show();
     setTimeout(() => this.spinnerService.hide(),800);
-    
+    this.userName = localStorage.getItem("userName") ? localStorage.getItem("userName") : "";
+
   }
   ngOnInit() {
     this.cSearchForm = this.fb.group({
@@ -56,9 +59,16 @@ export class HeaderComponent implements OnInit {
       mobileNumber: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
+
+    this.LoginForm = this.fb.group({
+      email: ['', Validators.compose([Validators.required, Validators.email, Validators.pattern(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)])],
+      password: ['', [Validators.required, Validators.minLength(6)]]
+    });
+    
   }
 
   get f() { return this.registerForm.controls; }
+  get login_Form() { return this.LoginForm.controls; }
 
   onSubmit() {
     this.submitted = true;
@@ -67,16 +77,40 @@ export class HeaderComponent implements OnInit {
         return;
     }
     this.user.clientRegister(this.registerForm.value).subscribe(data => {
-      if(data.code == 1) {
+      // if(data.code == 1) {
         this.user.clientLogin(this.registerForm.value).subscribe(data => {
           localStorage.setItem("user_profile", JSON.stringify(data.details.details));
           localStorage.setItem("token", data.details.token);
           localStorage.setItem("userName", data.details.details.first_name);
           this.userName = localStorage.getItem("userName");
           this.registerForm.reset();
+          $(document).ready(function () {
+            $('.toggle-form1, .formwrap, .toggle-bg').removeClass('active');
+          });
         });
+      // } else {
+      //   this.registerForm.reset();
+      // }
+    });
+  }
+  onLogin() {
+    this.submitted = true;
+    // stop here if form is invalid
+    if (this.LoginForm.invalid) {
+        return;
+    }
+    this.user.clientLogin(this.LoginForm.value).subscribe(data => {
+      if(data.code == 2) {
+        this.erroMsg = data.msg;
       } else {
+        localStorage.setItem("user_profile", JSON.stringify(data.details.details));
+        localStorage.setItem("token", data.details.token);
+        localStorage.setItem("userName", data.details.details.first_name);
+        this.userName = localStorage.getItem("userName");
         this.registerForm.reset();
+        $(document).ready(function () {
+          $('.toggle-form1, .toggle-form, .formwrap, .toggle-bg').removeClass('active');
+        });
       }
     });
   }
@@ -150,10 +184,12 @@ export class HeaderComponent implements OnInit {
       });
       $(function () {
         $('.cta-open').on('click', function() {
-          $('.toggle-form, .formwrap, .toggle-bg').addClass('active');
-          $('.icon-close').addClass('open');
-          $('.toggle-form1, .formwrap1, .toggle-bg1').removeClass('active');
-          $('.icon-close1').removeClass('open');
+          if(!this.userName) {
+            $('.toggle-form, .formwrap, .toggle-bg').addClass('active');
+            $('.icon-close').addClass('open');
+            $('.toggle-form1, .formwrap1, .toggle-bg1').removeClass('active');
+            $('.icon-close1').removeClass('open');
+          }
       });
      $('.icon-close').on('click', function() {
           $('.toggle-form, .formwrap, .toggle-bg').removeClass('active');

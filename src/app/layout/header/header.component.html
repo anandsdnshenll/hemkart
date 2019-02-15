@@ -10,10 +10,20 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li class="cta-open" style=" border-left: 0px !important;"><a style="color: #ffffff !important;"><span class="glyphicon glyphicon-user"></span>
+        <li [ngClass]="{ 'cta-open': !userName }" style=" border-left: 0px !important;"><a style="color: #ffffff !important;"><span class="glyphicon glyphicon-user"></span>
             <span class="logg_class" style="font-size: 1.2rem;" >{{ userName ? userName: 'Logga in' }}</span></a></li>
         <li class="catr_icon"><a><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
       </ul>
+      <!-- <div class="dropdown-content">
+          <div class="row">
+            <div *ngFor="let catg of cat.nest" class="column">
+              <h3>Category {{cat.catnumber}} {{catg.link}} </h3>
+              <a href="#">Link 1</a>
+              <a href="#">Link 2</a>
+              <a href="#">Link 3</a>
+            </div>
+          </div>
+        </div> -->
     </div>
   </div>
 </nav>
@@ -22,7 +32,7 @@
     <div class="navbar-header">
       <a class="navbar-brand" href="#"><img style="height: 22px;" src="./assets/images/w_logo.png"></a>
     </div>
-    <a  class="pull-left cta-open" style="padding: 20px !important;line-height: 0;color: #ffffff;"><span class="glyphicon glyphicon-user"></span>
+    <a  class="pull-left" [ngClass]="{ 'cta-open': !userName }" style="padding: 20px !important;line-height: 0;color: #ffffff;"><span class="glyphicon glyphicon-user"></span>
     </a>
     <a  class="pull-right" style="padding: 20px !important;line-height: 0;color: #ffffff;"><span class="glyphicon glyphicon-shopping-cart"></span></a>
     <div class="collapse navbar-collapse" id="myNavbar">
@@ -40,7 +50,7 @@
         alt="Close Button"></div>
     <div class="row">
       <div class="col-md-6 col-sm-6 col-xs-8">
-        <p class="text-white mt-4 h3">Logga in</p>
+        <p class="text-white mt-4 h3">{{ userName ? userName: 'Logga in' }}</p>
         <span class="or_sing">eller</span><a class="sing_up_tag cta-open1">skapa ett konto</a>
       </div>
       <div class="col-md-6 col-sm-6 col-xs-4">
@@ -48,27 +58,37 @@
       </div>
     </div>
     <div class="from_class">
-      <form action="#" method="post" role="form" data-toggle="validator">
+      <form [formGroup]="LoginForm" (ngSubmit)="onLogin()" role="form" data-toggle="validator">
         <div class="form-group" style="margin-bottom:0px;">
           <div class="phone_div">
-            <input type="text" id="phone" name="phone" class="form-control phone_num required" data-error="Please enter a valid phone number"
+              <input type="email" formControlName="email"  id="phone1" name="phone" class="form-control phone_num required" [ngClass]="{ 'is-invalid': submitted && (login_Form.email.errors) }" data-error="Please enter a valid email"
               required>
             <div class="empty_div"></div>
             <label for="phone" class="phone_label control-label">E-post</label>
+            <div *ngIf="submitted && login_Form.email.errors" class="invalid-feedback">
+                <div *ngIf="login_Form.email.errors.required">Please enter a valid Email</div>
+                <div *ngIf="login_Form.email.touched && login_Form.email.dirty && login_Form.email.invalid && login_Form.email.errors.email">Email must be a valid email address</div>
+            </div>
           </div>
         </div>
         <div class="form-group" style="margin-bottom: 0px;">
           <div class="passwors_div">
-            <input type="password" id="password" name="password" class="form-control phone_num required" data-error="Please enter a valid password"
+            <input type="password" id="password1" formControlName="password" name="password" class="form-control phone_num required" [ngClass]="{ 'is-invalid': submitted && login_Form.password.errors }" data-error="Please enter a valid password"
               required>
             <div class="empty_div"></div>
             <label for="phone" class="phone_label control-label">Lösenord</label>
+            <div *ngIf="submitted && login_Form.password.errors" class="invalid-feedback">
+                <div *ngIf="login_Form.password.errors.required">Please enter a valid password</div>
+            </div>
           </div>
         </div>
         <p class="text-center margin-top-s" style="visibility: hidden; margin-bottom: 0px;"><small>
             Genom att klicka på "Skicka" accepterar du <a href="/terms/">
               Användarvillkor</a>.</small>
         </p>
+        <div *ngIf="submitted && erroMsg" class="invalid-feedback">
+            <div >{{erroMsg}}</div>
+        </div>
         <p class="margin-0"><button type="submit" class="btn btn-lg orange w-100 margin-top-s">Logga in</button></p>
       </form>
     </div>
@@ -83,7 +103,7 @@
     <div class="row">
       <div class="col-md-6 col-sm-6 col-xs-6">
         <p class="text-white mt-4 h3">Bli Medlem</p>
-        <span class="or_sing">or</span><a class="sing_up_tag cta-open">Logga in</a>
+        <span class="or_sing">or</span><a class="sing_up_tag cta-open">{{ userName ? userName: 'Logga in' }}</a>
       </div>
       <div class="col-md-6 col-sm-6 col-xs-6">
         <img class="side_img" src="./assets/images/Image-login_btpq7r.png" style="width: 76px; float: right;">
@@ -127,8 +147,6 @@
             </div>
           </div>
         </div>
-        <!-- div.error-box(color='menugreen',*ngIf="(loginForm.controls['email'].hasError('required') || loginForm.controls['email'].hasError('email')) && loginForm.controls['email'].touched") * Valid Email is required! -->
-
         <div class="form-group" style="margin-bottom:0px;">
           <div class="passwors_div">
               <input type="email" formControlName="email"  id="phone1" name="email" class="form-control phone_num required" [ngClass]="{ 'is-invalid': submitted && (f.email.errors) }" data-error="Please enter a valid email"
