@@ -115,6 +115,12 @@ export class HeaderComponent implements OnInit {
     });
   }
 
+  logout() {
+    localStorage.clear();
+    this.router.navigate(['/']);
+
+  }
+
   onSearch() {
     this.searchs = true;
     this.spinnerService.show();
@@ -128,6 +134,7 @@ export class HeaderComponent implements OnInit {
     }
 
   }
+
   onGeoloc() {
     this.spinnerService.show();
     if (navigator.geolocation) {

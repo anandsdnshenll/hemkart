@@ -9,21 +9,15 @@
       <a class="navbar-brand" href="#"><img class="logo_img" src="./assets/images/w_logo.png"></a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-right dropdown">
         <li [ngClass]="{ 'cta-open': !userName }" style=" border-left: 0px !important;"><a style="color: #ffffff !important;"><span class="glyphicon glyphicon-user"></span>
             <span class="logg_class" style="font-size: 1.2rem;" >{{ userName ? userName: 'Logga in' }}</span></a></li>
         <li class="catr_icon"><a><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
-      </ul>
-      <!-- <div class="dropdown-content">
-          <div class="row">
-            <div *ngFor="let catg of cat.nest" class="column">
-              <h3>Category {{cat.catnumber}} {{catg.link}} </h3>
-              <a href="#">Link 1</a>
-              <a href="#">Link 2</a>
-              <a href="#">Link 3</a>
-            </div>
+        <div class="dropdown-content" *ngIf="userName">
+            <a href="javascript:;" (click)="logout()" href="#">Logga ut</a>
           </div>
-        </div> -->
+      </ul>
+
     </div>
   </div>
 </nav>
