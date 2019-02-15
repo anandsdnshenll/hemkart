@@ -59,7 +59,7 @@
               required>
             <div class="empty_div"></div>
             <label for="phone" class="phone_label control-label">E-post</label>
-            <div *ngIf="submitted && login_Form.email.errors" class="invalid-feedback">
+            <div *ngIf="loginsubmitted && login_Form.email.errors" class="invalid-feedback">
                 <div *ngIf="login_Form.email.errors.required">Please enter a valid Email</div>
                 <div *ngIf="login_Form.email.touched && login_Form.email.dirty && login_Form.email.invalid && login_Form.email.errors.email">Email must be a valid email address</div>
             </div>
@@ -71,7 +71,7 @@
               required>
             <div class="empty_div"></div>
             <label for="phone" class="phone_label control-label">Lösenord</label>
-            <div *ngIf="submitted && login_Form.password.errors" class="invalid-feedback">
+            <div *ngIf="loginsubmitted && login_Form.password.errors" class="invalid-feedback">
                 <div *ngIf="login_Form.password.errors.required">Please enter a valid password</div>
             </div>
           </div>

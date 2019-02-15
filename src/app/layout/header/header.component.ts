@@ -27,6 +27,8 @@ export class HeaderComponent implements OnInit {
   submitted = false;
   userName: any;
   erroMsg: any;
+  loginsubmitted = false;
+  
   constructor(
     private fb: FormBuilder,
     private spinnerService: Ng4LoadingSpinnerService,
@@ -94,7 +96,7 @@ export class HeaderComponent implements OnInit {
     });
   }
   onLogin() {
-    this.submitted = true;
+    this.loginsubmitted = true;
     // stop here if form is invalid
     if (this.LoginForm.invalid) {
         return;
