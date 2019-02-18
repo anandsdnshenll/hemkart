@@ -1,8 +1,7 @@
 import { Component, OnInit, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
-import { Router, Route,ActivatedRoute } from '@angular/router';
-import { UserService } from 'src/app/core/services/user.service';
+import { Router, Route, ActivatedRoute } from '@angular/router';
 import { UsersService } from 'src/app/core';
 import { HeaderService } from 'src/app/header.service';
 
@@ -123,44 +122,6 @@ export class HeaderComponent implements OnInit {
 
   }
 
-  onSearch() {
-    this.searchs = true;
-    this.spinnerService.show();
-    if (this.cSearchForm.invalid) {
-      setTimeout(() => this.spinnerService.hide(), 700);
-      return;
-    }
-    else {
-      setTimeout(() => this.spinnerService.hide(), 1000);
-      this.router.navigate(['/products/'], { queryParams: { area: this.cSearchForm.value.search_address } });
-    }
-
-  }
-
-  onGeoloc() {
-    this.spinnerService.show();
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        // console.log("latitude=>", position.coords.latitude);
-        // console.log("longitude=>", position.coords.longitude)
-        this.user.getpcode(position.coords.latitude,position.coords.longitude).subscribe(data => {
-          this.result = data;
-          console.log(data);
-          var str =this.result; 
-          var n = parseInt(str.search("value"))+7;
-          var z=str.search('"/>');
-          var val=str.slice(n,85);
-          this.postalcode=val;
-          this.cSearchForm.controls['search_address'].setValue(val);
-          this.postalCodeDiv.nativeElement.focus()
-          setTimeout(() => this.spinnerService.hide(), 1500);
-        });
-      });
-    } else {
-      alert("Geolocation is not supported by this browser.");
-    }
-  }
-  
   ngAfterViewInit() {
     $(document).ready(function () {
       $(window).scroll(function () {

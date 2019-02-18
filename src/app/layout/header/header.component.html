@@ -177,42 +177,6 @@
   </div>
   <div class="toggle-bg1"></div>
 </section>
-<div class="new_hole_div">
-  <div class="container_fluid container_new_hole_div">
-    
-    <section class="cSection cSectionSearch">
-      <div class="container cNoContainerpadding">
-        <h1 class="hungry_load_h1">Hungrig?</h1>
-        <p class="hungry_load_p">Beställ mat från favoritrestauranger i närheten av dig.</p>
-        <div class="cSearchWrapper">
-          <form [formGroup]="cSearchForm" (ngSubmit)="onSearch()"  id="search_form" class="cSearchForm">
-            <div class="cSearchInputWrapper">
-              <div class="cSearchInputBox">
-                <input type="text" #input_geo_location placeholder=""  formControlName="search_address" class="cSearchInput cGeoLocationInput"
-                  autocomplete="off" value="">
-                <input type="hidden" value="" name="address"> 
-                <!-- formControlName="search_address_city"> -->
-                <label class="cSearchTextPlaceholder">Ange ditt postnummer</label>
-                <span class="cGeoLocator cTriggerGeoLocation" (click)="onGeoloc()" data-state="">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23">
-                    <g fill="none" fill-rule="evenodd">
-                      <path stroke="#7A0003" d="M11.5 22.5v-2.986l.471-.028a8.001 8.001 0 0 0 7.515-7.515l.028-.471H22.5h-2.986l-.028-.471a8.001 8.001 0 0 0-7.515-7.515l-.471-.028V.5v2.986l-.471.028a8.001 8.001 0 0 0-7.515 7.515l-.028.471H.5h2.986l.028.471a8.001 8.001 0 0 0 7.515 7.515l.471.028V22.5z"></path>
-                      <circle cx="11.5" cy="11.5" r="4" stroke="#7A0003"></circle>
-                      <circle cx="11.5" cy="11.5" r="1" fill="#7A0003"></circle>
-                    </g>
-                  </svg>
-                </span>
-              </div>
-              <div class="cSearchBtnWrap">
-                <button type="submit" class="cSubmitSearch">Hitta restauranger</button>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-    </section>
-  </div>
-</div>
 <div class="modal fade" id="myModal" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content" style="width: 400px;   height: 339px; border-radius: 13px !important;">
