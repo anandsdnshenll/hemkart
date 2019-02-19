@@ -43,7 +43,7 @@ export class ApiService {
     ).pipe(catchError(this.formatErrors));
   }
   pcode(lat:any,long:any,params: HttpParams = new HttpParams()): Observable<any> {
-    const api="https://xn--hemkrtochklart-ypb.se/get_pincode.php?lat="+lat+"&long="+long;
+    const api="http://178.128.255.52/get_pincode.php?lat="+lat+"&long="+long;
     return this.http.get(api,{responseType: 'text'})
       .pipe(catchError(this.formatErrors));
   }

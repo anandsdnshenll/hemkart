@@ -6,7 +6,6 @@
     <div class="row">
       <div class="col-md-6 col-sm-6 col-xs-6">
         <p class="text-white mt-4 h3">{{ userName ? userName: 'Logga in' }}</p>
-        <span class="or_sing">eller</span><a class="sing_up_tag cta-open1">skapa ett konto</a>
       </div>
       <div class="col-md-6 col-sm-6 col-xs-6">
         <img class="side_img" src="./assets/images/Image-login_btpq7r.png" style="width: 76px; float: right;">
@@ -267,7 +266,9 @@
         <li class="cta-open"><a href="#"><span class="glyphicon glyphicon-user"></span> <span style="font-size: 1.2rem;">{{ userName ? userName: 'Logga in' }}</span></a></li>
 
         <li class="catr_icon"><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
-
+        <div class="dropdown-content" *ngIf="userName">
+            <a href="javascript:;" (click)="logout()" href="#">Logga ut</a>
+          </div>
       </ul>
 
     </div>

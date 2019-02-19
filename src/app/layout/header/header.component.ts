@@ -59,12 +59,12 @@ export class HeaderComponent implements OnInit {
       lastName: ['', Validators.required],
       email: ['', Validators.compose([Validators.required, Validators.email, Validators.pattern(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)])],
       mobileNumber: ['', Validators.required],
-      password: ['', [Validators.required, Validators.minLength(6)]]
+      password: ['', [Validators.required]]
     });
 
     this.LoginForm = this.fb.group({
       email: ['', Validators.compose([Validators.required, Validators.email, Validators.pattern(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)])],
-      password: ['', [Validators.required, Validators.minLength(6)]]
+      password: ['', [Validators.required]]
     });
     
   }
@@ -109,7 +109,7 @@ export class HeaderComponent implements OnInit {
         localStorage.setItem("token", data.details.token);
         localStorage.setItem("userName", data.details.details.first_name);
         this.userName = localStorage.getItem("userName");
-        this.registerForm.reset();
+        this.LoginForm.reset();
         $(document).ready(function () {
           $('.toggle-form1, .toggle-form, .formwrap, .toggle-bg').removeClass('active');
         });
