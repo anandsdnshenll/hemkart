@@ -4,6 +4,7 @@ import { Router, Route, ActivatedRoute } from '@angular/router';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { UsersService } from 'src/app/core';
 import { HeaderService } from 'src/app/header.service';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 declare var $: any;
 
@@ -21,8 +22,12 @@ export class HomeComponent implements OnInit {
   data:any;
   result:any;
   postalcode:any='';
-  title="";
-
+  // title="";
+  title = 'materialApp'; 
+  color = 'primary';
+  mode = 'determinate';
+  value = 50;
+  geoLoading = false;
   constructor(
     private fb: FormBuilder,
     private activeRoute:ActivatedRoute,
@@ -71,6 +76,7 @@ export class HomeComponent implements OnInit {
   onGeoloc() {
     console.log("inside");
     this.spinnerService.show();
+    this.geoLoading = true;
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
         // console.log("latitude=>", position.coords.latitude);
@@ -78,6 +84,7 @@ export class HomeComponent implements OnInit {
         this.user.getpcode(position.coords.latitude,position.coords.longitude).subscribe(data => {
           this.result = data;
           console.log(data);
+          this.geoLoading = false;
           var str =this.result; 
           var n = parseInt(str.search("value"))+7;
           var z=str.search('"/>');

@@ -13,6 +13,7 @@ import { ProductModule } from './product/product.module';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderService } from './header.service';
 import { LoginComponent } from './layout/login/login.component';
+import { MatProgressSpinnerModule, MatRadioModule, MatSliderModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { LoginComponent } from './layout/login/login.component';
     HeaderComponent,
     FooterComponent,
     LandingComponent,
-    LoginComponent
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,6 +33,8 @@ import { LoginComponent } from './layout/login/login.component';
     Ng4LoadingSpinnerModule.forRoot(),
     AppRoutingModule,
     ProductModule,
+    MatProgressSpinnerModule, MatRadioModule, MatSliderModule,
+
   ],
   providers: [HeaderService],
   bootstrap: [AppComponent]

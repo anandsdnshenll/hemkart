@@ -1,13 +1,18 @@
 
 <div class="new_hole_div">
     <div class="container_fluid container_new_hole_div">
-      
+
       <section class="cSection cSectionSearch">
+
         <div class="container cNoContainerpadding">
+
           <h1 class="hungry_load_h1">Hungrig?</h1>
           <p class="hungry_load_p">Beställ mat från favoritrestauranger i närheten av dig.</p>
           <div class="cSearchWrapper">
+
             <form [formGroup]="cSearchForm" (ngSubmit)="onSearch()"  id="search_form" class="cSearchForm">
+
+
               <div class="cSearchInputWrapper">
                 <div class="cSearchInputBox">
                   <input type="text" #input_geo_location placeholder=""  formControlName="search_address" class="cSearchInput cGeoLocationInput"
@@ -15,7 +20,7 @@
                   <input type="hidden" value="" name="address"> 
                   <!-- formControlName="search_address_city"> -->
                   <label class="cSearchTextPlaceholder">Ange ditt postnummer</label>
-                  <span class="cGeoLocator cTriggerGeoLocation" (click)="onGeoloc()" data-state="">
+                  <span class="cGeoLocator cTriggerGeoLocation" (click)="onGeoloc()" data-state=""  *ngIf="!geoLoading">
                     <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23">
                       <g fill="none" fill-rule="evenodd">
                         <path stroke="#7A0003" d="M11.5 22.5v-2.986l.471-.028a8.001 8.001 0 0 0 7.515-7.515l.028-.471H22.5h-2.986l-.028-.471a8.001 8.001 0 0 0-7.515-7.515l-.471-.028V.5v2.986l-.471.028a8.001 8.001 0 0 0-7.515 7.515l-.028.471H.5h2.986l.028.471a8.001 8.001 0 0 0 7.515 7.515l.471.028V22.5z"></path>
@@ -24,6 +29,15 @@
                       </g>
                     </svg>
                   </span>
+                  <span class="cGeoLocator cTriggerGeoLocation" data-state="" *ngIf="geoLoading">
+                      <mat-spinner
+                      class = "tp-margin"
+                      [color] = "color"
+                      [mode] = "mode"
+                      [value] = "value">
+                    </mat-spinner>
+                  </span>
+
                 </div>
                 <div class="cSearchBtnWrap">
                   <button type="submit" class="cSubmitSearch">Hitta restauranger</button>
@@ -145,4 +159,3 @@
   </div>
 </div>
 </div>
-<!-- <ng4-loading-spinner> </ng4-loading-spinner> -->

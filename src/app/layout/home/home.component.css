@@ -1,3 +1,16 @@
+.tp-section {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  height: 23px;
+}
+.tp-margin {
+  margin: 0 10px;
+  width: 23px;
+  height: 23px;
+}
+
+
     #tabs{
       background: #007b5e;
       color: #eee;
