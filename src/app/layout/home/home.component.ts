@@ -23,24 +23,31 @@ export class HomeComponent implements OnInit {
   postalcode:any='';
   title="";
 
-
-  constructor(private activeRoute:ActivatedRoute,
+  constructor(
+    private fb: FormBuilder,
+    private activeRoute:ActivatedRoute,
     private spinnerService: Ng4LoadingSpinnerService, 
     private headerService:HeaderService,     
     private router: Router,
     private user:UsersService, ) {
-
     this.spinnerService.show();
     setTimeout(() => this.spinnerService.hide(),800);
-    const body = document.getElementsByTagName('body')[0];
-    body.classList.add('auth')
    }
    url:string;
-  ngOnInit() {
-    // this.headerService.setTitle('home');
-    // const body = document.getElementsByTagName('body')[0];
-    // body.classList.add('home_background');
+
+   ngOnInit() {
+    this.cSearchForm = this.fb.group({
+      search_address: ['', Validators.required],
+      search_address_city: ['']
+    });
+    this.headerService.title.subscribe(title => {
+      this.title = title;
+      console.log(title);
+    });
+    console.log("header",this.activeRoute);
+    console.log(this.activeRoute.snapshot['_routerState'].url); 
   }
+
 
   ngOnDestroy(): void {
     // const body = document.getElementsByTagName('body')[0];
