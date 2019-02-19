@@ -21,13 +21,14 @@ export class HomeComponent implements OnInit {
    }
    url:string;
   ngOnInit() {
-    this.headerService.setTitle('home');
-    const body = document.getElementsByTagName('body')[0];
-    body.classList.add('home_background');
+
+    // this.headerService.setTitle('home');
+    // const body = document.getElementsByTagName('body')[0];
+    // body.classList.add('home_background');
   }
 
   ngOnDestroy(): void {
-    const body = document.getElementsByTagName('body')[0];
-    body.classList.remove('home_background');
+    // const body = document.getElementsByTagName('body')[0];
+    // body.classList.remove('home_background');
   }
 }

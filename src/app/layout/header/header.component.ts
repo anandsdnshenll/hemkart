@@ -151,7 +151,9 @@ export class HeaderComponent implements OnInit {
           var z=str.search('"/>');
           var val=str.slice(n,85);
           this.postalcode=val;
-          this.cSearchForm.controls['search_address'].setValue(val);
+          // this.cSearchForm.controls['search_address'].setValue(val);
+          $('.cSearchInput').attr('value',val);
+          this.cSearchForm.controls['search_address'].setValue("72210");
           this.postalCodeDiv.nativeElement.focus()
           setTimeout(() => this.spinnerService.hide(), 1500);
         });

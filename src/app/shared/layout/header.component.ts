@@ -8,7 +8,7 @@ import { HeaderService } from 'src/app/header.service';
 
 declare var $: any;
 @Component({
-  selector: 'app-header',
+  selector: 'header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
