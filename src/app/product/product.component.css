@@ -1,3 +1,8 @@
+
+.showFixedHeader {
+   display: block !important;
+}
+
 picture{
     top: -27px;
  }

@@ -48,10 +48,7 @@ export class HeaderComponent implements OnInit {
     });
     this.headerService.title.subscribe(title => {
       this.title = title;
-      console.log(title);
     });
-    console.log("header",this.activeRoute);
-    console.log(this.activeRoute.snapshot['_routerState'].url); 
 
     this.registerForm = this.fb.group({
       firstName: ['', Validators.required],
@@ -78,7 +75,6 @@ export class HeaderComponent implements OnInit {
         return;
     }
     this.user.clientRegister(this.registerForm.value).subscribe(data => {
-      // if(data.code == 1) {
         this.user.clientLogin(this.registerForm.value).subscribe(data => {
           localStorage.setItem("user_profile", JSON.stringify(data.details.details));
           localStorage.setItem("token", data.details.token);
@@ -89,14 +85,10 @@ export class HeaderComponent implements OnInit {
             $('.toggle-form1, .formwrap, .toggle-bg').removeClass('active');
           });
         });
-      // } else {
-      //   this.registerForm.reset();
-      // }
     });
   }
   onLogin() {
     this.loginsubmitted = true;
-    // stop here if form is invalid
     if (this.LoginForm.invalid) {
         return;
     }
@@ -119,7 +111,6 @@ export class HeaderComponent implements OnInit {
   logout() {
     localStorage.clear();
     this.router.navigate(['/']);
-
   }
 
   ngAfterViewInit() {

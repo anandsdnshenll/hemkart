@@ -6371,7 +6371,7 @@ h6,
 
 @media (max-width: 768px) {
 
-	.navbar-brand {
+	.navbar-brand, .navbar-brand-fixed {
 
 	    position: absolute;
 
@@ -33651,4 +33651,5 @@ ul.vendor-list li:hover li{
  	transform: scale(1.5);
  }
 
+ 
 /* End Product Page CSS */
