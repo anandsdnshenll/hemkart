@@ -8,6 +8,8 @@ import { UsersService } from '../core';
 import { Location } from '@angular/common'
 import * as $ from 'jquery';
 import { environment } from 'src/environments/environment';
+
+
 declare var $: any;
 @Component({
   selector: 'app-product',

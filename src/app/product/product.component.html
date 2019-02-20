@@ -83,7 +83,7 @@
 
             <div class="search_hole_div">
 
-                <!-- <div class="search_fillter_div">
+                <div class="search_fillter_div">
 
                     <a class="search_tag" onclick="incHeight()">
 
@@ -115,9 +115,9 @@
 
                     </a>
 
-                </div> -->
+                </div>
 
-                <!-- <div id="divShowHide" style="background-color: rgb(255, 255, 255); height: 0px;">
+                <div id="divShowHide" style="background-color: rgb(255, 255, 255); height: 0px;">
                     <div class="budget budget-offer">
 
                         <div style="margin:20px 0 25px 0;">
@@ -978,7 +978,7 @@
 
                     </div>
 
-                </div> -->
+                </div>
 
             </div>
 
@@ -1074,7 +1074,7 @@
               <ul class="vendor-list opened" *ngIf="lists.list" data-title-pickup="" data-title-delivery=""
                 data-title-background="" data-show-extra-tile-info="false" data-show-pick-up-distance="true">
 
-                <li *ngFor="let product of lists.list">
+                <li *ngFor="let product of lists.list   let i=index;">
 
                     <div class="IJsqo" [style.visibility]='product.is_sponsored?"visible":"hidden"'>
                         <!-- <div class="_1kXWW" style="">Bästa i städ</div> -->

@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HeaderService } from './header.service';
 import { LoginComponent } from './layout/login/login.component';
 import { MatProgressSpinnerModule, MatRadioModule, MatSliderModule } from '@angular/material';
+import { GrdFilterPipe } from './shared/pipe/grd-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { MatProgressSpinnerModule, MatRadioModule, MatSliderModule } from '@angu
     FooterComponent,
     LandingComponent,
     LoginComponent,
+    GrdFilterPipe,
   ],
   imports: [
     BrowserModule,
