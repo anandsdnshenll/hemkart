@@ -35,131 +35,79 @@ export class ProductComponent implements OnInit {
       this.area = params["area"];
     });
     this.spinnerService.show();
-    console.log(this.area);
-    this.users.getArea(this.area).subscribe(data => {
-      this.lists = data.details;
-      if (this.datas.list != '') {
-        this.datam = this.lists.list;
-      }
-      setTimeout(() => this.spinnerService.hide(), 8000);
-      console.log(this.datam);
-
-      //this.valu();
-    });
   }
 
   ngOnInit() {
+    this.users.getArea(this.area).subscribe(data => {
+      this.lists = data.details;
+        this.datam = this.lists.list;
+      setTimeout(() => this.spinnerService.hide(), 8000);
+    });
   }
+  
   ngAfterViewInit() {
 
     $(document).ready(function () {
-      //   $(window).on('load', function () {
-      //     $('.offer_bg').show();
-      //   });
 
       $('.customer-logos').slick({
-
         slidesToShow: 6,
-
         slidesToScroll: 1,
-
         autoplay: true,
-
         autoplaySpeed: 1500,
-
         arrows: false,
-
         dots: false,
-
         centerMode: true,
-
         pauseOnHover: false,
-
         responsive: [{
-
           breakpoint: 1440,
-
           settings: {
-
             slidesToShow: 5
-
           }
-
         }, {
-
           breakpoint: 1199,
-
           settings: {
-
             slidesToShow: 4
-
           }
-
         }, {
-
           breakpoint: 992,
-
           settings: {
-
             slidesToShow: 3
-
           }
-
         }, {
-
           breakpoint: 768,
-
           settings: {
-
             slidesToShow: 2
-
           }
-
         }, {
-
           breakpoint: 520,
-
           settings: {
-
             slidesToShow: 1
-
           }
-
         }]
-
       });
+      
+      $(".showScrolledHeader").hide();
+      $(".showFixedHeader").show();
 
       $("#navbar-left-brand").click(function () {
-
         $("#locate-search").show();
-
         $("#locate-me").show();
-
-
       });
+
       $("#navbar-left-brand").click(function () {
         $("#locate-search").hide();
-
       })
 
-
       $("#navbar-left-brand-tab").click(function () {
-
         $("#locate-search").show();
-
         $("#locate-me").show();
-
       });
-
-
 
       $("#navbar-left-brand-mob").click(function () {
-
         $("#locate-search").show();
-
         $("#locate-me").show();
-
       });
+
       $(".btn-another-date").click(function () {
         $(".show-another-date").show();
       });

@@ -75,30 +75,7 @@ li.catr_icon {
     line-height: 0;
     color: #ffffff;
 }
-.add_nav_cont>li.active>a, .add_nav_cont>li.active>a:focus, .add_nav_cont>li.active>a:hover {
-      color: #FBD33D;
-      cursor: default;
-      font-family: KlarnaHeadline,"Helvetica Neue",Arial,Helvetica,sans-serif;
-      background-color: transparent !important;
-      border: 1px solid transparent !important;
-      border-bottom: 2px solid #fff !important;
-      font-size: 18px;
-      width: 118px;
-      }
-      .add_nav_cont{
-      border-bottom: none !important;
-      }
-      .add_nav_cont>li>a {
-      font-family: KlarnaHeadline,"Helvetica Neue",Arial,Helvetica,sans-serif;
-      padding: 25px !important;
-      line-height: 0;
-      color: #ffffff;
-      font-weight: bold;
-      width: 118px;
-      font-size: 18px;
-      font-weight: bold;
-      height: 40px !important
-      }
+
 .nav>li>a {
     padding: 25px !important;
     line-height: 0;
@@ -109,49 +86,59 @@ li.catr_icon {
     text-decoration: none;
     background-color: #7A0003;
 }
+.navbar-brand-fixed {
+  float: left;
+  height: 50px;
+  padding: 15px 15px;
+  font-size: 18px;
+  line-height: 20px;
+}
 /*header media query*/
 @media (max-width: 768px){
-.navbar-brand {
-    position: absolute;
-    left: 50%;
-    margin-left: -100px !important;
-    display: block;
+	.navbar-brand {
+		position: absolute;
+		left: 50%;
+		margin-left: -100px !important;
+		display: block;
+  }
+  .navbar-brand-fixed {
+    margin-left: -15px;
+  }
 }
-}
-.scrolled1 span.glyphicon.glyphicon-user {
+  .scrolled1 span.glyphicon.glyphicon-user {
     color: #7A0003;
-    }
-    .scrolled1 span.logg_class{
+  }
+  .scrolled1 span.logg_class{
     color: #7A0003;
-    }
-    .scrolled1 span.glyphicon.glyphicon-shopping-cart{
+  }
+  .scrolled1 span.glyphicon.glyphicon-shopping-cart{
     color: #7A0003 !important;
-    }
-    .scrolled1 span.glyphicon.glyphicon-user {
+  }
+  .scrolled1 span.glyphicon.glyphicon-user {
     color: #7A0003;
-    }
-    .scrolled1 .nav>li>a:focus>span.glyphicon.glyphicon-user, .nav>li>a:hover>span.glyphicon.glyphicon-user {
+  }
+  .scrolled1 .nav>li>a:focus>span.glyphicon.glyphicon-user, .nav>li>a:hover>span.glyphicon.glyphicon-user {
     color: #fff;
     text-decoration: none;
     background-color: #7A0003;
-    }
-    .scrolled1 span.logg_class{
+  }
+  .scrolled1 span.logg_class{
     color: #7A0003;
-    }
-    .scrolled1 .nav>li>a:focus> span.logg_class, .nav>li>a:hover> span.logg_class{
+  }
+  .scrolled1 .nav>li>a:focus> span.logg_class, .nav>li>a:hover> span.logg_class{
     color: #fff;
     text-decoration: none;
     background-color: #7A0003;
-    }     
-.invalid-feedback {
+  }
+  .invalid-feedback {
     color: #7A0003;
-}
+  }
 .dropbtn {
-    background-color: #4CAF50;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
   }
   
   .dropdown {

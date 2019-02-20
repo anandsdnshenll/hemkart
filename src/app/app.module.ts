@@ -12,14 +12,17 @@ import { LandingComponent } from './layout/landing/landing.component';
 import { ProductModule } from './product/product.module';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderService } from './header.service';
-import { SharedModule } from './shared';
+import { LoginComponent } from './layout/login/login.component';
+import { MatProgressSpinnerModule, MatRadioModule, MatSliderModule } from '@angular/material';
+
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     HeaderComponent,
     FooterComponent,
-    LandingComponent
+    LandingComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,7 +33,8 @@ import { SharedModule } from './shared';
     Ng4LoadingSpinnerModule.forRoot(),
     AppRoutingModule,
     ProductModule,
-    SharedModule  
+    MatProgressSpinnerModule, MatRadioModule, MatSliderModule,
+
   ],
   providers: [HeaderService],
   bootstrap: [AppComponent]

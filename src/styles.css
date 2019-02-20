@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+.mat-progress-spinner circle, .mat-spinner circle {
+    stroke: #780300!important;
+}
+
+.mat-progress-spinner svg, .mat-progress-spinner {
+  width: 20px !important;
+  height: 20px !important;
+  top: 18px;
+  left: 15px;
+}

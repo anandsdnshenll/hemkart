@@ -1,8 +1,7 @@
 import { Component, OnInit, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
-import { Router, Route,ActivatedRoute } from '@angular/router';
-import { UserService } from 'src/app/core/services/user.service';
+import { Router, Route, ActivatedRoute } from '@angular/router';
 import { UsersService } from 'src/app/core';
 import { HeaderService } from 'src/app/header.service';
 
@@ -49,10 +48,7 @@ export class HeaderComponent implements OnInit {
     });
     this.headerService.title.subscribe(title => {
       this.title = title;
-      console.log(title);
     });
-    console.log("header",this.activeRoute);
-    console.log(this.activeRoute.snapshot['_routerState'].url); 
 
     this.registerForm = this.fb.group({
       firstName: ['', Validators.required],
@@ -79,7 +75,6 @@ export class HeaderComponent implements OnInit {
         return;
     }
     this.user.clientRegister(this.registerForm.value).subscribe(data => {
-      // if(data.code == 1) {
         this.user.clientLogin(this.registerForm.value).subscribe(data => {
           localStorage.setItem("user_profile", JSON.stringify(data.details.details));
           localStorage.setItem("token", data.details.token);
@@ -90,14 +85,10 @@ export class HeaderComponent implements OnInit {
             $('.toggle-form1, .formwrap, .toggle-bg').removeClass('active');
           });
         });
-      // } else {
-      //   this.registerForm.reset();
-      // }
     });
   }
   onLogin() {
     this.loginsubmitted = true;
-    // stop here if form is invalid
     if (this.LoginForm.invalid) {
         return;
     }
@@ -120,56 +111,17 @@ export class HeaderComponent implements OnInit {
   logout() {
     localStorage.clear();
     this.router.navigate(['/']);
-
   }
 
-  onSearch() {
-    this.searchs = true;
-    this.spinnerService.show();
-    if (this.cSearchForm.invalid) {
-      setTimeout(() => this.spinnerService.hide(), 700);
-      return;
-    }
-    else {
-      setTimeout(() => this.spinnerService.hide(), 1000);
-      this.router.navigate(['/products/'], { queryParams: { area: this.cSearchForm.value.search_address } });
-    }
-
-  }
-
-  onGeoloc() {
-    this.spinnerService.show();
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        // console.log("latitude=>", position.coords.latitude);
-        // console.log("longitude=>", position.coords.longitude)
-        this.user.getpcode(position.coords.latitude,position.coords.longitude).subscribe(data => {
-          this.result = data;
-          console.log(data);
-          var str =this.result; 
-          var n = parseInt(str.search("value"))+7;
-          var z=str.search('"/>');
-          var val=str.slice(n,85);
-          this.postalcode=val;
-          // this.cSearchForm.controls['search_address'].setValue(val);
-          $('.cSearchInput').attr('value',val);
-          this.cSearchForm.controls['search_address'].setValue("72210");
-          this.postalCodeDiv.nativeElement.focus()
-          setTimeout(() => this.spinnerService.hide(), 1500);
-        });
-      });
-    } else {
-      alert("Geolocation is not supported by this browser.");
-    }
-  }
-  
   ngAfterViewInit() {
     $(document).ready(function () {
+      $(".showScrolledHeader").show();
+      $(".showFixedHeader").hide();
       $(window).scroll(function () {
         if (parseInt($(window).scrollTop()) > 50) {
-          $('.nav-desktop').find('a.navbar-brand').find('img').attr('src', './assets/images/1428568091-Attachment-1.png');
+          $('.nav-desktop').find('a.navbar-brand').find('img').attr('src', './assets/images/red_logo.png');
           //$('.nav-desktop').find('img').attr('height','22px !important');
-          //change src../assets/images/1428568091-Attachment-1.png
+          //change src../assets/images/red_logo.png
           //$('#custom-nav').addClass('affix');
           $(".navbar-fixed-top").addClass("top-nav-collapse");
 
@@ -184,7 +136,7 @@ export class HeaderComponent implements OnInit {
         if ($(".nav-mob").offset().top > 50) {
           //$('#custom-nav').addClass('affix');
           $(".navbar-fixed-top").addClass("top-nav-collapse");
-          $('.nav-mob').find('.navbar-brand img').attr('src', './assets/images/1428568091-Attachment-1.png'); //change src
+          $('.nav-mob').find('.navbar-brand img').attr('src', './assets/images/red_logo.png'); //change src
           // $('.nav-desktop').find('img').attr('height','22px !important');
         } else {
           // $('#custom-nav').removeClass('affix');

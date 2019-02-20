@@ -6,13 +6,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 import { HttpClientModule } from '@angular/common/http';
 import { AppModule } from '../app.module';
-import { SharedModule, HeaderComponent,FooterComponent } from '../shared';
 
 @NgModule({
-  declarations: [ProductComponent,HeaderComponent,FooterComponent],
+  declarations: [ProductComponent],
   imports: [
     CommonModule,
-    SharedModule,
     FormsModule,
     HttpClientModule,
     Ng4LoadingSpinnerModule,
