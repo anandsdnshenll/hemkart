@@ -124,6 +124,8 @@ export class HeaderComponent implements OnInit {
 
   ngAfterViewInit() {
     $(document).ready(function () {
+      $(".showScrolledHeader").show();
+      $(".showFixedHeader").hide();
       $(window).scroll(function () {
         if (parseInt($(window).scrollTop()) > 50) {
           $('.nav-desktop').find('a.navbar-brand').find('img').attr('src', './assets/images/red_logo.png');

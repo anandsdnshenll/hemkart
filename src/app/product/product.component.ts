@@ -35,28 +35,19 @@ export class ProductComponent implements OnInit {
       this.area = params["area"];
     });
     this.spinnerService.show();
-    console.log(this.area);
-    this.users.getArea(this.area).subscribe(data => {
-      this.lists = data.details;
-      if (this.datas.list != '') {
-        this.datam = this.lists.list;
-      }
-      setTimeout(() => this.spinnerService.hide(), 8000);
-      console.log(this.datam);
-
-      //this.valu();
-    });
   }
 
   ngOnInit() {
+    this.users.getArea(this.area).subscribe(data => {
+      this.lists = data.details;
+        this.datam = this.lists.list;
+      setTimeout(() => this.spinnerService.hide(), 8000);
+    });
   }
   
   ngAfterViewInit() {
 
     $(document).ready(function () {
-      //   $(window).on('load', function () {
-      //     $('.offer_bg').show();
-      //   });
 
       $('.customer-logos').slick({
         slidesToShow: 6,
@@ -94,6 +85,9 @@ export class ProductComponent implements OnInit {
           }
         }]
       });
+      
+      $(".showScrolledHeader").hide();
+      $(".showFixedHeader").show();
 
       $("#navbar-left-brand").click(function () {
         $("#locate-search").show();

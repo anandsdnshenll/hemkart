@@ -86,6 +86,13 @@ li.catr_icon {
     text-decoration: none;
     background-color: #7A0003;
 }
+.navbar-brand-fixed {
+  float: left;
+  height: 50px;
+  padding: 15px 15px;
+  font-size: 18px;
+  line-height: 20px;
+}
 /*header media query*/
 @media (max-width: 768px){
 	.navbar-brand {
@@ -93,18 +100,45 @@ li.catr_icon {
 		left: 50%;
 		margin-left: -100px !important;
 		display: block;
-	}
+  }
+  .navbar-brand-fixed {
+    margin-left: -15px;
+  }
 }
-    
-.invalid-feedback {
+  .scrolled1 span.glyphicon.glyphicon-user {
     color: #7A0003;
-}
+  }
+  .scrolled1 span.logg_class{
+    color: #7A0003;
+  }
+  .scrolled1 span.glyphicon.glyphicon-shopping-cart{
+    color: #7A0003 !important;
+  }
+  .scrolled1 span.glyphicon.glyphicon-user {
+    color: #7A0003;
+  }
+  .scrolled1 .nav>li>a:focus>span.glyphicon.glyphicon-user, .nav>li>a:hover>span.glyphicon.glyphicon-user {
+    color: #fff;
+    text-decoration: none;
+    background-color: #7A0003;
+  }
+  .scrolled1 span.logg_class{
+    color: #7A0003;
+  }
+  .scrolled1 .nav>li>a:focus> span.logg_class, .nav>li>a:hover> span.logg_class{
+    color: #fff;
+    text-decoration: none;
+    background-color: #7A0003;
+  }
+  .invalid-feedback {
+    color: #7A0003;
+  }
 .dropbtn {
-    background-color: #4CAF50;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
   }
   
   .dropdown {

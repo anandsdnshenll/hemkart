@@ -1071,78 +1071,77 @@
 
             <section class="vendor-list-section opened ">
 
-                <ul class="vendor-list opened" *ngIf="datam" data-title-pickup="" data-title-delivery=""
-                    data-title-background="" data-show-extra-tile-info="false" data-show-pick-up-distance="true">
+              <ul class="vendor-list opened" *ngIf="lists.list" data-title-pickup="" data-title-delivery=""
+                data-title-background="" data-show-extra-tile-info="false" data-show-pick-up-distance="true">
 
-                    <li *ngFor="let product of datam">
+                <li *ngFor="let product of lists.list">
 
-                        <div class="IJsqo" *ngIf="product.is_sponsored">
-                            <!-- <div class="_1kXWW" style="">Bästa i städ</div> -->
-                            <div class="_1kXWW" style="">Sponserad</div>
-                        </div>
+                    <div class="IJsqo" [style.visibility]='product.is_sponsored?"visible":"hidden"'>
+                        <!-- <div class="_1kXWW" style="">Bästa i städ</div> -->
+                        <div class="_1kXWW">Sponsered</div>
+                    </div>
 
-                        <a href="#" data-flood-closed-message="" class="hreview-aggregate url">
+                    <a href="#" data-flood-closed-message="" class="hreview-aggregate url">
 
-                            <figure class="vendor-tile closed item ">
+                        <figure class="vendor-tile closed item ">
 
-                                <picture style="top: -27px;">
+                            <picture style="top: -27px;">
 
-                                    <div class="vendor-picture b-lazy b-loaded b-loaded" data-vendor-id="7190" [style.background-image]="'url(' +img_url+product.image+ ')'">
+                                <div class="vendor-picture b-lazy b-loaded b-loaded" [style.background-image]="'url(' +img_url+product.image+ '?width=100&height=584)'">
+                                </div>
+                                <img class="res_logo_side" src="{{img_url}}{{product.image}}">
+
+                            </picture>
+
+                            <figcaption class="vendor-info">
+
+                                <span class="headline">
+
+                                    <span class="name fn">{{product.restaurant_name}}</span>
+
+                                    <div class="ratings-component">
+
+                                        <span class="fa fa-star"></span>
+
+                                        <span class="rating-new">{{product.rating_value|slice:6:11}}</span>
+
+                                        <span class="count-new" data-count="(2)">
+
+                                            {{product.rating_value|slice:11:13}}
+
+                                        </span>
+
                                     </div>
-                                    <img class="res_logo_side" src="{{img_url}}{{product.image}}">
 
-                                </picture>
+                                </span>
 
-                                <figcaption class="vendor-info">
+                                <ul class="categories summary">
 
-                                    <span class="headline">
+                                    <li>
 
-                                        <span class="name fn">{{product.restaurant_name}}</span>
+                                        <span [className]="product.status=='open'?'budget-symbol--filled':'budget-symbol--filled-warn'">{{product.resto_sta}}</span>
 
-                                        <div class="ratings-component">
+                                    </li>
 
-                                            <span class="fa fa-star"></span>
+                                    <li class="vendor-characteristic">
 
-                                            <span class="rating-new">4.79</span>
+                                        <span>{{product.resto_cuisine1}}</span>
 
-                                            <span class="count-new" data-count="(16)">
+                                    </li>
 
-                                                16
-
-                                            </span>
-
-                                        </div>
-
-                                    </span>
-
-                                    <ul class="categories summary">
-
-                                        <li>
-
-                                            <span class="budget-symbol--filled">{{product.resto_sta}}</span>
-
-                                        </li>
-
-                                        <li class="vendor-characteristic">
-
-                                            <span>{{product.resto_cuisine1}}</span>
-
-                                        </li>
-
-                                    </ul>
+                                </ul>
 
 
-                                </figcaption>
+                            </figcaption>
 
 
-                                <!-- <div class="quick_view"><a href="">fler detaljer</a></div> -->
-                            </figure>
+                            <!-- <div class="quick_view"><a href="">fler detaljer</a></div> -->
+                        </figure>
 
-                        </a>
+                    </a>
 
-                    </li>
-                </ul>
-
+                </li>
+            </ul>
             </section>
 
             <section class="vendor-list-section temp-closed hide">

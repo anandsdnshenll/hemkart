@@ -4,7 +4,6 @@ import { Router, Route, ActivatedRoute } from '@angular/router';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { UsersService } from 'src/app/core';
 import { HeaderService } from 'src/app/header.service';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 declare var $: any;
 
@@ -22,19 +21,19 @@ export class HomeComponent implements OnInit {
   data:any;
   result:any;
   postalcode:any='';
-  // title="";
-  title = 'materialApp'; 
+  title="";
   color = 'primary';
   mode = 'determinate';
   value = 50;
   geoLoading = false;
+  postalCodeField = true;
   constructor(
     private fb: FormBuilder,
-    private activeRoute:ActivatedRoute,
+    private activeRoute: ActivatedRoute,
     private spinnerService: Ng4LoadingSpinnerService, 
-    private headerService:HeaderService,     
+    private headerService: HeaderService,     
     private router: Router,
-    private user:UsersService, ) {
+    private user: UsersService ) {
     this.spinnerService.show();
     setTimeout(() => this.spinnerService.hide(),800);
    }
@@ -47,16 +46,12 @@ export class HomeComponent implements OnInit {
     });
     this.headerService.title.subscribe(title => {
       this.title = title;
-      console.log(title);
     });
-    console.log("header",this.activeRoute);
-    console.log(this.activeRoute.snapshot['_routerState'].url); 
   }
 
 
   ngOnDestroy(): void {
-    // const body = document.getElementsByTagName('body')[0];
-    // body.classList.remove('home_background');
+
   }
 
   onSearch() {
@@ -74,16 +69,12 @@ export class HomeComponent implements OnInit {
   }
 
   onGeoloc() {
-    console.log("inside");
     this.spinnerService.show();
     this.geoLoading = true;
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
-        // console.log("latitude=>", position.coords.latitude);
-        // console.log("longitude=>", position.coords.longitude)
         this.user.getpcode(position.coords.latitude,position.coords.longitude).subscribe(data => {
           this.result = data;
-          console.log(data);
           this.geoLoading = false;
           var str =this.result; 
           var n = parseInt(str.search("value"))+7;
