@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Router, Route, ActivatedRoute } from '@angular/router';
 import { UsersService } from 'src/app/core';
@@ -18,7 +17,7 @@ export class ProductComponent implements OnInit {
 
   submitted = false;
   area: any;
-  datam: any = [];
+  areaRestaurents: any = [];
   data: any = [];
   datas: any = [];
   lists: any = [];
@@ -28,9 +27,11 @@ export class ProductComponent implements OnInit {
   color = 'primary';
   mode = 'determinate';
   value = 50;
+  emptyMsg: string;
+  filteredItems: any = [];
+
   constructor(
     private fb: FormBuilder,
-    private spinnerService: Ng4LoadingSpinnerService,
     private http: HttpClient,
     private users: UsersService,
     private router: Router,
@@ -40,18 +41,76 @@ export class ProductComponent implements OnInit {
     this.routes.queryParams.subscribe(params => {
       this.area = params["area"];
     });
-    this.spinnerService.show();
   }
+
+  // ngOnInit() {
+  //   this.spinner.show();
+  //   let crrentCode = localStorage.getItem("areaCode");
+  //   if((this.areaCode == crrentCode) && localStorage.getItem("areaRestaurents") != null ){
+  //     this.areaRestaurents = JSON.parse(localStorage.getItem("areaRestaurents"));
+  //     setTimeout(() => this.spinner.hide(), 300);
+  //   } else {
+  //     this.users.getArea(this.areaCode).subscribe(data => {
+  //       if(data.details) {
+  //         this.lists = data.details;
+  //         this.areaRestaurents = this.lists.list;
+  //         localStorage.setItem("areaRestaurents", JSON.stringify(this.areaRestaurents));
+  //         localStorage.setItem("areaCode", this.areaCode);
+  //       } else {
+  //         this.emptyMsg = data.msg;
+  //       }
+  //       this.spinner.hide();
+  //     });
+  //   }
+
+  // }
 
   ngOnInit() {
     this.spinner.show();
     this.users.getArea(this.area).subscribe(data => {
-      this.lists = data.details;
-      this.datam = this.lists.list;
+      if(data.details) {
+        this.lists = data.details;
+        this.areaRestaurents = this.lists.list;
+      } else {
+        this.emptyMsg = data.msg;
+      }
       this.spinner.hide();
     });
   }
   
+  assignCopy(){
+   this.areaRestaurents = this.lists.list;
+  }
+
+  
+  filterItem(event){
+    if(event.target.value && event.keyCode == 13){
+      this.spinner.show();
+      event.target.value = event.target.value.toString().toLowerCase();
+      this.areaRestaurents = Object.assign([], this.areaRestaurents).filter(
+      category => category.restaurant_name.toLowerCase().includes(event.target.value)
+      );
+      setTimeout(() => this.spinner.hide(),200);
+    } else {
+      this.areaRestaurents = this.lists.list;
+    }
+  }
+
+  checkValue(event) {
+    // console.log("value *******", value);
+    //value = "Casablanca kolgrillsbar";
+    if(event.target.value){
+      event.target.value = event.target.value.toString().toLowerCase();
+
+      this.areaRestaurents = Object.assign([], this.areaRestaurents).filter(
+        category => category.resto_cuisine1.toLowerCase().includes(event.target.value)
+      );
+    } else {
+      this.areaRestaurents = this.lists.list;
+    }
+
+    this.divShowHide = !this.divShowHide; 
+  }
   ngAfterViewInit() {
 
     $(document).ready(function () {

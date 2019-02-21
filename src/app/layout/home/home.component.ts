@@ -76,6 +76,8 @@ export class HomeComponent implements OnInit {
   removePostalCode(event:any) {
     if(event.target.value == "") {
       $('.cSearchInput').attr('value',"");
+    }else{
+      $('.cSearchInput').attr('value',event.target.value);
     }
   }
 

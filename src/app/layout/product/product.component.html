@@ -91,8 +91,7 @@
                           <i class="fa fa-search" ></i>
 
                       </span>
-
-                      <input id="search_box" type="text" placeholder="Sök...." style="width: 75px;">
+                      <input id="search_box" type="text" placeholder="Sök...." style="width: 125px;" (keydown)="filterItem($event)">
 
                   </a>
 
@@ -104,7 +103,7 @@
 
                       </span>
 
-                      <input id="search_box1" type="button" value="FILTERS" style="width: 420px; display: inline-block;">
+                      <input id="search_box1" type="button" value="FILTERS" style="width: 375px; display: inline-block;">
 
                       <span class="closeFielterBox">
 
@@ -155,7 +154,7 @@
 
                               <label class="checkbox-box">
 
-                                  <input type="checkbox" name="filter-quick" id="has_discount" value="has_discount">
+                                  <input type="checkbox" name="filter-quick" id="has_discount" value="Korv"  [(ngModel)]="isChecked" (change)="checkValue($event)" >
 
                                   <span class="checkbox-element">
 
@@ -177,19 +176,18 @@
 
                                   <span class="checkbox-text">
                                       <font style="vertical-align: inherit;">
-                                          <font style="vertical-align: inherit;">Sausage</font>
+                                          <font style="vertical-align: inherit;">Korv</font>
                                       </font>
                                   </span>
 
                               </label>
 
                           </li>
-
                           <li>
 
                               <label class="checkbox-box">
 
-                                  <input type="checkbox" name="filter-quick" id="has_discount" value="has_discount">
+                                  <input type="checkbox" name="filter-quick" id="has_discount" value="Asiatiskt" [(ngModel)]="isChecked1" (change)="checkValue($event)">
 
                                   <span class="checkbox-element">
 
@@ -211,7 +209,7 @@
 
                                   <span class="checkbox-text">
                                       <font style="vertical-align: inherit;">
-                                          <font style="vertical-align: inherit;">Asian</font>
+                                          <font style="vertical-align: inherit;">Asiatiskt</font>
                                       </font>
                                   </span>
 
@@ -223,7 +221,7 @@
 
                               <label class="checkbox-box">
 
-                                  <input type="checkbox" name="filter-quick" id="has_discount" value="has_discount">
+                                  <input type="checkbox" name="filter-quick" id="has_discount" value="Eritreansk" [(ngModel)]="isChecked2" (change)="checkValue($event)">
 
                                   <span class="checkbox-element">
 
@@ -245,7 +243,7 @@
 
                                   <span class="checkbox-text">
                                       <font style="vertical-align: inherit;">
-                                          <font style="vertical-align: inherit;">pastries</font>
+                                          <font style="vertical-align: inherit;">Eritreansk</font>
                                       </font>
                                   </span>
 
@@ -257,7 +255,7 @@
 
                               <label class="checkbox-box">
 
-                                  <input type="checkbox" name="filter-quick" id="has_discount" value="has_discount">
+                                  <input type="checkbox" name="filter-quick" id="has_discount" value="Etiopisk" [(ngModel)]="isChecked3" (change)="checkValue($event)">
 
                                   <span class="checkbox-element">
 
@@ -279,7 +277,7 @@
 
                                   <span class="checkbox-text">
                                       <font style="vertical-align: inherit;">
-                                          <font style="vertical-align: inherit;">Eritrean</font>
+                                          <font style="vertical-align: inherit;">Etiopisk</font>
                                       </font>
                                   </span>
 
@@ -291,7 +289,7 @@
 
                               <label class="checkbox-box">
 
-                                  <input type="checkbox" name="filter-quick" id="has_discount" value="has_discount">
+                                  <input type="checkbox" name="filter-quick" id="has_discount" value="Indisk" [(ngModel)]="isChecked4" (change)="checkValue($event)">
 
                                   <span class="checkbox-element">
 
@@ -313,7 +311,7 @@
 
                                   <span class="checkbox-text">
                                       <font style="vertical-align: inherit;">
-                                          <font style="vertical-align: inherit;">Ethiopian</font>
+                                          <font style="vertical-align: inherit;">Indisk</font>
                                       </font>
                                   </span>
 
@@ -325,41 +323,7 @@
 
                               <label class="checkbox-box">
 
-                                  <input type="checkbox" name="filter-quick" id="has_discount" value="has_discount">
-
-                                  <span class="checkbox-element">
-
-                                      <i class="checkmark">
-
-                                          <svg xmlns="http://www.w3.org/2000/svg" width="8" height="6" viewBox="0 0 8 6">
-
-                                              <g class="svg-stroke-container">
-
-                                                  <path fill="none" fill-rule="evenodd" stroke="#FFF" stroke-linecap="round" stroke-linejoin="round" d="M.5 3.333L3.073 5.5 7.5.5"></path>
-
-                                              </g>
-
-                                          </svg>
-
-                                      </i>
-
-                                  </span>
-
-                                  <span class="checkbox-text">
-                                      <font style="vertical-align: inherit;">
-                                          <font style="vertical-align: inherit;">Indian</font>
-                                      </font>
-                                  </span>
-
-                              </label>
-
-                          </li>
-
-                          <li>
-
-                              <label class="checkbox-box">
-
-                                  <input type="checkbox" name="filter-quick" id="has_discount" value="has_discount">
+                                  <input type="checkbox" name="filter-quick" id="has_discount" value="Italian" [(ngModel)]="isChecked5" (change)="checkValue($event)">
 
                                   <span class="checkbox-element">
 
@@ -393,7 +357,7 @@
 
                               <label class="checkbox-box">
 
-                                  <input type="checkbox" name="filter-quick" id="has_discount" value="has_discount">
+                                  <input type="checkbox" name="filter-quick" id="has_discount" value="Candy">
 
                                   <span class="checkbox-element">
 
@@ -427,7 +391,7 @@
 
                               <label class="checkbox-box">
 
-                                  <input type="checkbox" name="filter-quick" id="has_discount" value="has_discount">
+                                  <input type="checkbox" name="filter-quick" id="has_discount" value="Hamburgare">
 
                                   <span class="checkbox-element">
 
@@ -461,7 +425,7 @@
 
                               <label class="checkbox-box">
 
-                                  <input type="checkbox" name="filter-quick" id="has_discount" value="has_discount">
+                                  <input type="checkbox" name="filter-quick" id="has_discount" value="Kebab">
 
                                   <span class="checkbox-element">
 
@@ -491,7 +455,7 @@
 
                               <label class="checkbox-box">
 
-                                  <input type="checkbox" name="filter-quick" id="has_discount" value="has_discount">
+                                  <input type="checkbox" name="filter-quick" id="has_discount" value="Kolgrill">
 
                                   <span class="checkbox-element">
 
@@ -525,7 +489,7 @@
 
                               <label class="checkbox-box">
 
-                                  <input type="checkbox" name="filter-quick" id="has_discount" value="has_discount">
+                                  <input type="checkbox" name="filter-quick" id="has_discount" value="Sandwiches">
 
                                   <span class="checkbox-element">
 
@@ -559,7 +523,7 @@
 
                               <label class="checkbox-box">
 
-                                  <input type="checkbox" name="filter-quick" id="has_discount" value="has_discount">
+                                  <input type="checkbox" name="filter-quick" id="has_discount" value="Mexikansk">
 
                                   <span class="checkbox-element">
 
@@ -593,7 +557,7 @@
 
                               <label class="checkbox-box">
 
-                                  <input type="checkbox" name="filter-quick" id="has_discount" value="has_discount">
+                                  <input type="checkbox" name="filter-quick" id="has_discount" value="Pasta">
 
                                   <span class="checkbox-element">
 
@@ -657,7 +621,7 @@
 
                               <label class="checkbox-box">
 
-                                  <input type="checkbox" name="filter-quick" id="has_discount" value="has_discount">
+                                  <input type="checkbox" name="filter-quick" id="has_discount" value="Pizza">
 
                                   <span class="checkbox-element">
 
@@ -687,7 +651,7 @@
 
                               <label class="checkbox-box">
 
-                                  <input type="checkbox" name="filter-quick" id="has_discount" value="has_discount">
+                                  <input type="checkbox" name="filter-quick" id="has_discount" value="Sallad">
 
                                   <span class="checkbox-element">
 
@@ -721,7 +685,7 @@
 
                               <label class="checkbox-box">
 
-                                  <input type="checkbox" name="filter-quick" id="has_discount" value="has_discount">
+                                  <input type="checkbox" name="filter-quick" id="has_discount" value="Snacks">
 
                                   <span class="checkbox-element">
 
@@ -751,7 +715,7 @@
 
                               <label class="checkbox-box">
 
-                                  <input type="checkbox" name="filter-quick" id="has_discount" value="has_discount">
+                                  <input type="checkbox" name="filter-quick" id="has_discount" value="Subway">
 
                                   <span class="checkbox-element">
 
@@ -781,7 +745,7 @@
 
                               <label class="checkbox-box">
 
-                                  <input type="checkbox" name="filter-quick" id="has_discount" value="has_discount">
+                                  <input type="checkbox" name="filter-quick" id="has_discount" value="Sushi">
 
                                   <span class="checkbox-element">
 
@@ -909,7 +873,7 @@
 
                               <label class="checkbox-box">
 
-                                  <input type="checkbox" name="filter-quick" id="has_discount" value="has_discount">
+                                  <input type="checkbox" name="filter-quick" id="has_discount" value="Vegansk">
 
                                   <span class="checkbox-element">
 
@@ -943,7 +907,7 @@
 
                               <label class="checkbox-box">
 
-                                  <input type="checkbox" name="filter-quick" id="has_discount" value="has_discount">
+                                  <input type="checkbox" name="filter-quick" id="has_discount" value="Glutenfri">
 
                                   <span class="checkbox-element">
 
@@ -977,7 +941,7 @@
 
                   </div>
 
-              </div>
+              </div> 
 
           </div>
 
@@ -1074,12 +1038,13 @@
               size="medium"
               color="#fff"
               type="ball-scale-multiple">
-            <p style="font-size: 20px; color: white">Loading...</p>
+              <p style="font-size: 20px; color: white">Loading...</p>
             </ngx-spinner>
-            <ul class="vendor-list opened" *ngIf="lists.list" data-title-pickup="" data-title-delivery=""
+            <div class="emptyMsgs">{{emptyMsg}}</div>
+            <ul class="vendor-list opened" *ngIf="areaRestaurents && areaRestaurents.length > 0" data-title-pickup="" data-title-delivery=""
               data-title-background="" data-show-extra-tile-info="false" data-show-pick-up-distance="true">
 
-              <li *ngFor="let product of lists.list let i=index;">
+              <li *ngFor="let product of areaRestaurents let i=index;">
 
                   <div class="IJsqo" [style.visibility]='product.is_sponsored?"visible":"hidden"'>
                       <!-- <div class="_1kXWW" style="">Bästa i städ</div> -->
