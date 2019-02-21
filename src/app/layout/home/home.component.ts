@@ -27,6 +27,9 @@ export class HomeComponent implements OnInit {
   value = 50;
   geoLoading = false;
   postalCodeField = true;
+  input: any;
+  postvalues: string;
+
   constructor(
     private fb: FormBuilder,
     private activeRoute: ActivatedRoute,
@@ -62,10 +65,18 @@ export class HomeComponent implements OnInit {
       return;
     }
     else {
+      this.input=this.cSearchForm.value.search_address;
+      $('.cSearchInput').attr('value',this.cSearchForm.value.search_address);
       setTimeout(() => this.spinnerService.hide(), 1000);
       this.router.navigate(['/products/'], { queryParams: { area: this.cSearchForm.value.search_address } });
     }
 
+  }
+
+  removePostalCode(event:any) {
+    if(event.target.value == "") {
+      $('.cSearchInput').attr('value',"");
+    }
   }
 
   onGeoloc() {
@@ -77,12 +88,13 @@ export class HomeComponent implements OnInit {
           this.result = data;
           this.geoLoading = false;
           var str =this.result; 
-          var n = parseInt(str.search("value"))+7;
+          var n = parseInt(str.search("value")) + 7;
           var z=str.search('"/>');
           var val=str.slice(n,85);
           this.postalcode=val;
           this.cSearchForm.controls['search_address'].setValue(val);
-          this.postalCodeDiv.nativeElement.focus()
+          $('.cSearchInput').attr('value',val);
+          // this.postalCodeDiv.nativeElement.focus()
           setTimeout(() => this.spinnerService.hide(), 1500);
         });
       });
