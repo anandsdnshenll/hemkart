@@ -9,12 +9,14 @@ import { FooterComponent } from './layout/footer/footer.component';
 import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 import { CoreModule } from './core';
 import { LandingComponent } from './layout/landing/landing.component';
-import { ProductModule } from './product/product.module';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderService } from './header.service';
 import { LoginComponent } from './layout/login/login.component';
 import { MatProgressSpinnerModule, MatRadioModule, MatSliderModule } from '@angular/material';
 import { GrdFilterPipe } from './shared/pipe/grd-filter.pipe';
+import { FilterPipeModule } from 'ngx-filter-pipe';
+import { ProductComponent } from './layout/product/product.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,7 @@ import { GrdFilterPipe } from './shared/pipe/grd-filter.pipe';
     LandingComponent,
     LoginComponent,
     GrdFilterPipe,
+    ProductComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,9 +37,9 @@ import { GrdFilterPipe } from './shared/pipe/grd-filter.pipe';
     ReactiveFormsModule,
     Ng4LoadingSpinnerModule.forRoot(),
     AppRoutingModule,
-    ProductModule,
+    NgxSpinnerModule,
     MatProgressSpinnerModule, MatRadioModule, MatSliderModule,
-
+    FilterPipeModule
   ],
   providers: [HeaderService],
   bootstrap: [AppComponent]

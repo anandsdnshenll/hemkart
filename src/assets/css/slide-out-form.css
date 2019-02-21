@@ -540,8 +540,13 @@ background-color: #ffffff;
 }
 input#phone,
 input#phone1,
+input#phone2, 
+input#phone3, 
+input#phone4,
+input#phone5,
 input#password,
 input#password1,
+input#password2,
 input#name,
 input#email {
   background-color: transparent;
