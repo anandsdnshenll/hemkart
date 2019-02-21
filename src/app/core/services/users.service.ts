@@ -13,7 +13,7 @@ export class UsersService {
     ) { }
 
     getArea(username: string): Observable<Area> {
-        return this.apiService.get('SearchArea/s/' + username + '?json=true')
+        return this.apiService.get('SearchArea/s/' + username + '/15?json=true')
             .pipe(map((data) => data));
     }
 
