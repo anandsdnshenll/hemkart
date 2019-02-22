@@ -17,6 +17,10 @@ import { GrdFilterPipe } from './shared/pipe/grd-filter.pipe';
 import { FilterPipeModule } from 'ngx-filter-pipe';
 import { ProductComponent } from './layout/product/product.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { Restaurentdetail } from './layout/restaurentdetail/restaurentdetail.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -28,6 +32,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     LoginComponent,
     GrdFilterPipe,
     ProductComponent,
+    Restaurentdetail,
   ],
   imports: [
     BrowserModule,
@@ -39,7 +44,10 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     AppRoutingModule,
     NgxSpinnerModule,
     MatProgressSpinnerModule, MatRadioModule, MatSliderModule,
-    FilterPipeModule
+    FilterPipeModule,
+    NgbModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [HeaderService],
   bootstrap: [AppComponent]

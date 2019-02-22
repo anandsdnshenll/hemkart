@@ -50,4 +50,23 @@ export class UsersService {
         .pipe(map((data) => data));
     }
 
+    getRestaurent(merchantId) {
+        return this.apiService.get('GetMerchantMenu/mtid/' + merchantId + '?json=true')
+            .pipe(map((data) => data));
+    }
+
+    addtoCart(itemid, merchantid, price) {
+        return this.apiService.get('ajax?action=addToCart&currentController=store&row=1&item_id=' + itemid +'&merchant_id=' + merchantid + '&price='+ price)
+        .pipe(map((data) => data)); 
+    }
+    
+    getCart(merchantid) {
+        return this.apiService.get('LoadItemCart?merchant_id=' + merchantid + '?json=true')
+            .pipe(map((data) => data));
+    }
+
+    getReviews(merchantid) {
+        return this.apiService.get('LoadReviews?merchant_id=' + merchantid + '?json=true')
+            .pipe(map((data) => data));
+    }
 }

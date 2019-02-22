@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd, Event } from '@angular/router';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { HeaderService } from './header.service';
+import { environment } from 'src/environments/environment';
 
 declare var $: any;
 @Component({
@@ -30,5 +31,6 @@ export class AppComponent{
         this.currentUrl = event.url;
       }
     });
+    localStorage.setItem("image_url", environment.image_url);
   }
 }

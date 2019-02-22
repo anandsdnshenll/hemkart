@@ -28,8 +28,10 @@
               "src/assets/css/fonts.css",
               "src/assets/css/style.css",
               "src/assets/css/main.css",
-			  "src/assets/css/product.css",
-              "src/assets/css/slide-out-form.css"
+			        "src/assets/css/product.css",
+			        "src/assets/css/b2b.css",
+              "src/assets/css/slide-out-form.css",
+              "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",

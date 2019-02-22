@@ -31,6 +31,7 @@ export class ProductComponent implements OnInit {
   filteredItems: any = [];
   foodFilteredItems: any = [];
   checkedItems: any = [];
+  restaurentDetail: any = [];
 
   constructor(
     private fb: FormBuilder,
@@ -102,7 +103,6 @@ export class ProductComponent implements OnInit {
   }
 
   checkValue(value) {
-    console.log("value *******", value);
     //value = "Casablanca kolgrillsbar";
     if(value){
       value = value.toString().toLowerCase();
@@ -119,6 +119,24 @@ export class ProductComponent implements OnInit {
       this.areaRestaurents = this.lists.list;
     }
   }
+
+  
+  goRestaurentDetail(merchantid, productImage, availableTypes, restaurant_name, rating_value, isClosed) {
+    this.restaurentDetail.push(
+      {
+        merchantid: merchantid,
+        productImage: productImage,
+        availableTypes: availableTypes,
+        restaurant_name: restaurant_name,
+        rating_value: rating_value,
+        isClosed: isClosed
+      }
+    );
+    localStorage.setItem("productImage", productImage);
+    localStorage.setItem("restaurentDetail", JSON.stringify(this.restaurentDetail));
+    this.router.navigate(['/restaurent-detail/'], { queryParams: { area: this.area, merchantid: merchantid } });
+  }
+
   ngAfterViewInit() {
 
     $(document).ready(function () {
