@@ -29,6 +29,8 @@ export class ProductComponent implements OnInit {
   value = 50;
   emptyMsg: string;
   filteredItems: any = [];
+  foodFilteredItems: any = [];
+  checkedItems: any = [];
 
   constructor(
     private fb: FormBuilder,
@@ -87,7 +89,10 @@ export class ProductComponent implements OnInit {
     if(event.target.value && event.keyCode == 13){
       this.spinner.show();
       event.target.value = event.target.value.toString().toLowerCase();
-      this.areaRestaurents = Object.assign([], this.areaRestaurents).filter(
+      if(this.foodFilteredItems && this.foodFilteredItems.length>0) {
+        this.areaRestaurents = this.foodFilteredItems;
+      }
+      this.filteredItems = this.areaRestaurents = Object.assign([], this.areaRestaurents).filter(
       category => category.restaurant_name.toLowerCase().includes(event.target.value)
       );
       setTimeout(() => this.spinner.hide(),200);
@@ -96,20 +101,23 @@ export class ProductComponent implements OnInit {
     }
   }
 
-  checkValue(event) {
-    // console.log("value *******", value);
+  checkValue(value) {
+    console.log("value *******", value);
     //value = "Casablanca kolgrillsbar";
-    if(event.target.value){
-      event.target.value = event.target.value.toString().toLowerCase();
-
-      this.areaRestaurents = Object.assign([], this.areaRestaurents).filter(
-        category => category.resto_cuisine1.toLowerCase().includes(event.target.value)
+    if(value){
+      value = value.toString().toLowerCase();
+      if(this.filteredItems && this.filteredItems.length>0) {
+        this.areaRestaurents = this.filteredItems;
+      }
+      // this.checkedItems.push({resto_cuisine1: value});
+      // console.log("this.checkedItems",this.checkedItems);
+      // this.checkedItems
+      this.foodFilteredItems = this.areaRestaurents = Object.assign([], this.areaRestaurents).filter(
+        category => category.resto_cuisine1.toLowerCase().includes(value)
       );
     } else {
       this.areaRestaurents = this.lists.list;
     }
-
-    this.divShowHide = !this.divShowHide; 
   }
   ngAfterViewInit() {
 

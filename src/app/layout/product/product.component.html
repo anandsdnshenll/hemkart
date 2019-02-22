@@ -154,7 +154,7 @@
 
                               <label class="checkbox-box">
 
-                                  <input type="checkbox" name="filter-quick" id="has_discount" value="Korv"  [(ngModel)]="isChecked" (change)="checkValue($event)" >
+                                  <input type="checkbox" name="filter-quick" id="has_discount" value="Korv"  [(ngModel)]="isChecked" (change)="checkValue(isChecked?'Korv':'')" >
 
                                   <span class="checkbox-element">
 
@@ -187,7 +187,7 @@
 
                               <label class="checkbox-box">
 
-                                  <input type="checkbox" name="filter-quick" id="has_discount" value="Asiatiskt" [(ngModel)]="isChecked1" (change)="checkValue($event)">
+                                  <input type="checkbox" name="filter-quick" id="has_discount" value="Asiatiskt" [(ngModel)]="isChecked1" (change)="checkValue(isChecked1?'Asiatiskt':'')">
 
                                   <span class="checkbox-element">
 
@@ -221,7 +221,7 @@
 
                               <label class="checkbox-box">
 
-                                  <input type="checkbox" name="filter-quick" id="has_discount" value="Eritreansk" [(ngModel)]="isChecked2" (change)="checkValue($event)">
+                                  <input type="checkbox" name="filter-quick" id="has_discount" value="Eritreansk" [(ngModel)]="isChecked2" (change)="checkValue(isChecked2?'italian':'')">
 
                                   <span class="checkbox-element">
 
@@ -255,7 +255,7 @@
 
                               <label class="checkbox-box">
 
-                                  <input type="checkbox" name="filter-quick" id="has_discount" value="Etiopisk" [(ngModel)]="isChecked3" (change)="checkValue($event)">
+                                  <input type="checkbox" name="filter-quick" id="has_discount" value="Etiopisk" [(ngModel)]="isChecked3" (change)="checkValue(isChecked3?'italian':'')">
 
                                   <span class="checkbox-element">
 
@@ -323,7 +323,7 @@
 
                               <label class="checkbox-box">
 
-                                  <input type="checkbox" name="filter-quick" id="has_discount" value="Italian" [(ngModel)]="isChecked5" (change)="checkValue($event)">
+                                  <input type="checkbox" name="filter-quick" id="has_discount" value="italian" [(ngModel)]="isChecked5" (change)="checkValue(isChecked5?'italian':'')">
 
                                   <span class="checkbox-element">
 
@@ -357,7 +357,7 @@
 
                               <label class="checkbox-box">
 
-                                  <input type="checkbox" name="filter-quick" id="has_discount" value="Candy">
+                                  <input type="checkbox" name="filter-quick" id="has_discount" value="Candy" [(ngModel)]="isChecked6" (change)="checkValue($event)">
 
                                   <span class="checkbox-element">
 
@@ -391,7 +391,7 @@
 
                               <label class="checkbox-box">
 
-                                  <input type="checkbox" name="filter-quick" id="has_discount" value="Hamburgare">
+                                  <input type="checkbox" name="filter-quick" id="has_discount" value="Hamburgare" [(ngModel)]="isChecked7" (change)="checkValue(isChecked7?'Hamburgare':'')">
 
                                   <span class="checkbox-element">
 
@@ -425,7 +425,7 @@
 
                               <label class="checkbox-box">
 
-                                  <input type="checkbox" name="filter-quick" id="has_discount" value="Kebab">
+                                  <input type="checkbox" name="filter-quick" id="has_discount" value="Kebab" [(ngModel)]="isChecked8" (change)="checkValue($event)">
 
                                   <span class="checkbox-element">
 
@@ -455,7 +455,7 @@
 
                               <label class="checkbox-box">
 
-                                  <input type="checkbox" name="filter-quick" id="has_discount" value="Kolgrill">
+                                  <input type="checkbox" name="filter-quick" id="has_discount" value="Kolgrill" [(ngModel)]="isChecked9" (change)="checkValue($event)">
 
                                   <span class="checkbox-element">
 
@@ -489,7 +489,7 @@
 
                               <label class="checkbox-box">
 
-                                  <input type="checkbox" name="filter-quick" id="has_discount" value="Sandwiches">
+                                  <input type="checkbox" name="filter-quick" id="has_discount" value="Sandwiches" [(ngModel)]="isChecked10" (change)="checkValue($event)">
 
                                   <span class="checkbox-element">
 
@@ -523,7 +523,7 @@
 
                               <label class="checkbox-box">
 
-                                  <input type="checkbox" name="filter-quick" id="has_discount" value="Mexikansk">
+                                  <input type="checkbox" name="filter-quick" id="has_discount" value="Mexikansk" [(ngModel)]="isChecked11" (change)="checkValue($event)">
 
                                   <span class="checkbox-element">
 
@@ -557,7 +557,7 @@
 
                               <label class="checkbox-box">
 
-                                  <input type="checkbox" name="filter-quick" id="has_discount" value="Pasta">
+                                  <input type="checkbox" name="filter-quick" id="has_discount" value="Pasta" [(ngModel)]="isChecked12" (change)="checkValue($event)">
 
                                   <span class="checkbox-element">
 
@@ -587,7 +587,7 @@
 
                               <label class="checkbox-box">
 
-                                  <input type="checkbox" name="filter-quick" id="has_discount" value="has_discount">
+                                  <input type="checkbox" name="filter-quick" id="has_discount" value="Persian" [(ngModel)]="isChecked13" (change)="checkValue($event)">
 
                                   <span class="checkbox-element">
 
@@ -621,7 +621,7 @@
 
                               <label class="checkbox-box">
 
-                                  <input type="checkbox" name="filter-quick" id="has_discount" value="Pizza">
+                                  <input type="checkbox" name="filter-quick" id="has_discount" value="Pizza" [(ngModel)]="isChecked14" (change)="checkValue($event)">
 
                                   <span class="checkbox-element">
 
@@ -651,7 +651,7 @@
 
                               <label class="checkbox-box">
 
-                                  <input type="checkbox" name="filter-quick" id="has_discount" value="Sallad">
+                                  <input type="checkbox" name="filter-quick" id="has_discount" value="Sallad" [(ngModel)]="isChecked15" (change)="checkValue($event)">
 
                                   <span class="checkbox-element">
 
@@ -685,7 +685,7 @@
 
                               <label class="checkbox-box">
 
-                                  <input type="checkbox" name="filter-quick" id="has_discount" value="Snacks">
+                                  <input type="checkbox" name="filter-quick" id="has_discount" value="Snacks" [(ngModel)]="isChecked16" (change)="checkValue($event)">
 
                                   <span class="checkbox-element">
 
@@ -715,7 +715,7 @@
 
                               <label class="checkbox-box">
 
-                                  <input type="checkbox" name="filter-quick" id="has_discount" value="Subway">
+                                  <input type="checkbox" name="filter-quick" id="has_discount" value="Subway" [(ngModel)]="isChecked17" (change)="checkValue($event)">
 
                                   <span class="checkbox-element">
 
@@ -745,7 +745,7 @@
 
                               <label class="checkbox-box">
 
-                                  <input type="checkbox" name="filter-quick" id="has_discount" value="Sushi">
+                                  <input type="checkbox" name="filter-quick" id="has_discount" value="Sushi" [(ngModel)]="isChecked18" (change)="checkValue($event)">
 
                                   <span class="checkbox-element">
 
@@ -775,7 +775,7 @@
 
                               <label class="checkbox-box">
 
-                                  <input type="checkbox" name="filter-quick" id="has_discount" value="has_discount">
+                                  <input type="checkbox" name="filter-quick" id="has_discount" value="tapas" [(ngModel)]="isChecked19" (change)="checkValue($event)">
 
                                   <span class="checkbox-element">
 
@@ -805,7 +805,7 @@
 
                               <label class="checkbox-box">
 
-                                  <input type="checkbox" name="filter-quick" id="has_discount" value="has_discount">
+                                  <input type="checkbox" name="filter-quick" id="has_discount" value="tobacco" [(ngModel)]="isChecked20" (change)="checkValue($event)">
 
                                   <span class="checkbox-element">
 
@@ -839,7 +839,7 @@
 
                               <label class="checkbox-box">
 
-                                  <input type="checkbox" name="filter-quick" id="has_discount" value="has_discount">
+                                  <input type="checkbox" name="filter-quick" id="has_discount" value="Vedugnspizza" [(ngModel)]="isChecked21" (change)="checkValue($event)">
 
                                   <span class="checkbox-element">
 
@@ -873,7 +873,7 @@
 
                               <label class="checkbox-box">
 
-                                  <input type="checkbox" name="filter-quick" id="has_discount" value="Vegansk">
+                                  <input type="checkbox" name="filter-quick" id="has_discount" value="Vegansk" [(ngModel)]="isChecked22" (change)="checkValue($event)">
 
                                   <span class="checkbox-element">
 
@@ -907,7 +907,7 @@
 
                               <label class="checkbox-box">
 
-                                  <input type="checkbox" name="filter-quick" id="has_discount" value="Glutenfri">
+                                  <input type="checkbox" name="filter-quick" id="has_discount" value="Glutenfri" [(ngModel)]="isChecked23" (change)="checkValue($event)">
 
                                   <span class="checkbox-element">
 
