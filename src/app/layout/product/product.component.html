@@ -159,17 +159,7 @@
                                   <span class="checkbox-element">
 
                                       <i class="checkmark">
-
-                                          <svg xmlns="http://www.w3.org/2000/svg" width="8" height="6" viewBox="0 0 8 6">
-
-                                              <g class="svg-stroke-container">
-
-                                                  <path fill="none" fill-rule="evenodd" stroke="#FFF" stroke-linecap="round" stroke-linejoin="round" d="M.5 3.333L3.073 5.5 7.5.5"></path>
-
-                                              </g>
-
-                                          </svg>
-
+                                        <div [innerHTML]="transform(Image)"></div>
                                       </i>
 
                                   </span>
@@ -184,27 +174,13 @@
 
                           </li>
                           <li>
-
                               <label class="checkbox-box">
-
                                   <input type="checkbox" name="filter-quick" id="has_discount" value="Asiatiskt" [(ngModel)]="isChecked1" (change)="checkValue(isChecked1?'Asiatiskt':'')">
 
                                   <span class="checkbox-element">
-
                                       <i class="checkmark">
-
-                                          <svg xmlns="http://www.w3.org/2000/svg" width="8" height="6" viewBox="0 0 8 6">
-
-                                              <g class="svg-stroke-container">
-
-                                                  <path fill="none" fill-rule="evenodd" stroke="#FFF" stroke-linecap="round" stroke-linejoin="round" d="M.5 3.333L3.073 5.5 7.5.5"></path>
-
-                                              </g>
-
-                                          </svg>
-
+                                        <div [innerHTML]="transform(Image)"></div>
                                       </i>
-
                                   </span>
 
                                   <span class="checkbox-text">
@@ -214,7 +190,6 @@
                                   </span>
 
                               </label>
-
                           </li>
 
                           <li>
@@ -1051,13 +1026,13 @@
                       <div class="_1kXWW">Sponsered</div>
                   </div>
 
-                  <a href="javascript:;" data-flood-closed-message="" class="hreview-aggregate url" (click)="goRestaurentDetail(product.merchant_id, product.image, product.resto_cuisine1, product.restaurant_name, product.rating_value, product.resto_sta)">
+                  <a href="javascript:;" data-flood-closed-message="" class="hreview-aggregate url" (click)="goRestaurentDetail(product.merchant_id, product.image, product.resto_cuisine1, product.restaurant_name, product.rating_value, product.resto_sta, product.disabled_cod, product.terms, product.phone_no)">
 
                       <figure class="vendor-tile closed item ">
 
                           <picture style="top: -27px;">
 
-                              <div class="vendor-picture b-lazy b-loaded b-loaded" [style.background-image]="'url(' +img_url+product.image+ '?width=100&height=584)'">
+                              <div class="vendor-picture b-lazy b-loaded b-loaded" [style.background-image]="'url(' +img_url+product.bg_image+ '?width=100&height=584)'">
                               </div>
                               <img class="res_logo_side" src="{{img_url}}{{product.image}}">
 
@@ -1075,9 +1050,9 @@
 
                                       <span class="rating-new">{{product.rating_value|slice:6:11}}</span>
 
-                                      <span class="count-new" data-count="(2)">
+                                      <span class="count-new" >
 
-                                          {{product.rating_value|slice:11:13}}
+                                        {{ratingValue(product.rating_value|slice:11:13)}}
 
                                       </span>
 
@@ -1111,7 +1086,11 @@
                   </a>
 
               </li>
+
           </ul>
+          <li *ngIf="emptyMsg">
+            No restaurants found from this area!
+            </li>
           </section>
 
           <section class="vendor-list-section temp-closed hide">

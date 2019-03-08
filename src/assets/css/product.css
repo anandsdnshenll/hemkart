@@ -1047,7 +1047,8 @@ hr {
 
 	transition: transform 0.3s ease-out;
 
-	transition: transform 0.3s ease-out, -webkit-transform 0.3s ease-out
+	transition: transform 0.3s ease-out, -webkit-transform 0.3s ease-out;
+	top: 18% !important;
 
 }
 
@@ -1067,8 +1068,8 @@ hr {
 
 	overflow-x: hidden;
 
-	overflow-y: auto
-
+	overflow-y: auto;
+	opacity: inherit;
 }
 
 
@@ -4003,7 +4004,7 @@ color: #fff;
 
 	height: 20px;
 
-	background: #D70F64;
+	background: #7A0003;
 
 	position: absolute;
 
@@ -5059,7 +5060,7 @@ input:checked+.checkbox-element .checkmark {
 
 	transform: translate(-50%, -50%) scale(1);
 
-	opacity: 1
+	opacity: 0
 
 }
 
@@ -14936,21 +14937,28 @@ ul.dotted li:before {
 
 .ratings-component .count-new {
 
-	font-size: 0;
+	font-size: 1.2rem;
 
-	margin-left: 0
+	margin-left: 0;
 
 }
 
 
 
-.ratings-component .count-new::before {
+/* .ratings-component .count-new::before {
 
-	content: attr(data-count);
+	content: '(';
 
 	font-size: 1.2rem
 
 }
+.ratings-component .count-new::after {
+
+	content: ')';
+
+	font-size: 1.2rem
+
+} */
 
 
 
@@ -16428,7 +16436,7 @@ ul.dotted li:before {
 
 
 
-.modal-content {
+/* .modal-content {
 
 	padding: 13px 0 24px;
 
@@ -16436,7 +16444,7 @@ ul.dotted li:before {
 
 	box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.12)
 
-}
+} */
 
 
 

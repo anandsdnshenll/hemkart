@@ -168,3 +168,18 @@ li.catr_icon {
   .dropdown:hover .dropdown-content {display: block;}
   
   .dropdown:hover .dropbtn {background-color: #3e8e41;}
+  .forgotpwd {
+    color: #7A0003;
+  }
+  .postcodeSearch {
+    border-radius: 0;
+    border-color:#ddd;
+    font-size: 15px;
+    color: #333;
+  }
+  .loginform, .formwrap, .registerform, .formwrap1 {
+    right: 0 !important;
+  }
+  .registerform, .forgetpwdForms {
+    width: 400px !important;
+  }

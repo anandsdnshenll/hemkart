@@ -99,58 +99,20 @@
 <div class="container-fluid backgroun_bg_area" style="padding:30px 15px;">
 <div class="container" style="border-bottom: 1px solid #fff;padding: 0;">
   <ul class="nav nav-tabs add_nav_cont">
-    <li class="active"><a data-toggle="tab" href="#home">Västerås</a></li>
-    <li><a data-toggle="tab" href="#menu1">Eskilstuna</a></li>
+    <li class="active"><a data-toggle="tab" href="#home" (click)="showRestCity('Västerås')">Västerås</a></li>
+    <li><a data-toggle="tab" href="#menu1" (click)="showRestCity1('Eskilstuna')">Eskilstuna</a></li>
   </ul>
 </div>
 <div class="container">
   <div class="tab-content" style="margin-top: 25px;">
     <div id="home" class="tab-pane fade in active">
-      <span class="area_span">
-        <a class="location_a" routerLink="#">Subway</a><span class="dot_class">.</span>
-        <a class="location_a" routerLink="#">Melkis</a><span class="dot_class">.</span>
-        <a class="location_a" routerLink="#">Soya sushi</a><span class="dot_class">.</span>
-        <a class="location_a" routerLink="#">Pizzeria Sippan</a><span class="dot_class">.</span>
-        <a class="location_a" routerLink="#">American pizza palace</a><span class="dot_class">.</span>
-        <a class="location_a" routerLink="#">Taco Bar</a><span class="dot_class">.</span>
-        <a class="location_a" routerLink="#">Hdmona restaurang</a><span class="dot_class">.</span>
-        <a class="location_a" routerLink="#">Erikslunds grill</a><span class="dot_class">.</span>
-        <a class="location_a" routerLink="#">Sturegatans pizzeria</a><span class="dot_class">.</span>
-        <a class="location_a" routerLink="#">Gideonsbergs Kiosk</a><span class="dot_class">.</span>
-        <a class="location_a" routerLink="#">Garlic &amp; Ginger</a><span class="dot_class">.</span>
-        <a class="location_a" routerLink="#">Asia House</a><span class="dot_class">.</span>
-        <a class="location_a" routerLink="#">Uddens Pizzeria</a><span class="dot_class">.</span>
-        <a class="location_a" routerLink="#">Great Burger</a><span class="dot_class">.</span>
-        <a class="location_a" routerLink="#">Casablanca kolgrillsbar</a><span class="dot_class">.</span>
-        <a class="location_a" routerLink="#">Ceders libanesiska kök</a><span class="dot_class">.</span>
-        <a class="location_a" routerLink="#">Laxmi Indisk</a><span class="dot_class">.</span>
-        <a class="location_a" routerLink="#">Taormina restaurang</a><span class="dot_class">.</span>
-        <a class="location_a" routerLink="#">Didos krog</a><span class="dot_class">.</span>
-        <a class="location_a" routerLink="#">Nya Emilios pizzeria</a><span class="dot_class">.</span>
-        <a class="location_a" routerLink="#">Cornetto Bar</a><span class="dot_class">.</span>
-        <a class="location_a" routerLink="#">Sushi Heaven</a><span class="dot_class">.</span>
-        <a class="location_a" routerLink="#">Pulcinella Vedugn pizza</a><span class="dot_class">.</span>
-        <a class="location_a" routerLink="#">Humlans Pizzeria</a><span class="dot_class">.</span>
-        <a class="location_a" routerLink="#">Mexico Pizzeria</a><span class="dot_class">.</span>
-        <a class="location_a" routerLink="#">Jojo's pizzeria</a><span class="dot_class">.</span>
+      <span class="area_span" *ngFor="let allResturants of restaurantsName let i=index;">
+        <a class="location_a" routerLink="#">{{allResturants? allResturants.restaurant_name: ''}}</a><span class="dot_class">.</span>
       </span>
     </div>
     <div id="menu1" class="tab-pane fade">
-      <span class="area_span">
-        <a class="location_a" routerLink="#">Fresh food</a><span class="dot_class">.</span>
-        <a class="location_a" routerLink="#">Maestro</a><span class="dot_class">.</span>
-        <a class="location_a" routerLink="#">Spicy hot</a><span class="dot_class">.</span>
-        <a class="location_a" routerLink="#">Kin Kitchen</a><span class="dot_class">.</span>
-        <a class="location_a" routerLink="#">American pizza palace</a><span class="dot_class">.</span>
-        <a class="location_a" routerLink="#">carlavagens-pizzeria</a><span class="dot_class">.</span>
-        <a class="location_a" routerLink="#">Hdmona restaurang</a><span class="dot_class">.</span>
-        <a class="location_a" routerLink="#">La-luna-pizzeria</a><span class="dot_class">.</span>
-        <a class="location_a" routerLink="#">Casa-nostra</a><span class="dot_class">.</span>
-        <a class="location_a" routerLink="#">Sushi-yang</a><span class="dot_class">.</span>
-        <a class="location_a" routerLink="#">Taco-bar</a><span class="dot_class">.</span>
-        <a class="location_a" routerLink="#">Spice-n-rice</a><span class="dot_class">.</span>
-        <a class="location_a" routerLink="#">Banh-mi-street-food</a><span class="dot_class">.</span>
-        <a class="location_a" routerLink="#">Lökens-City</a><span class="dot_class">.</span>
+      <span class="area_span" *ngFor="let allResturants of restaurantsName1 let i=index;">
+        <a class="location_a" routerLink="#">{{allResturants? allResturants.restaurant_name: ''}}</a><span class="dot_class">.</span>
       </span>
     </div>
   </div>

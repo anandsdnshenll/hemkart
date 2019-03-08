@@ -11,7 +11,7 @@ import { HeaderService } from 'src/app/header.service';
 })
 export class LandingComponent implements OnInit {
 
-  constructor(private spinnerService: Ng4LoadingSpinnerService,private headerService: HeaderService) {
+  constructor(private spinnerService: Ng4LoadingSpinnerService, private headerService: HeaderService, private router: Router) {
     this.spinnerService.show();
     setTimeout(() => this.spinnerService.hide(),600);
   }
@@ -25,4 +25,9 @@ export class LandingComponent implements OnInit {
     const body = document.getElementsByTagName('body')[0];
     body.classList.remove('home_background');
   }
+  homePage() {
+    this.router.navigateByUrl('home');
+
+  }
 }
+

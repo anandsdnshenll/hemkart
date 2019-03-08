@@ -6,6 +6,7 @@ import { UsersService } from 'src/app/core';
 import * as $ from 'jquery';
 import { environment } from 'src/environments/environment';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { DomSanitizer } from '@angular/platform-browser';
 
 declare var $: any;
 @Component({
@@ -32,6 +33,9 @@ export class ProductComponent implements OnInit {
   foodFilteredItems: any = [];
   checkedItems: any = [];
   restaurentDetail: any = [];
+  Image: string;
+  enableBanner = true;
+  bannersList: any = [];
 
   constructor(
     private fb: FormBuilder,
@@ -39,13 +43,23 @@ export class ProductComponent implements OnInit {
     private users: UsersService,
     private router: Router,
     private routes: ActivatedRoute,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private sanitizer: DomSanitizer
   ) {
-    this.routes.queryParams.subscribe(params => {
-      this.area = params["area"];
-    });
+    // this.routes.queryParams.subscribe(params => {
+    //   this.area = params["area"];
+    // });
+    this.area = localStorage.getItem("postalCode");
+    this.Image  = `<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 8 6">
+    <g class="svg-stroke-container">
+        <path fill="none" fill-rule="evenodd" stroke="#FFF" stroke-linecap="round" stroke-linejoin="round" d="M.5 3.333L3.073 5.5 7.5.5"></path>
+    </g> </svg>`;
   }
 
+  transform(html) {
+    return this.sanitizer.bypassSecurityTrustHtml(html);
+  }
+  
   // ngOnInit() {
   //   this.spinner.show();
   //   let crrentCode = localStorage.getItem("areaCode");
@@ -69,6 +83,7 @@ export class ProductComponent implements OnInit {
   // }
 
   ngOnInit() {
+    this.getBanners();
     this.spinner.show();
     this.users.getArea(this.area).subscribe(data => {
       if(data.details) {
@@ -121,7 +136,7 @@ export class ProductComponent implements OnInit {
   }
 
   
-  goRestaurentDetail(merchantid, productImage, availableTypes, restaurant_name, rating_value, isClosed) {
+  goRestaurentDetail(merchantid, productImage, availableTypes, restaurant_name, rating_value, isClosed, disabled_cod, terms, contact_phone) {
     this.restaurentDetail.push(
       {
         merchantid: merchantid,
@@ -129,12 +144,32 @@ export class ProductComponent implements OnInit {
         availableTypes: availableTypes,
         restaurant_name: restaurant_name,
         rating_value: rating_value,
-        isClosed: isClosed
+        isClosed: isClosed,
+        disabled_cod: disabled_cod,
+        terms: terms,
+        contact_phone: contact_phone
       }
     );
     localStorage.setItem("productImage", productImage);
     localStorage.setItem("restaurentDetail", JSON.stringify(this.restaurentDetail));
-    this.router.navigate(['/restaurent-detail/'], { queryParams: { area: this.area, merchantid: merchantid } });
+    this.router.navigate(['/merchants/'], { queryParams: { merchantid: merchantid } });
+  }
+
+
+  ratingValue(value){
+    return '('+value.replace(/^\s+|\s+$/g, '')+')';
+  }
+  
+  getBanners(){
+    this.users.getBannersList(this.area).subscribe(data=>{
+      if(data.code == 1) {
+        this.bannersList = data.details;
+        this.enableBanner = true;
+        console.log("banners--->", this.bannersList);
+      } else {
+          this.enableBanner = false;
+      }
+    });
   }
 
   ngAfterViewInit() {
@@ -178,31 +213,33 @@ export class ProductComponent implements OnInit {
         }]
       });
       
+      $(".showScrolledHeader").css("display","none !important");
+      $(".showFixedHeader").css("background","#fff !important");
       $(".showScrolledHeader").hide();
       $(".showFixedHeader").show();
 
-      $("#navbar-left-brand").click(function () {
-        $("#locate-search").show();
-        $("#locate-me").show();
-      });
+      // $("#navbar-left-brand").click(function () {
+      //   $("#locate-search").show();
+      //   $("#locate-me").show();
+      // });
 
-      $("#navbar-left-brand").click(function () {
-        $("#locate-search").hide();
-      })
+      // $("#navbar-left-brand").click(function () {
+      //   $("#locate-search").hide();
+      // })
 
-      $("#navbar-left-brand-tab").click(function () {
-        $("#locate-search").show();
-        $("#locate-me").show();
-      });
+      // $("#navbar-left-brand-tab").click(function () {
+      //   $("#locate-search").show();
+      //   $("#locate-me").show();
+      // });
 
-      $("#navbar-left-brand-mob").click(function () {
-        $("#locate-search").show();
-        $("#locate-me").show();
-      });
+      // $("#navbar-left-brand-mob").click(function () {
+      //   $("#locate-search").show();
+      //   $("#locate-me").show();
+      // });
 
-      $(".btn-another-date").click(function () {
-        $(".show-another-date").show();
-      });
+      // $(".btn-another-date").click(function () {
+      //   $(".show-another-date").show();
+      // });
 
     });
   }

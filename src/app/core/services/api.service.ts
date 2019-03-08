@@ -16,10 +16,9 @@ export class ApiService {
   private formatErrors(error: any) {
     return  throwError(error.error);
   }
+  
   get(path: string, params: HttpParams = new HttpParams()): Observable<any> {
-    return this.http.get(`${environment.api_url}${path}`, { params, headers: {
-            'Access-Control-Allow-Origin': '*'
-        }})
+    return this.http.get(`${environment.api_url}${path}`, {withCredentials: true})
       .pipe(catchError(this.formatErrors));
   }
 
@@ -42,9 +41,17 @@ export class ApiService {
       `${environment.api_url}${path}`
     ).pipe(catchError(this.formatErrors));
   }
-  pcode(lat:any,long:any,params: HttpParams = new HttpParams()): Observable<any> {
-    const api="https://xn--hemkrtochklart-ypb.se/get_pincode.php?lat="+lat+"&long="+long;
-    return this.http.get(api,{responseType: 'text'})
-      .pipe(catchError(this.formatErrors));
-  }
+  
+  // pcode(lat:any,long:any,params: HttpParams = new HttpParams()): Observable<any> {
+  //   const api="https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyB9Mobk70l1gEyIywzPG6qH-H-odB0C8xg&latlng="+lat+","+long;
+  //   return this.http.get(api)
+  //     .pipe(catchError(this.formatErrors));
+  // }
+
+  // getPostalcode(lat:any,long:any,params: HttpParams = new HttpParams()): Observable<any> {
+  //   const api="https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyB9Mobk70l1gEyIywzPG6qH-H-odB0C8xg&latlng="+lat+","+long;
+  //   return this.http.get(api)
+  //     .pipe(catchError(this.formatErrors));
+  // }
+  // https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyB9Mobk70l1gEyIywzPG6qH-H-odB0C8xg&latlng=13.039347699999999,80.193075
 }

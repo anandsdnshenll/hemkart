@@ -1,0 +1,55 @@
+
+<div class="view-item-wrap">
+  <div class="modal-header">
+    <h1 class="modal-title">{{foodItem.item_name}} {{itemPrice}} Kr</h1>
+  </div>
+  <div class="section qty_section">
+      <h3 class="uk-h3"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
+  Quantity    
+      </span></span><div class="quantity-wrap">
+        <a href="javascript:;" class="qty-minus"><i class="fa fa-minus"></i></a>
+        <input class="uk-form-width-mini numeric_only qty" type="text" value="1" name="qty" id="qty">          
+        <a href="javascript:;" class="qty-plus"><i class="fa fa-plus"></i></a>
+        <a href="javascript:;" class="special-instruction" style="display:none;">Meddelande</a>
+        <div class="clear"></div>
+      </div>
+  </h3>
+    </div>
+    <div class="section-addon-wrap">
+        <h3 class="ingredients" style="background:#325800;">Ingredienser</h3>
+        <div>
+          <div class="section section-addon" *ngFor="let subCat of foodItem.addon_item let i=index;">
+              <h3 class="ingredients">{{subCat.subcat_name}}</h3>
+            <div>
+              <ul class="uk-list uk-list-striped">
+                <li class="subcategory" *ngFor="let subItems of subCat.sub_item let i=index;">
+                    <div class="uk-grid">
+                        <div class="uk-width-1-1">
+                          <!-- <input value="6331|0|Normal|0||+Normal" data-id="150" data-option="1" rel="custom" title="0" 
+                          title1="6331" addonprice="0" class="itemCheckbox new-class-addon remove-class-addon select-price new1-addon6331 
+                          xtra-item-add sub_item_name sub_item_name_150" type="checkbox" name="sub_item[150][0]" id="sub_item_150_0">
+-->
+                          <input type="checkbox" value="123" checked  class="itemCheckbox">
+                          <label class="subcategoryLabel">{{subItems.sub_item_name}}</label>
+                        </div>
+                    </div>
+                </li>
+              </ul>
+                <!-- <div *ngFor="let light of group.lights">
+                {{light.name}}
+                </div> -->
+              </div>
+          </div>
+        </div>
+<!-- 
+      <div class="section section-addon" *ngFor="let subCat of foodItem.addon_item let i=index;">
+          <h3 class="ingredients">{{subCat.subcat_name}}</h3>
+      </div> -->
+    </div>
+
+  <div class="modal-footer">
+    <button (click)="activeModal.dismiss('Close clicked')">
+      Close
+    </button>
+  </div>
+</div>

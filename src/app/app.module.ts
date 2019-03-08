@@ -12,7 +12,6 @@ import { LandingComponent } from './layout/landing/landing.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderService } from './header.service';
 import { LoginComponent } from './layout/login/login.component';
-import { MatProgressSpinnerModule, MatRadioModule, MatSliderModule } from '@angular/material';
 import { GrdFilterPipe } from './shared/pipe/grd-filter.pipe';
 import { FilterPipeModule } from 'ngx-filter-pipe';
 import { ProductComponent } from './layout/product/product.component';
@@ -21,6 +20,28 @@ import { Restaurentdetail } from './layout/restaurentdetail/restaurentdetail.com
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ListfoodModal } from './layout/listfood-modal/listfood-modal.component';
+import { ShowrestaurantsComponent } from './layout/showrestaurants/showrestaurants.component';
+import { CheckoutComponent } from './layout/checkout/checkout.component';
+import { DeviceDetectorModule } from 'ngx-device-detector';
+import { AddreviewComponent } from './layout/addreview/addreview.component';
+import {
+  MatBadgeModule,
+  MatButtonModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatDialogModule,
+  MatInputModule,
+  MatProgressSpinnerModule,
+  MatRadioModule,
+  MatSelectModule,
+  MatSliderModule,
+  MatTableModule,
+  MatTabsModule,
+  MatFormFieldModule,
+} from '@angular/material';
+
+import {MatIconModule} from '@angular/material/icon'
 
 @NgModule({
   declarations: [
@@ -33,6 +54,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     GrdFilterPipe,
     ProductComponent,
     Restaurentdetail,
+    ListfoodModal,
+    ShowrestaurantsComponent,
+    CheckoutComponent,
+    AddreviewComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,13 +68,25 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     Ng4LoadingSpinnerModule.forRoot(),
     AppRoutingModule,
     NgxSpinnerModule,
-    MatProgressSpinnerModule, MatRadioModule, MatSliderModule,
+    MatProgressSpinnerModule, 
+    MatRadioModule, 
+    MatSliderModule,
+    MatFormFieldModule,
+    MatInputModule, 
+    MatSelectModule,
+    MatIconModule,
+    MatBadgeModule,
     FilterPipeModule,
     NgbModule,
     ToastrModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    DeviceDetectorModule.forRoot()
   ],
   providers: [HeaderService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    ListfoodModal,
+    AddreviewComponent
+  ]
 })
 export class AppModule { }

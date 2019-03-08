@@ -186,18 +186,18 @@ input#phone, input#phone1, input#phone2, input#phone3, input#phone4, input#phone
 	    font-weight: normal;
         padding: .5rem .75rem;
 }
-.cash-payment, .klarna-payment{
+.cash-payment, .klarna-payment, .swish-payment{
     text-align: center;
     padding: 20px;
     border: 2px solid transparent;
 }
-.cash-payment:hover, .klarna-payment:hover{
+.cash-payment:hover, .klarna-payment:hover, .swish-payment:hover{
     border: 2px solid #ddd;
     border-radius: 10px;
     box-shadow: 0 2px 8px #d4d5d9;
     cursor: pointer;
 }
-.cash-payment p, .klarna-payment p{
+.cash-payment p, .klarna-payment p, .swish-payment p{
     margin-top: 20px;
     font-size: 20px;
     font-weight: 700;

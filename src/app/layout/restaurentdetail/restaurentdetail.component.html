@@ -1,5 +1,5 @@
 <div class="container-fluid banner_setion_pl" style="padding: 0px">
-  <div class="hidden-sm  hidden-xs" id="header_parent">
+  <div class="" id="header_parent">
      <div class="_8MlDE _1qF_3">
         <div class="_3TBoD _32T6U">
            <div class="_3mJdF">
@@ -16,15 +16,15 @@
                  </div>
                  <div class="_1BpLF _1oxxe">
                     <div class="Gf2NS _2Y6HW">
-                       <span class="open_btn" style="top: 54px !important;"></span>
+                       <span class="open_btn" [ngClass]="isClosed === 'Öppet' ? 'greenColor' : 'redColor'" style="top: 54px !important;"></span>
                        <span class="status_res">{{isClosed}}</span>
                        <div class="kk" style="float: right;   margin-left: 55px;">
                           <span class="stars">
-															<span class="fa fa-star checked"></span>
-															<span class="fa fa-star checked"></span>
-															<span class="fa fa-star checked"></span>
-															<span class="fa fa-star checked"></span>
-															<span class="fa fa-star checked"></span>
+                           <span class="fa fa-star checked"></span>
+                           <span class="fa fa-star checked"></span>
+                           <span class="fa fa-star checked"></span>
+                           <span class="fa fa-star checked"></span>
+                           <span class="fa fa-star checked"></span>
                           </span>
                           <span class="green_bg" style="padding:8px !important;background: #6dad30 !important;
                              color: #ffffff !important;border-radius: 5px !important;margin-left: 11px;">
@@ -36,10 +36,10 @@
                  </div>
               </div>
            </div>
-           <div class="Z4sK8 undefined">
+           <!-- <div class="Z4sK8 undefined" style="display: none;">
               <div class="_2FyFZ _2Hcgb" style="margin-top: 36px;">
-                 <div class="vendor-info-main-info-button hidden-xs">
-                    <button type="button" class="check_btn_class" id="myBtn1" style="
+                 <div class="vendor-info-main-info-button hidden-xs" >
+                    <button type="button" class="check_btn_class" id="myBtn1" (click)="showReviewModel()" style="
                     width: 58% !important;padding: 8px;background-color: #780300 !important;
                     border: 1px solid #780300;color: #ffffff;font-size: 15px;  font-weight: 500;
                     border-radius: 5px;">
@@ -48,7 +48,7 @@
                     </button>
                  </div>                        
               </div>
-           </div>
+           </div> -->
         </div>
      </div>
   </div>
@@ -62,7 +62,7 @@
         </div>
         <div class="res_open_rev_div">
            <div class="res-open_div">
-              <span class="open_btn" style="left: auto;top: inherit;bottom: auto;"></span>
+              <span class="open_btn" [ngClass]="isClosed === 'Öppet' ? 'greenColor' : 'redColor'" style="left: auto;top: inherit;bottom: auto;"></span>
               <span class="status_res">{{isClosed}}</span>                                 
            </div>
            <div class="res_review_div">
@@ -72,16 +72,16 @@
               <span class="green_bg" style="padding: 6px !important;background: #6dad30 !important;
                  color: #ffffff !important;border-radius: 5px !important;margin-left: 11px;">
               <span class="rating">{{rating_value|slice:6:11}}</span>
-              <span class="count" data-count="111 Betyg">
+              <!-- <span class="count" data-count="111 Betyg">
               111 Betyg
-              </span>
+              </span> -->
               </span>        
            </div>
         </div>
         <div class="res_food_details_div">
            <p class="food_list_p">{{availableTypes}}</p>
         </div>
-        <div class="res_revie_write_div">
+        <div class="res_revie_write_div" style="display: none;">
            <div class="vendor-info-main-info-button ">
               <button type="button" class="check_btn_class" id="myBtn1" style="
               width: auto !important;padding: 8px;background-color: #780300 !important;
@@ -102,43 +102,6 @@
            <div class="menu__blocks-wrapper">
               <div class="menu__blocks">
                  <nav class="dish-menu-category-list touch" style="top: 6px;">
-                    <div class="hero-banner-wrapper redesign-vendor-info">
-                       <div class="vendor-header">
-                             <div class="b-lazy hero-banner b-loaded" data-src="https://images.deliveryhero.io/image/fd-se/LH/s9yw-hero.jpg?width=2000&amp;height=500|https://images.deliveryhero.io/image/fd-se/LH/s9yw-hero.jpg?width=4000&amp;height=1000" data-src-bp_300="https://images.deliveryhero.io/image/fd-se/LH/s9yw-hero.jpg?width=300&amp;height=75|https://images.deliveryhero.io/image/fd-se/LH/s9yw-hero.jpg?width=600&amp;height=150" data-src-bp_400="https://images.deliveryhero.io/image/fd-se/LH/s9yw-hero.jpg?width=400&amp;height=100|https://images.deliveryhero.io/image/fd-se/LH/s9yw-hero.jpg?width=800&amp;height=200" data-src-bp_600="https://images.deliveryhero.io/image/fd-se/LH/s9yw-hero.jpg?width=600&amp;height=150|https://images.deliveryhero.io/image/fd-se/LH/s9yw-hero.jpg?width=1200&amp;height=300" data-src-bp_800="https://images.deliveryhero.io/image/fd-se/LH/s9yw-hero.jpg?width=800&amp;height=200|https://images.deliveryhero.io/image/fd-se/LH/s9yw-hero.jpg?width=1600&amp;height=400" data-src-bp_1000="https://images.deliveryhero.io/image/fd-se/LH/s9yw-hero.jpg?width=1000&amp;height=250|https://images.deliveryhero.io/image/fd-se/LH/s9yw-hero.jpg?width=2000&amp;height=500" data-src-bp_1200="https://images.deliveryhero.io/image/fd-se/LH/s9yw-hero.jpg?width=1200&amp;height=300|https://images.deliveryhero.io/image/fd-se/LH/s9yw-hero.jpg?width=2400&amp;height=600" data-src-bp_1400="https://images.deliveryhero.io/image/fd-se/LH/s9yw-hero.jpg?width=1400&amp;height=350|https://images.deliveryhero.io/image/fd-se/LH/s9yw-hero.jpg?width=2800&amp;height=700" data-src-bp_biggest="https://images.deliveryhero.io/image/fd-se/LH/s9yw-hero.jpg?width=2000&amp;height=500|https://images.deliveryhero.io/image/fd-se/LH/s9yw-hero.jpg?width=4000&amp;height=1000" style="background-image: url(&quot;https://images.deliveryhero.io/image/fd-se/LH/s9yw-hero.jpg?width=4000&amp;height=1000&quot;);">            
-                          </div>
-                          <div class="menu__postal-code-bar hide" style="">
-                             <span class="menu__postal-code-bar__message">
-                               Kontrollera om restaurangen levererar till   
-                             </span>
-                             <form class="restaurants-search-form " id="delivery-information-postal-index-form" method="GET">
-                                <div class="address-search-container restaurants-search-form__input-wrapper">
-                                   <div class=" ">
-                                      <input type="text" class="restaurants-search-form__input " id="delivery-information-postal-index" name="" placeholder="Enter your street address" value="" data-msg_error_not_found="Something went wrong! We do not recognise the address you entered. Please try again." data-msg_you_probably_mean="Does this postal code match your query?" data-msg_error_geolocation="It was not possible to detect your location" data-msg_error_empty="Please enter your street address" data-msg_error_postal_code="Please enter your street address and number" data-msg_error_vendor_empty_address="Enter your postal code to see if this restaurant delivers to you." autocomplete="off">
-                                      <div class="address-suggestions">
-                                         <ul></ul>
-                                      </div>
-                                   </div>
-                                   <span class="locate-me">
-                                      <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23">
-                                         <g fill="none" fill-rule="evenodd">
-                                            <path stroke="#D70F64" d="M11.5 22.5v-2.986l.471-.028a8.001 8.001 0 0 0 7.515-7.515l.028-.471H22.5h-2.986l-.028-.471a8.001 8.001 0 0 0-7.515-7.515l-.471-.028V.5v2.986l-.471.028a8.001 8.001 0 0 0-7.515 7.515l-.028.471H.5h2.986l.028.471a8.001 8.001 0 0 0 7.515 7.515l.471.028V22.5z"></path>
-                                            <circle cx="11.5" cy="11.5" r="4" stroke="#D70F64"></circle>
-                                            <circle cx="11.5" cy="11.5" r="1" fill="#D70F64"></circle>
-                                         </g>
-                                      </svg>
-                                   </span>
-                                </div>
-                                <div class="button-container ">
-                                   <button class="button restaurants-search-form__button js-restaurants-search-submit restaurants-search-form__button--full js-restaurants-search-button gtm-homepage-delivery-button js-ripple" data-gtm-cta="findRestaurant_main">Kolla nu<i class="ripple"></i></button>
-                                   <button class="button js-restaurants-search-submit restaurants-search-form__button--reduced gtm-homepage-delivery-button restaurants-search-form__button js-ripple" data-gtm-cta="findRestaurant_main"><i class="icon-right-open-big"></i><i class="ripple"></i></button>
-                                </div>
-                             </form>                              
-                          </div>
-                       </div>
-                       <div class="postal-index-form-overlay"></div>
-                       <div class="vendor-info-container">
-                       </div>
-                    </div>
                     <div class="dish-control-holder">
                        <div class="nav-holder">
                           <ul style="touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
@@ -172,7 +135,7 @@
                                          </button>
                                          <ul class="dropdown-menu" style="position: absolute;left: -30px">
                                             <li *ngFor="let details of restaurentsDetails let i=index;">
-                                               <a href="javascript:;" data-id="12115" data-master-category-id="" data-anchor-nav="" class="selected">
+                                               <a href="javascript:;" (click)="gotoTop('menucategoryid2')" data-id="menu__category-id-{{i}}" data-master-category-id="" data-anchor-nav="" class="selected">
                                                {{details.category_name}}           
                                                </a>
                                             </li>
@@ -180,43 +143,41 @@
                                       </div>
                                    </div>
                                 </div>
-                                <ul>
-																	<li *ngFor="let details of restaurentsDetails let i=index;">
-																		<div class="dish-category-header" id="menu__category-id-{{i}}" >
-																					<div class="dish-category-title-wrapper">
-																							<h2 class="dish-category-title">{{details.category_name}}</h2>
-																					</div>
-																			</div>
-																		<ul class="dish-list" >
-																			<li >
-																				<div class="dish-card h-product menu__item" *ngFor="let items of details.item" data-object="" data-menu-category="Cevapi" data-variation-id="81062" data-product-id="81011" ontouchstart="">
-																						<span class="item-react-root">
-																							<div class="dish-info">
-																									<h3 class="dish-name fn p-name">
-																										<span>{{items.item_name}}</span>
-																									</h3>
-																									<p class="dish-description e-description ingredients">
-																										{{items.item_description}}
-																									</p>
-																							</div>
-																						</span>
-																						<!-- <li  *ngFor="let prices of items.prices"> -->
-																								<footer class="action-bar" >
-																										<span class="price p-price">
-																											SEK{{items.prices[0].price}}
-																										</span>
-																										<button class="button js-ripple" (click)="addToCart(items.item_id,items.prices[0].price)">Add<i class="ripple"></i></button>
-																									</footer>
-																						<!-- </li> -->
-																				</div>
-																			</li>
-																		</ul>
-																	</li>
-                                </ul>
+                                 <div *ngFor="let details of restaurentsDetails let i=index;">
+                                    <div class="dish-category-header" #menucategoryid2 >
+                                             <div class="dish-category-title-wrapper">
+                                                   <h2 class="dish-category-title">{{details.category_name}}</h2>
+                                             </div>
+                                       </div>
+                                    <div class="dish-list" >
+                                       <div >
+                                          <div class="dish-card h-product menu__item" *ngFor="let items of details.item" data-object="" data-menu-category="Cevapi" data-variation-id="81062" data-product-id="81011" ontouchstart="">
+                                                <span class="item-react-root">
+                                                   <div class="dish-info">
+                                                         <h3 class="dish-name fn p-name">
+                                                            <span>{{items.item_name}}</span>
+                                                         </h3>
+                                                         <p class="dish-description e-description ingredients">
+                                                            {{items.item_description}}
+                                                         </p>
+                                                   </div>
+                                                </span>
+                                                <!-- <li  *ngFor="let prices of items.prices"> -->
+                                                      <footer class="action-bar" >
+                                                            <span class="price p-price">
+                                                               {{items.prices[0].price}} Kr
+                                                            </span>
+                                                            <button class="button js-ripple" (click)="addToCart(items.item_id,items.prices[0])">Add<i class="ripple"></i></button>
+                                                         </footer>
+                                                <!-- </li> -->
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
                               </div>
                           </section>
                        </div>
-										</div>
+							</div>
 										<!-- Reviews panel -->
                     <div id="menu1" class="tab-pane fade">
                        <div class="menu__list">
@@ -252,6 +213,33 @@
                        </div>
                     </div>
                  </div>
+                 <!-- <div class="modal fade" id="myModal" role="dialog">
+                     <div class="modal-dialog">
+                        <div class="modal-content" style="width: 400px;   height: 339px;">
+                           <div class="modal-header" style="text-align: center;text-transform: uppercase;  border-bottom: 1px solid #ebebeb;    padding: 0 15px 8px;   font-weight: 700; margin-top: 13px;">
+                              <button type="button" class="close" data-dismiss="modal" style="position: relative;
+                                 top: -38px;
+                                 background-color: #780300;
+                                 opacity: unset !important;
+                                 padding: 6px 11px;
+                                 color: #ffffff;
+                                 border: 1px solid #fffdfd;
+                                 border-radius: 50px;">&times;</button>
+                              <h4 class="modal-title">Pre-order for Monday</h4>
+                           </div>
+                           <div class="modal-body" style="text-align: center;
+                              font-size: 15px;
+                              letter-spacing: 2px;
+                              text-shadow: 2px 2px 11px red;">
+                              <p>You are placing a pre-order for Mon, Dec 24,  6:00 PM. Would you like to continue or review the order date?</p>
+                           </div>
+                           <div class="modal-footer1" style="border-top: 1px solid #ebe7e7; padding: 15px;">
+                              <button type="button" class="check_btn_class1">Continue with checkout</button>
+                              <button type="button" class="check_btn_class2" data-dismiss="modal">Add more items</button>
+                           </div>
+                        </div>
+                     </div>
+                  </div> -->
                  <div class="menu__bottom-info">
                     <div class="menu__footer">
                        <div class="menu-bottom-info-restaurant-description full-container">
@@ -268,77 +256,71 @@
         </section>
      </div>
      <!-- <div id="sticky-anchor"></div> -->
-     <div class="col-md-4 bg-marg-30 hidden-sm hidden-xs" style="margin: 45px auto 30px;">
-       <div id="sticky" style="top: 155px;">
-					<div>
-							<div class="slide_head_order">
-									<p class="your-order">Din beställning</p>
-							</div>                                    
-							<div  class="static-height">
-									<div class="col-md-12 padd-zero" style="margin: 5px auto;">
-											<div class="col-md-5 product_name">Vegetariana</div>
-											<div class="col-md-3 dev-inc-val-div">
-													<span class="value-button" id="decrease-btn" onclick="decreaseValue()" value="Decrease Value"><i class="fa fa-minus" aria-hidden="true"></i></span><span><input type="text" id="number-btn" value="1"></span><span class="value-button" id="increase-btn" onclick="increaseValue()" value="Increase Value"><i class="fa fa-plus" aria-hidden="true"></i></span>
-											</div>
-											<div class="col-md-4 sub_total_amt">
-													<span class="pull-right distance">45kr<a href="#" class="btn btn" style="color: #7B0003;padding: 0;margin: 0 5px;font-size: 13px;"><i class="fa fa-edit"></i></a>&nbsp;<a href="#" class="btn" style="color: #7B0003;padding: 0;font-size: 13px;"><i class="fa fa-trash"></i></a></span>
-											</div>
-									</div>
-									<div class="col-md-12 padd-zero" style="margin: 5px auto;">
-											<div class="col-md-5 product_name">Vegetariana</div>
-											<div class="col-md-3 dev-inc-val-div">
-													<span class="value-button" id="decrease-btn" onclick="decreaseValue()" value="Decrease Value"><i class="fa fa-minus" aria-hidden="true"></i></span><span><input type="text" id="number-btn" value="1"></span><span class="value-button" id="increase-btn" onclick="increaseValue()" value="Increase Value"><i class="fa fa-plus" aria-hidden="true"></i></span>
-											</div>
-											<div class="col-md-4 sub_total_amt">
-													<span class="pull-right distance">45kr<a href="#" class="btn btn" style="color: #7B0003;padding: 0;margin: 0 5px;font-size: 13px;"><i class="fa fa-edit"></i></a>&nbsp;<a href="#" class="btn" style="color: #7B0003;padding: 0;font-size: 13px;"><i class="fa fa-trash"></i></a></span>
-											</div>
-									</div>
-							</div>
-							<!-- <div class="show-another-date" style="display: none;">
-									
-									<div>
-											<div class="col-md-12 padd-zero" style="margin: 5px auto;">
-													<div class="col-md-5 product_name">Vegetariana</div>
-													<div class="col-md-3 dev-inc-val-div">
-															<span class="value-button" id="decrease-btn" onclick="decreaseValue()" value="Decrease Value"><i class="fa fa-minus" aria-hidden="true"></i></span><span><input type="text" id="number-btn" value="1"></span><span class="value-button" id="increase-btn" onclick="increaseValue()" value="Increase Value"><i class="fa fa-plus" aria-hidden="true"></i></span>
-													</div>
-													<div class="col-md-4 sub_total_amt">
-															<span class="pull-right distance">45kr<a href="#" class="btn btn" style="color: #7B0003;padding: 0;margin: 0 5px;font-size: 13px;"><i class="fa fa-edit"></i></a>&nbsp;<a href="#" class="btn" style="color: #7B0003;padding: 0;font-size: 13px;"><i class="fa fa-trash"></i></a></span>
-													</div>
-											</div>
-											<div class="col-md-12 padd-zero" style="margin: 5px auto;">
-													<div class="col-md-5 product_name">Vegetariana</div>
-													<div class="col-md-3 dev-inc-val-div">
-															<span class="value-button" id="decrease-btn" onclick="decreaseValue()" value="Decrease Value"><i class="fa fa-minus" aria-hidden="true"></i></span><span><input type="text" id="number-btn" value="1"></span><span class="value-button" id="increase-btn" onclick="increaseValue()" value="Increase Value"><i class="fa fa-plus" aria-hidden="true"></i></span>
-													</div>
-													<div class="col-md-4 sub_total_amt">
-															<span class="pull-right distance">45kr<a href="#" class="btn btn" style="color: #7B0003;padding: 0;margin: 0 5px;font-size: 13px;"><i class="fa fa-edit"></i></a>&nbsp;<a href="#" class="btn" style="color: #7B0003;padding: 0;font-size: 13px;"><i class="fa fa-trash"></i></a></span>
-													</div>
-											</div>
-									</div>
-							</div>
-							<div class="pull-right">
-									<a href="#" class="btn btn-another-date"><span class="fa fa-plus"></span>&nbsp;Lägg till en annan datum</a>
-							</div> -->
-							<HR style="border-top: 2px solid #2B2B3F;margin: 10px auto 0;clear: both;margin-right: 10px;">
-							<div class="total_div">
-									<span class="to_pay">Summa</span><span class="to_pay_amt">120kr</span>
-							</div>
-							<div class="bill-cont">
-										<p>Hemkörningsvillkor</p>
-										<span>Ditt postnummer : <strong>72223</strong><br>
-											ÖPPNAR INOM KORT FÖR HEMKÖRNING.<br>
-												Minsta beställning.<br> 
-												Hemkörningsavgift:150kr </span>
-									</div>
-						</div>
-					<a href="#" class="btn-checkout btn-block">Till kassan</a>
-
-			</div>
+     <div class="col-md-4 bg-marg-30" style="margin: 45px auto 30px;">
+      <section class="cart_section">
+            <div id="sticky" style="top: 155px;">
+                  <div>
+                        <div class="slide_head_order">
+                              <p class="your-order">Din beställning</p>
+                        </div>                                    
+                        <div  class="static-height" *ngIf="listCart.length>0">
+                           <div class="col-md-12 padd-zero" style="margin: 5px auto;" *ngFor="let cartData of listCart let i=index;">
+                                 <div class="col-md-5 product_name">{{cartData.item_name}} {{ itemType(cartData.size_words) }}</div>
+                                 <div class="col-md-3 dev-inc-val-div">
+                                       <span class="value-button" id="decrease-btn" (click)="decreaseValue(cartData.item_id, cartData.qty,cartData.normal_price, cartData.item_index)" value="Decrease Value">
+                                          <i class="fa fa-minus" aria-hidden="true"></i>
+                                       </span>
+                                       <span>
+                                          <input type="text" id="number-btn" value="{{cartData.qty}}">
+                                       </span>
+                                       <span class="value-button" id="increase-btn" (click)="increaseValue(cartData.item_id, cartData.qty,cartData.normal_price, cartData.item_index)" value="Increase Value">
+                                          <i class="fa fa-plus" aria-hidden="true"></i>
+                                       </span>
+                                 </div>
+                                 <div class="col-md-4 sub_total_amt">
+                                    <span class="pull-right distance">{{cartData.discounted_price}}
+                                       <a href="javascript:;" class="btn btn" style="color: #7B0003;padding: 0;margin: 0 5px;font-size: 13px;">
+                                          <i class="fa fa-edit"></i>
+                                       </a>&nbsp;
+                                       <a href="javascript:;" (click)="deleteCart(cartData.item_index)" class="btn" style="color: #7B0003;padding: 0;font-size: 13px;">
+                                          <i class="fa fa-trash"></i>
+                                       </a>
+                                    </span>
+                                 </div>
+                           </div>
+     
+                        </div>
+                        <div class="emptyCart" *ngIf="emptyCarts">
+                           No items in the Cart.
+                        </div>
+                        <HR style="border-top: 2px solid #2B2B3F;margin: 10px auto 0;clear: both;margin-right: 10px;">
+                        <div class="total_div" *ngIf="!emptyCarts">
+                              <span class="to_pay">Summa</span><span class="to_pay_amt">{{totalAmt.subtotal}}{{totalAmt.curr}}</span>
+                        </div>
+                        <div class="bill-cont">
+                           <p>Hemkörningsvillkor</p>
+                           <span>Ditt postnummer : <strong>{{postalCode}}</strong><br>
+                              ÖPPNAR INOM KORT FÖR HEMKÖRNING.<br>
+                              {{terms}}</span>
+                              <p>Leveranssätt</p>
+                              <mat-form-field>
+                                 <mat-select placeholder="Hemkörning">
+                                    <mat-option (click)="setDelievery('delivery')">Hemkörning</mat-option>
+                                    <mat-option (click)="setDelievery('pickup')">Avhämtning</mat-option>
+                                 </mat-select>
+                              </mat-form-field>
+                           </div>
+                        </div>
+                     <div class="checkoutBtn_hold" id="checkoutBtn">
+                           <a routerLink="" (click)="goToCheckout()" class="btn-checkout btn-block" *ngIf="!emptyCarts">Till kassan</a>
+                        </div>
+            </div>
+      </section>
      </div> 
   </div>
 </div>
-<ngx-spinnernumber-btn
+
+<ngx-spinner
 	bdColor="rgba(51,51,51,0.8)"
 	size="medium"
 	color="#fff"

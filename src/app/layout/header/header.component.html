@@ -1,4 +1,4 @@
-<nav class="navbar navbar-cont navbar-fixed-top hidden-xs showFixedHeader" style="background-color: #fff;">
+<nav class="navbar navbar-cont navbar-fixed-top hidden-xs showFixedHeader" *ngIf="currentRoute != '/home'" style="background-color: #fff;">
   <div class="container-fluid nav-cont">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle bg_togle" data-toggle="collapse" data-target="#myNavbar">
@@ -8,67 +8,55 @@
       </button>
       <a class="navbar-brand-fixed" href="#"><img style="height: 22px;" src="./assets/images/red_logo.png"></a>
     </div>
-    <div class="nav navbar-nav navbar-left navbar-left-brand" id="navbar-left-brand">
-      <span class="del-to"> LEVERANS TILL: </span>
-      <span class="address">Drottninggatan 1, 753 10 Uppsala</span>
-      <i class="fa fa-chevron-down" style="color: #7A0003"></i>
-      <div class="input-group" style="width: 100%;margin-top: 25px;display: none;z-index: -1;" id="locate-search">
-        <input type="text" class="form-control" style="border-radius: 0;border-color:#ddd;font-size: 15px;  color: #780300;"
-          placeholder="Drottninggatan 1, 753 10 Uppsala">
-        <span class="input-group-addon" style="background-color: #fff;border: 1px solid #ddd;border-left: 0px;">
-          <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23">
-            <g fill="none" fill-rule="evenodd">
-              <path stroke="#7A0003" d="M11.5 22.5v-2.986l.471-.028a8.001 8.001 0 0 0 7.515-7.515l.028-.471H22.5h-2.986l-.028-.471a8.001 8.001 0 0 0-7.515-7.515l-.471-.028V.5v2.986l-.471.028a8.001 8.001 0 0 0-7.515 7.515l-.028.471H.5h2.986l.028.471a8.001 8.001 0 0 0 7.515 7.515l.471.028V22.5z"></path>
-              <circle cx="11.5" cy="11.5" r="4" stroke="#7A0003"></circle>
-              <circle cx="11.5" cy="11.5" r="1" fill="#7A0003"></circle>
-            </g>
-          </svg>
-        </span>
-        <span class="input-group-addon" style="border-radius: 0;background: #7A0003;padding: 15px;color: #fff;">
-          <i class="fa fa-arrow-right"></i>
-        </span>
-        <p style="font-size: 12px;position: absolute;top: -8px;left: 42px;background: #fff;z-index: 2;" id="locate-me-tab">Din
-          adress eller postnummer</p>
-      </div>
-    </div>
-
     <div class="nav navbar-nav navbar-left navbar-left-brand" id="navbar-left-brand-tab">
-      <span class="del-to"> LEVERANS TILL: </span>
-      <span class="address">Drottninggatan 1, 753 10 Uppsala</span>
-      <i class="fa fa-chevron-down" style="color: #7A0003"></i>
-      <div class="input-group" style="width: 100%;margin-top: 25px;display: none;z-index: -1;" id="locate-search-tab">
-        <input type="text" class="form-control" style="border-radius: 0;border-color:#ddd;font-size: 15px;" placeholder="Drottninggatan 1, 753 10 Uppsala">
-        <span class="input-group-addon" style="background-color: #fff;border: 1px solid #ddd;border-left: 0px;">
-          <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23">
-            <g fill="none" fill-rule="evenodd">
-              <path stroke="#7A0003" d="M11.5 22.5v-2.986l.471-.028a8.001 8.001 0 0 0 7.515-7.515l.028-.471H22.5h-2.986l-.028-.471a8.001 8.001 0 0 0-7.515-7.515l-.471-.028V.5v2.986l-.471.028a8.001 8.001 0 0 0-7.515 7.515l-.028.471H.5h2.986l.028.471a8.001 8.001 0 0 0 7.515 7.515l.471.028V22.5z"></path>
-              <circle cx="11.5" cy="11.5" r="4" stroke="#7A0003"></circle>
-              <circle cx="11.5" cy="11.5" r="1" fill="#7A0003"></circle>
-            </g>
-          </svg>
-        </span>
-        <span class="input-group-addon" style="border-radius: 0;background: #7A0003;padding: 15px;color: #fff;">
-          <i class="fa fa-arrow-right"></i>
-        </span>
-        <p style="font-size: 12px;position: absolute;top: -8px;left: 42px;background: #fff;z-index: 2" id="locate-me">Din
-          adress eller postnummer</p>
+      <span class="del-to"> LEVERANS TILL:</span>
+      <span class="address"> {{postalcode}} </span>
+      <i class="fa fa-chevron-down" style="color: #7A0003" (click)="showPostalSearch()"></i>
+      <div class="input-group" style="width: 100%;margin-top: 25px;z-index: -1;" *ngIf="locateSearchTab">
+        <input type="text" value="{{postalcode}}" [(ngModel)]= "postalcode" autocomplete="off"  class="form-control cSearchInput postcodeSearch" style="border-radius: 0;border-color:#ddd;font-size: 15px;color: #333;" placeholder="Drottninggatan 1, 753 10 Uppsala">
+          <span class="input-group-addon" (click)="onGeoloc()" style="background-color: #fff;border: 1px solid #ddd;border-left: 0px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23">
+              <g fill="none" fill-rule="evenodd">
+                <path stroke="#7A0003" d="M11.5 22.5v-2.986l.471-.028a8.001 8.001 0 0 0 7.515-7.515l.028-.471H22.5h-2.986l-.028-.471a8.001 8.001 0 0 0-7.515-7.515l-.471-.028V.5v2.986l-.471.028a8.001 8.001 0 0 0-7.515 7.515l-.028.471H.5h2.986l.028.471a8.001 8.001 0 0 0 7.515 7.515l.471.028V22.5z"></path>
+                <circle cx="11.5" cy="11.5" r="4" stroke="#7A0003"></circle>
+                <circle cx="11.5" cy="11.5" r="1" fill="#7A0003"></circle>
+              </g>
+            </svg>
+          </span>
+          <!-- <span class="cGeoLocator cTriggerGeoLocation" data-state="" *ngIf="geoLoading">
+              <mat-spinner
+              class = "tp-margin"
+              [color] = "color"
+              [mode] = "mode"
+              [value] = "value">
+            </mat-spinner>
+          </span> -->
+          <span class="input-group-addon" style="border-radius: 0;background: #7A0003;padding: 15px;color: #fff;" (click)="onSearch()">
+            <i class="fa fa-arrow-right"></i>
+          </span>
+          <p style="font-size: 12px;position: absolute;top: -8px;left: 42px;background: #fff;z-index: 2" id="locate-me">Din
+            adress eller postnummer</p>
       </div>
+
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right dropdown">
-        <li [ngClass]="{ 'cta-open': !userName }" style=" border-left: 0px !important;"><a><span class="glyphicon glyphicon-user"></span>
+        <li [ngClass]="{ 'cta-open': !userName }" (click)="openLoginForm()" style=" border-left: 0px !important;"><a><span class="glyphicon glyphicon-user"></span>
           <span class="logg_class" style="font-size: 1.2rem;" >{{ userName ? userName: 'Logga in' }}</span></a></li>
-          <li class="catr_icon"><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
-        <div class="dropdown-content" *ngIf="userName">
-          <a href="javascript:;" (click)="logout()" href="#">Logga ut</a>
-        </div>
+          <li class="catr_icon">
+            <a routerLink="merchants">      
+              <mat-icon matBadge="{{addedCart ? addedCart: ''}}" matBadgeColor="warn">add_shopping_cart</mat-icon>
+            </a>
+          </li>
+          <div class="dropdown-content" *ngIf="userName">
+            <a href="javascript:;" (click)="profile()">Mitt konto</a>
+            <a href="javascript:;" (click)="logout()">Logga ut</a>
+            </div>
       </ul>
-
     </div>
   </div>
 </nav>
-
-<nav class="navbar navbar-cont navbar-fixed-top hidden-xs nav-desktop showScrolledHeader">
+<nav class="navbar navbar-cont navbar-fixed-top hidden-xs nav-desktop showScrolledHeader" *ngIf="currentRoute == '/home'">
   <div class="container-fluid nav-cont">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle bg_togle" data-toggle="collapse" data-target="#myNavbar">
@@ -80,18 +68,25 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right dropdown">
-        <li [ngClass]="{ 'cta-open': !userName }" style=" border-left: 0px !important;"><a style="color: #ffffff !important;"><span class="glyphicon glyphicon-user"></span>
-            <span class="logg_class" style="font-size: 1.2rem;" >{{ userName ? userName: 'Logga in' }}</span></a></li>
-        <li class="catr_icon"><a><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
+        <li [ngClass]="{ 'cta-open': !userName }" (click)="openLoginForm()" style=" border-left: 0px !important;">
+          <a href="javascript:;" style="color: #ffffff !important;"><span class="glyphicon glyphicon-user"></span>
+            <span class="logg_class" style="font-size: 1.2rem;" >{{ userName ? userName: 'Logga in' }}</span>
+          </a>
+        </li>
+        <li class="catr_icon">
+            <a routerLink="merchants">      
+                <mat-icon matBadge="{{addedCart ? addedCart: ''}}" matBadgeColor="warn">add_shopping_cart</mat-icon>
+          </a>
+        </li>
         <div class="dropdown-content" *ngIf="userName">
-            <a href="javascript:;" (click)="logout()" href="#">Logga ut</a>
-          </div>
+          <!-- <a href="javascript:;" (click)="showProfileForm()">Mitt konto</a> -->
+          <a href="javascript:;" (click)="logout()">Logga ut</a>
+        </div>
       </ul>
-
     </div>
   </div>
 </nav>
-<nav class="navbar navbar-cont navbar-fixed-top visible-xs" style="background-color: #fff;">
+<nav class="navbar navbar-cont navbar-fixed-top visible-xs showFixedHeader" *ngIf="currentRoute != '/home'" style="display: none">
 
   <div class="container-fluid nav-cont" style="padding: 0;">
 
@@ -111,19 +106,19 @@
 
     </div>
 
-    <div class="nav navbar-nav navbar-left navbar-left-brand" id="navbar-left-brand-mob" style="left: 15px;width: 100%;top:57px;">
+    <div class="nav navbar-nav navbar-left navbar-left-brand showFixedHeader" id="navbar-left-brand-mob" style="left: 15px;width: 100%;top:57px;" >
 
-      <span class="del-to"> LEVERANS TILL mobil: </span>
+      <span class="del-to"> LEVERANS TILL: </span>
 
-      <span class="address">Drottninggatan 1, 753 10 Uppsala</span>
+      <span class="address"> {{postalcode}} </span>
 
-      <i class="fa fa-chevron-down" style="color: #7A0003"></i>
+      <i class="fa fa-chevron-down" (click)="showPostalSearch()" style="color: #7A0003"></i>
 
-      <div class="input-group" style="width: 100%;margin-top: 25px;display: none;z-index: -1;" id="locate-search-mob">
+      <div class="input-group" style="width: 100%;margin-top: 25px;z-index: -1;" id="locate-search-mob" *ngIf="locateSearchTab">
 
-        <input type="text" class="form-control" style="border-radius: 0;border-color:#ddd;font-size: 15px;" placeholder="Drottninggatan 1, 753 10 Uppsala">
+        <input type="text" value="{{postalcode}}" [(ngModel)]= "postalcode" class="form-control cSearchInput postcodeSearch" placeholder="postnummer">
 
-        <span class="input-group-addon" style="background-color: #fff;border: 1px solid #ddd;border-left: 0px;">
+        <span class="input-group-addon" (click)="onGeoloc()" style="background-color: #fff;border: 1px solid #ddd;border-left: 0px;">
 
           <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23">
 
@@ -141,7 +136,7 @@
 
         </span>
 
-        <span class="input-group-addon" style="border-radius: 0;background: #7A0003;padding: 15px;color: #fff;">
+        <span class="input-group-addon" style="border-radius: 0;background: #7A0003;padding: 15px;color: #fff;" (click)="onSearch()">
 
           <i class="fa fa-arrow-right"></i>
 
@@ -151,9 +146,25 @@
           en recension</p>
       </div>
     </div>
-    <a href="#" class="pull-left cta-open" style="padding: 20px !important;line-height: 0;color: #7A0003;"><span class="glyphicon glyphicon-user"></span>
+    <!-- <a href="" class="pull-left cta-open" style="padding: 20px !important;line-height: 0;color: #7A0003;"><span class="glyphicon glyphicon-user"></span>
+    </a> -->
+    <a href="javascript:;" [ngClass]="{ 'cta-open': !userName }" (click)="openLoginForm()" class="pull-left" style="padding: 20px !important;line-height: 0;color: #7A0003;"><span class="glyphicon glyphicon-user"></span>
+      <span class="logg_class" style="font-size: 1.2rem;" >{{ userName ? userName: '' }}</span>
+      
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav navbar-right dropdown">
+        <div class="dropdown-content" *ngIf="userName">
+          <!-- <a href="javascript:;" (click)="showProfileForm()">Mitt konto</a> -->
+          <a href="javascript:;" (click)="logout()">Logga ut</a>
+          </div>
+      </ul>
+    </div>
+
+  </a>
+
+    <a routerLink="merchants" class="pull-right" style="padding: 20px !important;line-height: 0;color: #7A0003;">
+        <mat-icon matBadge="{{addedCart ? addedCart: ''}}" matBadgeColor="warn">add_shopping_cart</mat-icon>
     </a>
-    <a href="#" class="pull-right" style="padding: 20px !important;line-height: 0;color: #7A0003;"><span class="glyphicon glyphicon-shopping-cart"></span></a>
     <div class="collapse navbar-collapse" id="myNavbar">
 
       <ul class="nav navbar-nav navbar-right">
@@ -169,39 +180,176 @@
   </div>
 
 </nav>
-
-<nav class="navbar navbar-cont navbar-fixed-top visible-xs nav-mob">
-  <div class="container-fluid nav-cont" style="padding: 0;">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#"><img style="height: 22px;" src="./assets/images/w_logo.png"></a>
+<nav class="navbar navbar-cont navbar-fixed-top visible-xs nav-mob showScrolledHeader" *ngIf="currentRoute == '/home'">
+    <div class="container-fluid nav-cont" style="padding: 0;">
+    <div class="navbar-header">         
+    <a class="navbar-brand" href="#"><img style="height: 22px;" src="./assets/images/w_logo.png"></a>           
     </div>
-    <a  class="pull-left" [ngClass]="{ 'cta-open': !userName }" style="padding: 20px !important;line-height: 0;color: #ffffff;"><span class="glyphicon glyphicon-user"></span>
+    
+    <a href="javascript:;" [ngClass]="{ 'cta-open': !userName }" class="pull-left" style="padding: 20px !important;line-height: 0;color: #ffffff;"><span class="glyphicon glyphicon-user"></span> </a>
+    <a routerLink="merchants" class="pull-right" style="padding: 20px !important;line-height: 0;">
+      <mat-icon matBadge="{{addedCart ? addedCart: ''}}" matBadgeColor="warn">add_shopping_cart</mat-icon>
     </a>
-    <a  class="pull-right" style="padding: 20px !important;line-height: 0;color: #ffffff;"><span class="glyphicon glyphicon-shopping-cart"></span></a>
     <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav navbar-right">
-        <li></li>
-        <li></li>
-      </ul>
+    <ul class="nav navbar-nav navbar-right">
+    <li></li>
+    <li></li>
+    </ul>
     </div>
-  </div>
-</nav>
-<section class="toggle-form" style="padding: 0px !important">
+    </div>
+  </nav>
+
+  <section class="toggle-form loginform forgetpwdForms" *ngIf="enableProfileForm" style="padding: 0px !important">
+      <div class="formwrap px-4 forgetpwdForms">
+        <div class="icon-close pos-a" (click)="hideRegisterForm()"><img class="close_img" src="./assets/images/59836.svg" style="
+                  width: 18px; margin-left: 13px;"
+            alt="Close Button"></div>
+        <div class="row">
+          <div class="col-md-8 col-sm-6 col-xs-8">
+            <p class="text-white mt-4 h3">Glömt lösenord?</p>
+            <span class="or_sing" (click)="openLoginForm()">eller</span><a (click)="showRegisterForm()" class="sing_up_tag cta-open1">skapa ett konto</a>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-4">
+            <img class="side_img" src="./assets/images/Image-login_btpq7r.png" style="width: 76px; float: right;">
+          </div>
+        </div>
+        <div class="from_class">
+          <form [formGroup]="profileForm" class="login-form" (ngSubmit)="updateProfileForm()" role="form" data-toggle="validator">
+              <div class="form-group" style="margin-bottom:0px;">
+                  <div class="phone_div">
+                    <input type="text" formControlName="firstName"  id="phone5" name="phone" class="form-control phone_num required" [ngClass]="{ 'is-invalid': submitted && profile_Form.firstName.errors }" 
+                      required>
+                    <div class="empty_div"></div>
+                      <label for="phone" class="phone_label control-label">Förnamn</label>
+                      <div *ngIf="submitted && profile_Form.firstName.errors" class="invalid-feedback">
+                        <div *ngIf="profile_Form.firstName.errors.required">Please enter a valid FirstName</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group" style="margin-bottom:0px;">
+                  <div class="phone_div">
+                    <input type="text" formControlName="lastName"  id="phone2" name="phone" class="form-control phone_num required" 
+                      required>
+                    <div class="empty_div"></div>
+                    <label for="phone" class="phone_label control-label">Efternamn</label>
+                  </div>
+                </div>
+                <div class="form-group" style="margin-bottom:0px;">
+                  <div class="passwors_div">
+                    {{email}}
+                    <div class="empty_div"></div>
+                    <label for="phone" class="phone_label control-label">Mailadress</label>
+                  </div>
+                </div>
+                <div class="form-group" style="margin-bottom:0px;">
+                  <div class="passwors_div">
+                    <input type="password" id="password1" formControlName="password" name="password" class="form-control phone_num required" data-error="Please enter a valid password" required>
+                    <div class="empty_div"></div>
+                    <label for="phone" class="phone_label control-label">Lösenord</label>
+                    </div>
+                </div>
+                <div class="form-group" style="margin-bottom:0px;">
+                  <div class="passwors_div">
+                      <input type="number" formControlName="mobileNumber"  id="phone3" name="mobileNumber" class="form-control phone_num required" [ngClass]="{ 'is-invalid': submitted && f.mobileNumber.errors }"
+                      required>
+                    <div class="empty_div"></div>
+                    <label for="phone" class="phone_label control-label">
+                      Mobilnummer</label>
+                      <div *ngIf="submitted && f.mobileNumber.errors" class="invalid-feedback">
+                        <div *ngIf="f.mobileNumber.errors.required">Please enter a valid phone number</div>
+                    </div>
+                  </div>
+                  <div class="form-group pay-form-group">
+                      <label for="" class="sr-only"></label>
+                      <input type="text" id="address" formControlName="address" name="address" placeholder="*Adress"  class="form-control pay-form-control required" [ngClass]="{ 'is-invalid': CODsubmitted && cod_Form.address.errors }" data-error="Please enter a valid address"
+                      required>
+                      <div *ngIf="CODsubmitted && cod_Form.address.errors" class="invalid-feedback">
+                            <div *ngIf="cod_Form.address.errors.required">Please enter a valid address</div>
+                      </div>
+                   </div>
+                   <div class="form-group pay-form-group">
+                      <label for="" class="sr-only"></label>
+                      <input type="text" class="form-control pay-form-control" formControlName="apartment" value="{{location_name}}" id="Lägenhetsnummer" placeholder="Lägenhetsnummer" name="Lägenhetsnummer">
+                   </div>
+                   <div class="form-group pay-form-group">
+                      <label for="" class="sr-only"></label>
+                      <input type="text" class="form-control pay-form-control" formControlName="floor" value="{{floor}}" id="Våning" placeholder="Våning" name="Våning">
+                   </div>
+                   <div class="form-group pay-form-group">
+                      <label for="" class="sr-only"></label>
+                      <input type="text" class="form-control pay-form-control" formControlName="zipcode" value="{{zipcode}}" id="Postnummer" placeholder="Postnummer" name="Våning">
+                   </div>
+                   <div class="form-group pay-form-group">
+                      <label for="" class="sr-only"></label>
+                      <input type="number" class="form-control pay-form-control" id="Portkod" formControlName="door" id="Våning" value="{{door}}" placeholder="portkod" name="Portkod">
+                   </div>
+                </div>
+              <div *ngIf="forgetsubmitted && forgeterroMsg" class="invalid-feedback">
+                  <div >{{forgeterroMsg}}</div>
+              </div>
+            <p class="margin-0"><button type="submit" class="btn btn-lg orange w-100 margin-top-s">Hämta lösenord</button></p>
+          </form>
+        </div>
+      </div>
+      <div class="toggle-bg"></div>
+    </section>
+
+<!-- Forget Form -->
+<section class="toggle-form loginform forgetpwdForms" *ngIf="enableForgetForm" style="padding: 0px !important">
+    <div class="formwrap px-4 forgetpwdForms">
+      <div class="icon-close pos-a" (click)="hideRegisterForm()"><img class="close_img" src="./assets/images/59836.svg" style="
+                width: 18px; margin-left: 13px;"
+          alt="Close Button"></div>
+      <div class="row">
+        <div class="col-md-8 col-sm-6 col-xs-8">
+          <p class="text-white mt-4 h3">Glömt lösenord?</p>
+          <span class="or_sing" (click)="openLoginForm()">eller</span><a (click)="showRegisterForm()" class="sing_up_tag cta-open1">skapa ett konto</a>
+        </div>
+        <div class="col-md-4 col-sm-6 col-xs-4">
+          <img class="side_img" src="./assets/images/Image-login_btpq7r.png" style="width: 76px; float: right;">
+        </div>
+      </div>
+      <div class="from_class">
+        <form [formGroup]="forgetsForm" class="login-form" (ngSubmit)="sendForgetForm()" role="form" data-toggle="validator">
+          <div class="form-group" style="margin-bottom:10px;">
+            <div class="phone_div">
+                <input type="email" formControlName="email"  id="phone1" name="phone" class="form-control phone_num required" [ngClass]="{ 'is-invalid': submitted && (forgetForm.email.errors) }" data-error="Please enter a valid email"
+                required>
+              <div class="empty_div"></div>
+              <label for="phone" class="phone_label control-label">E-post</label>
+              <div *ngIf="forgetsubmitted && forgetForm.email.errors" class="invalid-feedback">
+                  <div *ngIf="forgetForm.email.errors.required">Please enter a valid Email</div>
+                  <div *ngIf="forgetForm.email.touched && forgetForm.email.dirty && forgetForm.email.invalid && forgetForm.email.errors.email">Email must be a valid email address</div>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="forgetsubmitted && forgeterroMsg" class="invalid-feedback">
+              <div >{{forgeterroMsg}}</div>
+          </div>
+          <p class="margin-0"><button type="submit" class="btn btn-lg orange w-100 margin-top-s">Hämta lösenord</button></p>
+        </form>
+      </div>
+    </div>
+    <div class="toggle-bg"></div>
+  </section>
+
+<section class="toggle-form loginform" *ngIf="loginform" style="padding: 0px !important">
   <div class="formwrap px-4">
-    <div class="icon-close pos-a"><img class="close_img" src="./assets/images/59836.svg" style="
+    <div class="icon-close pos-a" (click)="hideLoginForm()"><img class="close_img" src="./assets/images/59836.svg" style="
               width: 18px; margin-left: 13px;"
         alt="Close Button"></div>
     <div class="row">
       <div class="col-md-6 col-sm-6 col-xs-8">
         <p class="text-white mt-4 h3">{{ userName ? userName: 'Logga in' }}</p>
-        <span class="or_sing">eller</span><a class="sing_up_tag cta-open1">skapa ett konto</a>
+        <span class="or_sing">eller</span><a (click)="showRegisterForm()" class="sing_up_tag cta-open1">skapa ett konto</a>
       </div>
       <div class="col-md-6 col-sm-6 col-xs-4">
         <img class="side_img" src="./assets/images/Image-login_btpq7r.png" style="width: 76px; float: right;">
       </div>
     </div>
     <div class="from_class">
-      <form [formGroup]="LoginForm" (ngSubmit)="onLogin()" role="form" data-toggle="validator">
+      
+      <form [formGroup]="LoginForm" class="login-form" (ngSubmit)="onLogin()" role="form" data-toggle="validator">
         <div class="form-group" style="margin-bottom:0px;">
           <div class="phone_div">
               <input type="email" formControlName="email"  id="phone1" name="phone" class="form-control phone_num required" [ngClass]="{ 'is-invalid': submitted && (login_Form.email.errors) }" data-error="Please enter a valid email"
@@ -229,7 +377,8 @@
             Genom att klicka på "Skicka" accepterar du <a href="/terms/">
               Användarvillkor</a>.</small>
         </p>
-        <div *ngIf="submitted && erroMsg" class="invalid-feedback">
+        <a href="javscript:;" class="cta-open3" (click)="openForgot()"> Glömt lösenord??</a>
+        <div *ngIf="loginsubmitted && erroMsg" class="invalid-feedback">
             <div >{{erroMsg}}</div>
         </div>
         <p class="margin-0"><button type="submit" class="btn btn-lg orange w-100 margin-top-s">Logga in</button></p>
@@ -238,15 +387,15 @@
   </div>
   <div class="toggle-bg"></div>
 </section>
-<section class="toggle-form1" style="padding: 0px !important">
+<section class="toggle-form1 registerform" *ngIf="registerform"  style="padding: 0px !important">
   <div class="formwrap1 px-4">
-    <div class="icon-close1 pos-a"><img src="./assets/images/59836.svg" style="
+    <div class="icon-close1 pos-a" (click)="hideRegisterForm()"><img src="./assets/images/59836.svg" style="
               width: 18px; margin-left: 13px;"
         alt="Close Button"></div>
     <div class="row">
       <div class="col-md-6 col-sm-6 col-xs-6">
         <p class="text-white mt-4 h3">Bli Medlem</p>
-        <span class="or_sing">or</span><a class="sing_up_tag cta-open">{{ userName ? userName: 'Logga in' }}</a>
+        <span class="or_sing">or</span><a class="sing_up_tag cta-open" (click)="openLoginForm()">{{ userName ? userName: 'Logga in' }}</a>
       </div>
       <div class="col-md-6 col-sm-6 col-xs-6">
         <img class="side_img" src="./assets/images/Image-login_btpq7r.png" style="width: 76px; float: right;">
@@ -256,11 +405,10 @@
       <form  [formGroup]="registerForm" (ngSubmit)="onSubmit()" role="form" data-toggle="validator">
         <div class="form-group" style="margin-bottom:0px;">
           <div class="phone_div">
-            <input type="text" formControlName="firstName"  id="phone5" name="phone" class="form-control phone_num required" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" data-error="Please enter a valid phone number"
+            <input type="text" formControlName="firstName"  id="phone5" name="phone" class="form-control phone_num required" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" 
               required>
             <div class="empty_div"></div>
-            <label for="phone" class="phone_label control-label">
-              Efternamn</label>
+              <label for="phone" class="phone_label control-label">Förnamn</label>
               <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
                 <div *ngIf="f.firstName.errors.required">Please enter a valid FirstName</div>
             </div>
@@ -268,19 +416,15 @@
         </div>
         <div class="form-group" style="margin-bottom:0px;">
           <div class="phone_div">
-            <input type="text" formControlName="lastName"  id="phone2" name="phone" class="form-control phone_num required" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" data-error="Please enter a valid phone number"
+            <input type="text" formControlName="lastName"  id="phone2" name="phone" class="form-control phone_num required" 
               required>
             <div class="empty_div"></div>
-            <label for="phone" class="phone_label control-label">
-              Förnamn</label>
-              <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
-                <div *ngIf="f.lastName.errors.required">Please enter a valid LastName</div>
-            </div>
+            <label for="phone" class="phone_label control-label">Efternamn</label>
           </div>
         </div>
         <div class="form-group" style="margin-bottom:0px;">
           <div class="passwors_div">
-              <input type="number" formControlName="mobileNumber"  id="phone3" name="mobileNumber" class="form-control phone_num required" [ngClass]="{ 'is-invalid': submitted && f.mobileNumber.errors }" data-error="Please enter a valid phone number"
+              <input type="number" formControlName="mobileNumber"  id="phone3" name="mobileNumber" class="form-control phone_num required" [ngClass]="{ 'is-invalid': submitted && f.mobileNumber.errors }"
               required>
             <div class="empty_div"></div>
             <label for="phone" class="phone_label control-label">
@@ -313,10 +457,13 @@
             </div>
           </div>
         </div>
-        <div class="referral_div">
+        <div *ngIf="submitted && regerroMsg" class="invalid-feedback">
+            <div >{{regerroMsg}}</div>
+        </div>
+        <!-- <div class="referral_div">
           <a class="have_referral">
             Har en hänvisningskod?</a>
-        </div>
+        </div> -->
         <p class="margin-0"><button type="submit" class="btn btn-lg orange w-100 margin-top-s">FORTSÄTTA</button></p>
         <p class="text-center margin-top-s"><small class="small_class">Genom att klicka på "Skicka" accepterar du
             <a class="contison_a" href="#">Användarvillkor</a>.</small>

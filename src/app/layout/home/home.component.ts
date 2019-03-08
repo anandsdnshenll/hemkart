@@ -29,6 +29,13 @@ export class HomeComponent implements OnInit {
   postalCodeField = true;
   input: any;
   postvalues: string;
+  cityName = "";
+  emptyValu: any;
+  restaurantsName: any = [];
+  restaurantsName1: any = [];
+  lists: any = [];
+  showRestaurants = true;
+  showRestaurants1 = false;
 
   constructor(
     private fb: FormBuilder,
@@ -39,6 +46,8 @@ export class HomeComponent implements OnInit {
     private user: UsersService ) {
     this.spinnerService.show();
     setTimeout(() => this.spinnerService.hide(),800);
+    this.showRestCity("Västerås");
+
    }
    url:string;
 
@@ -52,6 +61,36 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  showRestCity(cityName) {
+    this.user.getCity(cityName).subscribe(data => {
+      if(data.details) {
+        // console.log("datatas*****", JSON.stringify(data.details));
+        this.lists = data.details;
+        this.restaurantsName = this.lists.list;
+        localStorage.setItem("Västerås", this.restaurantsName);
+        this.showRestaurants = true;
+        this.showRestaurants1 = false;
+
+      } else {
+        this.emptyValu = data.msg;
+      }
+    });
+  }
+
+  showRestCity1(cityName) {
+    this.user.getCity(cityName).subscribe(data => {
+      if(data.details) {
+        // console.log("datatas*****", JSON.stringify(data.details));
+        this.lists = data.details;
+        this.restaurantsName1 = this.lists.list;
+        localStorage.setItem("Eskilstuna", JSON.stringify(this.restaurantsName1));
+        this.showRestaurants1 = true;
+        this.showRestaurants = false;
+      } else {
+        this.emptyValu = data.msg;
+      }
+    });
+  }
 
   ngOnDestroy(): void {
 
@@ -60,15 +99,17 @@ export class HomeComponent implements OnInit {
   onSearch() {
     this.searchs = true;
     this.spinnerService.show();
+    this.user.setPostalCode(this.cSearchForm.value.search_address);
     if (this.cSearchForm.invalid) {
       setTimeout(() => this.spinnerService.hide(), 700);
       return;
     }
     else {
+      localStorage.setItem("postalCode", this.cSearchForm.value.search_address);
       this.input=this.cSearchForm.value.search_address;
       $('.cSearchInput').attr('value',this.cSearchForm.value.search_address);
       setTimeout(() => this.spinnerService.hide(), 1000);
-      this.router.navigate(['/products/'], { queryParams: { area: this.cSearchForm.value.search_address } });
+      this.router.navigate(['/allmerchants/']);
     }
 
   }
@@ -86,17 +127,21 @@ export class HomeComponent implements OnInit {
     this.geoLoading = true;
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
-        this.user.getpcode(position.coords.latitude,position.coords.longitude).subscribe(data => {
-          this.result = data;
+        this.user.getLocation(position.coords.latitude, position.coords.longitude).subscribe(results => {
+          for(var i=0;i<results.length;++i){
+            if(results[i].types[0]=="postal_code"){
+               this.postalcode = results[i].long_name;
+            }
+          }
+          if (!this.postalcode) {
+            //Postal Code Not found
+          }else {
+            localStorage.setItem("postalCode", this.postalcode);
+            this.cSearchForm.controls['search_address'].setValue(this.postalcode);
+            $('.cSearchInput').attr('value',this.postalcode);
+             //Postal Code found
+          }
           this.geoLoading = false;
-          var str =this.result; 
-          var n = parseInt(str.search("value")) + 7;
-          var z=str.search('"/>');
-          var val=str.slice(n,85);
-          this.postalcode=val;
-          this.cSearchForm.controls['search_address'].setValue(val);
-          $('.cSearchInput').attr('value',val);
-          // this.postalCodeDiv.nativeElement.focus()
           setTimeout(() => this.spinnerService.hide(), 1500);
         });
       });
