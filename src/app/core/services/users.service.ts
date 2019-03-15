@@ -12,9 +12,13 @@ export class UsersService {
     private postalData = new BehaviorSubject<any>(null);
     private apiData = new BehaviorSubject<any>(null);
     private cartData = new BehaviorSubject<any>(null);
+    private userData = new BehaviorSubject<any>(null);
+    private orderData = new BehaviorSubject<any>(null);
     public apiData$ = this.apiData.asObservable();
     public postalData$ = this.postalData.asObservable();
     public cartData$ = this.cartData.asObservable();
+    public userData$ = this.userData.asObservable();
+    public orderData$ = this.orderData.asObservable();
     deviceInfo = null;
 
     constructor(private apiService: ApiService, private http:HttpClient, private deviceService: DeviceDetectorService
@@ -32,9 +36,15 @@ export class UsersService {
     }
 
     setAddedCart(data) {
-        console.log("cart data", data);
         this.cartData.next(data);
-      }
+    }
+
+    getUserData(data) {
+        this.userData.next(data);
+    }
+    callConfirmation(data){
+        this.orderData.next(data);
+    }
 
     getArea(username: string): Observable<Area> {
         return this.apiService.get('SearchArea/s/' + username + '?json=true')
@@ -82,7 +92,14 @@ export class UsersService {
         '&price='+ price +"&qty="+ qty +"&json=true")
         .pipe(map((data) => data)); 
     }
-    
+
+    addtoCartAddon(itemid, merchantid, addedItems, price, foodItemSize) {
+        addedItems = addedItems.replace(/&&/g,"&");
+        return this.apiService.get('ajax?action=addToCart&currentController=store&item_id=' + itemid + '&merchant_id=' + merchantid + 
+        '&discount=&price=' + price + "|"+foodItemSize+"&qty="+ 1 + "&" + addedItems + "json=true")
+        .pipe(map((data) => data)); 
+    }
+
     getCart(merchantid) {
         return this.apiService.get('LoadItemCart?merchant_id=' + merchantid + '&json=true')
             .pipe(map((data) => data));
@@ -184,7 +201,7 @@ export class UsersService {
   } 
 
   checkConfirmation(orderId) {
-    return this.apiService.get('checkconfirmation/backend=1&o='+ orderId +'&json=true')
+    return this.apiService.get('checkconfirmation?backend=1&o='+ orderId +'&json=true')
     .pipe(map((data) => data));
   } 
 
@@ -206,10 +223,19 @@ export class UsersService {
 
    }
 
-   updateProfile(value){
-    return this.apiService.get('ajax?action=updateClientProfile&currentController=store&first_name=ann&last_name=DGDFG&street=fghfg&city=jkhk&zipcode=72210&location_name=werewr&door=23423&floor=12312&contact_phone=98543213&password=tets')
+   updateProfile(userdata){
+       if(!userdata.password) {
+        userdata.password = '';
+       }
+    return this.apiService.get('ajax?action=updateClientProfile&currentController=store&password=' + userdata.password + 
+                                '&first_name='+ userdata.first_name +
+                                '&last_name='+ userdata.last_name +
+                                '&contact_phone='+ userdata.contact_phone+
+                                '&street='+ userdata.street+
+                                '&zipcode='+ userdata.zipcode+
+                                '&location_name='+ userdata.location_name+
+                                '&door='+ userdata.door+
+                                '&floor='+ userdata.floor+'&json=true')
     .pipe(map((data) => data));
-
    }
-   
 }

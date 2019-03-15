@@ -3,6 +3,8 @@ import { Router, ActivatedRoute, NavigationEnd, Event } from '@angular/router';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { HeaderService } from './header.service';
 import { environment } from 'src/environments/environment';
+import { interval } from 'rxjs';
+
 
 declare var $: any;
 @Component({
@@ -19,6 +21,9 @@ export class AppComponent{
     public router: Router) {
     this.spinnerService.show();
     setTimeout(() => this.spinnerService.hide(),800);
+    // interval(5000 * 2).subscribe(x => {
+    //   console.log("time interval");
+    // });
    }
   title = 'hemkart';
 

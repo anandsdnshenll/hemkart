@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UsersService } from 'src/app/core';
+import { UsersService, ApiService } from 'src/app/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { interval } from 'rxjs';
 
 @Component({
   selector: 'app-checkout',
@@ -66,11 +67,12 @@ export class CheckoutComponent implements OnInit {
   cardProcessingFee = 0;
   merchant_phone: any;
   enableSwishForm = false;
+  stopCheckConfirmation = true;
+  timerInterval: any;
 
-  constructor(private fb: FormBuilder, private user:UsersService, private router: Router, private toastr: ToastrService,) {
+  constructor(private fb: FormBuilder, private user:UsersService, private router: Router, private toastr: ToastrService, private apiService: ApiService,) {
     this.isLoggedIn = localStorage.getItem("isLoggedin");
     this.postalCode = localStorage.getItem("postalCode");;
-
 
     this.LoginForm = this.fb.group({
       email: ['', Validators.compose([Validators.required, Validators.email, Validators.pattern(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)])],
@@ -100,14 +102,32 @@ export class CheckoutComponent implements OnInit {
       location_name: [''],
       zipcode: [this.postalCode],
     });
+    console.log("purchased===>", localStorage.getItem("purchased"));
+
+    this.user.orderData$.subscribe(data => this.checkConfirmation(data));
   }
 
+  checkConfirmation(data){
+    
+    this.timerInterval = interval(5000 * 2).subscribe(x => {
+      console.log("time interval");
+      this.orderConfirmation(11)
+
+    });
+  }
   get f() { return this.registerForm.controls; }
   get login_Form() { return this.LoginForm.controls; }
   get cod_Form() { return this.CODForm.controls; }
   get instacod_Form() { return this.instatRegisterForm.controls; }
-  
+
   ngOnInit() {
+    if(localStorage.getItem("purchased") == "true"){
+      this.timerInterval = interval(5000 * 2).subscribe(x => {
+        console.log("time interval");
+        // this.orderConfirmation(11)
+      });
+    }
+
     this.userProfileDetails();
     this.merchantid = JSON.parse(localStorage.getItem("restaurentDetail"))[0].merchantid;
     this.availableTypes = JSON.parse(localStorage.getItem("restaurentDetail"))[0].availableTypes;
@@ -119,8 +139,7 @@ export class CheckoutComponent implements OnInit {
     this.merchant_phone = JSON.parse(localStorage.getItem("restaurentDetail"))[0].contact_phone;
     this.delieveryType(localStorage.getItem("delieveryType"));
 
-
-    // this.user.getReciept(26).subscribe(data => {
+    // this.user.getReciept(11).subscribe(data => {
     //   console.log("receiptDetails ----->", data);
     //   if(data.code == 1) {
     //     this.enableOrderInfo = true;
@@ -130,13 +149,17 @@ export class CheckoutComponent implements OnInit {
     //     this.otherdetails = this.orderDetails.raw;
     //     this.orderItems = this.otherdetails.item;
     //     this.orderTotal = this.otherdetails.total;
+    //     localStorage.setItem("purchased","true");
+    //     this.user.callConfirmation(11);
+
     //   }
     // });
-
-
-
   }
 
+//   ngOnDestroy() {
+//     // Will clear when component is destroyed e.g. route is navigated away from.
+//     clearInterval(this.timerInterval);
+//  }
   print(): void {
     let printContents, popupWin;
     printContents = document.getElementById('sticky').innerHTML;
@@ -207,7 +230,7 @@ export class CheckoutComponent implements OnInit {
     );
     
     popupWin.document.close();
-}
+  }
 
   userProfileDetails() {
     this.isLoggedIn = localStorage.getItem("isLoggedin");
@@ -241,10 +264,15 @@ export class CheckoutComponent implements OnInit {
     }
   }
 
-  orderConfirmation() {
-    this.user.checkConfirmation(11).subscribe(data => {
-      console.log("checkConfirmation ----->", data);
-      this.confirmationDetails = data.details
+  orderConfirmation(data) {
+    this.user.checkConfirmation(data).subscribe(data => {
+      if(data.code == 1 && data.masg == "Pending") {
+        this.stopCheckConfirmation = true;
+      }else if(data.code == 1 && data.msg == "Accepted") {
+        this.stopCheckConfirmation = false;
+        clearInterval(this.timerInterval);
+      }
+      this.confirmationDetails = data.details;
     });
 
   }
@@ -275,7 +303,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   showKlarnaForm() {
-    console.log("klarna form")
+    // console.log("klarna form")
     this.enableCODForm = false;
     this.enableKlarnaForm = true;
     this.enableSwishForm = false;
@@ -369,6 +397,7 @@ export class CheckoutComponent implements OnInit {
             this.otherdetails = this.orderDetails.raw;
             this.orderItems = this.otherdetails.item;
             this.orderTotal = this.otherdetails.total;
+            this.orderConfirmation(this.receiptDetails.order_id);
           }
         });
         this.ClearCart();

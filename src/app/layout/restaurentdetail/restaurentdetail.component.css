@@ -8079,7 +8079,8 @@ input:checked+.checkbox-element .checkmark {
 	-ms-flex-align: center;
 	align-items: center;
 	-webkit-transform: translate3d(0, 0, 0);
-	transform: translate3d(0, 0, 0)
+	transform: translate3d(0, 0, 0);
+	font-weight: bold
 }
 
 .nav-tabs li a::after,
@@ -15952,6 +15953,7 @@ ul.work-order-list li {
     }
 }
 @media (max-width: 1100px) and (min-width: 992px){
+
     .IJsqo{
         font-size: 11px;
     }
@@ -15960,6 +15962,7 @@ ul.work-order-list li {
     } 
 }
 @media (max-width: 1024px) and (min-width: 992px){
+
     #number-btn{
         width: 44%;
     }
@@ -15968,6 +15971,9 @@ ul.work-order-list li {
     }
 }
 @media (max-width: 992px){
+	.banner_image {
+		display: none;
+	}
     .fluid-bg-tab{
        top:0 !important;
     }
@@ -15976,10 +15982,19 @@ ul.work-order-list li {
     }
 }
 @media (max-width: 991px){
+	.banner_image {
+		display: block;
+	}
     .order-form-control{
         width: 100%;
     }
 }
+@media (min-width: 766px) and (max-width: 991px){
+	.banner_image {
+		display: none;
+	}
+}
+
 @media (max-width: 767px) and (min-width: 600px){
     .work-order-list>li .vendor-tile picture{
         height: 250px;
@@ -16063,4 +16078,7 @@ ul.work-order-list li {
     z-index: 3003;
     width: 27.5%;
     margin-left: -14px;
+}
+.addonItems {
+	font-size: 10px;
 }

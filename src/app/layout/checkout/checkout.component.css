@@ -134,3 +134,9 @@
     border: 2px solid #d4d5d9;
     box-shadow: 5px 10px #d4d5d9;
 }
+.successOrder p{
+    font-weight: normal !important;
+}
+.order_details {
+    font-weight: 700 !important;
+}

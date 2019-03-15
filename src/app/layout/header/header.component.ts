@@ -35,7 +35,7 @@ export class HeaderComponent implements OnInit {
   locateSearchTab= false;
   geoLoading = false;
   input: any;
-  userData: any = [];
+  userDatas: any = [];
   currentRoute = localStorage.getItem("currentRoute");
   loginform = false;
   registerform = false;
@@ -50,6 +50,17 @@ export class HeaderComponent implements OnInit {
   userDetails:any = [];
   profileForm: FormGroup;
   profilesubmitted = false;
+  firstName: any;
+  lastName: any;
+  password: any;
+  email: any;
+  mobileNumber: any;
+  apartment: any;
+  floor: any;
+  door: any;
+  address: any;
+  zipcode: any;
+  profileerroMsg: any;
 
   constructor(
     private fb: FormBuilder,
@@ -68,6 +79,7 @@ export class HeaderComponent implements OnInit {
     this.userName = localStorage.getItem("userName") ? localStorage.getItem("userName") : "";
     if(!this.userName){
       this.user.apiData$.subscribe(data => this.userName = data);
+      this.user.userData$.subscribe(data => data ? this.profile(): '');
     }
     
     this.user.postalData$.subscribe(data => this.postalcode = data);
@@ -104,13 +116,14 @@ export class HeaderComponent implements OnInit {
     this.forgetsForm = this.fb.group({
       email: ['', Validators.compose([Validators.required, Validators.email, Validators.pattern(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)])],
     }); 
+
     this.profileForm = this.fb.group({
       firstName: ['', Validators.required],
       lastName: [''],
-      email: ['', [Validators.required]],
-      password: ['', [Validators.required]],
+      email: [''],
+      password: [''],
       mobileNumber: ['', [Validators.required]],
-      apartment: [this.userDetails.location_name],
+      apartment: [''],
       floor: [''],
       door: [''],
       address: [''],
@@ -168,22 +181,26 @@ export class HeaderComponent implements OnInit {
     if (this.LoginForm.invalid) {
         return;
     }
-    this.user.clientLogin(this.LoginForm.value).subscribe(data => {
-      if(data.code == 2) {
-        localStorage.setItem("isLoggedin", "false");
-        this.erroMsg = data.msg;
-      } else {
-        localStorage.setItem("user_profile", JSON.stringify(data.details.details));
-        localStorage.setItem("isLoggedin", "true");
-        localStorage.setItem("token", data.details.token);
-        localStorage.setItem("userName", data.details.details.first_name);
-        this.userName = localStorage.getItem("userName");
-        this.registerForm.reset();
-        this.closeAllForm();
-        // this.profile();
-      }
-    });
+    this.loginMethod(this.LoginForm.value);
   }
+
+loginMethod(value) {
+  this.user.clientLogin(value).subscribe(data => {
+    if(data.code == 2) {
+      localStorage.setItem("isLoggedin", "false");
+      this.erroMsg = data.msg;
+    } else {
+      localStorage.setItem("user_profile", JSON.stringify(data.details.details));
+      localStorage.setItem("isLoggedin", "true");
+      localStorage.setItem("token", data.details.token);
+      localStorage.setItem("userName", data.details.details.first_name);
+      this.userName = localStorage.getItem("userName");
+      this.registerForm.reset();
+      this.closeAllForm();
+      // this.profile();
+    }
+  });
+}
 
   showPostalSearch() {
       this.locateSearchTab = !this.locateSearchTab; 
@@ -308,40 +325,63 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  // showProfileForm() {
-  //   this.enableProfileForm = true;
-  //   this.enableForgetForm = false;
-  //   this.registerform = false;
-  //   this.loginform = false;
-  // }
+  showProfileForm() {
+    this.enableForgetForm = false;
+    this.registerform = false;
+    this.loginform = false;
+    this.profile();
 
-  // profile() {
-  //   this.user.currentClientDetails().subscribe(data => {
-  //     this.userDetails = data.details;
-  //     console.log("currentClientDetails*****", this.userDetails);
-      
-  //     this.profileForm = this.fb.group({
-  //       firstName: [this.userDetails.first_name, Validators.required],
-  //       lastName: [this.userDetails.last_name],
-  //       email: [this.userDetails.email_address],
-  //       password: [this.userDetails.password],
-  //       mobileNumber: [this.userDetails.contact_phone, Validators.required],
-  //       apartment: [this.userDetails.location_name],
-  //       floor: [this.userDetails.floor],
-  //       door: [this.userDetails.door],
-  //       address: [this.userDetails.street],
-  //       zipcode: [this.userDetails.zipcode],
-  //     });
-  //     // console.log("currentClientDetails*****", data);
-  //   });
-  // }
+  }
+
+  profile() {
+    this.userDetails = JSON.parse(localStorage.getItem("user_profile"));
+    this.firstName = this.userDetails.first_name;
+    this.lastName = this.userDetails.last_name;
+    this.email =this.userDetails.email_address;
+    this.password = '';
+    this.mobileNumber = this.userDetails.contact_phone;
+    this.apartment = this.userDetails.location_name;
+    this.floor = this.userDetails.floor;
+    this.door = this.userDetails.door;
+    this.address = this.userDetails.street;
+    this.zipcode = this.userDetails.zipcode;
+    this.enableProfileForm = true;
+  }
 
   updateProfileForm() {
     this.profilesubmitted = true;
     if (this.profileForm.invalid) {
-        return;
+      return;
     }
-    console.log("profileForm==>", this.profileForm.value);
+    this.userDatas = {
+      first_name: this.firstName,
+      last_name: this.lastName,
+      email_address: this.email,
+      password: this.password,
+      contact_phone: this.mobileNumber,
+      location_name: this.apartment,
+      floor:this.floor,
+      door: this.door,
+      street: this.address,
+      zipcode: this.zipcode
+    }
+    // console.log("user data", this.userDatas);
+    this.user.updateProfile(this.userDatas).subscribe(data => {
+      if(data.code == 2) {
+        this.profileerroMsg = data.msg;
+      } else {
+        this.user.currentClientDetails().subscribe(data => {
+          if(data.code==1) {
+            this.password = '';
+            localStorage.setItem("user_profile", JSON.stringify(data.details.details));
+            localStorage.setItem("userName", data.details.details.first_name);
+            this.userName = localStorage.getItem("userName");
+          }
+        });
+        this.hideRegisterForm();
+        setTimeout(() => this.toastr.success('Success', data.msg), 500);
+      }
+    });
   }
   callJquery(currentRoute){
     this.currentRoute = currentRoute;

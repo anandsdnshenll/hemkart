@@ -42,6 +42,7 @@ import {
 } from '@angular/material';
 
 import {MatIconModule} from '@angular/material/icon'
+import {MatExpansionModule} from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -75,6 +76,7 @@ import {MatIconModule} from '@angular/material/icon'
     MatInputModule, 
     MatSelectModule,
     MatIconModule,
+    MatExpansionModule,
     MatBadgeModule,
     FilterPipeModule,
     NgbModule,

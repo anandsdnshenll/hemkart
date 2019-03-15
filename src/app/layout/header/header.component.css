@@ -183,3 +183,21 @@ li.catr_icon {
   .registerform, .forgetpwdForms {
     width: 400px !important;
   }
+
+  .profileWrap form input{
+    color: #000 !important;
+    margin-right: 10px !important;
+    border: 1px solid #ddd !important;
+    border-radius: 0 !important;
+    font-size: 14px !important;
+  }
+  .profileWrap{
+    width: 450px !important;
+  }
+  .control-label {
+    color: #000 !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    margin-top: 12px;
+
+}

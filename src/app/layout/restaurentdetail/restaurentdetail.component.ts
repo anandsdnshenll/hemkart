@@ -38,6 +38,8 @@ export class Restaurentdetail implements OnInit {
   emptyCarts = false;
   terms: any;
   cartDetails: any = [];
+  added_sub_item: any = [];
+  removedItems: string;
 
   constructor(
     private router: Router,
@@ -59,7 +61,6 @@ export class Restaurentdetail implements OnInit {
     this.postalCode = localStorage.getItem("postalCode");;
 
     // console.log("postalCode", this.postalCode);
-    this.setDelievery('delivery');
     this.merchantid = JSON.parse(localStorage.getItem("restaurentDetail"))[0].merchantid;
     this.availableTypes = JSON.parse(localStorage.getItem("restaurentDetail"))[0].availableTypes;
     this.productImage = JSON.parse(localStorage.getItem("restaurentDetail"))[0].productImage;
@@ -67,15 +68,13 @@ export class Restaurentdetail implements OnInit {
     this.restaurant_name = JSON.parse(localStorage.getItem("restaurentDetail"))[0].restaurant_name;
     this.isClosed = JSON.parse(localStorage.getItem("restaurentDetail"))[0].isClosed;
     this.terms = JSON.parse(localStorage.getItem("restaurentDetail"))[0].terms;
-    // this.loadCart(this.merchantid);
-    // console.log("this.productImage", (this.rating_value|slice:6:11);
+    this.loadCart(this.merchantid);
     this.api_url = localStorage.getItem("image_url");
-
     this.spinner.show();
 
     this.UsersService.getRestaurent(this.merchantid).subscribe(data => {
       if(data.details) {
-        console.log("datatas*****", data.details);
+        // console.log("datatas*****", data.details);
         this.restaurentsDetails = data.details;
         this.spinner.hide();
         // this.lists = data.details;
@@ -88,20 +87,15 @@ export class Restaurentdetail implements OnInit {
             this.emptyReviews = data.msg;
           }
         });
- 
       } else {
+        this.spinner.hide();
         // this.emptyMsg = data.msg;
       }
     });
   }
 
-  // addToCart(itemid, price) {
-
-  // }
   
   showReviewModel() {
-    
-      // console.log("inside *****");
     const modalRef = this.modalService.open(AddreviewComponent);
     modalRef.componentInstance.merchantid = this.merchantid;
     modalRef.result.then((result) => {
@@ -115,29 +109,29 @@ export class Restaurentdetail implements OnInit {
     // this.spinner.show();
     let qty = 1;
     // if(price.size == "Standard") {
-      this.UsersService.addtoCart(itemid, this.merchantid, price.price, qty).subscribe(data => {
-        // console.log("after cart added*****", data);
-        if(data) {
-          // this.spinner.hide();
-          this.setDelievery('delivery');
-          this.loadCart(this.merchantid);
-          //  setTimeout(() => this.toastr.success('Success', 'Food Item added to cart'), 0);
-        } else {
-          // this.emptyMsg = data.msg;
-        }
-      });
+    //   this.UsersService.addtoCart(itemid, this.merchantid, price.price, qty).subscribe(data => {
+    //     // console.log("after cart added*****", data);
+    //     if(data) {
+    //       // this.spinner.hide();
+    //       this.setDelievery('delivery');
+    //       this.loadCart(this.merchantid);
+    //       //  setTimeout(() => this.toastr.success('Success', 'Food Item added to cart'), 0);
+    //     } else {
+    //       // this.emptyMsg = data.msg;
+    //     }
+    //   });
 
     // } else {
-    //   // console.log("inside *****");
-    //   const modalRef = this.modalService.open(ListfoodModal);
-    //   modalRef.componentInstance.itemId = itemid;
-    //   modalRef.componentInstance.merchantid = this.merchantid;
-    //   modalRef.componentInstance.itemPrice = price;
-    //   modalRef.result.then((result) => {
-    //     // console.log(result);
-    //   }).catch((error) => {
-    //     console.log(error);
-    //   });
+      // console.log("inside *****");
+      const modalRef = this.modalService.open(ListfoodModal);
+      modalRef.componentInstance.itemId = itemid;
+      modalRef.componentInstance.merchantid = this.merchantid;
+      modalRef.componentInstance.itemPrice = price;
+      modalRef.result.then((result) => {
+        this.setDelievery('delivery')
+      }).catch((error) => {
+        console.log(error);
+      });
     // }
 
   }
@@ -161,9 +155,29 @@ export class Restaurentdetail implements OnInit {
         this.listCart = data.details.raw.item;
         this.totalAmt = data.details.raw.total;
         this.addedCart = data.details['item-count'];
-
         this.UsersService.setAddedCart(this.addedCart);
-        // console.log("this.addedCart", this.addedCart);
+
+          for(var j = 0; j< this.listCart.length; j++) {
+            if(this.listCart[j].sub_item) {
+              //console.log("inside", this.listCart[j].sub_item);
+              let addOnItems = '';
+
+              this.added_sub_item = this.listCart[j].sub_item;
+              for (let i = 0; i < this.listCart[j].sub_item.length; i++) {
+                if(this.listCart[j].sub_item[i].removed && this.listCart[j].sub_item[i].default) {
+                  addOnItems += " -"+this.listCart[j].sub_item[i].addon_name + ",";
+                } 
+                if(!this.listCart[j].sub_item[i].removed && this.listCart[j].sub_item[i].default){
+                  addOnItems += " "+this.listCart[j].sub_item[i].addon_name + ",";
+                } 
+                if(!this.listCart[j].sub_item[i].default){
+                  addOnItems += " +"+this.listCart[j].sub_item[i].addon_name + ",";
+                }
+                this.listCart[j].addOnItems = addOnItems;
+              }
+          }
+        }
+
       } else {
         this.listCart = '';
         this.totalAmt = '';
@@ -235,56 +249,10 @@ export class Restaurentdetail implements OnInit {
     $(document).ready(function () {
       $(".showScrolledHeader").hide();
       $(".showFixedHeader").show();
-
       $(".restaruentTabs").css("margin-bottom","298px");
-      
-
       $("#addToCart").click(function(){
-
         $("#myModal").modal();
-    
       });
-    
-
-      // $("#navbar-left-brand").click(function(){
-      
-      //   $("#locate-search").toggle();
-    
-      //   $("#locate-me").toggle();
-    
-      // });
-    
-    
-    
-      // $("#navbar-left-brand-tab").click(function(){
-    
-      //   $("#locate-search-tab").toggle();
-    
-      //   $("#locate-me-tab").toggle();
-    
-      // });
-    
-    
-    
-      // $("#navbar-left-brand-mob").click(function(){
-    
-      //   $("#locate-search-mob").toggle();
-    
-      //   $("#locate-me-mob").toggle();
-    
-      // });
-      // $(window).scroll(function(){
-      //   var bn = $('#checkoutBtn');
-      //   if($(window).scrollTop() > 500) {
-      //     bn.css({position:'fixed', bottom:'10px'});
-      //   }
-      //   else{
-      //     bn.css('position', 'static');
-      //   }
-      // });
-
-
-
       $('.checkattr').click(function(){                   
         if($(this).parents('.checkcontainer').hasClass('active')){
            $(this).parents('.checkcontainer').removeClass('active');
@@ -313,11 +281,10 @@ export class Restaurentdetail implements OnInit {
             $(".Z4sK8").show(); 
             $("._1BpLF").show(); 
         }
-    });
+      });
       $(".btn-another-date").click(function() {
         $(".show-another-date").show();
-    });
-
+      });
     });
   }
 

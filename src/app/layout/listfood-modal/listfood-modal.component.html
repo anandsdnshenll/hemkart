@@ -1,55 +1,114 @@
 
 <div class="view-item-wrap">
-  <div class="modal-header">
-    <h1 class="modal-title">{{foodItem.item_name}} {{itemPrice}} Kr</h1>
-  </div>
-  <div class="section qty_section">
-      <h3 class="uk-h3"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">
-  Quantity    
-      </span></span><div class="quantity-wrap">
-        <a href="javascript:;" class="qty-minus"><i class="fa fa-minus"></i></a>
-        <input class="uk-form-width-mini numeric_only qty" type="text" value="1" name="qty" id="qty">          
-        <a href="javascript:;" class="qty-plus"><i class="fa fa-plus"></i></a>
-        <a href="javascript:;" class="special-instruction" style="display:none;">Meddelande</a>
-        <div class="clear"></div>
+   <div class="modal-content">
+      <div class="modal_header_style">
+         <h4 class="modal-title">{{foodItem.item_name}}</h4>
       </div>
-  </h3>
-    </div>
-    <div class="section-addon-wrap">
-        <h3 class="ingredients" style="background:#325800;">Ingredienser</h3>
-        <div>
-          <div class="section section-addon" *ngFor="let subCat of foodItem.addon_item let i=index;">
-              <h3 class="ingredients">{{subCat.subcat_name}}</h3>
-            <div>
-              <ul class="uk-list uk-list-striped">
-                <li class="subcategory" *ngFor="let subItems of subCat.sub_item let i=index;">
-                    <div class="uk-grid">
-                        <div class="uk-width-1-1">
-                          <!-- <input value="6331|0|Normal|0||+Normal" data-id="150" data-option="1" rel="custom" title="0" 
-                          title1="6331" addonprice="0" class="itemCheckbox new-class-addon remove-class-addon select-price new1-addon6331 
-                          xtra-item-add sub_item_name sub_item_name_150" type="checkbox" name="sub_item[150][0]" id="sub_item_150_0">
--->
-                          <input type="checkbox" value="123" checked  class="itemCheckbox">
-                          <label class="subcategoryLabel">{{subItems.sub_item_name}}</label>
-                        </div>
-                    </div>
-                </li>
-              </ul>
-                <!-- <div *ngFor="let light of group.lights">
-                {{light.name}}
-                </div> -->
-              </div>
+      <div  style=" font-size: 15px;letter-spacing: 2px;">
+        <div class="col-md-12" style="margin-top: 10px; margin-bottom: 10px;">
+          <div class="col-md-8 product_name" ><span style="font-size: 16px; color: #750404; margin-right: 8px;">
+            <i class="fa fa-bullseye"></i></span>
+              <span style="font-size: 14px; font-weight: 600;">{{foodItemSize}} {{foodItemPrices}} Kr
+            </span>
+          </div>
+          <!-- <div class="col-md-4" style="text-align: right;">
+            <span class="ad-text">Antal</span>
+          </div> -->
+          <div class="col-md-4 dev-inc-val-div2" style="text-align: center;">
+            <span class="pull-right " style="border: 1px solid #e4e1e1;">
+              <span class="value-button" id="decrease-btn" (click)="decreaseValue(foodItem.item_id, 1)" value="Decrease Value">
+                <i class="fa fa-minus" aria-hidden="true"></i>
+              </span>
+              <span>
+                <input type="text" id="number-btn" readonly value="{{qty}}">
+              </span><span class="value-button" id="increase-btn" (click)="increaseValue(foodItem.item_id, 1)" value="Increase Value">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+              </span>
+            </span>
           </div>
         </div>
-<!-- 
-      <div class="section section-addon" *ngFor="let subCat of foodItem.addon_item let i=index;">
-          <h3 class="ingredients">{{subCat.subcat_name}}</h3>
-      </div> -->
-    </div>
+      </div>
+      <div class="dish-category-header" id="menu__category-id-12116">
+          <div class="dish-category-title-wrapper">
+            <h2 class="dish-category-title">Ingredienser</h2>
+         </div>
+      </div>
+      <form #checkboxForm="ngForm" role="form" data-toggle="validator">
+         <div class="add_div" style="padding: 0 15px;">
+            <div class="uppgradera_div section-addon-wrap" *ngFor="let subCat of foodItem.addon_item let i=index;">
+               <p style="font-size: 17px; font-weight: 600; margin-bottom: 15px;">Ingredients</p>
+               <ul>
+                  <li style="list-style: none !important" *ngFor="let subItems of seletedAddOnItems let i=index;">
+                     <label class="checkbox-box">
+                        <input type="checkbox" name="filter-quick" id="has_discount" [checked]="subItems.checked" [value]="subItems.itemVal" (change)="defaultItems(subItems, subItems.sub_item_id,i, $event)">
+                           <span class="checkbox-element" style=" margin-left: 6px !important">
+                              <i class="checkmark">
+                                 <svg xmlns="http://www.w3.org/2000/svg" width="8" height="6" viewBox="0 0 8 6">
+                                    <g class="svg-stroke-container">
+                                       <path fill="none" fill-rule="evenodd" stroke="#FFF" stroke-linecap="round" stroke-linejoin="round" d="M.5 3.333L3.073 5.5 7.5.5"></path>
+                                    </g>
+                                 </svg>
+                              </i>
+                           </span>
+                           <span class="checkbox-text" >{{subItems.sub_item_name}} <span *ngIf="!subItems.defaultchecked">(Kr{{subItems.price}})</span></span>
+                     </label>
+                  </li>
+               </ul> 
+            </div>
 
-  <div class="modal-footer">
-    <button (click)="activeModal.dismiss('Close clicked')">
-      Close
-    </button>
-  </div>
+            <div *ngIf="is_default_addon_item && defaultSelectedOnItems.length>0">
+               <div class="uppgradera_div extra_cart_div" *ngFor="let subCat of foodItem.default_addon_item let i=index;">
+                  <div class="accordion md-accordion" id="accordion" role="tablist" aria-multiselectable="true">
+                        <!-- Accordion card -->
+                     <div class="card">
+                        <!-- Card header -->
+                        <div class="card-header" role="tab" id="headingTwo1">
+                           <a class="extra_cart collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo1"
+                           aria-expanded="false" aria-controls="collapseTwo1">
+                           <p style="font-size: 17px; font-weight: 600; margin-bottom: 15px;color: #282c3f;">Extra mycket av<i class="fa fa-angle-down rotate-icon"></i></p>
+                           </a>
+                        </div>
+                        <!-- Card body -->
+                        <div id="collapseTwo1" class="collapse" role="tabpanel" aria-labelledby="headingTwo1" data-parent="#accordion">
+                           <div class="card-body">
+                              <ul>
+                                 <li style="list-style: none !important" *ngFor="let subItems of defaultSelectedOnItems let i=index;">
+                                    <label class="checkbox-box">
+                                       <input type="checkbox" name="filter-quick" id="has_discount" [checked]="subItems.checked1" [value]="subItems.itemVal" (change)="addExtraItems(subItems, subItems.price,i, $event)">
+                                          <span class="checkbox-element" style=" margin-left: 6px !important">
+                                             <i class="checkmark">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="8" height="6" viewBox="0 0 8 6">
+                                                   <g class="svg-stroke-container">
+                                                      <path fill="none" fill-rule="evenodd" stroke="#FFF" stroke-linecap="round" stroke-linejoin="round" d="M.5 3.333L3.073 5.5 7.5.5"></path>
+                                                   </g>
+                                                </svg>
+                                             </i>
+                                          </span>
+                                          <span class="checkbox-text">Extra {{subItems.sub_item_name}} (Kr{{subItems.price}})</span>
+                                    </label>
+                                 </li>
+                              </ul> 
+                           </div>
+                        </div>
+                     </div>
+                     <!-- Accordion card -->
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="modal-footer" style="padding:12px !important;">
+            <div class="col-sm-12 col-md-12" style="padding: 0px;">
+               <div class="col-sm-8 col-md-8" style="margin-top: 8px;">
+                  <!-- <input type="submit" class="coner_btn2" value="Uppdatera kundvagn"> -->
+               <a href="javascript:;" class="coner_btn2 addto_crt" (click)="addTocart()" >Lagg till i kundvagn</a>
+               </div>
+               <div class="col-sm-4 col-md-4" style="margin-top: 8px;" >
+                  <div class="coner_btn" style="float: right;margin-right: 28px;">
+                     <a href="javascript:;" (click)="closeModal()" class="close_crt addto_crt">Stang</a>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </form>
+   </div>
 </div>
