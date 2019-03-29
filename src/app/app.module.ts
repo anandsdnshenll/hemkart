@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HeaderService } from './header.service';
 import { LoginComponent } from './layout/login/login.component';
 import { GrdFilterPipe } from './shared/pipe/grd-filter.pipe';
+import { RoundPipe } from './shared/pipe/round.pipe';
 import { FilterPipeModule } from 'ngx-filter-pipe';
 import { ProductComponent } from './layout/product/product.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
@@ -43,6 +44,12 @@ import {
 
 import {MatIconModule} from '@angular/material/icon'
 import {MatExpansionModule} from '@angular/material/expansion';
+import { InfomodalComponent } from './layout/infomodal/infomodal.component';
+import { SuccessComponent } from './layout/success/success.component';
+import { KlarnainfoComponent } from './layout/klarnainfo/klarnainfo.component';
+import { PostcodemodalComponent } from './layout/postcodemodal/postcodemodal.component';
+import { OrderhistoryComponent } from './layout/orderhistory/orderhistory.component';
+import { ReceiptModalComponent } from './layout/receipt-modal/receipt-modal.component';
 
 @NgModule({
   declarations: [
@@ -53,12 +60,19 @@ import {MatExpansionModule} from '@angular/material/expansion';
     LandingComponent,
     LoginComponent,
     GrdFilterPipe,
+    RoundPipe,
     ProductComponent,
     Restaurentdetail,
     ListfoodModal,
     ShowrestaurantsComponent,
     CheckoutComponent,
     AddreviewComponent,
+    InfomodalComponent,
+    SuccessComponent,
+    KlarnainfoComponent,
+    PostcodemodalComponent,
+    OrderhistoryComponent,
+    ReceiptModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -88,7 +102,10 @@ import {MatExpansionModule} from '@angular/material/expansion';
   bootstrap: [AppComponent],
   entryComponents: [
     ListfoodModal,
-    AddreviewComponent
+    AddreviewComponent,
+    InfomodalComponent,
+    PostcodemodalComponent,
+    ReceiptModalComponent
   ]
 })
 export class AppModule { }

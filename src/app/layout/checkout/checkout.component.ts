@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import * as $ from 'jquery';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UsersService, ApiService } from 'src/app/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { interval } from 'rxjs';
+import { DomSanitizer } from '@angular/platform-browser';
+import { Directive, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-checkout',
@@ -13,6 +15,8 @@ import { interval } from 'rxjs';
   providers: [ToastrService],
 })
 export class CheckoutComponent implements OnInit {
+  @ViewChild("checkoutcontainer") MyContainer: ElementRef;
+
   LoginForm: FormGroup;
   registerForm: FormGroup;
   instatRegisterForm: FormGroup;
@@ -69,10 +73,16 @@ export class CheckoutComponent implements OnInit {
   enableSwishForm = false;
   stopCheckConfirmation = true;
   timerInterval: any;
+  orderId: any;
+  klarnaForm: string;
+  showLoad =  false;
+  currentMerchantInfo: any = [];
+  merchantDetails: any = [];
 
-  constructor(private fb: FormBuilder, private user:UsersService, private router: Router, private toastr: ToastrService, private apiService: ApiService,) {
+  constructor(private elementRef: ElementRef, private sanitizer:DomSanitizer, private fb: FormBuilder, private user:UsersService, private router: Router, private toastr: ToastrService, private apiService: ApiService,) {
     this.isLoggedIn = localStorage.getItem("isLoggedin");
     this.postalCode = localStorage.getItem("postalCode");;
+    this.merchantid = JSON.parse(localStorage.getItem("restaurentDetail"))[0].merchantid;
 
     this.LoginForm = this.fb.group({
       email: ['', Validators.compose([Validators.required, Validators.email, Validators.pattern(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)])],
@@ -102,18 +112,18 @@ export class CheckoutComponent implements OnInit {
       location_name: [''],
       zipcode: [this.postalCode],
     });
-    console.log("purchased===>", localStorage.getItem("purchased"));
-
     this.user.orderData$.subscribe(data => this.checkConfirmation(data));
+    this.getMerchantInfo();
   }
 
   checkConfirmation(data){
     
-    this.timerInterval = interval(5000 * 2).subscribe(x => {
-      console.log("time interval");
-      this.orderConfirmation(11)
+    // this.timerInterval = interval(5000 * 2).subscribe(x => {
+    //  // console.log("time interval");
+    //  this.orderId = data;
+    //   this.orderConfirmation(data)
 
-    });
+    // });
   }
   get f() { return this.registerForm.controls; }
   get login_Form() { return this.LoginForm.controls; }
@@ -122,21 +132,23 @@ export class CheckoutComponent implements OnInit {
 
   ngOnInit() {
     if(localStorage.getItem("purchased") == "true"){
-      this.timerInterval = interval(5000 * 2).subscribe(x => {
-        console.log("time interval");
-        // this.orderConfirmation(11)
-      });
+      // this.timerInterval = interval(5000 * 2).subscribe(x => {
+      //  // console.log("time interval");
+      //    this.orderConfirmation(this.orderId)
+      // });
     }
-
+    if(!localStorage.getItem("restaurentDetail")){
+      this.router.navigate(["/"]);
+    }
+    this.showKlarnaForm();
     this.userProfileDetails();
-    this.merchantid = JSON.parse(localStorage.getItem("restaurentDetail"))[0].merchantid;
-    this.availableTypes = JSON.parse(localStorage.getItem("restaurentDetail"))[0].availableTypes;
-    this.productImage = JSON.parse(localStorage.getItem("restaurentDetail"))[0].productImage;
-    this.rating_value = JSON.parse(localStorage.getItem("restaurentDetail"))[0].rating_value;
-    this.restaurant_name = JSON.parse(localStorage.getItem("restaurentDetail"))[0].restaurant_name;
-    this.isClosed = JSON.parse(localStorage.getItem("restaurentDetail"))[0].isClosed;
-    this.disabled_cod = JSON.parse(localStorage.getItem("restaurentDetail"))[0].disabled_cod;
-    this.merchant_phone = JSON.parse(localStorage.getItem("restaurentDetail"))[0].contact_phone;
+    // this.availableTypes = JSON.parse(localStorage.getItem("restaurentDetail"))[0].availableTypes;
+    // this.productImage = JSON.parse(localStorage.getItem("restaurentDetail"))[0].productImage;
+    // this.rating_value = JSON.parse(localStorage.getItem("restaurentDetail"))[0].rating_value;
+    // this.restaurant_name = JSON.parse(localStorage.getItem("restaurentDetail"))[0].restaurant_name;
+    // this.isClosed = JSON.parse(localStorage.getItem("restaurentDetail"))[0].isClosed;
+    // this.disabled_cod = JSON.parse(localStorage.getItem("restaurentDetail"))[0].disabled_cod;
+    // this.merchant_phone = JSON.parse(localStorage.getItem("restaurentDetail"))[0].contact_phone;
     this.delieveryType(localStorage.getItem("delieveryType"));
 
     // this.user.getReciept(11).subscribe(data => {
@@ -150,7 +162,8 @@ export class CheckoutComponent implements OnInit {
     //     this.orderItems = this.otherdetails.item;
     //     this.orderTotal = this.otherdetails.total;
     //     localStorage.setItem("purchased","true");
-    //     this.user.callConfirmation(11);
+    //     //this.user.callConfirmation(11);
+    //     this.router.navigate(['/success/'], { queryParams: { order_id: 30 } });
 
     //   }
     // });
@@ -160,6 +173,25 @@ export class CheckoutComponent implements OnInit {
 //     // Will clear when component is destroyed e.g. route is navigated away from.
 //     clearInterval(this.timerInterval);
 //  }
+getMerchantInfo() {
+  this.user.getMerchantInfo(this.postalCode, this.merchantid).subscribe(data=>{
+    if(data.code == 2) {
+      this.currentMerchantInfo = data.details;
+      this.merchantDetails = this.currentMerchantInfo.list[0];
+      this.availableTypes = this.merchantDetails.resto_cuisine1;
+      this.productImage = this.merchantDetails.image;
+      this.rating_value = this.merchantDetails.rating_value;
+      this.restaurant_name = this.merchantDetails.restaurant_name;
+      this.isClosed = this.merchantDetails.resto_sta;
+      this.disabled_cod = this.merchantDetails.disabled_cod;
+      this.merchant_phone = this.merchantDetails.phone_no;
+      // console.log("merchantDetails", this.merchantDetails, "mapLink", this.mapLink);
+    } else {
+      setTimeout(() => this.toastr.error('Fail', data.msg), 0);
+    }
+  });
+}
+
   print(): void {
     let printContents, popupWin;
     printContents = document.getElementById('sticky').innerHTML;
@@ -234,7 +266,6 @@ export class CheckoutComponent implements OnInit {
 
   userProfileDetails() {
     this.isLoggedIn = localStorage.getItem("isLoggedin");
-    console.log("----->", this.isLoggedIn)
     if(this.isLoggedIn == "true") {
       this.alreadyLogin = true;
       this.user_profile = JSON.parse(localStorage.getItem("user_profile"));
@@ -266,16 +297,25 @@ export class CheckoutComponent implements OnInit {
 
   orderConfirmation(data) {
     this.user.checkConfirmation(data).subscribe(data => {
+      // console.log("data", data);
       if(data.code == 1 && data.masg == "Pending") {
         this.stopCheckConfirmation = true;
+        return false;
       }else if(data.code == 1 && data.msg == "Accepted") {
         this.stopCheckConfirmation = false;
-        clearInterval(this.timerInterval);
+        return true;
       }
       this.confirmationDetails = data.details;
     });
 
   }
+  ngOnDestroy() {
+    if (this.timerInterval) {
+      clearInterval(this.timerInterval);
+      localStorage.setItem("purchased","false");
+    }
+  }
+
   delieveryType(type){
     this.user.delieveryType(type).subscribe(data=>{
       this.loadCart(this.merchantid);
@@ -308,7 +348,32 @@ export class CheckoutComponent implements OnInit {
     this.enableKlarnaForm = true;
     this.enableSwishForm = false;
     this.cardProcessingFee = 5;
+    this.user.checkoutKlarna().subscribe(data => {
+      this.showLoad = true;
+      this.getSnippet(data);
+    });
+    
   }
+
+  getSnippet(htmlSnippet) {
+    this.MyContainer.nativeElement.innerHTML = htmlSnippet
+    const scripts = <HTMLScriptElement[]>this.elementRef.nativeElement.getElementsByTagName('script');
+    this.showLoad = false;
+    const scriptsInitialLength = scripts.length;
+    for (let i = 0; i < scriptsInitialLength; i++) {
+        const script = scripts[i];
+        const scriptCopy = <HTMLScriptElement>document.createElement('script');
+        scriptCopy.type = script.type ? script.type : 'text/javascript';
+        if (script.innerHTML) {
+            scriptCopy.innerHTML = script.innerHTML;
+        } else if (script.src) {
+            scriptCopy.src = script.src;
+        }
+        scriptCopy.async = false;
+        script.parentNode.replaceChild(scriptCopy, script);
+    }
+  }
+
   showSwishForm() {
     this.enableCODForm = false;
     this.enableKlarnaForm = false;
@@ -378,8 +443,6 @@ export class CheckoutComponent implements OnInit {
 
   cashondelievery() {
     this.CODsubmitted = true;
-    console.log("this.CODForm.value", this.CODForm.value);
-
     if (this.CODForm.invalid) {
       return;
     }
@@ -387,21 +450,22 @@ export class CheckoutComponent implements OnInit {
       // console.log("data ----->", data);
       if(data.code == 1) {
         this.receiptDetails = data.details;
-        this.user.getReciept(this.receiptDetails.order_id).subscribe(data => {
-          console.log("receiptDetails ----->", data);
-          if(data.code == 1) {
-            this.enableOrderInfo = true;
-            this.orderDetails = data.details;
-            this.orderInfo = this.orderDetails.order_info;
-            this.customerInfo = this.orderInfo.customer_info;
-            this.otherdetails = this.orderDetails.raw;
-            this.orderItems = this.otherdetails.item;
-            this.orderTotal = this.otherdetails.total;
-            this.orderConfirmation(this.receiptDetails.order_id);
-          }
-        });
+        // this.user.getReciept(this.receiptDetails.order_id).subscribe(data => {
+        //   console.log("receiptDetails ----->", data);
+        //   if(data.code == 1) {
+        //     this.enableOrderInfo = true;
+        //     this.orderDetails = data.details;
+        //     this.orderInfo = this.orderDetails.order_info;
+        //     this.customerInfo = this.orderInfo.customer_info;
+        //     this.otherdetails = this.orderDetails.raw;
+        //     this.orderItems = this.otherdetails.item;
+        //     this.orderTotal = this.otherdetails.total;
+        //     this.orderConfirmation(this.receiptDetails.order_id);
+        //   }
+        // });
         this.ClearCart();
         setTimeout(() => this.toastr.success('Success', 'Your order has been placed.'), 500);
+        this.router.navigate(['/success/'], { queryParams: { order_id: this.receiptDetails.order_id } });
       } else {
         this.codErrMsg = data.msg
       }
@@ -479,7 +543,6 @@ export class CheckoutComponent implements OnInit {
 
   deleteCart(index){
     this.user.deleteCart(index).subscribe(data => {
-      console.log("after cart deleted*****", data);
         this.loadCart(this.merchantid);
     });
   }
@@ -508,31 +571,11 @@ export class CheckoutComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-
     $(document).ready(function () {
-    //   function sticky_relocate() {
-    //     var window_top = parseFloat($(window).scrollTop());
-    //     var footer_top = parseFloat($(".fooder_bg").offset().top);
-    //     var div_top = parseFloat($('#sticky-anchor').offset().top);
-    //     var div_height = parseFloat($("#sticky").height());             
-    //     if (window_top + div_height > footer_top)
-    //         $('#sticky').removeClass('stick');    
-    //     else if (window_top > div_top) {
-    //         $('#sticky').addClass('stick');
-    //     } else {
-    //         $('#sticky').removeClass('stick');
-    //     }
-    // }
-    
-    // $(function () {
-    //     $(window).scroll(sticky_relocate);
-    //     sticky_relocate();
-    // });
-
       $("#navbar-left-brand-tab").hide();
       $(".showScrolledHeader").hide();
-      $(".showFixedHeader").show();
-
+      $(".navbar-fixed-top").show();
+      $("#navbar-left-brand-mob").hide();
     });
   }
 

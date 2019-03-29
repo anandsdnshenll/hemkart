@@ -50,6 +50,7 @@
           </li>
           <div class="dropdown-content" *ngIf="userName">
             <a href="javascript:;" (click)="profile()">Mitt konto</a>
+            <a routerLink="" (click)="showOrder()">Beställnings historik</a>
             <a href="javascript:;" (click)="logout()">Logga ut</a>
             </div>
       </ul>
@@ -79,7 +80,8 @@
           </a>
         </li>
         <div class="dropdown-content" *ngIf="userName">
-          <a href="javascript:;" (click)="showProfileForm()">Mitt konto</a>
+          <a href="javascript:;" (click)="profile()">Mitt konto</a>
+          <a routerLink="" (click)="showOrder()">Beställnings historik</a>
           <a href="javascript:;" (click)="logout()">Logga ut</a>
         </div>
       </ul>
@@ -154,7 +156,8 @@
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav navbar-right dropdown">
         <div class="dropdown-content" *ngIf="userName">
-          <!-- <a href="javascript:;" (click)="showProfileForm()">Mitt konto</a> -->
+          <a href="javascript:;" (click)="profile()">Mitt konto</a>
+          <a routerLink="" (click)="showOrder()">Beställnings historik</a>
           <a href="javascript:;" (click)="logout()">Logga ut</a>
           </div>
       </ul>

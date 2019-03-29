@@ -6,6 +6,9 @@ import { ProductComponent } from './layout/product/product.component';
 import { Restaurentdetail } from './layout/restaurentdetail/restaurentdetail.component';
 import { ShowrestaurantsComponent } from './layout/showrestaurants/showrestaurants.component';
 import { CheckoutComponent } from './layout/checkout/checkout.component';
+import { SuccessComponent } from './layout/success/success.component';
+import { KlarnainfoComponent } from './layout/klarnainfo/klarnainfo.component';
+import { OrderhistoryComponent } from './layout/orderhistory/orderhistory.component';
 
 const routes: Routes = [
   { path: '', component:LandingComponent  },
@@ -15,7 +18,10 @@ const routes: Routes = [
   { path: 'merchants', component: Restaurentdetail },
   { path: 'city-restaurants', component: ShowrestaurantsComponent },
   { path: 'checkout', component: CheckoutComponent },
-
+  { path: 'success', component: SuccessComponent },
+  { path: 'confirmation', component: KlarnainfoComponent },
+  { path: 'OrderHistory', component: OrderhistoryComponent },
+  
 ];
 
 @NgModule({

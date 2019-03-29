@@ -261,7 +261,7 @@
 }
 .static-height{
     height: 75px;
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
     overflow-x: hidden;
 }
 .static-height-list{

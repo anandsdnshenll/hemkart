@@ -35,17 +35,21 @@ export class ShowrestaurantsComponent implements OnInit {
     });
   }
 
-  goRestaurentDetail(merchantid, productImage, availableTypes, restaurant_name, rating_value, isClosed) {
-      this.restaurentDetail.push(
-        {
-          merchantid: merchantid,
-          productImage: productImage,
-          availableTypes: availableTypes,
-          restaurant_name: restaurant_name,
-          rating_value: rating_value,
-          isClosed: isClosed
-        }
-      );
+  
+  goRestaurentDetail(merchantid, productImage, availableTypes, restaurant_name, rating_value, isClosed, disabled_cod, terms, contact_phone) {
+    this.restaurentDetail.push(
+      {
+        merchantid: merchantid,
+        productImage: productImage,
+        availableTypes: availableTypes,
+        restaurant_name: restaurant_name,
+        rating_value: rating_value,
+        isClosed: isClosed,
+        disabled_cod: disabled_cod,
+        terms: terms,
+        contact_phone: contact_phone
+      }
+    );
     localStorage.setItem("restaurentDetail", JSON.stringify(this.restaurentDetail));
 
     this.router.navigateByUrl('merchants');

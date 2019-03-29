@@ -50,6 +50,7 @@ export class ProductComponent implements OnInit {
     //   this.area = params["area"];
     // });
     this.area = localStorage.getItem("postalCode");
+    this.setZipCode(this.area);
     this.Image  = `<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 8 6">
     <g class="svg-stroke-container">
         <path fill="none" fill-rule="evenodd" stroke="#FFF" stroke-linecap="round" stroke-linejoin="round" d="M.5 3.333L3.073 5.5 7.5.5"></path>
@@ -116,6 +117,11 @@ export class ProductComponent implements OnInit {
       this.areaRestaurents = this.lists.list;
     }
   }
+
+  setZipCode(postalCode) {
+    this.users.setZipcode(postalCode).subscribe(data => {
+  });
+}
 
   checkValue(value) {
     //value = "Casablanca kolgrillsbar";

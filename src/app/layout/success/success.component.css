@@ -10,6 +10,7 @@
 }
 .static-height{
     max-height: 200px !important;
+    overflow: scroll !important;
     height: auto !important;
 }
 .distance{
@@ -72,6 +73,7 @@
 .side-arrow-p {
     font-size: 21px;
     font-weight: 800;
+    cursor: pointer;
 }
 .bike-p {
     text-align: center;
@@ -147,6 +149,7 @@
         width: 100%;
     }
 }
-#navbar-left-brand-mob {
-    display: none;
+.qtySec {
+    font-weight: bold;
+    color: #790303;
 }

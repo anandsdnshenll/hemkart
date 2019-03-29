@@ -87,19 +87,35 @@ export class UsersService {
             .pipe(map((data) => data));
     }
 
-    addtoCart(itemid, merchantid, price, qty) {
+    addtoCart(itemid, merchantid, price, qty, action, item_index) {
+        var updateIndex = '';
+        if(action == "edit") {
+            updateIndex = '&row='+ (item_index + 1) + "&";
+        }
         return this.apiService.get('ajax?action=addToCart&currentController=store&item_id=' + itemid +'&merchant_id=' + merchantid + 
-        '&price='+ price +"&qty="+ qty +"&json=true")
+        '&price='+ price +"&qty="+ qty + updateIndex +"&json=true")
         .pipe(map((data) => data)); 
     }
 
-    addtoCartAddon(itemid, merchantid, addedItems, price, foodItemSize) {
+    addtoCartAddon(item_index, action,itemid, merchantid, addedItems, price, foodItemSize, qty) {
         addedItems = addedItems.replace(/&&/g,"&");
+        var updateIndex = '';
+        if(action == "edit") {
+            updateIndex = '&row='+ (item_index + 1) + "&";
+        }
         return this.apiService.get('ajax?action=addToCart&currentController=store&item_id=' + itemid + '&merchant_id=' + merchantid + 
-        '&discount=&price=' + price + "|"+foodItemSize+"&qty="+ 1 + "&" + addedItems + "json=true")
+        '&discount=&price=' + price + "|"+foodItemSize+"&qty="+ qty + "&" + addedItems + updateIndex + "json=true")
         .pipe(map((data) => data)); 
     }
-
+    deleteCart(index){
+        return this.apiService.get('DeleteItem/?row='+ index +'&json=true')
+            .pipe(map((data) => data));
+    }
+    updateCart(itemid, merchantid, qty, price, index) {
+        return this.apiService.get('ajax?action=addToCart&currentController=store&item_id=' + itemid +'&merchant_id=' + merchantid + 
+        '&row='+ index +'&qty='+ qty +'&price='+ price +"&json=true")
+        .pipe(map((data) => data)); 
+    }
     getCart(merchantid) {
         return this.apiService.get('LoadItemCart?merchant_id=' + merchantid + '&json=true')
             .pipe(map((data) => data));
@@ -121,18 +137,10 @@ export class UsersService {
         return this.apiService.get('SearchArea/city/'+ city +'?json=true')
             .pipe(map((data) => data));
     }
-    deleteCart(index){
-        return this.apiService.get('DeleteItem/?row='+ index +'&json=true')
-            .pipe(map((data) => data));
-    }
-    updateCart(itemid, merchantid, qty, price, index) {
-        return this.apiService.get('ajax?action=addToCart&currentController=store&item_id=' + itemid +'&merchant_id=' + merchantid + 
-        '&row='+ index +'&qty='+ qty +'&price='+ price +"&json=true")
-        .pipe(map((data) => data)); 
-    }
+
     
     cashOnDelievery(orderVal) {
-        console.log("orderVal.floor", orderVal);
+       // console.log("orderVal.floor", orderVal);
         return this.apiService.get('PlaceOrder?door=' + orderVal.door +'&floor=' + orderVal.floor + 
             '&street='+ orderVal.address +'&location_name='+ orderVal.apartment +'&zipcode='+ orderVal.zipcode +
             '&delivery_instruction=' + orderVal.information +'&contact_phone='+ orderVal.mobilnumber +
@@ -141,7 +149,7 @@ export class UsersService {
     }
 
     CODNewUser(orderVal) {
-        console.log("orderVal.floor", orderVal.address);
+        //console.log("orderVal.floor", orderVal.address);
         return this.apiService.get('PlaceOrder?door=' + orderVal.door +'&floor=' + orderVal.floor + 
             '&street='+ orderVal.address +'&location_name='+ orderVal.apartment +'&zipcode='+ orderVal.zipcode +
             '&contact_phone='+ orderVal.mobilnumber +'&delivery_instruction='+ orderVal.information +'&browser_data='+ this.deviceInfo.userAgent +
@@ -206,13 +214,13 @@ export class UsersService {
   } 
 
    getMerchantInfo(postalcode, merchantId){
-    return this.apiService.get('SearchArea/s/'+ postalcode +'mtid/' + merchantId + '?json=true')
+    return this.apiService.get('SearchArea/s/'+ postalcode +'/mtid/' + merchantId + '?json=true')
     .pipe(map((data) => data));
 
    }
 
    getBannersList(postalcode){
-    return this.apiService.get('getBanners?json=true/zipcode='+ postalcode)
+    return this.apiService.get('getBanners?json=true&zipcode='+ postalcode)
     .pipe(map((data) => data));
 
    }
@@ -238,4 +246,49 @@ export class UsersService {
                                 '&floor='+ userdata.floor+'&json=true')
     .pipe(map((data) => data));
    }
+
+   GetOperationalHours(mtid, type){
+    return this.apiService.get('GetOperationalHours/mtid/'+ mtid +"/deliverytype/"+type+ '?json=true')
+    .pipe(map((data) => data));
+   }
+   
+   applyVoucher(code, mtid) {
+    return this.apiService.get('ApplyVoucher?voucher_code='+ code +"&merchant_id="+mtid+ '&json=true')
+    .pipe(map((data) => data));
+   }
+   
+   removeyVoucher(code, mtid) {
+    return this.apiService.get('RemoveVoucher?json=true')
+    .pipe(map((data) => data));
+   }
+
+   orderHistory() {
+    return this.apiService.get('OrderHistory?json=true')
+    .pipe(map((data) => data));
+   }
+
+   checkoutKlarna() {
+    return this.apiService.checkoutKlarna('checkoutKlarnaAngular')
+    .pipe(map((data) => data));
+   }
+
+   getOrderId() {
+    return this.apiService.get('GetOrderId?json=true')
+    .pipe(map((data) => data));
+   }
+   checkoutKlarnaConfirmation() {
+    return this.apiService.checkoutKlarna('confirmationangular')
+    .pipe(map((data) => data));
+   }
+
+   merchantPostCodes(mtid) {
+    return this.apiService.get('MerchantPostCodes?merchant_id='+mtid+"&json=true")
+    .pipe(map((data) => data));
+   }
+
+   setZipcode(zipcode) {
+    return this.apiService.get('SetZipcode/zipcode/'+zipcode+"?json=true")
+    .pipe(map((data) => data));
+   }
+   
 }

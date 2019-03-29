@@ -99,7 +99,7 @@
      </div>
   </div>
 </div>
-<div class="container-fluid fluid-bg fluid-bg-tab restaruentTabs" style="position: relative;top: 298px;">
+<div class="container-fluid fluid-bg fluid-bg-tab restaruentTabs">
   <div class="container wrapper">
      <div class="col-md-8 bg-marg-30" style="margin: 45px auto 30px;">
         <section class="vendor-section">
@@ -110,11 +110,13 @@
                        <div class="nav-holder">
                           <ul style="touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
                              <li class="li_active active"><a class="border_bottom_class" data-toggle="tab" href="#home">meny</a></li>
-                             <li><a class="border_bottom_class" data-toggle="tab" href="#menu1">Recensioner</a></li>                                                  
+                             <li><a class="border_bottom_class" data-toggle="tab" href="#menu1">Recensioner</a></li>                                              
                           </ul>
                           <ul>
                           </ul>
                        </div>
+                       
+                       <div class="info_sec" (click)="openInfo()"><span class="glyphicon">&#xe086;</span></div>
                        <button class="nav-scroller prev hide">
                           <svg width="12" height="14" xmlns="http://www.w3.org/2000/svg">
                              <path class="svg-stroke-container" stroke-linejoin="round" stroke-linecap="round" fill-rule="evenodd" fill="none" stroke="#D70F64" d="m3.5,1.5l5,5.5l-5,5.5"></path>
@@ -139,7 +141,7 @@
                                          </button>
                                          <ul class="dropdown-menu" style="position: absolute;left: -30px">
                                             <li *ngFor="let details of restaurentsDetails let i=index;">
-                                               <a href="javascript:;" (click)="gotoTop('menucategoryid2')" data-id="menu__category-id-{{i}}" data-master-category-id="" data-anchor-nav="" class="selected">
+                                               <a href="javascript:;" (click)="gotoTop('menucategoryid'+i)" data-id="menu__category-id-{{i}}" data-master-category-id="" data-anchor-nav="" class="selected">
                                                {{details.category_name}}           
                                                </a>
                                             </li>
@@ -148,7 +150,7 @@
                                    </div>
                                 </div>
                                  <div *ngFor="let details of restaurentsDetails let i=index;">
-                                    <div class="dish-category-header" #menucategoryid2 >
+                                    <div class="dish-category-header" id="menucategoryid{{i}}" >
                                              <div class="dish-category-title-wrapper">
                                                    <h2 class="dish-category-title">{{details.category_name}}</h2>
                                              </div>
@@ -171,7 +173,7 @@
                                                             <span class="price p-price">
                                                                {{items.prices[0].price}} Kr
                                                             </span>
-                                                            <button class="button js-ripple" (click)="addToCart(items.item_id,items.prices[0])">Add<i class="ripple"></i></button>
+                                                            <button class="button js-ripple" (click)="addToCart(items.item_index, items.item_id,items.prices[0], 'add', '', 1,'', details.ownpizza, details.submenu)">Add<i class="ripple"></i></button>
                                                          </footer>
                                                 <!-- </li> -->
                                           </div>
@@ -265,25 +267,25 @@
             <div id="sticky" style="top: 155px;">
                <div>
                   <div class="slide_head_order">
-                     <p class="your-order">Din beställning</p>
+                     <p class="your-order">Din beställning <span *ngIf="!emptyCarts" class="pull-right clearcart" (click)="clearCart()"><i class="fa fa-trash"></i></span></p>
                   </div>                                    
                   <div  class="static-height" *ngIf="!emptyCarts">
                      <div class="col-sm-12 col-md-12 padd-zero" style="margin: 5px auto;" *ngFor="let cartData of listCart let i=index;">
-                        <div class="col-sm-5 col-md-5 product_name">{{cartData.item_name}}</div>
+                        <div class="col-sm-5 col-md-5 product_name">{{cartData.item_name}} {{itemType(cartData.size_words)}}</div>
                         <div class="col-sm-3 col-md-3 dev-inc-val-div">
-                           <span class="value-button" id="decrease-btn" (click)="decreaseValue(cartData.item_id, cartData.qty,cartData.normal_price, cartData.item_index)" value="Decrease Value">
+                           <span class="value-button" id="decrease-btn" (click)="decreaseValue(cartData.item_id, cartData.qty,cartData.discounted_price, cartData.item_index, cartData)" value="Decrease Value">
                               <i class="fa fa-minus" aria-hidden="true"></i>
                            </span>
                            <span>
-                              <input type="text" id="number-btn" value="{{cartData.qty}}">
+                              <input type="text" id="number-btn" (keypress)="omit_special_char($event)" value="{{cartData.qty}}">
                            </span>
-                           <span class="value-button" id="increase-btn" (click)="increaseValue(cartData.item_id, cartData.qty,cartData.normal_price, cartData.item_index)" value="Increase Value">
+                           <span class="value-button" id="increase-btn" (click)="increaseValue(cartData.item_id, cartData.qty,cartData.discounted_price, cartData.item_index, cartData)" value="Increase Value">
                               <i class="fa fa-plus" aria-hidden="true"></i>
                            </span>
                         </div>
                         <div class="col-sm-4 col-md-4 sub_total_amt">
-                           <span class="pull-right distance">{{cartData.discounted_price}}
-                              <a href="javascript:;" class="btn btn" (click)="addToCart(cartData.item_id,cartData.normal_price)" style="color: #7B0003;padding: 0;margin: 0 5px;font-size: 13px;">
+                           <span class="pull-right distance">{{cartData.addOnPrice ? cartData.addOnPrice : cartData.qty * cartData.discounted_price}}
+                              <a href="javascript:;" class="btn btn" (click)="updateToCart(cartData.item_index, cartData.item_id, cartData.addOnPrice, 'edit', cartData.sub_item, cartData.qty, cartData.size_words)" style="color: #7B0003;padding: 0;margin: 0 5px;font-size: 13px;">
                                  <i class="fa fa-edit"></i>
                               </a>&nbsp;
                               <a href="javascript:;" (click)="deleteCart(cartData.item_index)" class="btn" style="color: #7B0003;padding: 0;font-size: 13px;">
@@ -295,11 +297,18 @@
                      </div>
                   </div>
                   <div class="emptyCart" *ngIf="emptyCarts">
-                     No items in the Cart.
+                     Ingen artikel tillagd ännu.
                   </div>
                   <HR style="border-top: 2px solid #2B2B3F;margin: 10px auto 0;clear: both;margin-right: 10px;">
                   <div class="total_div" *ngIf="!emptyCarts">
-                        <span class="to_pay">Summa</span><span class="to_pay_amt">{{totalAmt.subtotal}}{{totalAmt.curr}}</span>
+                     <span class="to_pay">Summa</span><span class="to_pay_amt">{{totalAmt.subtotal | round}}{{totalAmt.curr}}</span>
+                  </div>
+
+                  <div class="voucher_wrap" style="display: block;" *ngIf="!emptyCarts">                      
+                     <input placeholder="Ange Kampanjkod här" [(ngModel)]="voucherCode" class="uk-width-1-1" style="" type="text" value="" name="voucher_code" id="voucher_code">
+                     <a href="javascript:;" (click)="applyVoucher()" class="uk-button uk-button-danger apply_voucher ">
+                        <i class="fa fa-angle-right"></i>        
+                     </a>            
                   </div>
                   <div class="bill-cont">
                      <p>Hemkörningsvillkor</p>
@@ -309,21 +318,71 @@
                      </span>
                      <p>Leveranssätt</p>
                      <mat-form-field>
-                        <mat-select placeholder="Hemkörning">
-                           <mat-option (click)="setDelievery('delivery')">Hemkörning</mat-option>
-                           <mat-option (click)="setDelievery('pickup')">Avhämtning</mat-option>
+                        <mat-select [(ngModel)]="selectedOption">
+                           <mat-option value="delivery" (click)="setDelievery('delivery')">Hemkörning</mat-option>
+                           <mat-option value="pickup" (click)="setDelievery('pickup')">Avhämtning</mat-option>
                         </mat-select>
                      </mat-form-field>
                   </div>
                </div>
-               <div class="checkoutBtn_hold" id="checkoutBtn">
+               <div class="checkoutBtn_hold" id="checkoutBtn" *ngIf="isClosed === 'Öppet'">
                   <a routerLink="" (click)="goToCheckout()" class="btn-checkout btn-block" *ngIf="!emptyCarts">Till kassan</a>
                </div>
+               <div class="warningBtn" id="checkoutBtn" *ngIf="isClosed !== 'Öppet'">
+                  <img src="../../../assets/images/warning.png">Tyvärr, restaurangen har stängt
+               </div>
+               
             </div>
          </section>
      </div> 
   </div>
 </div>
+<!-- <div id="myModal12" class="modal fade" role="dialog">
+      <div class="modal-dialog  rich-description">
+            <button type="button" class="close modal-close" data-dismiss="modal" >&times;</button>
+            <div class="container">
+                <div class="box-cont" style="">
+                  <div class="img-sec-div">
+                    <img src="{{api_url}}{{productImage}}" style="">
+                    <div class="res-name-div-2 " style="position: relative; top: -50px;">
+                          <p class="produ-list-p">
+                             <span class="list-span">
+                                {{availableTypes}}
+                             </span>
+                          </p>
+                       </div>
+                  </div>
+                </div>
+              </div>
+               <div class="container">
+                <div class="col-md-12 col-sm-12" style="position: relative;  top: -50px;">
+                  <div class="col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 20px;">
+                    <div class="res-details_div">
+                      <div class="res-open-hr-div">
+                        <p class="res-open-hr-p" style="font-size: 20px; font-weight: 600;">Opening Hours</p>
+                        <p class="res-open-time-p" style="font-size: 16px; color: #7b7878;"> -->
+                          <!-- <ul class="operationInfo">
+                             <li class="blacktitle" *ngFor="let info of operationOurs let i = index">
+                                {{info.day}} :  {{info.open}} -  {{info.close}} ,
+                             </li>
+                          </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="map-div">
+                      <div class="map-responsive"> -->
+                          <!-- <iframe width="100%" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=40.7127837,-74.0059413key=AIzaSyB9Mobk70l1gEyIywzPG6qH-H-odB0C8xg"></iframe> -->
+                          <!-- <iframe [src]="mapLink | safe" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe> -->
+        
+                          <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2034.856348647301!2d18.061090216193083!3d59.33535211758157!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465f9d5d880a9215%3A0x1ce501e920d173bc!2sKungsgatan+41%2C+111+56+Stockholm%2C+Sweden!5e0!3m2!1sen!2sin!4v1552120370175" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+               </div> -->
+   <!-- </div>
+</div> -->
 <ngx-spinner
 	bdColor="rgba(51,51,51,0.8)"
 	size="medium"

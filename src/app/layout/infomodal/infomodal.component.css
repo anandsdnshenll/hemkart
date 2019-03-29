@@ -1,0 +1,130 @@
+
+#sticky.stick{
+	top:0px;
+}
+.fluid-pay {
+	margin-top: 66px;
+}
+.fluid-pay {
+	/* background-image: url(./images/55.jpg);*/
+	height: 500px;
+}
+.map-responsive{
+	overflow:hidden;
+	padding-bottom: 47.25%;
+	position:relative;
+	height:0;
+}
+.map-responsive iframe{
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    position:absolute;
+}
+.modal-dialg {
+    overflow-x: hidden;
+	overflow-y: auto;
+	z-index: 1300;
+}
+.img-sec-div img {
+	width: 200px !important;   
+	border: 11px solid #ffffff;   
+	position: relative;   
+	top: -89px;
+}
+.box-cont {
+	text-align: center;  
+	margin-bottom: 34px; 
+	box-shadow: 0px 4px 47px -7px rgba(0,0,0,0.5);    
+	position: relative;    
+	top: -46px;    
+	background-color: #ffffff;
+	background-image: url(../../../assets/images/786.jpg);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+	background-size: cover;	
+	color: #ffffff;
+}
+.img-sec-div {
+	background-color: rgba(17, 16, 16, 0.5) !important;
+}
+.list-span {
+	display: inline-block;    
+	position: relative;    
+	top: 0px;    
+	margin-right: 8px;    
+	margin-left: 8px;
+}
+.blacktitle {
+	display: inline-block;
+    margin-left: 7px;
+}
+.modal-close {
+	position: relative;
+	top: -62px;
+	background-color: #780300;
+	opacity: unset !important;
+	padding: 6px 11px;
+	color: #ffffff;
+	border: 1px solid #fffdfd;
+	border-radius: 50px;
+	z-index: 999999;
+}
+.modal-open .modal {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.modal-content {
+    /* padding-top: 35% !important; */
+}
+@media (min-width: 480px) {
+	.modal-content {
+		margin: 70px auto 0;
+		/* width: 400px; */
+	}
+}
+@media only screen and (max-width: 1200px) and (min-width: 991px){
+   .res-open-time-p {
+    font-size: 22px !important;
+  }
+}
+.modal-content {
+    width: 100%;
+    max-width: 768px !important;
+}
+@media only screen and (max-width: 990px) and (min-width: 768px){
+   .res-open-hr-div {
+    text-align: center;
+}
+.res-address {
+    text-align: center;
+}
+.res-details_div {
+    margin-bottom: 50px;
+}
+}
+@media only screen and (max-width: 767px) and (min-width: 320px){
+ .res-open-hr-div {
+    text-align: center;
+}
+.res-address {
+    text-align: center;
+}
+.res-open-hr-p {
+    font-size: 28px !important;
+}
+.ad-p {
+    font-size: 28px !important;
+}
+.res-open-time-p {
+    font-size: 20px !important;
+}
+.res-address-p {
+    font-size: 20px !important;
+}
+.res-details_div {
+    margin-bottom: 50px;
+}
+}

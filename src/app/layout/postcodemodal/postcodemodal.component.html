@@ -1,0 +1,22 @@
+<div class="modal-content">
+    <button type="button" class="close modal-close" data-dismiss="modal" (click)="closeModal()" >&times;</button>
+    <div class="modal_header_style">
+        <h4 class="modal-title">Välj ditt postnummer</h4>
+     </div>
+     <form>
+        <div class="modal_body">
+          <select dir="rtl" class="postalSec" name="postNumber1" [(ngModel)]="postNumber">
+            <option *ngFor="let postno of postCodes let i = index" [value]="postno">
+                {{postno}}
+            </option>
+          </select>
+      </div>
+      <div class="modal-footer">
+          <div class="col-sm-12 col-md-12" style="padding: 0px;">
+             <div class="col-sm-12 col-md-12">
+                <button class="coner_btn2 addto_crt" (click)="setPostal()" > Välj</button>
+             </div>
+          </div>
+       </div>
+     </form>
+  </div>

@@ -35,7 +35,7 @@
 }
 .link_a_class:hover {
     list-style: none;
-    color: #888784;
+    color: #14130f;
     font-weight: 500;
     font-size: 15px;
     text-decoration: none;
@@ -48,7 +48,7 @@
     text-decoration: none;
 }*/
 .link_a_class:hover, .link_a_class:focus, .link_a_class:active {
-    color: #fff;
+    color: #7A0003;
     text-decoration: none !important;
 }
 .icon_span {
@@ -58,6 +58,16 @@
     border: 1px solid #808080;
     border-radius: 63px;
 }
+
+.icon_span1 {
+    font-size: 21px;
+    padding: 4px 8px;    
+    color: #808080;
+    border: 1px solid #808080;
+    border-radius: 63px;
+}
+
+
 .icon_span:hover {
     border: 1px solid #790303;
     background-color: #790303;

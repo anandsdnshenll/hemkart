@@ -1,0 +1,35 @@
+.modal_header_style {
+    text-transform: uppercase;
+    border-bottom: 1px solid #ebebeb;
+    font-weight: 700;
+    margin-top: 6px;
+    background: #F4F4F2;
+    padding: 5px 8px;
+}
+.postalSec {
+    width: 100%;
+    text-align: right;
+}
+.addto_crt{
+    padding: 2px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    color: #ffffff;
+}
+.coner_btn2 {
+    background-color: #8a0505;
+    border: 2px solid #8a0505;
+
+}
+.close_crt {
+    background-color: #6dad30;
+    border: 2px solid #6dad30;
+}
+.modal_body {
+    padding: 14px;
+}
+.modal-footer {
+    padding: 10px;
+}

@@ -4,7 +4,7 @@
         <div class="main_content">
           <h2 class="head-title">Restauranger {{cityName}}</h2>
             <h3 class="head-title"*ngFor="let product of restaurantsName let i=index;">
-              <a routerLink="" (click)="goRestaurentDetail(product.merchant_id, product.image, product.resto_cuisine1, product.restaurant_name, product.rating_value, product.resto_sta)">{{product.restaurant_name}}</a>
+              <a routerLink="" (click)="goRestaurentDetail(product.merchant_id, product.image, product.resto_cuisine1, product.restaurant_name, product.rating_value, product.resto_sta, product.disabled_cod, product.terms, product.phone_no)">{{product.restaurant_name}}</a>
             </h3>
         </div>
     </section>

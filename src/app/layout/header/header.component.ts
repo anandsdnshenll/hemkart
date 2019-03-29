@@ -137,7 +137,6 @@ export class HeaderComponent implements OnInit {
     this.user.getCart(this.merchantid).subscribe(data => {
       if(data.code == 1) {
         this.addedCart = data.details['item-count'];
-        console.log("this.addedCart", this.addedCart);
       }
     });
   }
@@ -383,9 +382,14 @@ loginMethod(value) {
       }
     });
   }
+
+  showOrder() {
+    this.router.navigateByUrl('OrderHistory');
+  }
+
   callJquery(currentRoute){
     this.currentRoute = currentRoute;
-    // console.log("this.currentRoute", currentRoute);
+     
     $(document).ready(function () {
       $(".showScrolledHeader").show();
       $(".showFixedHeader").hide();

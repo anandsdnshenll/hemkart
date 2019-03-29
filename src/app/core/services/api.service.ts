@@ -42,6 +42,17 @@ export class ApiService {
     ).pipe(catchError(this.formatErrors));
   }
   
+  checkoutKlarna(path, params: HttpParams = new HttpParams()): Observable<any> {
+  //  const api="http://178.128.255.52/store/checkoutKlarna";
+    return this.http.get(`${environment.api_link}${path}`, {withCredentials: true, responseType: 'text',},)
+    .pipe(catchError(this.formatErrors));
+  }
+
+  // checkoutKlarnaConfirmation(path, params: HttpParams = new HttpParams()): Observable<any> {
+  //   //  const api="http://178.128.255.52/store/checkoutKlarna";
+  //     return this.http.get(`${environment.api_link}${path}`, {withCredentials: true, responseType: 'text',},)
+  //     .pipe(catchError(this.formatErrors));
+  //   }
   // pcode(lat:any,long:any,params: HttpParams = new HttpParams()): Observable<any> {
   //   const api="https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyB9Mobk70l1gEyIywzPG6qH-H-odB0C8xg&latlng="+lat+","+long;
   //   return this.http.get(api)

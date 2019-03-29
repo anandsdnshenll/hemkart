@@ -5392,11 +5392,11 @@ input {
 
 	transition: none;
 
-	-webkit-appearance: none;
+	/* -webkit-appearance: none; */
 
 	-moz-appearance: none;
 
-	appearance: none
+	/* appearance: none */
 
 }
 
