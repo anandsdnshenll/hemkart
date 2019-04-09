@@ -1,0 +1,48 @@
+.imageGrid {
+    overflow-y: scroll;
+    max-height: 224px;
+}
+.imageandtext {
+    float: left;
+    padding: 14px 24px 0 0;
+}
+
+.check {
+    position: absolute;
+    /* top: 6px; */
+    width: 25px;
+    height: 25px;
+    padding-right: 0px;
+    color: #fff;
+}
+
+.imageandtext img {
+    cursor: pointer;
+}
+.errMsg {
+    color: red;
+    font-size: 18px;
+    text-align: center;
+}
+.submitBtn {
+    float: right;
+    margin-top: 20px;
+    color: #fff;
+    background: #7A0003;
+    margin-right: 50px;
+}
+.modal-title {
+    margin: 0;
+    text-align: center;
+    font-weight: 700;
+    color: #7A0003;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+.cityTitle {
+    text-align: center;
+    position: relative;
+    /* top: -10px; */
+    font-size: 20px;
+    margin: 0;
+}

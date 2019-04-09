@@ -1,268 +1,312 @@
 <div class="container-fluid fluid-bg fluid-pay">
-      <div class="container wrapper" *ngIf="!enableOrderInfo">
-         <div class="col-md-8">
-            <div class="col-md-12 recommended_bg_pay" style="margin: 30px auto 20px;">
-               <div class="account-div">
-                  <p class="account-title">konto</p>
-                  <p class="account-subtitle" *ngIf="hideButtons">För att beställa din beställning, logga in på ditt befintliga konto eller registrera dig.</p>
-                  <!-- <img src="images/payment.png" class="pay-img"> -->
-                  <div class="login-btns" *ngIf="!alreadyLogin && hideButtons">
-                     <button class="btn btn-login" (click)="showLogin()">Har ett konto? <br><span>Logga in</span></button>
-                     <button class="btn btn-signup active" (click)="showRegister()" >Ny Hemkört&Klart?<br><span>Bli Medlem</span></button>
-                  </div>
-                  <div class="pay-left-border"></div>
-                  <div class="pay-user-bg">
-                     <span class="fa fa-user"></span>
-                  </div>
-                  <div class="login-details" *ngIf="!alreadyLogin && showLoginForm">
-                     <form [formGroup]="LoginForm" (ngSubmit)="onLogin()" role="form" data-toggle="validator">
-                        <p>Ange inloggningsuppgifter eller <a href="javascript:;" class="create-acc" (click)="showRegister()">Skapa ett konto</a></p>
-                        <div class="pay-login-form">
-                           <div class="form-group pay-form-group">
-                              <label for="" class="sr-only">E-post:</label>
-                              <input type="email" formControlName="email"   placeholder="E-post" id="emailid" name="emailid" class="form-control pay-form-control required" [ngClass]="{ 'is-invalid': submitted && (login_Form.email.errors) }" data-error="Please enter a valid email"
-                              required>
-                              <div *ngIf="loginsubmitted && login_Form.email.errors" class="invalid-feedback">
-                                 <div *ngIf="login_Form.email.errors.required">Please enter a valid Email</div>
-                                 <div *ngIf="login_Form.email.touched && login_Form.email.dirty && login_Form.email.invalid && login_Form.email.errors.email">Email must be a valid email address</div>
-                              </div>
-                           </div>
-                           <div class="form-group pay-form-group">
-                              <label for="" class="sr-only">Lösenord:</label>
-                              <input type="password" id="pwd" formControlName="password" placeholder="Lösenord" name="pwd" class="form-control pay-form-control required" [ngClass]="{ 'is-invalid': submitted && login_Form.password.errors }" data-error="Please enter a valid password"
-                              required>
-                              <div *ngIf="loginsubmitted && login_Form.password.errors" class="invalid-feedback">
-                                 <div *ngIf="login_Form.password.errors.required">Please enter a valid password</div>
-                              </div>
-                              <!-- <a href="" class="forgot-pass">Fogot?</a> -->
-                           </div>
-                           <div *ngIf="loginsubmitted && erroMsg" class="erroMsg invalid-feedback">
-                              <div >{{erroMsg}}</div>
-                        </div>
-                           <button type="submit" class="btn btn-pay-login-submit">Submit</button>
-                        </div>
-                     </form>
-                  </div>
-                  <div class="signup-details"  *ngIf="!alreadyLogin && showRegisterForm">
-                     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" role="form" data-toggle="validator">
-                        <p>Ange registreringsuppgifter eller <a href="javascript:;" class="login-form" (click)="showLogin()">Logga in</a></p>
-                        <div class="pay-signup-form">
-                           <div class="form-group pay-form-group">
-                              <label for="" class="sr-only">Telefonnummer:</label>
-                              <input type="number" formControlName="mobileNumber"  id="phone" name="phone" placeholder="Telefonnummer" class="form-control pay-form-control required" [ngClass]="{ 'is-invalid': submitted && f.mobileNumber.errors }" data-error="Please enter a valid phone number"
-                              required>
-                              <div *ngIf="submitted && f.mobileNumber.errors" class="invalid-feedback">
-                                    <div *ngIf="f.mobileNumber.errors.required">Please enter a valid phone number</div>
-                              </div>
-                           </div>
-                           <div class="form-group pay-form-group">
-                              <label for="" class="sr-only">Förnamn:</label>
-                              <input type="text" formControlName="firstName"  id="name" name="name" placeholder="Förnamn" class="form-control pay-form-control required" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" data-error="Please enter a valid phone number"
-                              required>
-                              <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
-                                    <div *ngIf="f.firstName.errors.required">Please enter a valid FirstName</div>
-                              </div>
-                           </div>
-                           <div class="form-group pay-form-group">
-                                 <label for="" class="sr-only">Efternamn:</label>
-                                 <input type="text" formControlName="lastName"  id="name" name="name" placeholder="Efternamn" class="form-control pay-form-control required"
-                                 required>
-                              </div>
-                           <div class="form-group pay-form-group">
-                              <label for="" class="sr-only">E-post:</label>
-                              <input type="email" formControlName="email"  id="email_id" name="email_id" placeholder="E-post" class="form-control pay-form-control email_id required" [ngClass]="{ 'is-invalid': submitted && (f.email.errors) }" data-error="Please enter a valid email"
-                              required>
-                              <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-                                    <div *ngIf="f.email.errors.required">Please enter a valid Email</div>
-                                    <div *ngIf="f.email.touched && f.email.dirty && f.email.invalid && f.email.errors.email">Email must be a valid email address</div>
-                              </div>
-                           </div>
-                           
-                           <div class="form-group pay-form-group">
-                              <label for="" class="sr-only">Lösenord:</label>
-                              <input type="password" id="password1" formControlName="password" name="password" placeholder="Lösenord"  class="form-control pay-form-control required" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" data-error="Please enter a valid password"
-                              required>
-                              <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                                    <div *ngIf="f.password.errors.required">Please enter a valid password</div>
-                              </div>
-                           </div>
-                              <div *ngIf="submitted && regerroMsg" class="erroMsg invalid-feedback">
-                                 <div >{{regerroMsg}}</div>
-                              </div>
-                           <!-- <div class="terms">Genom att skapa ett konto accepterar jag <a class="" href="#">Villkor &amp; Betingelser</a></div> -->
-                           <button type="submit" class="btn btn-pay-signup-submit">Fortsätta</button>                        
-                        </div>
-                     </form>
-                  </div>               
+   <div class="container wrapper" *ngIf="!enableOrderInfo">
+      <div class="col-md-8">
+         <div class="col-md-12 recommended_bg_pay" style="margin: 30px auto 20px;">
+            <div class="account-div">
+               <p class="account-title">konto</p>
+               <p class="account-subtitle" *ngIf="hideButtons">För att beställa din beställning, logga in på ditt befintliga konto eller registrera dig.</p>
+               <!-- <img src="images/payment.png" class="pay-img"> -->
+               <div class="login-btns" *ngIf="!alreadyLogin && hideButtons">
+                  <button class="btn btn-login" (click)="showLogin()">Har ett konto? <br><span>Logga in</span></button>
+                  <button class="btn btn-signup active" (click)="showRegister()" >Ny Hemkört&Klart?<br><span>Bli Medlem</span></button>
                </div>
-               <div class="logged-user" *ngIf="alreadyLogin">
-                  <p>{{userName}}</p>
-                  <p>{{contact_phone}}</p>
+               <div class="pay-left-border"></div>
+               <div class="pay-user-bg">
+                  <span class="fa fa-user"></span>
                </div>
-            </div>
-            <div class="col-md-12 col-sm-12 bg-marg-30 recommended_bg_pay" style="margin: 10px auto 20px;">
-               <div class="payment-div">
-                  <p class="payment-title">Betalning</p>
-                  <div class="pay-left-border"></div>
-                  <div class="pay-wallet-bg">
-                     <span class="fa fa-credit-card"></span>
-                  </div>
-                  <div class="col-md-12 col-sm-12">
-                        <div class="col-md-6 col-sm-6">
-                           <div class="klarna-payment" (click)="showKlarnaForm()" [ngClass]="{'active': enableKlarnaForm}">
-                              <img src="./assets/images/klarna_logo.png" class="img-responsive center-block" width="44" height="44">
-                              <p>Klarna</p>
-                              <span>Faktura, kort, banköverföring eller delbetalning</span>
-                           </div>
-                        </div>
-                        <!-- <div class="col-md-4 col-sm-4">
-                           <div class="swish-payment" (click)="showSwishForm()" [ngClass]="{'active': enableSwishForm}">
-                              <img src="./assets/images/swish_logo.png" class="img-responsive center-block" width="80" height="44">
-                           </div>
-                        </div> -->
-                        <div class="col-md-6 col-sm-6" *ngIf="!disabled_cod">
-                        <div class="cash-payment" (click)="CashForm()" [ngClass]="{'active': enableCODForm}">
-                           <img src="./assets/images/cod.png" class="img-responsive center-block" width="44" height="44">
-                           <p>Kontant</p>
-                        </div>                    
-                     </div>
-   
-                     <div class="col-md-12 col-sm-12">
-                        <input type="text" class="Växel" placeholder="Växel? På hur mycket?" name="order_change" id="order_change" style="width: 200px;display: none;">
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <div class="col-md-12 col-sm-12 bg-marg-30 recommended_bg_pay" style="margin: 10px auto 30px;">
-            <div class="del-add-div">
-               <p class="del-add-title">Leveransadress</p>
-               <!-- <div class="pay-left-border" style="bottom: 650px;"></div> -->
-               <div class="pay-marker-bg">
-                  <span class="fa fa-map-marker"></span>
-               </div>
-               <div class="col-md-12 col-sm-12 mobile">
-                  <div class="col-md-6 col-sm-6 cash-payment-details mobile" >
-                        <div *ngIf="instaCODsubmitted && instErrMsg" class="invalid-feedback">
-                           <div >{{instErrMsg}}</div>
-                        </div>
-                     <!-- Cash on delievery -->
-                     <form [formGroup]="instatRegisterForm" style="margin-bottom: 30px;" (ngSubmit)="onInstantSubmit()" *ngIf="!disabled_cod && !alreadyLogin && enableCODForm" role="form" data-toggle="validator">
-                     <p><a href="" class="login-form" style="font-size: 25px;">Skapa konto</a></p>
-                     <div class="cash-pay-form">
+               <div class="login-details" *ngIf="!alreadyLogin && showLoginForm">
+                  <form [formGroup]="LoginForm" (ngSubmit)="onLogin()" role="form" data-toggle="validator">
+                     <p>Ange inloggningsuppgifter eller <a href="javascript:;" class="create-acc" (click)="showRegister()">Skapa ett konto</a></p>
+                     <div class="pay-login-form">
                         <div class="form-group pay-form-group">
-                           <label for="" class="sr-only"></label>
-                           <input type="text" class="form-control pay-form-control" formControlName="first_name"  id="Förnamn" placeholder="Förnamn" name="Förnamn">
-                        </div>
-                        <div class="form-group pay-form-group">
-                           <label for="" class="sr-only"></label>
-                           <input type="text" class="form-control pay-form-control" formControlName="last_name" id="Efternamn" placeholder="Efternamn" name="Efternamn">
-                        </div>
-                        <div class="form-group pay-form-group">
-                              <label for="" class="sr-only"></label>
-                              <input type="email" formControlName="email"  id="Mejladress" name="Mejladress" placeholder="mailadress" class="form-control pay-form-control required" [ngClass]="{ 'is-invalid': submitted && (instacod_Form.email.errors) }" data-error="Please enter a valid email"
-                              required>
-                              <div *ngIf="instaCODsubmitted && instacod_Form.email.errors" class="invalid-feedback">
-                                 <div *ngIf="instacod_Form.email.errors.required">Please enter a valid Email</div>
-                                 <div *ngIf="instacod_Form.email.touched && instacod_Form.email.dirty && instacod_Form.email.invalid && instacod_Form.email.errors.email">Email must be a valid email address</div>
-                              </div>
-                           </div>                   
-                           <div class="form-group pay-form-group">
-                              <label for="" class="sr-only"></label>
-                              <input type="password" class="form-control pay-form-control" formControlName="password" id="Portkod" placeholder="Lösenord" name="Portkod">
-                              <div *ngIf="instaCODsubmitted && instacod_Form.password.errors" class="invalid-feedback">
-                                 <div *ngIf="instacod_Form.password.errors.required">Please enter a valid password</div>
-                              </div>
-                        </div>
-                     </div>
-                     <p><a href="" class="login-form" style="font-size: 25px;">Hemkörnings information</a></p>
-                     <p class="skickas">Skickas till</p>
-                     <span class="markerade form-required">*Markerade fält måste fyllas i</span>
-                     <div class="cash-pay-form">
-                        <div class="form-group pay-form-group">
-                           <label for="" class="sr-only"></label>
-                           <input type="text" id="address" formControlName="address" name="address" placeholder="*Adress"  class="form-control pay-form-control required" [ngClass]="{ 'is-invalid': CODsubmitted && cod_Form.address.errors }" data-error="Please enter a valid address"
+                           <label for="" class="sr-only">E-post:</label>
+                           <input type="email" formControlName="email"   placeholder="E-post" id="emailid" name="emailid" class="form-control pay-form-control required" [ngClass]="{ 'is-invalid': submitted && (login_Form.email.errors) }" data-error="Please enter a valid email"
                            required>
-                           <div *ngIf="instaCODsubmitted && cod_Form.address.errors" class="invalid-feedback">
-                                 <div *ngIf="cod_Form.address.errors.required">Please enter a valid address</div>
+                           <div *ngIf="loginsubmitted && login_Form.email.errors" class="invalid-feedback">
+                              <div *ngIf="login_Form.email.errors.required">Please enter a valid Email</div>
+                              <div *ngIf="login_Form.email.touched && login_Form.email.dirty && login_Form.email.invalid && login_Form.email.errors.email">Email must be a valid email address</div>
                            </div>
                         </div>
                         <div class="form-group pay-form-group">
-                           <label for="" class="sr-only"></label>
-                           <input type="text" class="form-control pay-form-control" formControlName="apartment" value="" id="Lägenhetsnummer" placeholder="Lägenhetsnummer" name="Lägenhetsnummer">
+                           <label for="" class="sr-only">Lösenord:</label>
+                           <input type="password" id="pwd" formControlName="password" placeholder="Lösenord" name="pwd" class="form-control pay-form-control required" [ngClass]="{ 'is-invalid': submitted && login_Form.password.errors }" data-error="Please enter a valid password"
+                           required>
+                           <div *ngIf="loginsubmitted && login_Form.password.errors" class="invalid-feedback">
+                              <div *ngIf="login_Form.password.errors.required">Please enter a valid password</div>
+                           </div>
+                           <!-- <a href="" class="forgot-pass">Fogot?</a> -->
                         </div>
-                        <div class="form-group pay-form-group">
-                              <label for="" class="sr-only"></label>
-                              <input type="text" class="form-control pay-form-control" formControlName="door" value="" id="Lägenhetsnummer" placeholder="Portkod" name="Lägenhetsnummer">
-                        </div>
-                        <div class="form-group pay-form-group">
-                           <label for="" class="sr-only"></label>
-                           <input type="text" class="form-control pay-form-control" formControlName="floor" value="" id="Våning" placeholder="Våning" name="Våning">
-                        </div>
-                        <!-- <div class="form-group pay-form-group">
-                           <label for="" class="sr-only"></label>
-                           <input type="number" class="form-control pay-form-control" id="Portkod" formControlName="door" id="Våning" value="" placeholder="portkod" name="Portkod">
-                        </div> -->
-                        <div class="form-group pay-form-group">
-                           <label for="" class="sr-only"></label>
-                           <input type="number" class="form-control pay-form-control" id="Mobilnummer" value="" formControlName="mobilnumber" placeholder="*Mobilnummer" name="Mobilnummer" required>
-                        </div>
-                        <div class="form-group pay-form-group">
-                           <label for="" class="sr-only"></label>
-                           <input type="text" class="form-control pay-form-control" formControlName="information" value="" id="Meddelande" placeholder="Meddelande" name="Meddelande">
-                        </div>
-   
-                        <!-- <a href="" class="ref-code">Har en hänvisningskod?</a>    -->     
-                        <div class="terms">(Genom att klicka på ”SKICKA BESTÄLLNING” godkänner du våra köpevillkor.) </div>
-                        <button type="submit" class="btn btn-pay-cash-submit">Skicka</button>                        
+                        <div *ngIf="loginsubmitted && erroMsg" class="erroMsg invalid-feedback">
+                           <div >{{erroMsg}}</div>
+                     </div>
+                        <button type="submit" class="btn btn-pay-login-submit">Submit</button>
                      </div>
                   </form>
-   
-                  <form [formGroup]="CODForm" (ngSubmit)="cashondelievery()" *ngIf="!disabled_cod && enableCODForm && alreadyLogin" role="form" data-toggle="validator">
-                     <p><a href="" class="login-form" style="font-size: 25px;">Hemkörnings information</a></p>
-                     <p class="skickas">Skickas till</p>
-                     <span class="markerade form-required">*Markerade fält måste fyllas i</span>
-                     <div class="cash-pay-form">
+               </div>
+               <div class="signup-details"  *ngIf="!alreadyLogin && showRegisterForm">
+                  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" role="form" data-toggle="validator">
+                     <p>Ange registreringsuppgifter eller <a href="javascript:;" class="login-form" (click)="showLogin()">Logga in</a></p>
+                     <div class="pay-signup-form">
                         <div class="form-group pay-form-group">
-                           <label for="" class="sr-only"></label>
-                           <input type="text" id="address" formControlName="address" name="address" placeholder="*Adress"  class="form-control pay-form-control required" [ngClass]="{ 'is-invalid': CODsubmitted && cod_Form.address.errors }" data-error="Please enter a valid address"
+                           <label for="" class="sr-only">Telefonnummer:</label>
+                           <input type="number" formControlName="mobileNumber"  id="phone" name="phone" placeholder="Telefonnummer" class="form-control pay-form-control required" [ngClass]="{ 'is-invalid': submitted && f.mobileNumber.errors }" data-error="Please enter a valid phone number"
                            required>
-                           <div *ngIf="CODsubmitted && cod_Form.address.errors" class="invalid-feedback">
-                                 <div *ngIf="cod_Form.address.errors.required">Please enter a valid address</div>
+                           <div *ngIf="submitted && f.mobileNumber.errors" class="invalid-feedback">
+                                 <div *ngIf="f.mobileNumber.errors.required">Please enter a valid phone number</div>
                            </div>
                         </div>
                         <div class="form-group pay-form-group">
-                           <label for="" class="sr-only"></label>
-                           <input type="text" class="form-control pay-form-control" formControlName="apartment" value="{{floor}}" id="Lägenhetsnummer" placeholder="Lägenhetsnummer" name="Lägenhetsnummer">
+                           <label for="" class="sr-only">Förnamn:</label>
+                           <input type="text" formControlName="firstName"  id="name" name="name" placeholder="Förnamn" class="form-control pay-form-control required" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" data-error="Please enter a valid phone number"
+                           required>
+                           <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                                 <div *ngIf="f.firstName.errors.required">Please enter a valid FirstName</div>
+                           </div>
                         </div>
                         <div class="form-group pay-form-group">
-                           <label for="" class="sr-only"></label>
-                           <input type="text" class="form-control pay-form-control" formControlName="floor" value="{{floor}}" id="Våning" placeholder="Våning" name="Våning">
+                           <label for="" class="sr-only">Efternamn:</label>
+                           <input type="text" formControlName="lastName"  id="name" name="name" placeholder="Efternamn" class="form-control pay-form-control required"
+                           required>
                         </div>
                         <div class="form-group pay-form-group">
-                           <label for="" class="sr-only"></label>
-                           <input type="number" class="form-control pay-form-control" id="Portkod" formControlName="door" id="Våning" value="{{door}}" placeholder="portkod" name="Portkod">
-                        </div>
-                        <div class="form-group pay-form-group">
-                           <label for="" class="sr-only"></label>
-                           <input type="number" class="form-control pay-form-control" id="Mobilnummer" value="{{contact_phone}}" formControlName="mobilnumber" placeholder="*Mobilnummer" name="Mobilnummer" required>
-                        </div>
-                        <div class="form-group pay-form-group">
-                           <label for="" class="sr-only"></label>
-                           <input type="text" class="form-control pay-form-control" formControlName="information" value="" id="Meddelande" placeholder="Meddelande" name="Meddelande">
-                        </div>
-                        <div *ngIf="CODForm && codErrMsg" class="invalid-feedback">
-                              <div >{{codErrMsg}}</div>
+                           <label for="" class="sr-only">E-post:</label>
+                           <input type="email" formControlName="email"  id="email_id" name="email_id" placeholder="E-post" class="form-control pay-form-control email_id required" [ngClass]="{ 'is-invalid': submitted && (f.email.errors) }" data-error="Please enter a valid email"
+                           required>
+                           <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                              <div *ngIf="f.email.errors.required">Please enter a valid Email</div>
+                              <div *ngIf="f.email.touched && f.email.dirty && f.email.invalid && f.email.errors.email">Email must be a valid email address</div>
+                           </div>
                         </div>
                         
-                        <!-- <a href="" class="ref-code">Har en hänvisningskod?</a>    -->     
-                        <div class="terms">(Genom att klicka på ”SKICKA BESTÄLLNING” godkänner du våra köpevillkor.) </div>
-                        <button type="submit" class="btn btn-pay-cash-submit">Skicka beställning</button>                        
+                        <div class="form-group pay-form-group">
+                           <label for="" class="sr-only">Lösenord:</label>
+                           <input type="password" id="password1" formControlName="password" name="password" placeholder="Lösenord"  class="form-control pay-form-control required" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" data-error="Please enter a valid password"
+                           required>
+                           <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                              <div *ngIf="f.password.errors.required">Please enter a valid password</div>
+                           </div>
+                        </div>
+                        <div *ngIf="submitted && regerroMsg" class="erroMsg invalid-feedback">
+                           <div >{{regerroMsg}}</div>
+                        </div>
+                        <!-- <div class="terms">Genom att skapa ett konto accepterar jag <a class="" href="#">Villkor &amp; Betingelser</a></div> -->
+                        <button type="submit" class="btn btn-pay-signup-submit">Fortsätta</button>                        
                      </div>
                   </form>
+               </div>               
+            </div>
+            <div class="logged-user" *ngIf="alreadyLogin">
+               <p>{{userName}}</p>
+               <p>{{contact_phone}}</p>
+            </div>
+         </div>
+         <div class="col-md-12 col-sm-12 bg-marg-30 recommended_bg_pay" style="margin: 10px auto 20px;">
+            <div class="payment-div">
+               <p class="payment-title">Betalning</p>
+               <div class="pay-left-border"></div>
+               <div class="pay-wallet-bg">
+                  <span class="fa fa-credit-card"></span>
+               </div>
+               <div class="col-md-12 col-sm-12">
+                     <div class="col-md-6 col-sm-6">
+                        <div class="klarna-payment" (click)="showKlarnaForm()" [ngClass]="{'active': enableKlarnaForm}">
+                           <img src="./assets/images/klarna_logo.png" class="img-responsive center-block" width="44" height="44">
+                           <p>Klarna</p>
+                           <span>Faktura, kort, banköverföring eller delbetalning</span>
+                        </div>
+                     </div>
+                     <!-- <div class="col-md-4 col-sm-4">
+                        <div class="swish-payment" (click)="showSwishForm()" [ngClass]="{'active': enableSwishForm}">
+                           <img src="./assets/images/swish_logo.png" class="img-responsive center-block" width="80" height="44">
+                        </div>
+                     </div> -->
+                     <div class="col-md-6 col-sm-6" *ngIf="!disabled_cod">
+                     <div class="cash-payment" (click)="CashForm()" [ngClass]="{'active': enableCODForm}">
+                        <img src="./assets/images/cod.png" class="img-responsive center-block" width="44" height="44">
+                        <p>Kontant</p>
+                     </div>                    
+                  </div>
+
+                  <div class="col-md-12 col-sm-12">
+                     <input type="text" class="Växel" placeholder="Växel? På hur mycket?" name="order_change" id="order_change" style="width: 200px;display: none;">
                   </div>
                </div>
+            </div>
+         </div>
+         <div class="col-md-12 col-sm-12 bg-marg-30 recommended_bg_pay" style="margin: 10px auto 30px;">
+         <div class="del-add-div">
+            <p class="del-add-title">Leveransadress</p>
+            <!-- <div class="pay-left-border" style="bottom: 650px;"></div> -->
+            <div class="pay-marker-bg">
+               <span class="fa fa-map-marker"></span>
+            </div>
+            <div class="col-md-12 col-sm-12 mobile">
+               <div class="col-md-6 col-sm-6 cash-payment-details mobile" >
+                     <div *ngIf="instaCODsubmitted && instErrMsg" class="invalid-feedback">
+                        <div >{{instErrMsg}}</div>
+                     </div>
+                  <!-- Cash on delievery -->
+                  <form [formGroup]="instatRegisterForm" style="margin-bottom: 30px;" (ngSubmit)="onInstantSubmit()" *ngIf="!disabled_cod && !alreadyLogin && enableCODForm" role="form" data-toggle="validator">
+                  <p><a href="" class="login-form" style="font-size: 25px;">Skapa konto</a></p>
+                  <div class="cash-pay-form">
+                     <div class="form-group pay-form-group">
+                        <label for="" class="sr-only"></label>
+                        <input type="text" class="form-control pay-form-control" formControlName="first_name"  id="Förnamn" placeholder="Förnamn" name="Förnamn" required>
+                     </div>
+                     <div *ngIf="instaCODsubmitted && instacod_Form.first_name.errors" class="invalid-feedback">
+                        <div *ngIf="instacod_Form.first_name.errors.required">Please enter a valid firstname</div>
+                     </div>
+                     <div class="form-group pay-form-group">
+                        <label for="" class="sr-only"></label>
+                        <input type="text" class="form-control pay-form-control" formControlName="last_name" id="Efternamn" placeholder="Efternamn" name="Efternamn">
+                     </div>
+                     <div *ngIf="instaCODsubmitted && instacod_Form.last_name.errors" class="invalid-feedback">
+                           <div *ngIf="instacod_Form.last_name.errors.required">Please enter a valid lastname</div>
+                        </div>
+
+                     <div class="form-group pay-form-group">
+                           <label for="" class="sr-only"></label>
+                           <input type="email" formControlName="email"  id="Mejladress" name="Mejladress" placeholder="mailadress" class="form-control pay-form-control required" [ngClass]="{ 'is-invalid': submitted && (instacod_Form.email.errors) }" data-error="Please enter a valid email"
+                           required>
+                           <div *ngIf="instaCODsubmitted && instacod_Form.email.errors" class="invalid-feedback">
+                              <div *ngIf="instacod_Form.email.errors.required">Please enter a valid Email</div>
+                              <div *ngIf="instacod_Form.email.touched && instacod_Form.email.dirty && instacod_Form.email.invalid && instacod_Form.email.errors.email">Email must be a valid email address</div>
+                           </div>
+                        </div>                   
+                        <div class="form-group pay-form-group">
+                           <label for="" class="sr-only"></label>
+                           <input type="password" class="form-control pay-form-control" formControlName="password" id="Portkod" placeholder="Lösenord" name="Portkod">
+                           <div *ngIf="instaCODsubmitted && instacod_Form.password.errors" class="invalid-feedback">
+                              <div *ngIf="instacod_Form.password.errors.required">Please enter a valid password</div>
+                           </div>
+                     </div>
+                  </div>
+                  <p><a href="" class="login-form" style="font-size: 25px;">Hemkörnings information</a></p>
+                  <p class="skickas">Skickas till</p>
+                  <span class="markerade form-required">*Markerade fält måste fyllas i</span>
+                  <div class="cash-pay-form">
+                     <div class="form-group pay-form-group" *ngIf="!isWorkorder">
+                        <label for="" class="sr-only"></label>
+                        <input type="text" id="address" formControlName="address" name="address" placeholder="*Adress"  class="form-control pay-form-control required" [ngClass]="{ 'is-invalid': CODsubmitted && cod_Form.address.errors }" data-error="Please enter a valid address"
+                        required>
+                        <div *ngIf="instaCODsubmitted && cod_Form.address.errors" class="invalid-feedback">
+                              <div *ngIf="cod_Form.address.errors.required">Please enter a valid address</div>
+                        </div>
+                     </div>
+                     <div class="form-group pay-form-group" *ngIf="!isWorkorder">
+                        <label for="" class="sr-only"></label>
+                        <input type="text" class="form-control pay-form-control" formControlName="apartment" value="" id="Lägenhetsnummer" placeholder="Lägenhetsnummer" name="Lägenhetsnummer">
+                     </div>
+                     <div class="form-group pay-form-group" *ngIf="!isWorkorder">
+                           <label for="" class="sr-only"></label>
+                           <input type="text" class="form-control pay-form-control" formControlName="door" value="" id="Lägenhetsnummer" placeholder="Portkod" name="Lägenhetsnummer">
+                     </div>
+                     <div class="form-group pay-form-group" *ngIf="!isWorkorder">
+                        <label for="" class="sr-only"></label>
+                        <input type="text" class="form-control pay-form-control" formControlName="floor" value="" id="Våning" placeholder="Våning" name="Våning">
+                     </div>
+                     <!-- <div class="form-group pay-form-group">
+                        <label for="" class="sr-only"></label>
+                        <input type="number" class="form-control pay-form-control" id="Portkod" formControlName="door" id="Våning" value="" placeholder="portkod" name="Portkod">
+                     </div> -->
+                     <div class="form-group pay-form-group">
+                        <label for="" class="sr-only"></label>
+                        <input type="number" class="form-control pay-form-control" id="Mobilnummer" value="" formControlName="mobilnumber" placeholder="*Mobilnummer" name="Mobilnummer" required>
+                     </div>
+                     <div *ngIf="instaCODsubmitted && cod_Form.mobilnumber.errors" class="invalid-feedback">
+                           <div *ngIf="cod_Form.mobilnumber.errors.required">Please enter a valid phone number</div>
+                        </div>
+                     <div class="form-group pay-form-group">
+                        <label for="" class="sr-only"></label>
+                        <input type="text" class="form-control pay-form-control" formControlName="information" value="" id="Meddelande" placeholder="Meddelande" name="Meddelande">
+                     </div>
+
+                     <!-- <a href="" class="ref-code">Har en hänvisningskod?</a>    -->     
+                     <div class="terms">(Genom att klicka på ”SKICKA BESTÄLLNING” godkänner du våra köpevillkor.) </div>
+                     <button type="submit" class="btn btn-pay-cash-submit">Skicka</button>                        
+                  </div>
+               </form>
+
+               <form [formGroup]="CODForm" (ngSubmit)="cashondelievery()" *ngIf="!disabled_cod && enableCODForm && alreadyLogin" role="form" data-toggle="validator">
+                  <p><a href="" class="login-form" style="font-size: 25px;">Hemkörnings information</a></p>
+                  <p class="skickas">Skickas till</p>
+                  <span class="markerade form-required">*Markerade fält måste fyllas i</span>
+                  <div class="cash-pay-form">
+                     <div class="form-group pay-form-group" *ngIf="!isWorkorder">
+                        <label for="" class="sr-only"></label>
+                        <input type="text" id="address" formControlName="address" name="address" placeholder="*Adress"  class="form-control pay-form-control required" [ngClass]="{ 'is-invalid': CODsubmitted && cod_Form.address.errors }" data-error="Please enter a valid address"
+                        required>
+                        <div *ngIf="CODsubmitted && cod_Form.address.errors" class="invalid-feedback">
+                              <div *ngIf="cod_Form.address.errors.required">Please enter a valid address</div>
+                        </div>
+                     </div>
+                     <div class="form-group pay-form-group" *ngIf="!isWorkorder">
+                        <label for="" class="sr-only"></label>
+                        <input type="text" class="form-control pay-form-control" formControlName="apartment" value="{{floor}}" id="Lägenhetsnummer" placeholder="Lägenhetsnummer" name="Lägenhetsnummer">
+                     </div>
+                     <div class="form-group pay-form-group" *ngIf="!isWorkorder">
+                        <label for="" class="sr-only"></label>
+                        <input type="text" class="form-control pay-form-control" formControlName="floor" value="{{floor}}" id="Våning" placeholder="Våning" name="Våning">
+                     </div>
+                     <div class="form-group pay-form-group" *ngIf="!isWorkorder">
+                        <label for="" class="sr-only"></label>
+                        <input type="number" class="form-control pay-form-control" id="Portkod" formControlName="door" id="Våning" value="{{door}}" placeholder="portkod" name="Portkod">
+                     </div>
+                     <div class="form-group pay-form-group">
+                        <label for="" class="sr-only"></label>
+                        <input type="number" class="form-control pay-form-control" id="Mobilnummer" value="{{contact_phone}}" formControlName="mobilnumber" placeholder="*Mobilnummer" name="Mobilnummer" required>
+                     </div>
+                     <div class="form-group pay-form-group">
+                        <label for="" class="sr-only"></label>
+                        <input type="text" class="form-control pay-form-control" formControlName="information" value="" id="Meddelande" placeholder="Meddelande" name="Meddelande">
+                     </div>
+                     <div *ngIf="CODForm && codErrMsg" class="invalid-feedback">
+                           <div >{{codErrMsg}}</div>
+                     </div>
+                     
+                     <!-- <a href="" class="ref-code">Har en hänvisningskod?</a>    -->     
+                     <div class="terms">(Genom att klicka på ”SKICKA BESTÄLLNING” godkänner du våra köpevillkor.) </div>
+                     <button type="submit" class="btn btn-pay-cash-submit">Skicka beställning</button>                        
+                  </div>
+               </form>
+               </div>
+            </div>
+            <!-- Klarna Form -->
+            <div class="col-md-12 col-sm-12 mobile" *ngIf="enableKlarnaForm">
+               <div class="col-md-6 col-sm-6 klarna-payment-details mobile">
+                  <form action="">
+                  <p><a href="" class="login-form" style="font-size: 25px;">Hemkörnings information</a></p>
+                  <p class="skickas">Skickas till</p>
+                  <span class="markerade form-required">*Markerade fält måste fyllas i</span>
+                  <div class="cash-pay-form">
+                     <div class="form-group pay-form-group">
+                        <label for="" class="sr-only"></label>
+                        <input type="text" class="form-control pay-form-control" id="Lägenhetsnummer" value="{{floor}}" placeholder="Lägenhetsnummer" name="Lägenhetsnummer">
+                     </div>
+                     <div class="form-group pay-form-group">
+                        <label for="" class="sr-only"></label>
+                        <input type="text" class="form-control pay-form-control" id="Våning" value="{{door}}" placeholder="Våning" name="Våning">
+                     </div>
+                     <div class="form-group pay-form-group">
+                        <label for="" class="sr-only"></label>
+                        <input type="text" class="form-control pay-form-control" id="Portkod" value="{{door}}" placeholder="Portkod" name="Portkod">
+                     </div>
+                     <div class="form-group pay-form-group">
+                        <label for="" class="sr-only"></label>
+                        <input type="text" class="form-control pay-form-control" id="Meddelande" placeholder="Meddelande" name="Meddelande">
+                     </div>     
+                  </div>
+               </form>
+               </div>
                <!-- Klarna Form -->
-               <div class="col-md-12 col-sm-12 mobile" *ngIf="enableKlarnaForm">
+               <div *ngIf="!showLoad" #checkoutcontainer>
+                     <span style="text-align: center">loading please wait ......</span>
+               </div>
+
+            </div>
+
+            <!-- Swish Form -->
+            <div class="col-md-12 col-sm-12 mobile" *ngIf="enableSwishForm">
                   <div class="col-md-6 col-sm-6 klarna-payment-details mobile">
                      <form action="">
                      <p><a href="" class="login-form" style="font-size: 25px;">Hemkörnings information</a></p>
@@ -271,15 +315,15 @@
                      <div class="cash-pay-form">
                         <div class="form-group pay-form-group">
                            <label for="" class="sr-only"></label>
-                           <input type="text" class="form-control pay-form-control" id="Lägenhetsnummer" value="{{floor}}" placeholder="Lägenhetsnummer" name="Lägenhetsnummer">
+                           <input type="text" class="form-control pay-form-control" id="Lägenhetsnummer" placeholder="Lägenhetsnummer" name="Lägenhetsnummer">
                         </div>
                         <div class="form-group pay-form-group">
                            <label for="" class="sr-only"></label>
-                           <input type="text" class="form-control pay-form-control" id="Våning" value="{{door}}" placeholder="Våning" name="Våning">
+                           <input type="text" class="form-control pay-form-control" id="Våning" placeholder="Våning" name="Våning">
                         </div>
                         <div class="form-group pay-form-group">
                            <label for="" class="sr-only"></label>
-                           <input type="text" class="form-control pay-form-control" id="Portkod" value="{{door}}" placeholder="Portkod" name="Portkod">
+                           <input type="text" class="form-control pay-form-control" id="Portkod" placeholder="Portkod" name="Portkod">
                         </div>
                         <div class="form-group pay-form-group">
                            <label for="" class="sr-only"></label>
@@ -288,284 +332,145 @@
                      </div>
                   </form>
                   </div>
-                  <!-- Klarna Form -->
-                  <div *ngIf="!showLoad" #checkoutcontainer>
-                        <span style="text-align: center">loading please wait ......</span>
+                  
+                  <div class="col-md-6 col-sm-6 klarna-payment-details-dina mobile">
+                     <form action="">
+                     <p><a href="" class="login-form" style="font-size: 25px;">Dina uppgifter</a></p>
+                     <div class="cash-pay-form">
+                        <div class="form-group pay-form-group">
+                           <label for="" class="sr-only"></label>
+                           <input type="text" class="form-control pay-form-control" id="Mejladress" placeholder="Mejladress" name="Mejladress">
+                        </div>
+                        <div class="form-group pay-form-group">
+                           <label for="" class="sr-only"></label>
+                           <input type="text" class="form-control pay-form-control" id="Postnummer" placeholder="Postnummer" name="Postnummer">
+                        </div>
+                        <div class="form-group pay-form-group">
+                           <label for="" class="sr-only"></label>
+                           <input type="text" class="form-control pay-form-control" id="Personnummer" placeholder="Personnummer" name="Personnummer"><span class="skippa">Skippa</span>
+                        </div>
+                        <div class="form-group pay-form-group">
+                           <label for="" class="sr-only"></label>
+                           <input type="text" class="form-control pay-form-control" id="Förnamn" placeholder="Förnamn" name="Förnamn">
+                        </div>
+                        <div class="form-group pay-form-group">
+                           <label for="" class="sr-only"></label>
+                           <input type="text" class="form-control pay-form-control" id="Efternamn" placeholder="Efternamn" name="Efternamn">
+                        </div>
+                        <div class="form-group pay-form-group">
+                           <label for="" class="sr-only"></label>
+                           <input type="text" class="form-control pay-form-control" id="Adress" placeholder="Adress" name="Adress"><span class="skippa">Lägg till C/O</span>
+                        </div>
+                        <div class="form-group pay-form-group">
+                           <label for="" class="sr-only"></label>
+                           <input type="text" class="form-control pay-form-control" id="Ort" placeholder="Ort" name="Ort">
+                        </div>
+                        <div class="form-group pay-form-group">
+                           <label for="" class="sr-only"></label>
+                           <input type="text" class="form-control pay-form-control" id="Telefonnummer" placeholder="Telefonnummer" name="Telefonnummer">
+                        </div>
+                        <a href="#" class="ref-code">Autoifyllnadsinställningar</a> . <a href="#" class="ref-code">Dataskyddsinfo</a>&nbsp;<strong style="font-weight: 700;">Klarna</strong> 
+                        <button type="submit" class="btn btn-pay-cash-submit">Fortsätt</button>                        
+                     </div>
+                  </form>
                   </div>
-
                </div>
-   
-               <!-- Swish Form -->
-               <div class="col-md-12 col-sm-12 mobile" *ngIf="enableSwishForm">
-                     <div class="col-md-6 col-sm-6 klarna-payment-details mobile">
-                        <form action="">
-                        <p><a href="" class="login-form" style="font-size: 25px;">Hemkörnings information</a></p>
-                        <p class="skickas">Skickas till</p>
-                        <span class="markerade form-required">*Markerade fält måste fyllas i</span>
-                        <div class="cash-pay-form">
-                           <div class="form-group pay-form-group">
-                              <label for="" class="sr-only"></label>
-                              <input type="text" class="form-control pay-form-control" id="Lägenhetsnummer" placeholder="Lägenhetsnummer" name="Lägenhetsnummer">
-                           </div>
-                           <div class="form-group pay-form-group">
-                              <label for="" class="sr-only"></label>
-                              <input type="text" class="form-control pay-form-control" id="Våning" placeholder="Våning" name="Våning">
-                           </div>
-                           <div class="form-group pay-form-group">
-                              <label for="" class="sr-only"></label>
-                              <input type="text" class="form-control pay-form-control" id="Portkod" placeholder="Portkod" name="Portkod">
-                           </div>
-                           <div class="form-group pay-form-group">
-                              <label for="" class="sr-only"></label>
-                              <input type="text" class="form-control pay-form-control" id="Meddelande" placeholder="Meddelande" name="Meddelande">
-                           </div>     
-                        </div>
-                     </form>
-                     </div>
-                     
-                     <div class="col-md-6 col-sm-6 klarna-payment-details-dina mobile">
-                        <form action="">
-                        <p><a href="" class="login-form" style="font-size: 25px;">Dina uppgifter</a></p>
-                        <div class="cash-pay-form">
-                           <div class="form-group pay-form-group">
-                              <label for="" class="sr-only"></label>
-                              <input type="text" class="form-control pay-form-control" id="Mejladress" placeholder="Mejladress" name="Mejladress">
-                           </div>
-                           <div class="form-group pay-form-group">
-                              <label for="" class="sr-only"></label>
-                              <input type="text" class="form-control pay-form-control" id="Postnummer" placeholder="Postnummer" name="Postnummer">
-                           </div>
-                           <div class="form-group pay-form-group">
-                              <label for="" class="sr-only"></label>
-                              <input type="text" class="form-control pay-form-control" id="Personnummer" placeholder="Personnummer" name="Personnummer"><span class="skippa">Skippa</span>
-                           </div>
-                           <div class="form-group pay-form-group">
-                              <label for="" class="sr-only"></label>
-                              <input type="text" class="form-control pay-form-control" id="Förnamn" placeholder="Förnamn" name="Förnamn">
-                           </div>
-                           <div class="form-group pay-form-group">
-                              <label for="" class="sr-only"></label>
-                              <input type="text" class="form-control pay-form-control" id="Efternamn" placeholder="Efternamn" name="Efternamn">
-                           </div>
-                           <div class="form-group pay-form-group">
-                              <label for="" class="sr-only"></label>
-                              <input type="text" class="form-control pay-form-control" id="Adress" placeholder="Adress" name="Adress"><span class="skippa">Lägg till C/O</span>
-                           </div>
-                           <div class="form-group pay-form-group">
-                              <label for="" class="sr-only"></label>
-                              <input type="text" class="form-control pay-form-control" id="Ort" placeholder="Ort" name="Ort">
-                           </div>
-                           <div class="form-group pay-form-group">
-                              <label for="" class="sr-only"></label>
-                              <input type="text" class="form-control pay-form-control" id="Telefonnummer" placeholder="Telefonnummer" name="Telefonnummer">
-                           </div>
-                           <a href="#" class="ref-code">Autoifyllnadsinställningar</a> . <a href="#" class="ref-code">Dataskyddsinfo</a>&nbsp;<strong style="font-weight: 700;">Klarna</strong> 
-                           <button type="submit" class="btn btn-pay-cash-submit">Fortsätt</button>                        
-                        </div>
-                     </form>
-                     </div>
-                  </div>
-            </div>
-            </div>
          </div>
-         <div id="sticky-anchor" class="hidden-xs"></div>
-         <div class="col-md-4">
-            <!-- <div id="sticky">
-               <div>
-                  <div class="col-md-12 col-sm-12 padd-zero" style="margin-bottom: 15px;">
-                     <div>
-                        <div class="col-md-3">
-                           <div>
-                              <img style="width: 74px;height: 74px;border-radius: 50%;" src="{{api_url}}{{productImage}}">
-                           </div>
-                           <div class="col-md-9 rest-border">
-                              <p style="font-size: 18px;font-weight: 700;margin-top: 10px;">{{restaurant_name}}</p>
-                           </div>
-                        </div>
-                        <div class="slide_head_order">
-                           <p class="your-order">Din beställning</p>
-                        </div>
-                        <div  class="static-height" *ngIf="listCart.length>0">
-                           <div class="col-md-12 padd-zero" style="margin: 5px auto;" *ngFor="let cartData of listCart let i=index;">
-                              <div class="col-md-5 product_name">
-                                 {{cartData.item_name}} {{ itemType(cartData.size_words) }}
-                              </div>
-                              <div class="col-md-3 dev-inc-val-div">
-                                 <span class="value-button" id="decrease-btn" (click)="decreaseValue(cartData.item_id, cartData.qty,cartData.normal_price, cartData.item_index)" value="Decrease Value">
-                                    <i class="fa fa-minus" aria-hidden="true"></i>
-                                 </span>
-                                 <span>
-                                    <input type="text" id="number-btn{{i}}" class="number-btn" value="{{cartData.qty}}">
-                                 </span>
-                                 <span class="value-button" id="increase-btn" (click)="increaseValue(cartData.item_id, cartData.qty,cartData.normal_price, cartData.item_index)" value="Increase Value">
-                                    <i class="fa fa-plus" aria-hidden="true"></i>
-                                 </span>
-                              </div>
-                              <div class="col-md-4 sub_total_amt">
-                                 <span class="pull-right distance">{{cartData.discounted_price}}
-                                    <a href="javascript:;" class="btn btn" style="color: #7B0003;padding: 0;margin: 0 5px;font-size: 13px;">
-                                       <i class="fa fa-edit"></i>
-                                    </a>&nbsp;
-                                    <a href="javascript:;" (click)="deleteCart(cartData.item_index)" class="btn" style="color: #7B0003;padding: 0;font-size: 13px;">
-                                       <i class="fa fa-trash"></i>
-                                    </a>
-                                 </span>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="emptyCart" *ngIf="emptyCarts">
-                        No items in the Cart.
-                     </div>
-                     <HR style="border-top: 2px solid #2B2B3F;margin: 40px auto 0;clear: both;margin-right: 10px;">
-                     <div class="total_div" *ngIf="totalAmt.total>0">
-                           <span class="to_pay_delsumma">DelSumma</span>
-                           <span class="to_pay_amt_delsumma">{{totalAmt.subtotal}}{{totalAmt.curr}}</span>
-                     </div>
-                     <div class="total_div" *ngIf="totalAmt.total>0">
-                        <span class="to_pay_delsumma">
-                           Hemkörningsavgift
-                        </span>
-                        <span class="to_pay_amt_delsumma">
-                           {{totalAmt.delivery_charges}}{{totalAmt.curr}}
-                        </span>
-                     </div>
-                     <div class="total_div" *ngIf="enableKlarnaForm">
-                        <span class="to_pay_betalnings">Betalningsförmedlings avgift:</span>
-                        <span class="to_pay_amt_betalnings">5kr</span>
-                     </div>
-                     <div class="total_div" *ngIf="!emptyCarts">
-                        <span class="to_pay">Summa</span>
-                        <span class="to_pay_amt">{{ totalOrderAmt + cardProcessingFee }}{{totalAmt.curr}}</span>
-                     </div>
-                  </div>
-               </div>
-            </div> -->
-         
-            <div id="sticky" class="hidden-xs">
-                  <div>
-                     <div class="col-md-12 col-sm-12 padd-zero" style="margin-bottom: 15px;">
-                        <div class="col-md-3">
-                           <div ><img style="width: 74px;   height: 74px;    border-radius: 50%;" src="{{api_url}}{{productImage}}"></div></div>
-                        <div class="col-md-9 rest-border"><p style="font-size: 18px;font-weight: 700;margin-top: 10px;">{{restaurant_name}}</p></div>
-                     </div>
-                     <div class="slide_head_order">
-                           <p class="your-order">Din beställning</p>
-                     </div>
-
-                     <div  class="static-height" *ngIf="listCart.length>0">
-                        <div class="col-md-12 padd-zero" style="margin: 5px auto;" *ngFor="let cartData of listCart let i=index;">
-                              <div class="col-md-9 product_name">{{cartData.item_name}} {{ itemType(cartData.size_words) }}</div>
-                              <!-- <div class="col-md-3 dev-inc-val-div">
-                                    <span class="value-button" id="decrease-btn" (click)="decreaseValue(cartData.item_id, cartData.qty,cartData.normal_price, cartData.item_index)" value="Decrease Value">
-                                       <i class="fa fa-minus" aria-hidden="true"></i>
-                                    </span>
-                                    <span>
-                                       <input type="text" id="number-btn{{i}}" class="number-btn" value="{{cartData.qty}}">
-                                    </span>
-                                    <span class="value-button" id="increase-btn" (click)="increaseValue(cartData.item_id, cartData.qty,cartData.normal_price, cartData.item_index)" value="Increase Value">
-                                       <i class="fa fa-plus" aria-hidden="true"></i>
-                                    </span>
-                              </div> -->
-                              <div class="col-md-3 sub_total_amt">
-                                 <span class="pull-right distance">{{cartData.discounted_price}}
-                                    <!-- <a href="javascript:;" class="btn btn" style="color: #7B0003;padding: 0;margin: 0 5px;font-size: 13px;">
-                                       <i class="fa fa-edit"></i>
-                                    </a>&nbsp; -->
-                                    <!-- <a href="javascript:;" (click)="deleteCart(cartData.item_index)" class="btn" style="color: #7B0003;padding: 0;font-size: 13px;">
-                                       <i class="fa fa-trash"></i>
-                                    </a> -->
-                                 </span>
-                              </div>
-                        </div>
-                     </div>
-                     <div class="emptyCart" *ngIf="emptyCarts">
-                           No items in the Cart.
-                     </div>
-                     <HR style="border-top: 2px solid #2B2B3F;margin: 40px auto 0;clear: both;margin-right: 10px;">
-                     <div class="total_div" *ngIf="totalAmt.total>0">
-                           <span class="to_pay_delsumma">DelSumma</span><span class="to_pay_amt_delsumma">{{totalAmt.subtotal}}{{totalAmt.curr}}</span>
-                     </div>
-                     <div class="total_div" *ngIf="totalAmt.total>0">
-                           <span class="to_pay_delsumma">Hemkörningsavgift</span><span class="to_pay_amt_delsumma">{{totalAmt.delivery_charges}}{{totalAmt.curr}}</span>
-                     </div>
-                     <div class="total_div" *ngIf="enableKlarnaForm">
-                           <span class="to_pay_betalnings">Betalningsförmedlings avgift:</span><span class="to_pay_amt_betalnings">5kr</span>
-                     </div>
-                     <div class="total_div" *ngIf="!emptyCarts">
-                           <span class="to_pay">Summa</span><span class="to_pay_amt">{{ totalOrderAmt + cardProcessingFee }}{{totalAmt.curr}}</span>
-                     </div>
-                  </div>
-               </div>
-         
          </div>
       </div>
-      <!-- <div class="container-fluid fluid-bg fluid-pay enableOrderInfo" *ngIf="enableOrderInfo">
-         <div class="container recieptwrapper">
-            <div class="col-md-8">
-               <div class="col-md-12 recommended_bg_pay">
-                  <div class="account-div">
-                        <p class="side-arrow-p"><span class="left-arrow-span"><i class="fa fa-chevron-left"></i></span>Tillabaka till forsta sidan</p>  
-                        <p class="bike-p"><span class="font-span"><i class="fa fa-motorcycle"></i></span></p>
-                        <div *ngIf="stopCheckConfirmation">
-                           <p class="tack-p">Tack for din bestallning!</p>
-                           <p class="du-p">Du ar nu i direjtanslutning med restaurange sam<br>granskar din order och snart kommer att bekrafta den<br>och ange leveranstid. Det sker normalt inom 30<br>sekunder men kan ta ett par mintuer.</p>            
-                        </div>
-                        <div *ngIf="!stopCheckConfirmation" class="successOrder">
-                           <p class="tack-p" style="color:#4cb95e">Thanks for your purchase!</p>
-                           <p class="du-p">Your order was confirmed at 11.06.<br>The restaurant estimates that the order will be<br>delivered within {{confirmationDetails}} minutes.</p>            
-                           <p class="du-p">NOTE: Sometimes delivery can take place earlier than<br>The stated time above.</p>   
-                           <HR style="border-top: 2px solid #2B2B3F;margin: 40px auto 0;clear: both;margin-right: 10px;">
-                           <p class="du-p">
-                              Order number: <span class="order_details">{{orderInfo.reference_no}}</span><br>
-                              Amount: <span class="order_details">{{orderTotal.taxable_total}}{{orderTotal.curr}}</span>.<br>
-                              Payment methods: <span class="order_details">{{orderInfo.payment_type}}</span>.</p>            
-                        </div>
-                  </div>            
-               </div>        
-            </div>
-            <div id="sticky-anchor" class="hidden-xs"></div>
-            <div class="col-md-4 bg-marg-30">
-               <div id="sticky" class="hidden-xs">
-                  <div>
-                     <div class="slide_head_order">
-                        <p class="your-order">Order Details</p>
-                     </div>                                    
-                     <div class="slide-body_res">
-                        <p class="res-ord_list">Merchant Name&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;<span class="res-ord_list-span">{{orderInfo.merchant_name}}</span></p>
-                        <p class="res-ord_list">Restaurant phone : &nbsp;&nbsp;&nbsp;<span class="res-ord_list-span">{{merchant_phone}}</span></p>
-                        <p class="res-ord_list">Delivery Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;<span class="res-ord_list-span">{{orderInfo.delivery_type}}</span></p>
-                        <p class="res-ord_list">Payment Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;<span class="res-ord_list-span">{{orderInfo.payment_type}}</span></p>
-                        <p class="res-ord_list">Reference # &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;<span class="res-ord_list-span">{{orderInfo.reference_no}}</span></p>
-                        <p class="res-ord_list">Deliver to&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;<span class="res-ord_list-span">{{orderInfo.delivery_instruction}}</span></p>
-                        <p class="res-ord_list">Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;<span class="res-ord_list-span">{{customerInfo.full_name}}</span></p>
-                        <p class="res-ord_list">Contact Number &nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;<span class="res-ord_list-span">{{customerInfo.contact_phone}}</span></p>
-                        <div class="col-md-12 padd-zero" style="margin: 5px auto;">
-                           <div class="col-md-12 padd-zero" style="margin: 5px auto;" *ngFor="let cartData of orderItems let i=index;">
-                              <div class="col-md-8 product_name">{{cartData.qty}} {{cartData.item_name}}</div>
-                              <div class="col-md-4 sub_total_amt">
-                                 <span class="pull-right distance">{{cartData.discounted_price}} Kr</span>
-                              </div>
-                           </div>
-                           <HR style="border-top: 2px solid #2B2B3F;margin: 40px auto 0;clear: both;margin-right: 10px;">
-                           <div class="total_div">
-                              <span class="to_pay_delsumma">DelSumma</span><span class="to_pay_amt_delsumma">{{orderTotal.subtotal}}{{orderTotal.curr}}</span>
-                           </div>
-                           <div class="total_div">
-                              <span class="to_pay_delsumma">Hemkörningsavgift</span><span class="to_pay_amt_delsumma">{{orderTotal.delivery_charges}}{{orderTotal.curr}}</span>
-                           </div>
-                           <div class="total_div">
-                              <span class="to_pay to_paysuma">Summa</span><span class="to_pay_amt to_pay_amt_delsumma">{{orderTotal.taxable_total}}{{orderTotal.curr}}</span>
-                           </div>
-                              <div class="checkoutBtn" id="checkoutBtn">
-                                 <a href="javascript:;" (click)="print()" class="btn-checkout btn-block" *ngIf="!emptyCarts">Skriv ut</a>
-                              </div>
-                        </div>
-                     </div>
+      <div id="sticky-anchor" class="hidden-xs"></div>
+      <div class="col-md-4">
+         <div id="sticky" [ngClass]="showCartSec ? 'desktop-cart' : 'hidden-xs'">
+            <div>
+               <div *ngIf="showCartSec" class="icon-close pos-a" (click)="closeCart()"><img class="close_img" src="./assets/images/close_icon.svg" alt="Close Button"></div>
+               <div class="col-md-12 col-sm-12 padd-zero" style="margin-bottom: 15px;">
+                  <div class="col-md-3" *ngIf="!isWorkorder">
+                     <div ><img style="width: 74px;   height: 74px;    border-radius: 50%;" src="{{api_url}}{{productImage}}"></div>
                   </div>
+                  <div class="col-md-9 rest-border">
+                     <p style="font-size: 18px;font-weight: 700;margin-top: 10px;">
+                        {{restaurant_name ? restaurant_name : currentAddress ? currentAddress.company_name : ''}}
+                     </p>
+                     <span *ngIf="currentAddress">{{currentAddress ? currentAddress.company_address : ''}}</span>
+                  </div>
+               </div>
+               <div class="slide_head_order">
+                  <p class="your-order">Din beställning</p>
+               </div>
+               <div  class="static-height" *ngIf="listCart.length>0">
+                  <div class="col-md-12 padd-zero" style="margin: 5px auto;" *ngFor="let cartData of listCart let i=index;">
+                     <div class="col-md-9 product_name"><span style="color: #780300">{{cartData.qty}}</span>  {{cartData.item_name}} {{ itemType(cartData.size_words) }}</div>
+                     <div class="col-md-3 sub_total_amt">
+                        <span class="pull-right distance">{{cartData.addOnPrice ? cartData.addOnPrice : cartData.qty * cartData.discounted_price}}
+                        </span>
+                     </div>
+                     <div class="col-sm-12"><span class="addonItems"> {{cartData.addOnItems}}</span></div>
+                  </div>
+               </div>
+               <div class="emptyCart" *ngIf="emptyCarts">
+                  No items in the Cart.
+               </div>
+               <HR style="border-top: 2px solid #2B2B3F;margin: 40px auto 0;clear: both;margin-right: 10px;">
+               <div class="total_div" *ngIf="totalAmt.total>0">
+                  <span class="to_pay_delsumma">DelSumma</span><span class="to_pay_amt_delsumma">{{totalAmt.subtotal}}{{totalAmt.curr}}</span>
+               </div>
+               <div class="total_div" *ngIf="totalAmt.total>0">
+                  <span class="to_pay_delsumma">Hemkörningsavgift</span><span class="to_pay_amt_delsumma">{{totalAmt.delivery_charges}}{{totalAmt.curr}}</span>
+               </div>
+               <div class="total_div" *ngIf="enableKlarnaForm">
+                  <span class="to_pay_betalnings">Betalningsförmedlings avgift:</span><span class="to_pay_amt_betalnings">5kr</span>
+               </div>
+               <div class="total_div" *ngIf="!emptyCarts">
+                  <span class="to_pay">Summa</span><span class="to_pay_amt">{{ totalOrderAmt + cardProcessingFee }}{{totalAmt.curr}}</span>
                </div>
             </div>
          </div>
-      </div> -->
+      </div>
+      <div class="sticky-cart-button-container"  *ngIf="!emptyCarts">
+         <button class="sticky-cart-button" (click)="showCart();">
+            <span class="cart-icon">
+               <a class="vendor-cart-icon ">
+                  <svg width="18px" height="26px" viewBox="0 0 18 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                  <defs>
+                     <rect id="path-1" x="0" y="4" width="18" height="22"></rect>
+                     <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="18" height="22" fill="white">
+                     <use xlink:href="#path-1"></use>
+                     </mask>
+                     <rect id="path-3" x="0" y="19" width="18" height="7"></rect>
+                     <mask id="mask-4" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="18" height="7" fill="white">
+                     <use xlink:href="#path-3"></use>
+                     </mask>
+                  </defs>
+                  <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                     <g class="svg-stroke-container" transform="translate(-23.000000, -19.000000)" stroke="#D70F64">
+                        <g transform="translate(1.000000, 0.000000)">
+                           <g transform="translate(22.000000, 19.000000)">
+                              <use id="Rectangle-2" mask="url(#mask-2)" stroke-width="2" xlink:href="#path-1"></use>
+                              <path d="M4.5,6.5 L4.5,1.49077797 C4.5,0.943586406 4.9463114,0.5 5.49754465,0.5 L12.5024554,0.5 C13.053384,0.5 13.5,0.95097518 13.5,1.49077797 L13.5,6.5" id="Path-3" stroke-linecap="round" stroke-linejoin="round"></path>
+                              <use id="Rectangle-5" mask="url(#mask-4)" stroke-width="2" xlink:href="#path-3"></use>
+                           </g>
+                        </g>
+                     </g>
+                  </g>
+                  </svg>
+               <span class="products-count"></span>
+               </a>
+            </span>
+            <span>View cart</span>
+            <span class="products-value">{{totalAmt.subtotal | round}}&nbsp;{{totalAmt.curr}}</span>
+            <span class="calcul-animation">
+               <span class="dot"></span>
+               <span class="dot"></span>
+               <span class="dot"></span>
+            </span>
+         </button>
+      </div>
    </div>
-   
+</div>
+<ngx-spinner
+	bdColor="rgba(51,51,51,0.8)"
+	size="medium"
+	color="#fff"
+	type="ball-scale-multiple">
+	<p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>

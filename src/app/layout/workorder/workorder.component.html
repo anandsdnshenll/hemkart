@@ -1,0 +1,228 @@
+<article>
+    <div class="container-fluid banner_setion_pl"  style="padding: 0; margin-top: 66px;"> 
+        <div class="_8MlDE _1qF_3">
+           <span class="head_content banner_head_content">                        
+              <span class="today_span" style="width: 100%; display: block; line-height: 10px;">Dagens lunch!</span>
+              <span class="deliver_work_span">Leverans vid ditt arbete</span>
+          </span>
+          <div style="text-align: center">
+            <button class="btn btn-primary mb1 bg-green" (click)="setCity()">Byt stad</button>
+          </div>
+
+        </div>
+     </div>
+    <div class="container-fluid fluid-bg">
+      <div class="container wrapper">
+        <div class="col-md-8 bg-marg-30" style="display: flex;flex-direction: column;">
+          <div class="recommended_bg">
+            <div class="">
+              <span class="head_content">Lunch meny i {{selctedCity}} <span class="total_items">{{menuDetails.length}} ITEMS</span></span>
+              <div class="col-md-12" style="margin: 10px auto 20px; display: none;">
+                <ul class="ul-product">
+                    <li>
+                      <label class="checkcontainer">Pizza
+                      <input type="checkbox" class="checkattr">
+                      <span class="checkmark"></span>
+                      </label>
+                    </li>
+                    <li>
+                      <label class="checkcontainer">Burger
+                      <input type="checkbox" class="checkattr">
+                      <span class="checkmark"></span>
+                      </label>
+                    </li>
+                    <li>
+                      <label class="checkcontainer">Desert
+                      <input type="checkbox" class="checkattr">
+                      <span class="checkmark"></span>
+                      </label>
+                    </li>
+                </ul>
+              </div>
+              <section class="vendor-list-section">
+                <div *ngIf="menuDetails">
+                    <ul class="work-order-list opened"  *ngFor="let details of menuDetails; let i = index;">
+                        <div class="dish-category-header">
+                            <div class="dish-category-title-wrapper">
+                                  <h2 class="dish-category-title">{{details.category_name}}</h2>
+                            </div>
+                          </div>
+                        <li *ngFor="let items of details.item">
+                          <figure class="vendor-tile closed item ">
+                            <picture>
+                                <div class="vendor-picture b-lazy b-loaded b-loaded" data-src="images/66.jpg?width=400&amp;height=292|images/66.jpg?width=800&amp;height=584" data-vendor-id="7190" style="background-image: url('./assets/images/28.jpg?width=100&height=584');">
+                                </div>
+                                <!-- <img class="res_logo_side" src="images/1492986285-gidegrillen-logga.png"> -->
+                            </picture>
+                            <figcaption class="vendor-info">
+                                <span class="headline">
+                                <span class="name fn">{{items.item_name}}</span>
+                                </span>                              
+                                <div class="ord_price">
+                                  <div class="pull-left padd-left-zero"><span class="disc_amt">{{items.prices[0].price}} Kr</span></div>
+                                  <div class="pull-right">
+                                      <div class="val_btn"> 
+                                        <button type="button" class="add_btn"  (click)="addToCart(items.item_index, items.item_id,items.prices[0], 'add', '', 1,'', details.ownpizza, details.submenu, details.merchant_id)">LÄGG TILL</button>
+                                      </div>
+                                  </div>
+                                </div>
+                            </figcaption>
+                          </figure>
+                        </li>
+                    </ul>
+                </div>
+              </section>
+              <div *ngIf="emptyDetails" style="text-align: center"><h3>{{emptyDetails}}</h3>
+                <div style="text-align: center">
+                    <button class="btn btn-primary mb1 bg-green" (click)="setCity()">Byt stad</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="hidden-xs" id="sticky-anchor"></div>        
+        <div class="col-md-4 bg-marg-30" *ngIf="selctedCity">
+          <div id="sticky" [ngClass]="showCartSec ? 'desktop-cart' : 'hidden-xs'">
+            <div class="">
+                <div *ngIf="showCartSec" class="icon-close pos-a" (click)="closeCart()"><img class="close_img" src="./assets/images/close_icon.svg" alt="Close Button"></div>
+                <div class="slide_head_order">
+                  <p class="your-order">Din beställning <span *ngIf="!emptyCarts" class="pull-right clearcart" (click)="clearCart()"><i class="fa fa-trash"></i></span></p>
+                <div class="col-md-12 text-left padd-zero" style="font-size: 12px;margin-bottom: 12px;">
+                  <div class="col-md-3" style="text-align: center;">
+                    <span style="font-size: 32px;border: 3px solid #a2151d;padding: 2px 12px;   color: #ab192f;   border-radius: 50px;">
+                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                    </span>
+                  </div>
+                  <div class="col-md-9">
+                    <span style="font-size: 15px;font-weight: 700;">{{currentAddress.company_name}}</span><br>
+                    <span>{{currentAddress.company_address}}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="order-delivered text-center" style="display:none">
+                <p>Beställ Leverans Mellan</p>
+                <p>11:00 till 13:00</p>
+              </div>
+            <div class="hole_div">
+              <div class="row" style="margin-bottom: 15px;">
+                <div class="col-md-12">
+                  <select class="form-control" id="" style="border-radius: 0px;border-color:#ddd;font-size: 1.2rem;color: #000;height: 30px;width: 30%;margin: auto;">
+                    <option>tors 10 jan.</option>
+                    <option>fre 11 jan.</option>
+                    <option>lör 12 jan.</option>
+                  </select>
+                </div>
+              </div>
+              <div  class="cart-static-height" *ngIf="!emptyCarts && showCartSec">
+                  <div *ngFor="let cartData of listCart let i=index;">
+                     <div class="cartitem">
+                        <div class="cartMinus" (click)="decreaseValue(cartData.item_id, cartData.qty,cartData.discounted_price, cartData.item_index, cartData)" id="decrease-btn"><i class="fa fa-minus" aria-hidden="true"></i></div>
+                        <div class="cartQty">{{cartData.qty}}</div>
+                        <div class="cartPlus" id="increase-btn" (click)="increaseValue(cartData.item_id, cartData.qty,cartData.discounted_price, cartData.item_index, cartData)"><i class="fa fa-plus" aria-hidden="true"></i></div>
+                        <div class="cartItemName">{{cartData.item_name}} {{itemType(cartData.size_words)}}</div>
+                        <div class="cartPrice">{{cartData.addOnPrice ? cartData.addOnPrice : cartData.qty * cartData.discounted_price}}</div>
+                        <div class="editBtn"><i class="fa fa-edit" (click)="updateToCart(cartData.item_index, cartData.item_id, (cartData.addOnPrice ? cartData.addOnPrice : (cartData.qty * cartData.discounted_price)), 'edit', cartData.sub_item, cartData.qty, cartData.size_words)"></i></div>
+                        <div class="trashBtn"><i class="fa fa-trash" (click)="deleteCart(cartData.item_index)"></i></div>
+                     </div>
+                     <div class="col-sm-12"><span class="addonItems"> {{cartData.addOnItems}}</span></div>
+                  </div>
+            </div>
+              <div class="static-height" *ngIf="!emptyCarts && !showCartSec">
+                <div class="col-md-12 padd-zero" style="margin: 5px auto;" *ngFor="let cartData of listCart let i=index;">                     
+                  <div class="col-sm-5 col-md-5 product_name">{{cartData.item_name}} {{itemType(cartData.size_words)}}</div>
+                  <div class="col-sm-3 col-md-3 dev-inc-val-div">
+                    <span class="value-button" id="decrease-btn" (click)="decreaseValue(cartData.item_id, cartData.qty,cartData.discounted_price, cartData.item_index, cartData, cartData.merchant_id)" value="Decrease Value">
+                      <i class="fa fa-minus" aria-hidden="true"></i>
+                    </span>
+                    <span>
+                      <input type="text" id="number-btn" (keypress)="omit_special_char($event)" value="{{cartData.qty}}">
+                    </span>
+                    <span class="value-button" id="increase-btn" (click)="increaseValue(cartData.item_id, cartData.qty,cartData.discounted_price, cartData.item_index, cartData, cartData.merchant_id)" value="Increase Value">
+                      <i class="fa fa-plus" aria-hidden="true"></i>
+                    </span>
+                  </div>
+                  <div class="col-sm-4 col-md-4 sub_total_amt">
+                      <span class="pull-right distance">{{cartData.addOnPrice ? cartData.addOnPrice : cartData.qty * cartData.discounted_price}}
+                         <a href="javascript:;" class="btn btn" (click)="updateToCart(cartData.item_index, cartData.item_id, (cartData.addOnPrice ? cartData.addOnPrice : (cartData.qty * cartData.discounted_price)), 'edit', cartData.sub_item, cartData.qty, cartData.size_words, cartData.merchant_id)" style="color: #7B0003;padding: 0;margin: 0 5px;font-size: 13px;">
+                            <i class="fa fa-edit"></i>
+                         </a>&nbsp;
+                         <a href="javascript:;" (click)="deleteCart(cartData.item_index)" class="btn" style="color: #7B0003;padding: 0;font-size: 13px;">
+                            <i class="fa fa-trash"></i>
+                         </a>
+                      </span>
+                   </div>
+                   <div class="col-sm-12"><span class="addonItems"> {{cartData.addOnItems}}</span></div>
+                </div>                                  
+              </div>
+              <div class="show-another-date" style="display: none;">
+                <div class="row" style="margin-bottom: 15px;">
+                  <div class="col-md-12">
+                    <select class="form-control" id="" style="border-radius: 0px;border-color:#ddd;font-size: 1.2rem;color: #000;height: 30px;width: 30%;margin: auto;">
+                      <option>tors 10 jan.</option>
+                      <option>fre 11 jan.</option>
+                      <option>lör 12 jan.</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="pull-right" style="display: none;">
+                <a href="#" class="btn btn-another-date"><span class="fa fa-plus"></span>&nbsp;Lägg till en annan datum</a>
+              </div>
+            </div>
+            <HR style="border-top: 2px solid #2B2B3F;margin: 10px auto 0;clear: both;margin-right: 10px;">
+              <div class="total_div" *ngIf="!emptyCarts">
+                  <span class="to_pay">Summa</span><span class="to_pay_amt">{{totalAmt.subtotal | round}}{{totalAmt.curr}}</span>
+               </div>
+            </div>
+            <a routerLink=""(click)="goToCheckout()" [ngClass]="showCartSec ? 'checkout_button_container' : 'btn-checkout btn-block'" *ngIf="!emptyCarts">Till kassan</a>
+          </div>           
+        </div>
+      </div>
+      <div class="sticky-cart-button-container"  *ngIf="!emptyCarts">
+          <button class="sticky-cart-button" (click)="showCart();">
+             <span class="cart-icon">
+                <a class="vendor-cart-icon ">
+                   <svg width="18px" height="26px" viewBox="0 0 18 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                   <defs>
+                      <rect id="path-1" x="0" y="4" width="18" height="22"></rect>
+                      <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="18" height="22" fill="white">
+                      <use xlink:href="#path-1"></use>
+                      </mask>
+                      <rect id="path-3" x="0" y="19" width="18" height="7"></rect>
+                      <mask id="mask-4" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="18" height="7" fill="white">
+                      <use xlink:href="#path-3"></use>
+                      </mask>
+                   </defs>
+                   <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                      <g class="svg-stroke-container" transform="translate(-23.000000, -19.000000)" stroke="#D70F64">
+                         <g transform="translate(1.000000, 0.000000)">
+                            <g transform="translate(22.000000, 19.000000)">
+                               <use id="Rectangle-2" mask="url(#mask-2)" stroke-width="2" xlink:href="#path-1"></use>
+                               <path d="M4.5,6.5 L4.5,1.49077797 C4.5,0.943586406 4.9463114,0.5 5.49754465,0.5 L12.5024554,0.5 C13.053384,0.5 13.5,0.95097518 13.5,1.49077797 L13.5,6.5" id="Path-3" stroke-linecap="round" stroke-linejoin="round"></path>
+                               <use id="Rectangle-5" mask="url(#mask-4)" stroke-width="2" xlink:href="#path-3"></use>
+                            </g>
+                         </g>
+                      </g>
+                   </g>
+                   </svg>
+                <span class="products-count"></span>
+                </a>
+             </span>
+             <span>View cart</span>
+             <span class="products-value">{{totalAmt.subtotal | round}}&nbsp;{{totalAmt.curr}}</span>
+             <span class="calcul-animation">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+             </span>
+          </button>
+       </div>
+    </div>
+ </article>
+<ngx-spinner
+	bdColor="rgba(51,51,51,0.8)"
+	size="medium"
+	color="#fff"
+	type="ball-scale-multiple">
+	<p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>

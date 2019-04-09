@@ -201,3 +201,12 @@ li.catr_icon {
     margin-top: 12px;
 
 }
+.showFixedHeader, .showScrolledHeader {
+  width: 100%;
+  position: fixed;
+  top: 0;
+}
+.close_img {
+  width: 18px;
+  margin-left: 13px;
+}

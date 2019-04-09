@@ -717,7 +717,7 @@ section.cSection.cSectionSearch {
     margin-bottom: 30px !important;
 }
 #panelpic1 {
-    content: url(../images/icon.png);
+    /* content: url(../images/icon.png); */
      float: none !important; 
     /* vertical-align: middle; */
     /* margin-right: 25px; */

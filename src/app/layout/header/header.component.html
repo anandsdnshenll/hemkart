@@ -1,4 +1,5 @@
-<nav class="navbar navbar-cont navbar-fixed-top hidden-xs showFixedHeader" *ngIf="currentRoute != '/home'" style="background-color: #fff;">
+<header>
+<nav class="navbar navbar-cont navbar-fixed-top hidden-xs showFixedHeaderdesk showFixedHeader" *ngIf="currentRoute != '/store'" style="background-color: #fff;">
   <div class="container-fluid nav-cont">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle bg_togle" data-toggle="collapse" data-target="#myNavbar">
@@ -44,8 +45,8 @@
         <li [ngClass]="{ 'cta-open': !userName }" (click)="openLoginForm()" style=" border-left: 0px !important;"><a><span class="glyphicon glyphicon-user"></span>
           <span class="logg_class" style="font-size: 1.2rem;" >{{ userName ? userName: 'Logga in' }}</span></a></li>
           <li class="catr_icon">
-            <a routerLink="merchants">      
-              <mat-icon matBadge="{{addedCart ? addedCart: ''}}" matBadgeColor="warn">add_shopping_cart</mat-icon>
+            <a href="javascript:;">
+              <mat-icon matBadge="{{addedCart ? addedCart: ''}}" (click)="goToMerchant(addedCart ? 'merchants': '')" matBadgeColor="warn">add_shopping_cart</mat-icon>
             </a>
           </li>
           <div class="dropdown-content" *ngIf="userName">
@@ -57,7 +58,7 @@
     </div>
   </div>
 </nav>
-<nav class="navbar navbar-cont navbar-fixed-top hidden-xs nav-desktop showScrolledHeader" *ngIf="currentRoute == '/home'">
+<nav class="navbar navbar-cont navbar-fixed-top hidden-xs nav-desktop showScrolledHeader" *ngIf="currentRoute == '/store'">
   <div class="container-fluid nav-cont">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle bg_togle" data-toggle="collapse" data-target="#myNavbar">
@@ -75,9 +76,9 @@
           </a>
         </li>
         <li class="catr_icon">
-            <a routerLink="merchants">      
-                <mat-icon matBadge="{{addedCart ? addedCart: ''}}" matBadgeColor="warn">add_shopping_cart</mat-icon>
-          </a>
+            <a href="javascript:;">
+                <mat-icon matBadge="{{addedCart ? addedCart: ''}}" (click)="goToMerchant(addedCart ? 'merchants': '')" matBadgeColor="warn">add_shopping_cart</mat-icon>
+              </a>
         </li>
         <div class="dropdown-content" *ngIf="userName">
           <a href="javascript:;" (click)="profile()">Mitt konto</a>
@@ -88,12 +89,9 @@
     </div>
   </div>
 </nav>
-<nav class="navbar navbar-cont navbar-fixed-top visible-xs showFixedHeader" *ngIf="currentRoute != '/home'" style="display: none">
-
+<nav class="navbar navbar-cont navbar-fixed-top visible-xs showFixedHeadermob showFixedHeader" *ngIf="currentRoute != '/store'" style="display: none">
   <div class="container-fluid nav-cont" style="padding: 0;">
-
     <div class="navbar-header">
-
       <!-- <button type="button" class="navbar-toggle bg_togle" data-toggle="collapse" data-target="#myNavbar">
 
            <span class="icon-bar icon_bg"></span>
@@ -105,45 +103,25 @@
            </button> -->
 
       <a class="navbar-brand" href="#"><img style="height: 22px;" src="./assets/images/red_logo.png"></a>
-
     </div>
-
-    <div class="nav navbar-nav navbar-left navbar-left-brand showFixedHeader" id="navbar-left-brand-mob" style="left: 15px;width: 100%;top:57px;" >
-
+    <div class="nav navbar-nav navbar-left navbar-left-brand" id="navbar-left-brand-mob" style="left: 15px;width: 100%;top:57px;" >
       <span class="del-to"> LEVERANS TILL: </span>
-
       <span class="address"> {{postalcode}} </span>
-
       <i class="fa fa-chevron-down" (click)="showPostalSearch()" style="color: #7A0003"></i>
-
       <div class="input-group" style="width: 100%;margin-top: 25px;z-index: -1;" id="locate-search-mob" *ngIf="locateSearchTab">
-
         <input type="text" value="{{postalcode}}" [(ngModel)]= "postalcode" class="form-control cSearchInput postcodeSearch" placeholder="postnummer">
-
-        <span class="input-group-addon" (click)="onGeoloc()" style="background-color: #fff;border: 1px solid #ddd;border-left: 0px;">
-
+       <span class="input-group-addon" (click)="onGeoloc()" style="background-color: #fff;border: 1px solid #ddd;border-left: 0px;">
           <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23">
-
             <g fill="none" fill-rule="evenodd">
-
               <path stroke="#7A0003" d="M11.5 22.5v-2.986l.471-.028a8.001 8.001 0 0 0 7.515-7.515l.028-.471H22.5h-2.986l-.028-.471a8.001 8.001 0 0 0-7.515-7.515l-.471-.028V.5v2.986l-.471.028a8.001 8.001 0 0 0-7.515 7.515l-.028.471H.5h2.986l.028.471a8.001 8.001 0 0 0 7.515 7.515l.471.028V22.5z"></path>
-
               <circle cx="11.5" cy="11.5" r="4" stroke="#7A0003"></circle>
-
               <circle cx="11.5" cy="11.5" r="1" fill="#7A0003"></circle>
-
             </g>
-
           </svg>
-
         </span>
-
         <span class="input-group-addon" style="border-radius: 0;background: #7A0003;padding: 15px;color: #fff;" (click)="onSearch()">
-
           <i class="fa fa-arrow-right"></i>
-
         </span>
-
         <p style="font-size: 12px;position: absolute;top: -8px;left: 42px;background: #fff;z-index: 2;" id="locate-me-mob">Skriv
           en recension</p>
       </div>
@@ -152,7 +130,6 @@
     </a> -->
     <a href="javascript:;" [ngClass]="{ 'cta-open': !userName }" (click)="openLoginForm()" class="pull-left" style="padding: 20px !important;line-height: 0;color: #7A0003;"><span class="glyphicon glyphicon-user"></span>
       <span class="logg_class" style="font-size: 1.2rem;" >{{ userName ? userName: '' }}</span>
-      
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav navbar-right dropdown">
         <div class="dropdown-content" *ngIf="userName">
@@ -162,51 +139,39 @@
           </div>
       </ul>
     </div>
-
   </a>
-
-    <a routerLink="merchants" class="pull-right" style="padding: 20px !important;line-height: 0;color: #7A0003;">
-        <mat-icon matBadge="{{addedCart ? addedCart: ''}}" matBadgeColor="warn">add_shopping_cart</mat-icon>
+    <a href="javascript:;"  class="pull-right" style="padding: 20px !important;line-height: 0;color: #7A0003;">
+      <mat-icon matBadge="{{addedCart ? addedCart: ''}}" (click)="goToMerchant(addedCart ? 'merchants': '')" matBadgeColor="warn">add_shopping_cart</mat-icon>
     </a>
     <div class="collapse navbar-collapse" id="myNavbar">
-
       <ul class="nav navbar-nav navbar-right">
-
         <li></li>
-
         <li></li>
-
       </ul>
-
     </div>
-
   </div>
-
-</nav>
-<nav class="navbar navbar-cont navbar-fixed-top visible-xs nav-mob showScrolledHeader" *ngIf="currentRoute == '/home'">
+  </nav>
+  <nav class="navbar navbar-cont navbar-fixed-top visible-xs nav-mob showScrolledHeader" *ngIf="currentRoute == '/store'">
     <div class="container-fluid nav-cont" style="padding: 0;">
-    <div class="navbar-header">         
-    <a class="navbar-brand" href="#"><img style="height: 22px;" src="./assets/images/w_logo.png"></a>           
-    </div>
-    
-    <a href="javascript:;" [ngClass]="{ 'cta-open': !userName }" class="pull-left" style="padding: 20px !important;line-height: 0;color: #ffffff;"><span class="glyphicon glyphicon-user"></span> </a>
-    <a routerLink="merchants" class="pull-right" style="padding: 20px !important;line-height: 0;">
-      <mat-icon matBadge="{{addedCart ? addedCart: ''}}" matBadgeColor="warn">add_shopping_cart</mat-icon>
-    </a>
-    <div class="collapse navbar-collapse" id="myNavbar">
-    <ul class="nav navbar-nav navbar-right">
-    <li></li>
-    <li></li>
-    </ul>
-    </div>
+      <div class="navbar-header">         
+        <a class="navbar-brand" href="#"><img style="height: 22px;" src="./assets/images/w_logo.png"></a>           
+      </div>
+      <a href="javascript:;" [ngClass]="{ 'cta-open': !userName }" class="pull-left" style="padding: 20px !important;line-height: 0;color: #ffffff;"><span class="glyphicon glyphicon-user"></span> </a>
+      <a href="javascript:;"  class="pull-right" style="padding: 20px !important;line-height: 0;">
+        <mat-icon matBadge="{{addedCart ? addedCart: ''}}" (click)="goToMerchant(addedCart ? 'merchants': '')" matBadgeColor="warn">add_shopping_cart</mat-icon>
+      </a>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav navbar-right">
+        <li></li>
+        <li></li>
+        </ul>
+      </div>
     </div>
   </nav>
-
+</header>
   <section class="toggle-form loginform forgetpwdForms" *ngIf="enableProfileForm" style="padding: 0px !important">
       <div class="formwrap px-4 profileWrap">
-        <div class="icon-close pos-a" (click)="hideRegisterForm()"><img class="close_img" src="./assets/images/59836.svg" style="
-                  width: 18px; margin-left: 13px;"
-            alt="Close Button"></div>
+        <div class="icon-close pos-a" (click)="hideRegisterForm()"><img class="close_img" src="./assets/images/close_icon.svg" alt="Close Button"></div>
         <div class="row">
           <div class="col-md-8 col-sm-6 col-xs-8">
             <p class="text-white mt-4 h3" style="margin-top: 10px">User Profile</p>
@@ -245,7 +210,7 @@
               <div class="form-group">
                 <label class="control-label col-sm-3" for="email">Mobilnummer:</label>
                 <div class="col-sm-9">
-                  <input type="number" class="form-control" formControlName="mobileNumber" id="mobileNumber" name="mobileNumber" [(ngModel)]="mobileNumber" placeholder="Mobilnummer" [ngClass]="{ 'is-invalid': profilesubmitted && profile_Form.mobileNumber.errors }" required>
+                  <input type="number" class="form-control" formControlName="mobileNumber" id="mobileNumber" name="mobileNumber" [(ngModel)]="mobileNumber" placeholder="Mobilnummer" [ngClass]="{ 'is-invalid': profilesubmitted && profile_Form.mobileNumber.errors }">
                 </div>
                 <div *ngIf="profilesubmitted && profile_Form.mobileNumber.errors" class="invalid-feedback">
                     <div *ngIf="profile_Form.mobileNumber.errors.required">Please enter a valid mobile number</div>
@@ -254,7 +219,7 @@
               <div class="form-group">
                 <label class="control-label col-sm-3" for="email">Gata:</label>
                 <div class="col-sm-9">
-                  <input type="text" class="form-control" formControlName="address" [(ngModel)]="address" name="address" id="adress" placeholder="Adress" required>
+                  <input type="text" class="form-control" formControlName="address" [(ngModel)]="address" name="address" id="adress" placeholder="Adress">
                 </div>
               </div>
               <div class="form-group">
@@ -297,9 +262,7 @@
 <!-- Forget Form -->
 <section class="toggle-form loginform forgetpwdForms" *ngIf="enableForgetForm" style="padding: 0px !important">
     <div class="formwrap px-4 forgetpwdForms">
-      <div class="icon-close pos-a" (click)="hideRegisterForm()"><img class="close_img" src="./assets/images/59836.svg" style="
-                width: 18px; margin-left: 13px;"
-          alt="Close Button"></div>
+      <div class="icon-close pos-a" (click)="hideRegisterForm()"><img class="close_img" src="./assets/images/close_icon.svg" alt="Close Button"></div>
       <div class="row">
         <div class="col-md-8 col-sm-6 col-xs-8">
           <p class="text-white mt-4 h3">Glömt lösenord?</p>
@@ -335,9 +298,7 @@
 
 <section class="toggle-form loginform" *ngIf="loginform" style="padding: 0px !important">
   <div class="formwrap px-4">
-    <div class="icon-close pos-a" (click)="hideLoginForm()"><img class="close_img" src="./assets/images/59836.svg" style="
-              width: 18px; margin-left: 13px;"
-        alt="Close Button"></div>
+    <div class="icon-close pos-a" (click)="hideLoginForm()"><img class="close_img" src="./assets/images/close_icon.svg" alt="Close Button"></div>
     <div class="row">
       <div class="col-md-6 col-sm-6 col-xs-8">
         <p class="text-white mt-4 h3">{{ userName ? userName: 'Logga in' }}</p>
@@ -389,9 +350,7 @@
 </section>
 <section class="toggle-form1 registerform" *ngIf="registerform"  style="padding: 0px !important">
   <div class="formwrap1 px-4">
-    <div class="icon-close1 pos-a" (click)="hideRegisterForm()"><img src="./assets/images/59836.svg" style="
-              width: 18px; margin-left: 13px;"
-        alt="Close Button"></div>
+    <div class="icon-close1 pos-a" (click)="hideRegisterForm()"><img src="./assets/images/close_icon.svg" alt="Close Button"></div>
     <div class="row">
       <div class="col-md-6 col-sm-6 col-xs-6">
         <p class="text-white mt-4 h3">Bli Medlem</p>
@@ -416,10 +375,12 @@
         </div>
         <div class="form-group" style="margin-bottom:0px;">
           <div class="phone_div">
-            <input type="text" formControlName="lastName"  id="phone2" name="phone" class="form-control phone_num required" 
-              required>
+            <input type="text" formControlName="lastName"  id="phone2" name="phone" class="form-control phone_num required" required>
             <div class="empty_div"></div>
             <label for="phone" class="phone_label control-label">Efternamn</label>
+            <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+              <div *ngIf="f.lastName.errors.required">Please enter a valid lasttName</div>
+          </div>
           </div>
         </div>
         <div class="form-group" style="margin-bottom:0px;">
@@ -473,35 +434,4 @@
   </div>
   <div class="toggle-bg1"></div>
 </section>
-<div class="modal fade" id="myModal" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content" style="width: 400px;   height: 339px; border-radius: 13px !important;">
-      <div class="modal-header" style="text-align: center;text-transform: uppercase;  border-bottom: 1px solid #ebebeb;    padding: 0 15px 8px;   font-weight: 700; margin-top: 13px;">
-        <button type="button" class="close" data-dismiss="modal" style="
-                  position: relative;     top: -9px;     background-color: #780300;
-                  opacity: unset !important;
-                  padding: 6px 11px;
-                  color: #ffffff;
-                  border: 1px solid #fffdfd;
-                  border-radius: 50px;">&times;</button>
-        <h4 class="modal-title">Välj din plats</h4>
-      </div>
-      <div class="modal-body">
-        <div class="col-md-6 col-sm-6 col-xs-6 left_img_div" style="    text-align: right;">
-          <img src="./assets/images/icon.png">
-        </div>
-        <div class="col-md-6 col-sm-6 col-xs-6 right_cont_div">
-          <span class="today_span">Dagens lunch!</span>
-          <span class="deliver_work_span" style="font-size: 13px !important;">Leverans vid ditt arbete</span>
-        </div>
-        <input placeholder="Välj din plats" type="text" name="city" list="cityname" style="width: 100%;    border: 1px solid #780300;    border-radius: 5px;     margin-top: 15px;">
-        <datalist id="cityname">
-          <option value="Västerås">
-          <option value="Eskilstuna">
-        </datalist>
-        <button type="button" style="float: right;margin-top: 16px;background-color: #780300;
-                  color: #ffffff;border: 1px solid #780300;padding: 10px 15px;border-radius: 5px;">lämna</button>
-      </div>
-    </div>
-  </div>
-</div>
+

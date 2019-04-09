@@ -99,9 +99,10 @@
      </div>
   </div>
 </div>
+
 <div class="container-fluid fluid-bg fluid-bg-tab restaruentTabs">
   <div class="container wrapper">
-     <div class="col-md-8 bg-marg-30" style="margin: 45px auto 30px;">
+      <div class="col-md-8 bg-marg-30" style="margin: 45px auto 30px;">
         <section class="vendor-section">
            <div class="menu__blocks-wrapper">
               <div class="menu__blocks">
@@ -109,6 +110,7 @@
                     <div class="dish-control-holder">
                        <div class="nav-holder">
                           <ul style="touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+                             <li class=""><a (click)="goback();" style="cursor: pointer; color:#780300;" class="" href="javascript:;"><i class="fa fa-arrow-left" aria-hidden="true"></i> Backa</a></li>
                              <li class="li_active active"><a class="border_bottom_class" data-toggle="tab" href="#home">meny</a></li>
                              <li><a class="border_bottom_class" data-toggle="tab" href="#menu1">Recensioner</a></li>                                              
                           </ul>
@@ -151,9 +153,9 @@
                                 </div>
                                  <div *ngFor="let details of restaurentsDetails let i=index;">
                                     <div class="dish-category-header" id="menucategoryid{{i}}" >
-                                             <div class="dish-category-title-wrapper">
-                                                   <h2 class="dish-category-title">{{details.category_name}}</h2>
-                                             </div>
+                                          <div class="dish-category-title-wrapper">
+                                             <h2 class="dish-category-title">{{details.category_name}}</h2>
+                                          </div>
                                        </div>
                                     <div class="dish-list" >
                                        <div >
@@ -199,16 +201,16 @@
 																								{{reviews.date}}
                                             </abbr></span>
                                          </div>
-                                         <div class="vendor-name vcard item">
+                                         <!-- <div class="vendor-name vcard item">
                                             <span class="fn">Mr Falafel</span>
-                                         </div>
+                                         </div> -->
                                          <div class="description">
                                             {{reviews.review}}
                                          </div>
-                                         <div class="ratings-component " style="background: #f7f7f7 !important;">
-                                            <span class="stars">
+                                         <div class="ratings-component">
+                                            <!-- <span class="stars">
                                             <img alt="" src="https://assets.foodora.com/7489233/img/icons/ic-star-half.svg?7489233">
-                                            </span>
+                                            </span> -->
                                             <span class="rating">{{reviews.rating}}</span>
                                          </div>
                                       </div>
@@ -219,34 +221,7 @@
                        </div>
                     </div>
                  </div>
-                 <!-- <div class="modal fade" id="myModal" role="dialog">
-                     <div class="modal-dialog">
-                        <div class="modal-content" style="width: 400px;   height: 339px;">
-                           <div class="modal-header" style="text-align: center;text-transform: uppercase;  border-bottom: 1px solid #ebebeb;    padding: 0 15px 8px;   font-weight: 700; margin-top: 13px;">
-                              <button type="button" class="close" data-dismiss="modal" style="position: relative;
-                                 top: -38px;
-                                 background-color: #780300;
-                                 opacity: unset !important;
-                                 padding: 6px 11px;
-                                 color: #ffffff;
-                                 border: 1px solid #fffdfd;
-                                 border-radius: 50px;">&times;</button>
-                              <h4 class="modal-title">Pre-order for Monday</h4>
-                           </div>
-                           <div class="modal-body" style="text-align: center;
-                              font-size: 15px;
-                              letter-spacing: 2px;
-                              text-shadow: 2px 2px 11px red;">
-                              <p>You are placing a pre-order for Mon, Dec 24,  6:00 PM. Would you like to continue or review the order date?</p>
-                           </div>
-                           <div class="modal-footer1" style="border-top: 1px solid #ebe7e7; padding: 15px;">
-                              <button type="button" class="check_btn_class1">Continue with checkout</button>
-                              <button type="button" class="check_btn_class2" data-dismiss="modal">Add more items</button>
-                           </div>
-                        </div>
-                     </div>
-                  </div> -->
-                 <div class="menu__bottom-info">
+                <div class="menu__bottom-info">
                     <div class="menu__footer">
                        <div class="menu-bottom-info-restaurant-description full-container">
                        </div>
@@ -261,16 +236,38 @@
            </div>
         </section>
      </div>
-     <!-- <div id="sticky-anchor"></div> -->
+     <div id="sticky-anchor" class="hidden-xs"></div>
      <div class="col-md-4 bg-marg-30" style="margin: 45px auto 30px;">
+      <div id="sticky" [ngClass]="showCartSec ? 'desktop-cart' : 'hidden-xs'">
          <section class="cart_section">
-            <div id="sticky" style="top: 155px;">
+            <div class="added_cart" style="top: 155px;">
+               <div *ngIf="showCartSec" class="icon-close pos-a" (click)="closeCart()"><img class="close_img" src="./assets/images/close_icon.svg" alt="Close Button"></div>
                <div>
+                  <div class="toggleBtn">
+                     <span class="toggleLeft">Avhämtning</span>
+                     <mat-slide-toggle [checked]="useDefaultType" (change)="changeDelieveryType($event)"></mat-slide-toggle>
+                     <span class="toggleRight">Hemkörning</span>
+                  </div>
                   <div class="slide_head_order">
                      <p class="your-order">Din beställning <span *ngIf="!emptyCarts" class="pull-right clearcart" (click)="clearCart()"><i class="fa fa-trash"></i></span></p>
-                  </div>                                    
-                  <div  class="static-height" *ngIf="!emptyCarts">
+                  </div>
+                     <div  class="cart-static-height" *ngIf="!emptyCarts && showCartSec">
+                        <div *ngFor="let cartData of listCart let i=index;">
+                           <div class="cartitem">
+                              <div class="cartMinus" (click)="decreaseValue(cartData.item_id, cartData.qty,cartData.discounted_price, cartData.item_index, cartData)" id="decrease-btn"><i class="fa fa-minus" aria-hidden="true"></i></div>
+                              <div class="cartQty">{{cartData.qty}}</div>
+                              <div class="cartPlus" id="increase-btn" (click)="increaseValue(cartData.item_id, cartData.qty,cartData.discounted_price, cartData.item_index, cartData)"><i class="fa fa-plus" aria-hidden="true"></i></div>
+                              <div class="cartItemName">{{cartData.item_name}} {{itemType(cartData.size_words)}}</div>
+                              <div class="cartPrice">{{cartData.addOnPrice ? cartData.addOnPrice : cartData.qty * cartData.discounted_price}}</div>
+                              <div class="editBtn"><i class="fa fa-edit" (click)="updateToCart(cartData.item_index, cartData.item_id, (cartData.addOnPrice ? cartData.addOnPrice : (cartData.qty * cartData.discounted_price)), 'edit', cartData.sub_item, cartData.qty, cartData.size_words)"></i></div>
+                              <div class="trashBtn"><i class="fa fa-trash" (click)="deleteCart(cartData.item_index)"></i></div>
+                           </div>
+                           <div class="col-sm-12"><span class="addonItems"> {{cartData.addOnItems}}</span></div>
+                        </div>
+                  </div>
+                  <div  class="static-height" *ngIf="!emptyCarts && !showCartSec">
                      <div class="col-sm-12 col-md-12 padd-zero" style="margin: 5px auto;" *ngFor="let cartData of listCart let i=index;">
+
                         <div class="col-sm-5 col-md-5 product_name">{{cartData.item_name}} {{itemType(cartData.size_words)}}</div>
                         <div class="col-sm-3 col-md-3 dev-inc-val-div">
                            <span class="value-button" id="decrease-btn" (click)="decreaseValue(cartData.item_id, cartData.qty,cartData.discounted_price, cartData.item_index, cartData)" value="Decrease Value">
@@ -285,10 +282,10 @@
                         </div>
                         <div class="col-sm-4 col-md-4 sub_total_amt">
                            <span class="pull-right distance">{{cartData.addOnPrice ? cartData.addOnPrice : cartData.qty * cartData.discounted_price}}
-                              <a href="javascript:;" class="btn btn" (click)="updateToCart(cartData.item_index, cartData.item_id, cartData.addOnPrice, 'edit', cartData.sub_item, cartData.qty, cartData.size_words)" style="color: #7B0003;padding: 0;margin: 0 5px;font-size: 13px;">
+                              <a href="javascript:;" class="btn btn editBtn" (click)="updateToCart(cartData.item_index, cartData.item_id, (cartData.addOnPrice ? cartData.addOnPrice : (cartData.qty * cartData.discounted_price)), 'edit', cartData.sub_item, cartData.qty, cartData.size_words)" >
                                  <i class="fa fa-edit"></i>
                               </a>&nbsp;
-                              <a href="javascript:;" (click)="deleteCart(cartData.item_index)" class="btn" style="color: #7B0003;padding: 0;font-size: 13px;">
+                              <a href="javascript:;" (click)="deleteCart(cartData.item_index)" class="btn trashBtn">
                                  <i class="fa fa-trash"></i>
                               </a>
                            </span>
@@ -300,89 +297,84 @@
                      Ingen artikel tillagd ännu.
                   </div>
                   <HR style="border-top: 2px solid #2B2B3F;margin: 10px auto 0;clear: both;margin-right: 10px;">
-                  <div class="total_div" *ngIf="!emptyCarts">
-                     <span class="to_pay">Summa</span><span class="to_pay_amt">{{totalAmt.subtotal | round}}{{totalAmt.curr}}</span>
+                  <div class="total_div cartTot" *ngIf="!emptyCarts">
+                     <span class="to_pay">Summa</span><span class="to_pay_amt">{{totalAmt.subtotal | round}} &nbsp;{{totalAmt.curr}}</span>
                   </div>
 
                   <div class="voucher_wrap" style="display: block;" *ngIf="!emptyCarts">                      
                      <input placeholder="Ange Kampanjkod här" [(ngModel)]="voucherCode" class="uk-width-1-1" style="" type="text" value="" name="voucher_code" id="voucher_code">
-                     <a href="javascript:;" (click)="applyVoucher()" class="uk-button uk-button-danger apply_voucher ">
-                        <i class="fa fa-angle-right"></i>        
+                     <a href="javascript:;" (click)="!showRemove ? applyVoucher() : removeVoucher()" class="uk-button uk-button-danger apply_voucher ">
+                           
+                        <i [ngClass]="!showRemove ? 'fa fa-angle-right' : 'fa fa-remove'" [ngStyle]="{'color':showRemove ? 'red' : '' }"></i>    
+                           
                      </a>            
                   </div>
                   <div class="bill-cont">
                      <p>Hemkörningsvillkor</p>
-                     <span>Ditt postnummer : <strong>{{postalCode}}</strong><br>
+                     <span class="orderInfo">Ditt postnummer : <strong>{{postalCode}}</strong><br>
                         ÖPPNAR INOM KORT FÖR HEMKÖRNING.<br>
                         {{terms}}
                      </span>
-                     <p>Leveranssätt</p>
-                     <mat-form-field>
+                    <!-- <p>Leveranssätt</p>
+                      <mat-form-field>
                         <mat-select [(ngModel)]="selectedOption">
                            <mat-option value="delivery" (click)="setDelievery('delivery')">Hemkörning</mat-option>
                            <mat-option value="pickup" (click)="setDelievery('pickup')">Avhämtning</mat-option>
                         </mat-select>
-                     </mat-form-field>
+                     </mat-form-field> -->
                   </div>
                </div>
-               <div class="checkoutBtn_hold" id="checkoutBtn" *ngIf="isClosed === 'Öppet'">
+               <div [ngClass]="showCartSec ? 'checkout_button_container' : 'checkoutBtn_hold'"  id="checkoutBtn" *ngIf="isClosed === 'Öppet'">
                   <a routerLink="" (click)="goToCheckout()" class="btn-checkout btn-block" *ngIf="!emptyCarts">Till kassan</a>
                </div>
                <div class="warningBtn" id="checkoutBtn" *ngIf="isClosed !== 'Öppet'">
-                  <img src="../../../assets/images/warning.png">Tyvärr, restaurangen har stängt
+                  <img src="./assets/images/warning.png">Tyvärr, restaurangen har stängt
                </div>
-               
             </div>
          </section>
+      </div>
      </div> 
+      <div class="sticky-cart-button-container"  *ngIf="!emptyCarts">
+         <button class="sticky-cart-button" (click)="showCart();">
+            <span class="cart-icon">
+               <a class="vendor-cart-icon ">
+                  <svg width="18px" height="26px" viewBox="0 0 18 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                  <defs>
+                     <rect id="path-1" x="0" y="4" width="18" height="22"></rect>
+                     <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="18" height="22" fill="white">
+                     <use xlink:href="#path-1"></use>
+                     </mask>
+                     <rect id="path-3" x="0" y="19" width="18" height="7"></rect>
+                     <mask id="mask-4" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="18" height="7" fill="white">
+                     <use xlink:href="#path-3"></use>
+                     </mask>
+                  </defs>
+                  <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                     <g class="svg-stroke-container" transform="translate(-23.000000, -19.000000)" stroke="#D70F64">
+                        <g transform="translate(1.000000, 0.000000)">
+                           <g transform="translate(22.000000, 19.000000)">
+                              <use id="Rectangle-2" mask="url(#mask-2)" stroke-width="2" xlink:href="#path-1"></use>
+                              <path d="M4.5,6.5 L4.5,1.49077797 C4.5,0.943586406 4.9463114,0.5 5.49754465,0.5 L12.5024554,0.5 C13.053384,0.5 13.5,0.95097518 13.5,1.49077797 L13.5,6.5" id="Path-3" stroke-linecap="round" stroke-linejoin="round"></path>
+                              <use id="Rectangle-5" mask="url(#mask-4)" stroke-width="2" xlink:href="#path-3"></use>
+                           </g>
+                        </g>
+                     </g>
+                  </g>
+                  </svg>
+               <span class="products-count"></span>
+               </a>
+            </span>
+            <span>View cart</span>
+            <span class="products-value">{{totalAmt.subtotal | round}}&nbsp;{{totalAmt.curr}}</span>
+            <span class="calcul-animation">
+               <span class="dot"></span>
+               <span class="dot"></span>
+               <span class="dot"></span>
+            </span>
+         </button>
+      </div>
   </div>
 </div>
-<!-- <div id="myModal12" class="modal fade" role="dialog">
-      <div class="modal-dialog  rich-description">
-            <button type="button" class="close modal-close" data-dismiss="modal" >&times;</button>
-            <div class="container">
-                <div class="box-cont" style="">
-                  <div class="img-sec-div">
-                    <img src="{{api_url}}{{productImage}}" style="">
-                    <div class="res-name-div-2 " style="position: relative; top: -50px;">
-                          <p class="produ-list-p">
-                             <span class="list-span">
-                                {{availableTypes}}
-                             </span>
-                          </p>
-                       </div>
-                  </div>
-                </div>
-              </div>
-               <div class="container">
-                <div class="col-md-12 col-sm-12" style="position: relative;  top: -50px;">
-                  <div class="col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 20px;">
-                    <div class="res-details_div">
-                      <div class="res-open-hr-div">
-                        <p class="res-open-hr-p" style="font-size: 20px; font-weight: 600;">Opening Hours</p>
-                        <p class="res-open-time-p" style="font-size: 16px; color: #7b7878;"> -->
-                          <!-- <ul class="operationInfo">
-                             <li class="blacktitle" *ngFor="let info of operationOurs let i = index">
-                                {{info.day}} :  {{info.open}} -  {{info.close}} ,
-                             </li>
-                          </ul>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-12 col-sm-12 col-xs-12">
-                    <div class="map-div">
-                      <div class="map-responsive"> -->
-                          <!-- <iframe width="100%" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=40.7127837,-74.0059413key=AIzaSyB9Mobk70l1gEyIywzPG6qH-H-odB0C8xg"></iframe> -->
-                          <!-- <iframe [src]="mapLink | safe" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe> -->
-        
-                          <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2034.856348647301!2d18.061090216193083!3d59.33535211758157!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465f9d5d880a9215%3A0x1ce501e920d173bc!2sKungsgatan+41%2C+111+56+Stockholm%2C+Sweden!5e0!3m2!1sen!2sin!4v1552120370175" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-               </div> -->
-   <!-- </div>
-</div> -->
 <ngx-spinner
 	bdColor="rgba(51,51,51,0.8)"
 	size="medium"

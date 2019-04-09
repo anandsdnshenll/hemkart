@@ -32,11 +32,45 @@
                 </div>
               </div>
           </div>
+          <div class="emptyValu" *ngIf="emptyValu">
+            {{emptyValu}}
+          </div>
+          <div class="container wrapper">
+            <div>
+                <h3>min arbetsorderhistorik</h3>
+                <div class="rTable">
+                  <div class="rTableRow">
+                    <div class="rTableHead"><strong>Item Name</strong></div>
+                    <div class="rTableHead"><strong>Visa kvitto</strong></div>
+                    <div class="rTableHead"><strong>Status</strong></div>
+                  </div>
+                  <div class="rTableRow" *ngFor="let order of workMOrderHistory let i = index;">
+                    <div class="rTableCell"><a class="viewreceipt" href="javascript:;"><i class="fa fa-calendar-o"></i> {{order.order_name}}</a></div>
+                    <div class="rTableCell"><a class="viewreceipt" href="javascript:;" (click)="getReceipt(order.order_id);"><i class="fa fa-file-text-o"></i> Visa kvitto</a></div>
+                    <div class="rTableCell warning" *ngIf="order.status == 'pending'">
+                        <i class="fa fa-refresh"></i> {{order.status}}
+                    </div>
+                    <div class="rTableCell danger" *ngIf="order.status == 'Rejected'">
+                        <i class="fa fa-times"></i> {{order.status}}
+                    </div>
+                    <div class="rTableCell success" *ngIf="order.status == 'Accepted'">
+                        <i class="fa fa-check"></i> {{order.status}}
+                    </div>
+                    <div class="rTableCell success" *ngIf="order.status == 'paid'">
+                        <i class="fa fa-check"></i> {{order.status}}
+                    </div>
+                  </div>
+                  <div class="rTableRow"  style="text-align: center" *ngIf="loading">
+                        Loading...
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="emptyValu" *ngIf="emptyWorlValu">
+            {{emptyWorlValu}}
+          </div>
     </div>
 
     
-    <div class="emptyValu" *ngIf="emptyValu">
-    
-    {{emptyValu}}
-    </div>
+
 </div>

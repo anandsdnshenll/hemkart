@@ -4,14 +4,14 @@
           <div class="col-md-12 recommended_bg_pay">
              <div class="account-div">
                    <p class="side-arrow-p" (click)="continuShop()"><span class="left-arrow-span"><i class="fa fa-chevron-left"></i></span>Fortsätt handla</p>  
-                   <p class="bike-p"><span class="font-span"><i class="fa fa-motorcycle"></i></span></p>
+                   <p class="bike-p"><span class="font-span"><img class="res_logo_side" src="./assets/images/deliver.png"></span></p>
                    <div *ngIf="stopCheckConfirmation">
                       <p class="tack-p">Tack for din bestallning!</p>
                       <p class="du-p">Du ar nu i direjtanslutning med restaurange sam<br>granskar din order och snart kommer att bekrafta den<br>och ange leveranstid. Det sker normalt inom 30<br>sekunder men kan ta ett par mintuer.</p>            
                    </div>
                    <div *ngIf="!stopCheckConfirmation" class="successOrder">
                       <p class="tack-p" style="color:#4cb95e">Thanks for your purchase!</p>
-                      <p class="du-p">Your order was confirmed at 11.06.<br>The restaurant estimates that the order will be<br>delivered within {{confirmationDetails}} minutes.</p>            
+                      <p class="du-p" *ngIf="!isWorkOrder">Your order was confirmed at {{delieveryTime}}.<br>The restaurant estimates that the order will be<br>delivered within {{confirmationDetails}} minutes.</p>            
                       <p class="du-p">NOTE: Sometimes delivery can take place earlier than<br>The stated time above.</p>   
                       <HR style="border-top: 2px solid #2B2B3F;margin: 40px auto 0;clear: both;margin-right: 10px;">
                       <p class="du-p">
@@ -22,21 +22,25 @@
              </div>            
           </div>        
        </div>
-       <div id="sticky-anchor" class="hidden-xs" ></div>
+       
+       <!-- <div id="sticky-anchor" class="hidden-xs" ></div> -->
        <div class="col-md-4 bg-marg-30">
-          <div id="sticky" class="hidden-xs order_container">
+          <div id="sticky">
              <div>
                 <div class="slide_head_order">
                    <p class="your-order">Order Details</p>
                 </div>                                    
                 <div class="slide-body_res">
-                   <p class="res-ord_list">Merchant Name&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;<span class="res-ord_list-span">{{orderInfo.merchant_name}}</span></p>
-                   <p class="res-ord_list">Restaurant phone : &nbsp;&nbsp;&nbsp;<span class="res-ord_list-span">{{merchant_phone}}</span></p>
-                   <p class="res-ord_list">Delivery Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;<span class="res-ord_list-span">{{orderInfo.delivery_type}}</span></p>
-                   <p class="res-ord_list">Payment Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;<span class="res-ord_list-span">{{orderInfo.payment_type}}</span></p>
+                   
+                   <p class="res-ord_list" *ngIf="isWorkOrder">Company Name&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;<span class="res-ord_list-span">{{orderInfo.Company_name}}</span></p>
+                   <p class="res-ord_list" *ngIf="isWorkOrder">Address&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;<span class="res-ord_list-span">{{orderInfo.Company_address}}</span></p>
+                   <p class="res-ord_list" *ngIf="!isWorkOrder">Merchant Name&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;<span class="res-ord_list-span">{{orderInfo.merchant_name}}</span></p>
+                   <p class="res-ord_list" *ngIf="!isWorkOrder">Restaurant phone : &nbsp;&nbsp;&nbsp;<span class="res-ord_list-span">{{merchant_phone}}</span></p>
+                   <p class="res-ord_list" *ngIf="!isWorkOrder">Delivery Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;<span class="res-ord_list-span">{{orderInfo.delivery_type ? orderInfo.delivery_type : '-'}}</span></p>
+                   <p class="res-ord_list">Payment Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;<span class="res-ord_list-span">{{orderInfo.payment_type ? orderInfo.payment_type: '-'}}</span></p>
                    <p class="res-ord_list">Reference # &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;<span class="res-ord_list-span">{{orderInfo.reference_no}}</span></p>
-                   <p class="res-ord_list">Deliver to&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;<span class="res-ord_list-span">{{orderInfo.delivery_instruction}}</span></p>
-                   <p class="res-ord_list">Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;<span class="res-ord_list-span">{{customerInfo.full_name}}</span></p>
+                   <p class="res-ord_list">Deliver Instruction : &nbsp;&nbsp;&nbsp;<span class="res-ord_list-span">{{orderInfo.delivery_instruction}}</span></p>
+                   <p class="res-ord_list"  *ngIf="!isWorkOrder">Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;<span class="res-ord_list-span">{{customerInfo.full_name}}</span></p>
                    <p class="res-ord_list">Contact Number &nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;<span class="res-ord_list-span">{{customerInfo.contact_phone}}</span></p>
                    <div class="col-md-12 padd-zero" style="margin: 5px auto;">
                       <div class="col-md-12 padd-zero" style="margin: 5px auto;" *ngFor="let cartData of orderItems let i=index;">
@@ -49,7 +53,7 @@
                       <div class="total_div">
                          <span class="to_pay_delsumma">DelSumma</span><span class="to_pay_amt_delsumma">{{orderTotal.subtotal}}{{orderTotal.curr}}</span>
                       </div>
-                      <div class="total_div">
+                      <div class="total_div" *ngIf="!isWorkOrder">
                          <span class="to_pay_delsumma">Hemkörningsavgift</span><span class="to_pay_amt_delsumma">{{orderTotal.delivery_charges}}{{orderTotal.curr}}</span>
                       </div>
                       <div class="total_div">

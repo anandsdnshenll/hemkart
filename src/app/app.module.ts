@@ -40,6 +40,7 @@ import {
   MatTableModule,
   MatTabsModule,
   MatFormFieldModule,
+  MatSlideToggleModule,
 } from '@angular/material';
 
 import {MatIconModule} from '@angular/material/icon'
@@ -50,6 +51,11 @@ import { KlarnainfoComponent } from './layout/klarnainfo/klarnainfo.component';
 import { PostcodemodalComponent } from './layout/postcodemodal/postcodemodal.component';
 import { OrderhistoryComponent } from './layout/orderhistory/orderhistory.component';
 import { ReceiptModalComponent } from './layout/receipt-modal/receipt-modal.component';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { WorkorderComponent } from './layout/workorder/workorder.component';
+import { SelectcityComponent } from './layout/selectcity/selectcity.component';
+import { NotfoundComponent } from './layout/notfound/notfound.component';
+import { OwlModule } from 'ngx-owl-carousel';
 
 @NgModule({
   declarations: [
@@ -73,6 +79,9 @@ import { ReceiptModalComponent } from './layout/receipt-modal/receipt-modal.comp
     PostcodemodalComponent,
     OrderhistoryComponent,
     ReceiptModalComponent,
+    WorkorderComponent,
+    SelectcityComponent,
+    NotfoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -92,11 +101,14 @@ import { ReceiptModalComponent } from './layout/receipt-modal/receipt-modal.comp
     MatIconModule,
     MatExpansionModule,
     MatBadgeModule,
+    MatSliderModule,
+    MatSlideToggleModule,
     FilterPipeModule,
     NgbModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
-    DeviceDetectorModule.forRoot()
+    DeviceDetectorModule.forRoot(),
+    OwlModule
   ],
   providers: [HeaderService],
   bootstrap: [AppComponent],
@@ -105,7 +117,8 @@ import { ReceiptModalComponent } from './layout/receipt-modal/receipt-modal.comp
     AddreviewComponent,
     InfomodalComponent,
     PostcodemodalComponent,
-    ReceiptModalComponent
+    ReceiptModalComponent,
+    SelectcityComponent
   ]
 })
 export class AppModule { }

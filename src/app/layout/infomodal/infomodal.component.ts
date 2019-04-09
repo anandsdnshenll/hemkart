@@ -10,11 +10,12 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 export class InfomodalComponent implements OnInit {
   @Input() merchantid: number;
   @Input() type: string;
+  @Input() resto_address: string;
   availableTypes: string;
   operationOurs: any = [];
   productImage: any;
   api_url: string;
-
+  
   constructor(private UsersService: UsersService, public activeModal: NgbActiveModal, ) { }
 
   ngOnInit() {

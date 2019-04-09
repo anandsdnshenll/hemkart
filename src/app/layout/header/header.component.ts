@@ -101,8 +101,8 @@ export class HeaderComponent implements OnInit {
     });
 
     this.registerForm = this.fb.group({
-      firstName: ['', Validators.required],
-      lastName: [''],
+      firstName: ['', Validators.compose([Validators.required, Validators.pattern(/^\S*$/)])],
+      lastName: ['', Validators.required],
       email: ['', Validators.compose([Validators.email, Validators.pattern(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)])],
       mobileNumber: ['', Validators.required],
       password: ['', [Validators.required]]
@@ -131,6 +131,7 @@ export class HeaderComponent implements OnInit {
     });
   }
 
+  
   loadCart() {
     this.merchantid = JSON.parse(localStorage.getItem("restaurentDetail"))[0].merchantid;
 
@@ -149,6 +150,8 @@ export class HeaderComponent implements OnInit {
   
   onSubmit() {
     this.submitted = true;
+    Object.keys(this.registerForm.controls).forEach((key) => this.registerForm.get(key).setValue(this.registerForm.get(key).value.trim()));
+    console.log("this.registerForm", this.registerForm);
     // stop here if form is invalid
     if (this.registerForm.invalid) {
         return;
@@ -157,6 +160,7 @@ export class HeaderComponent implements OnInit {
       if(data.code == 1) {
         this.user.clientLogin(this.registerForm.value).subscribe(data => {
           if(data.code == 1) {
+            setTimeout(() => this.toastr.success(data.msg), 1000);
             localStorage.setItem("user_profile", JSON.stringify(data.details.details));
             localStorage.setItem("isLoggedin", "true");
             localStorage.setItem("token", data.details.token);
@@ -175,13 +179,15 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  onLogin() {
-    this.loginsubmitted = true;
-    if (this.LoginForm.invalid) {
-        return;
-    }
-    this.loginMethod(this.LoginForm.value);
+onLogin() {
+  Object.keys(this.LoginForm.controls).forEach((key) => this.LoginForm.get(key).setValue(this.LoginForm.get(key).value.trim()));
+
+  this.loginsubmitted = true;
+  if (this.LoginForm.invalid) {
+      return;
   }
+  this.loginMethod(this.LoginForm.value);
+}
 
 loginMethod(value) {
   this.user.clientLogin(value).subscribe(data => {
@@ -218,9 +224,9 @@ loginMethod(value) {
     this.locateSearchTab = !this.locateSearchTab;
     // setTimeout(() => this.spinnerService.hide(), 1000);
     if(environment.production) {
-      window.location.href = "../hemkrtochklarts/allmerchants";
+      window.location.href = "../hemkort_angular/Restauranglista";
     } else {
-      window.location.href = "../allmerchants";
+      window.location.href = "../Restauranglista";
     }
   }
 
@@ -253,10 +259,21 @@ loginMethod(value) {
   }
 
   logout() {
-    localStorage.clear();
-    this.router.navigate(['/']);
+    this.user.logout().subscribe(data => {
+      if(data.code == 1) {
+        this.user.clearWorkCompanyid().subscribe(data => {
+        });
+        localStorage.clear();
+        this.router.navigate(['/']);
+      }
+    });
   }
-
+  
+  goToMerchant(page) {
+    if(page) {
+      this.router.navigateByUrl(page);
+    }
+  }
   // profile() {
   //   this.user.getProfile(this.userName).subscribe(data => {
   //     console.log("user profile", data);
@@ -349,6 +366,8 @@ loginMethod(value) {
 
   updateProfileForm() {
     this.profilesubmitted = true;
+    Object.keys(this.profileForm.controls).forEach((key) => this.profileForm.get(key).setValue(this.profileForm.get(key).value.trim()));
+
     if (this.profileForm.invalid) {
       return;
     }
@@ -395,7 +414,7 @@ loginMethod(value) {
       $(".showFixedHeader").hide();
       
         $(window).scroll(function () {
-          if(currentRoute == "/home") {
+          if(currentRoute == "/store") {
             // alert(currentRoute);
             if (parseInt($(window).scrollTop()) > 50) {
               $('.nav-desktop').find('a.navbar-brand').find('img').attr('src', './assets/images/red_logo.png');

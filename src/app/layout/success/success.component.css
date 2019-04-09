@@ -28,10 +28,6 @@
     width: 100%;
 } */
 
-.recieptwrapper {
-    display: flex;
-    justify-content: space-between;
-}
 .recommended_bg_pay {
     background: #fff;
     padding: 30px 30px;
@@ -81,11 +77,11 @@
         margin-bottom: 36px;
 }
 .font-span {
-    font-size: 76px;
+    /* font-size: 76px;
     color: #4cb95e;
     border: 10px dotted;
     border-radius: 100px;
-    padding: 41px;
+    padding: 41px; */
     /* margin-top: 50px; */
 }
 .tack-p {
@@ -129,7 +125,7 @@
     cursor: pointer;
 }
 .enableOrderInfo {
-    margin-top: 30px !important;
+    /* margin-top: 30px !important; */
 }
 .cash-payment.active, .klarna-payment.active , .swish-payment.active {
     border: 2px solid #d4d5d9;

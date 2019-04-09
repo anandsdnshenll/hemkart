@@ -1,30 +1,19 @@
 
-<div class="view-item-wrap">
+<div class="view-item-wrap" *ngIf="hideAll">
    <div class="modal-content">
-      <button type="button" class="close modal-close" data-dismiss="modal" (click)="closeModal()" >&times;</button>
+      <div class="modal-close-button" data-dismiss="modal" (click)="closeModal()"></div>
+<!-- 
+      <button type="button" class="close modal-close" data-dismiss="modal" (click)="closeModal()" >&times;</button> -->
       <div class="modal_header_style">
          <h4 class="modal-title">{{foodItem.item_name}} {{foodItemSize}} {{foodItemPrices}} Kr</h4>
       </div>
       <div class="col-md-12" style="margin-top: 10px; margin-bottom: 10px;">
-         <!-- <mat-radio-group aria-label="Select an option" [(ngModel)]="selectedContent"  *ngFor="let prices of foodItemDetails let i = index;">
-         <mat-radio-button value="{{prices.price}}" [checked]="prices.checked" (change)="radioChange($event, prices.increment)" > {{prices.size}} {{prices.price}} Kr <br></mat-radio-button>
-         </mat-radio-group> -->
          <span *ngFor="let prices of foodItemDetails let i = index;" class="checkbox">
             <label class="selectedSize">
                   <input type="radio" style="margin-right:10px;" value="{{prices.price}}" name="itemType" [(ngModel)]="selectedContent"  (ngModelChange)="toChangePriceBasedIncrement(i, $event)" />{{prices.size}} {{prices.price}} Kr
             </label>
          </span>
       </div>
-         <!-- <div class="col-md-12" style="margin-top: 10px; margin-bottom: 10px;">
-            <div class="col-md-8 product_name" >
-               <span style="font-size: 16px; color: #750404; margin-right: 8px;">
-                  <i class="fa fa-bullseye"></i>
-               </span>
-               <span style="font-size: 14px; font-weight: 600;">
-                  {{foodItemSize}} {{OriginalfoodItemPrices}} Kr
-               </span>
-            </div>
-         </div> -->
       <div class="col-md-12" style="margin-top: 10px; margin-bottom: 10px;display: flex;">
          <div class="col-md-4">
             <span class="ad-text">Antal</span>
@@ -44,24 +33,23 @@
                </span>
             </div>
          </div>
-      </div> {{disableAddOnItems}}
-      <div *ngIf="!disableAddOnItems">
+      </div>
+      <!-- <div *ngIf="!disableAddOnItems">
          <div class="modal-footer" style="padding:12px !important;">
             <div class="col-sm-12 col-md-12" style="padding: 0px;">
                <div class="col-sm-12 col-md-12" style="margin-top: 8px;">
-                  <button class="coner_btn2 addto_crt" [disabled]="!enableButton"  (click)="addToCartnew(foodItemPrices, action)" > {{action=='edit'? 'Uppdatera kundvagn':'Lagg till i kundvagn'}}</button>
+                  <button class="coner_btn2 addto_crt" [disabled]="!enableButton"  (click)="addToCartnew(foodItemPrices, action)" > {{action=='edit'? 'Uppdatera kundvagn':'Lagg till i kundvagn'}} 123</button>
                </div>
             </div>
          </div>
-      </div>
-      <div *ngIf="disableAddOnItems">
-         <div class="dish-category-header" id="menu__category-id-12116">
+      </div> -->
+         <div class="dish-category-header" id="menu__category-id-12116" *ngIf="disableAddOnItems">
             <div class="dish-category-title-wrapper">
                <h2 class="dish-category-title">Ingredienser</h2>
             </div>
          </div>
          <form #checkboxForm="ngForm" role="form" data-toggle="validator">
-            <div class="add_div" style="padding: 0 15px;">
+            <div class="add_div" style="padding: 0 15px;" *ngIf="disableAddOnItems">
                <div class="uppgradera_div section-addon-wrap" *ngFor="let subCat of foodItem.addon_item let i=index;">
                   <p style="font-size: 17px; font-weight: 600; margin-bottom: 5px;background: #e9ecef;">{{subCat.subcat_name}}</p>
                   <ul>
@@ -83,8 +71,8 @@
                   </ul> 
                </div>
 
-               <div *ngIf="is_default_addon_item && default_addon_item && default_addon_item.length>0">
-                  <div class="uppgradera_div extra_cart_div" *ngFor="let subCat of default_addon_item let i=index;">
+               <div *ngIf="is_default_addon_item && defaultSelectedOnItems">
+                  <div class="uppgradera_div extra_cart_div">
                      <div class="accordion md-accordion" id="accordion" role="tablist" aria-multiselectable="true">
                            <!-- Accordion card -->
                         <div class="card">
@@ -101,7 +89,7 @@
                                  <ul>
                                     <li style="list-style: none !important" *ngFor="let subItems of defaultSelectedOnItems let i=index;">
                                        <label class="checkbox-box">
-                                          <input type="checkbox" name="filter-quick" id="has_discount" [checked]="subItems.checked1" (change)="addExtraItems(subItems, subItems.price,i, $event, subCat)">
+                                          <input type="checkbox" name="filter-quick" id="has_discount" [checked]="subItems.checked1" (change)="addExtraItems(subItems, subItems.price,i, $event)">
                                              <span class="checkbox-element" style=" margin-left: 6px !important">
                                                 <i class="checkmark">
                                                    <svg xmlns="http://www.w3.org/2000/svg" width="8" height="6" viewBox="0 0 8 6">
@@ -123,7 +111,7 @@
                   </div>
                </div>
             </div>
-            <div class="modal-footer" style="padding:12px !important;">
+            <div class="modal-footer" style="padding:12px !important;" [ngStyle]="{'position':disableAddOnItems ? 'relative' : 'unset' }">
                <div class="col-sm-12 col-md-12" style="padding: 0px;">
                   <div class="col-sm-12 col-md-12" style="margin-top: 8px;">
                      <!-- <input type="submit" class="coner_btn2" value="Uppdatera kundvagn"> -->
@@ -137,6 +125,5 @@
                </div>
             </div>
          </form>
-      </div>
    </div>
 </div>

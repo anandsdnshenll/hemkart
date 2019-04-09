@@ -33,14 +33,17 @@
 			        "src/assets/css/order_list.css",
 			        "src/assets/css/b2b.css",
               "src/assets/css/slide-out-form.css",
-              "node_modules/ngx-toastr/toastr.css"
-            ],
+              "node_modules/ngx-toastr/toastr.css",
+              "./node_modules/owl.carousel/dist/assets/owl.carousel.css",
+              "./node_modules/owl.carousel/dist/assets/owl.theme.default.css"            ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
               "src/assets/js/slide-out-form.js",
               "src/assets/js/custom.js",
               "src/assets/js/slick.js",
-              "node_modules/bootstrap/dist/js/bootstrap.min.js"             
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "./node_modules/jquery/dist/jquery.js",
+              "./node_modules/owl.carousel/dist/owl.carousel.js"       
             ]
           },
           "configurations": {

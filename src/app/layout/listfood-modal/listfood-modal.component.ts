@@ -52,13 +52,18 @@ export class ListfoodModal implements OnInit {
   enableButton = true;
   disableAddOnItems = true;
   selectedCategory: any = [];
+  hideAll = true;
 
   constructor(public activeModal: NgbActiveModal, private UsersService: UsersService, private toastr: ToastrService,) { 
+
   }
 
   ngOnInit() {
      //console.log("item id***", this.itemId);
-
+     if(this.action == 'add' && this.isownpizza == "false" && this.issubMenu == "false") { 
+       $(".modal-content").addClass("hide");
+      //  this.hideAll = false;
+     }
   }
 
   ngAfterViewInit() {
@@ -71,11 +76,12 @@ export class ListfoodModal implements OnInit {
   }
 
   callFoodItem(priceIndex) {
+    console.log("cart items");
+
     this.UsersService.GetFoodItem(this.itemId, this.merchantid).subscribe(data => {
       if(data.details) {
         this.item_id = data.details[0].item_id;
         this.foodItem = data.details[0];
-        console.log("data.details[0].addon_item[0]",data.details[0].addon_item);
         this.foodItemDetails = data.details[0].prices;
         // this.foodIncrement = this.foodItemDetails[priceIndex].increment;
         // this.initialPrice = data.details[0].prices[priceIndex];
@@ -94,11 +100,14 @@ export class ListfoodModal implements OnInit {
         if(!data.details[0].addon_item && this.action == 'edit') {
           this.disableAddOnItems = false;
           this.selectedContent = this.foodItemDetails[priceIndex].price;
+          this.foodItemSize = this.foodItemDetails[priceIndex].size;
+
           this.foodItemPrices = this.itemPrice;
           this.OriginalfoodItemPrices = parseInt(this.foodItemDetails[priceIndex].price);
           //this.addToCartnew(this.foodItemDetails[priceIndex].price);
           return false;
         }
+
         this.disableAddOnItems = true;
         this.addOnItems = data.details[0].addon_item[0].sub_item;
         this.addOnsub_itemItems = data.details[0].addon_item[0].sub_item;
@@ -128,12 +137,10 @@ export class ListfoodModal implements OnInit {
   }
 
   getFoodItemDetails() {
-    console.log("getFoodItemDetails", this.cartSubItems);
     this.seletedAddOnItems = [];
     this.defaultSelectedOnItems = [];
     this.alreadydefaultSelectedOnItems = [];
-    if(this.cartSubItems) {
-      console.log("ediiiitttt");
+    if(this.cartSubItems && this.default_addon_item) {
       this.callEditItems(this.default_addon_item, this.default_addon_item[0].sub_item);
     } else {
       if(this.default_addon_item) {
@@ -174,6 +181,46 @@ export class ListfoodModal implements OnInit {
           } //End if
         }
       } else {
+        if(this.cartSubItems) {
+          if(this.defaultSelectedOnItems.length>0) {
+            this.is_default_addon_item = true;
+          }
+          console.log("cartSubItems", this.cartSubItems);
+          for (var i = 0; i < this.addOnItems.length; i++) {
+            var ismatch = false; // we haven't found it yet
+            //console.log("increment ===>", increment, "this.addOnItems", this.addOnItems, "this.defaultaddOnItems", this.defaultaddOnItems);
+            for (var j = 0; j < this.cartSubItems.length; j++) {
+              if ((this.addOnItems[i].sub_item_id == this.cartSubItems[j].addon_id) && this.cartSubItems[j].extra) {
+                // we have found this.addOnItems[i]] in this.defaultaddOnItems, so we can stop searching
+                console.log("add on id", this.cartSubItems[j].addon_name);
+                ismatch = true;
+                this.addOnItems[i].defaultchecked = false; //  checkbox status true
+                this.addOnItems[i].checked = true; //  checkbox status true
+                this.seletedAddOnItems.push(this.addOnItems[i]);
+                if(this.cartSubItems[j].addon_name.includes('Extra')) {
+                  this.addOnItems[i].checked1 = true;
+                  this.defaultSelectedOnItems.push(this.addOnItems[i]);
+                } else {
+                  this.addOnItems[i].checked1 = false;
+                  this.defaultSelectedOnItems.push(this.addOnItems[i]);
+                }
+                break;
+              }else {
+                this.addOnItems[i].defaultchecked = false; //  checkbox status true
+                this.addOnItems[i].checked = false; //  checkbox status true
+                this.seletedAddOnItems.push(this.addOnItems[i]);
+              }
+
+            }
+          }
+          this.defaultSelectedOnItems = _.uniq(this.defaultSelectedOnItems, function (item) {
+            return item;
+          });
+          this.seletedAddOnItems = _.uniq(this.seletedAddOnItems, function (item) {
+            return item;
+          });
+          return false;
+        }
         this.is_default_addon_item = false;
         for (var i = 0; i < this.addOnItems.length; i++) {
           var ismatch = false; // we haven't found it yet
@@ -184,14 +231,15 @@ export class ListfoodModal implements OnInit {
           }
           this.addOnItems[i].checked = false; 
           this.seletedAddOnItems.push(this.addOnItems[i]);
-          break;
+        //  break;
         }
       }
     }
     if(this.action == 'add' && this.isownpizza == "false" && this.issubMenu == "false") { 
-        this.addTocart("add");
+      this.disableAddOnItems = false;
+      this.addTocart("add");
     }
-    if(this.action == 'edit') { 
+    if(this.action == 'edit') {
       this.disableAddOnItems = true;
       this.selectedContent = this.foodItemDetails[0].price;
       this.foodItemPrices = this.itemPrice;
@@ -209,14 +257,10 @@ export class ListfoodModal implements OnInit {
   }
 
   callEditItems(default_addon_item, defaultaddOnItems){
-    console.log("callEditItems===>");
-
     if(default_addon_item) {
       this.is_default_addon_item = true;
       for (var i = 0; i < this.addOnItems.length; i++) {
         var ismatch = false; // we haven't found it yet
-        console.log("out side", this.addOnItems[i].sub_item_id);
-
         for (var j = 0; j < defaultaddOnItems.length; j++) {
           
           if (this.addOnItems[i].sub_item_id == defaultaddOnItems[j].sub_item_id) {
@@ -255,7 +299,7 @@ export class ListfoodModal implements OnInit {
               }
               if(!this.cartSubItems[ii].default && this.cartSubItems[ii].extra && !this.cartSubItems[ii].removed) {
                 if(this.alreadydefaultSelectedOnItems[j].sub_item_id == this.cartSubItems[ii].addon_id) {
-                  this.defaultSelectedOnItems[j].checked1 = true;
+                  defaultaddOnItems[j].checked1 = true;
                 }
               }
             }
@@ -300,8 +344,6 @@ export class ListfoodModal implements OnInit {
         } //End if
       }
     } else {
-      console.log("addOnItems===>", this.addOnItems[i].sub_item_id);
-
       this.is_default_addon_item = false;
       for (var i = 0; i < this.addOnItems.length; i++) {
 
@@ -327,14 +369,14 @@ export class ListfoodModal implements OnInit {
     if(event.target.checked) {
       var chekedItems = this.getChekedItems() + 1;
       this.checkAddedItems(subCat, chekedItems, index);
-        this.seletedAddOnItems[index].checked = true;;
+        this.seletedAddOnItems[index].checked = true;
+       // console.log(subItem)
+
         if(!this.seletedAddOnItems[index].defaultchecked){
          // this.foodIncrement
-          //  console.log(this.qty)
           this.foodItemPrices = +this.foodItemPrices + (parseInt(this.seletedAddOnItems[index]['price']) * this.qty);
         }
         if (this.seletedAddOnItems[index].sub_item_id == subItem.sub_item_id) {
-          //console.log("this.cartSubItems", this.cartSubItems);
 
           var selectedVariant = _.find(this.cartSubItems, function (item) { return (item.addon_id == subItem.sub_item_id && item.addon_name.includes("Extra")); });
           if(selectedVariant){
@@ -342,6 +384,9 @@ export class ListfoodModal implements OnInit {
             this.defaultSelectedOnItems.push(subItem);
           } else {
             this.defaultSelectedOnItems.push(subItem);
+          }
+          if(this.defaultSelectedOnItems.length > 0) {
+            this.is_default_addon_item = true;
           }
 
         }else {
@@ -375,10 +420,14 @@ export class ListfoodModal implements OnInit {
   }
 
 
-  addExtraItems(subItem, price, index, event, subCat) {
+  addExtraItems(subItem, price, index, event) {
+    // console.log("subCat", subCat)
+    // console.log("default_addon_item",)
     if(event.target.checked) {
-      var chekedItems = this.getChekedItems() + 1;
-      this.checkAddedItems(subCat, chekedItems, index);
+      // var chekedItems = this.getChekedItems() + 1;
+      // if(this.default_addon_item_bk) {
+      //   this.checkAddedItems(this.default_addon_item_bk, chekedItems, index);
+      // }
       this.defaultSelectedOnItems[index].checked1 = true;
       for (var j = 0; j < this.defaultSelectedOnItems.length; j++) {
         if (this.defaultSelectedOnItems[j] && (this.defaultSelectedOnItems[j].sub_item_id == subItem.sub_item_id)) {
@@ -387,8 +436,10 @@ export class ListfoodModal implements OnInit {
         }
       }
     } else {
-      var chekedItems = this.getChekedItems() - 1;
-      this.checkAddedItems(subCat, chekedItems, index);
+      // var chekedItems = this.getChekedItems() - 1;
+      // if(this.default_addon_item_bk) {
+      //   this.checkAddedItems(this.default_addon_item_bk, chekedItems, index);
+      // }      
       this.defaultSelectedOnItems[index].checked1 = false;
       for (var j = 0; j < this.defaultSelectedOnItems.length; j++) {
         if (this.defaultSelectedOnItems[j] && (this.defaultSelectedOnItems[j].sub_item_id == subItem.sub_item_id)) {
@@ -401,7 +452,7 @@ export class ListfoodModal implements OnInit {
 
 
   checkAddedItems(subCat, chekedItems, index) {
-    if(subCat.multi_option == "custom") {
+    if(subCat && subCat.multi_option == "custom") {
       if(chekedItems > subCat.multi_option_val) {
         setTimeout(() => this.toastr.error('Tyvärr, du kan bara välja '+subCat.multi_option_val+' Lägg till'), 1000);
         this.seletedAddOnItems[index].checked = false;
@@ -416,7 +467,7 @@ export class ListfoodModal implements OnInit {
         this.enableButton = true;
       }
     }
-    if(subCat.multi_option == "one") {
+    if(subCat && subCat.multi_option == "one") {
       if(chekedItems>1) {
         setTimeout(() => this.toastr.error('Tyvärr, du kan bara välja 1 Lägg till'), 1000);
         this.seletedAddOnItems[index].checked = false;
@@ -445,7 +496,7 @@ export class ListfoodModal implements OnInit {
   }
 
   addToCartnew (price, action) {
-    this.UsersService.addtoCart(this.item_id, this.merchantid, this.OriginalfoodItemPrices, this.qty, action, this.item_index).subscribe(data => {
+    this.UsersService.addtoCart(this.item_id, this.merchantid, this.OriginalfoodItemPrices, this.qty, action, this.item_index, this.foodItemSize).subscribe(data => {
       if(data.code == 1) {
         this.activeModal.close('Modal Closed');
       } else {
@@ -526,7 +577,6 @@ export class ListfoodModal implements OnInit {
     }
     cartItems = addedItems + addedNewItems + defaultaddedItems + removeDefaultItems;
     cartItems = cartItems.replace(/&&/g,"&");
-    
     this.UsersService.addtoCartAddon(this.item_index, action, this.item_id, this.merchantid, cartItems, this.OriginalfoodItemPrices, this.foodItemSize, this.qty).subscribe(data => {
       // console.log("after cart added*****", data);
       if(data) {
@@ -644,6 +694,7 @@ export class ListfoodModal implements OnInit {
     return (seletedAddOnItemsAmt + defaultSelectedOnItemsAmt) - alreadyDefaultItemsAmt;
 
   }
+
   closeModal() {
     this.activeModal.close('Modal Closed');
   }

@@ -1048,7 +1048,7 @@ hr {
 	transition: transform 0.3s ease-out;
 
 	transition: transform 0.3s ease-out, -webkit-transform 0.3s ease-out;
-	top: 18% !important;
+	top: 25% !important;
 
 }
 
@@ -1084,21 +1084,17 @@ hr {
 
 }
 
-
-
 .modal-content {
 
 	position: relative;
 
 	background-color: #fff;
 
-	border: 1px solid #999;
+	border: 1px solid #ffffff;
 
-	border: 1px solid rgba(0, 0, 0, 0.2);
+	border-radius: 0px;
 
-	border-radius: 6px;
-
-	box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 2px 28px 0 rgba(0,0,0,0.12);
 
 	background-clip: padding-box;
 
@@ -1130,7 +1126,7 @@ hr {
 
 .modal-backdrop.fade {
 
-	opacity: 0;
+	opacity: 0.5;
 
 	filter: alpha(opacity=0)
 
@@ -1292,7 +1288,8 @@ hr {
 
 	.modal-content {
 
-		box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5)
+		box-shadow: 0 2px 28px 0 rgba(0,0,0,0.12);
+
 
 	}
 
@@ -2698,9 +2695,9 @@ color: #fff;
 
 .button-secondary--selected.charity__select-button:focus:active {
 
-	color: #C60D5C;
+	color: #780300;
 
-	border-color: #C60D5C;
+	border-color: #780300;
 
 	background-color: transparent
 
@@ -4854,9 +4851,9 @@ input:checked+.checkbox-element::after {
 
 .button-toggle:focus {
 
-	color: #C60D5C;
+	color: #780300;
 
-	border-color: #C60D5C;
+	border-color: #780300;
 
 	background-color: transparent
 
@@ -5260,9 +5257,9 @@ button:focus {
 
 .button-secondary:focus {
 
-	color: #C60D5C;
+	color: #780300;
 
-	border-color: #C60D5C;
+	border-color: #780300;
 
 	background-color: transparent
 
@@ -5316,9 +5313,9 @@ button:focus {
 
 .button-secondary--no-hover:focus {
 
-	color: #C60D5C;
+	color: #780300;
 
-	border-color: #C60D5C;
+	border-color: #780300;
 
 	background-color: transparent
 
@@ -6118,7 +6115,7 @@ a:focus,
 
 .link:focus {
 
-	color: #C60D5C;
+	color: #780300;
 
 	text-decoration: none
 
@@ -8768,9 +8765,9 @@ ul.dotted li:before {
 
 .lane-component .nav-scroller:focus {
 
-	background-color: #C60D5C;
+	background-color: #780300;
 
-	border-color: #C60D5C;
+	border-color: #780300;
 
 	color: #fff
 
@@ -16461,12 +16458,12 @@ ul.dotted li:before {
 
 
 .modal-dialog {
-
+/* 
 	width: 100%;
 
-	max-width: 100%;
+	 max-width: 100%; 
 
-	margin: 0
+	margin: 0 */
 
 }
 
@@ -16474,13 +16471,13 @@ ul.dotted li:before {
 
 @media (min-width: 480px) {
 
-	.modal-dialog {
+	 .modal-dialog {
 
 		margin: 70px auto 0;
 
-		width: 400px
+		/* width: 400px */
 
-	}
+	} 
 
 }
 
@@ -16520,7 +16517,7 @@ ul.dotted li:before {
 
 		transform: translateY(70px);
 
-		box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.08)
+		/* box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.08) */
 
 	}
 
@@ -16536,7 +16533,7 @@ ul.dotted li:before {
 
 	right: 4px;
 
-	top: 2px;
+	top: -15px;
 
 	width: 31px;
 
@@ -19838,9 +19835,9 @@ ul.dotted li:before {
 
 .past-order-list .reorder-button:focus {
 
-	color: #C60D5C;
+	color: #780300;
 
-	border-color: #C60D5C;
+	border-color: #780300;
 
 	background-color: transparent
 
@@ -23712,9 +23709,9 @@ ul.dotted li:before {
 
 .other-cuisines .button-secondary--selected.charity__select-button:focus:active {
 
-	color: #C60D5C;
+	color: #780300;
 
-	border-color: #C60D5C;
+	border-color: #780300;
 
 	background-color: transparent
 
@@ -27786,7 +27783,7 @@ td.summary__item__name:active,
 
 td.summary__item__name:focus {
 
-	color: #C60D5C;
+	color: #780300;
 
 	text-decoration: none
 
@@ -30530,7 +30527,7 @@ tr.summary__item__row_mobile .summary__item__icon i.summary__item__icon__disable
 
 .modal-close-button {
 
-	/* background-image: url(../../img/icons/ic-modal-close.svg); */
+	background-image: url(../images/modal-close.svg);
 
 	background-repeat: no-repeat
 
@@ -33660,4 +33657,7 @@ ul.vendor-list li:hover li{
  }
 
  
+ .modal-content {
+	box-shadow : none;
+ }
 /* End Product Page CSS */

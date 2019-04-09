@@ -1,40 +1,56 @@
 <div class="modal-content">
-    <button type="button" class="close modal-close" data-dismiss="modal" (click)="closeModal()" >&times;</button>
-    <div class="container">
+    <div class="modal-close-button" data-dismiss="modal" (click)="closeModal()"></div>
+    <!-- <button type="button" class="close modal-close" data-dismiss="modal" (click)="closeModal()" ></button> -->
+    <!-- <div class="container">
         <div class="box-cont" style="">
           <div class="img-sec-div">
             <img src="{{api_url}}{{productImage}}">
             <div class="res-name-div-2 " style="position: relative; top: -50px;">
                   <p class="produ-list-p">
                      <span class="list-span">
-                        {{availableTypes}}
+                        {{availableTypes}}                        
                      </span>
                   </p>
                </div>
           </div>
-
-          <!-- <div class="avail-div" style="position: relative; top: -40px;">
-            <p style="font-size: 18px; color: #7b7878;">Available For Preorder Friday 10:30 - 18:00</p>
-          </div> -->
         </div>
-      </div>
-       <div class="container">
+      </div> -->
+       <div class="container modal-container">
         <div class="col-md-12 col-sm-12" style="position: relative;  top: -50px;">
-          <div class="col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 20px;padding: 0;">
+          <div class="col-md-6 col-sm-6 col-xs-12" style="margin-bottom: 20px;padding: 0;">
             <div class="res-details_div">
               <div class="res-open-hr-div">
-                <p class="res-open-hr-p" style="font-size: 20px; font-weight: 600;">Opening Hours</p>
+                <p class="res-open-hr-p" style="font-size: 20px; font-weight: 600;">Hemkörning tider</p>
                 <!-- <p class="res-open-time-p" style="font-size: 16px; color: #7b7878;"> -->
                   <ul class="operationInfo">
                      <li class="blacktitle" *ngFor="let info of operationOurs let i = index">
-                        {{info.day}} :  {{info.open}} -  {{info.close}} ,
-                     </li>
+                      <p style="width:70px;display: inline-block;">{{info.day}}</p> :  {{info.open}} -  {{info.close}}
+                    </li>
+                  </ul>
+              </div>
+              <div class="res-open-hr-div">
+                <p class="res-open-hr-p" style="font-size: 20px; font-weight: 600;">Address</p>
+                <!-- <p class="res-open-time-p" style="font-size: 16px; color: #7b7878;"> -->
+                  <ul class="operationInfo">
+                    {{resto_address}}
                   </ul>
               </div>
               <!-- <div class="res-address" style="margin-top: 15px;">
                 <p class="ad-p" style="font-size: 20px; font-weight: 600;">Address</p>
               <p class="res-address-p" style="font-size: 16px; color: #7b7878;">Kungsgatan 41,11156 Stockholm</p> 
               </div> -->
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-6 col-xs-12" style="margin-bottom: 20px;padding: 0;">
+            <div class="img-sec-div">
+              <img src="{{api_url}}{{productImage}}">
+              <div class="res-name-div-2 " style="position: relative; top: -50px;">
+                    <p class="produ-list-p">
+                      <span class="list-span">
+                          {{availableTypes}}                        
+                      </span>
+                    </p>
+                </div>
             </div>
           </div>
           <div class="col-md-12 col-sm-12 col-xs-12">

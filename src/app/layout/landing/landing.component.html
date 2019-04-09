@@ -6,20 +6,22 @@
       </div>
       <div class="btn_div_hem">
         <div class="col-md-12 col-sm-12 hhclass">
-          <span class="home_btn_cont"  routerLink="/home">
+          <span class="home_btn_cont"  routerLink="/store">
             <i class="fa fa-home" aria-hidden="true"></i>&nbsp;Hemleverans
           </span>
-          <span class="home_btn_cont">
+          <span class="home_btn_cont"  routerLink="/workorder">
             <i class="fa fa-building" aria-hidden="true"></i>&nbsp;Arbetsleverans
           </span>
         </div>
         <div class="hclass">
           <div class="col-xs-12" style="margin-bottom: 20px;">
-            <div class="home_btn_cont_new" routerLink="" (click)="homePage()">
+            <div class="home_btn_cont_new" routerLink="" (click)="homePage('store')">
               <i class="fa fa-home" aria-hidden="true"></i>&nbsp;Hemleverans</div>
           </div>
           <div class="col-xs-12">
-            <div class="home_btn_cont_new"><i class="fa fa-building" aria-hidden="true"></i>&nbsp;Arbetsleverans</div>
+            <div class="home_btn_cont_new" (click)="homePage('workorder')">
+              <i class="fa fa-building" aria-hidden="true"></i>&nbsp;Arbetsleverans
+            </div>
           </div>
         </div>
       </div>

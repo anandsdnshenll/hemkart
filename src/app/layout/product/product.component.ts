@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Router, Route, ActivatedRoute } from '@angular/router';
@@ -7,6 +7,7 @@ import * as $ from 'jquery';
 import { environment } from 'src/environments/environment';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { DomSanitizer } from '@angular/platform-browser';
+import * as _ from 'underscore';
 
 declare var $: any;
 @Component({
@@ -36,6 +37,80 @@ export class ProductComponent implements OnInit {
   Image: string;
   enableBanner = true;
   bannersList: any = [];
+  selectedContent = 0;
+  filteredList: any = [];
+  selectedVal: any = [];
+
+carouselOptions = {
+    margin: 25,
+    nav: true,
+    dots: false,
+    arrows: false,
+    slidesToShow: 6,
+    autoplay: true,
+    autoplaySpeed: 1500,
+    responsiveClass: true,
+    slidesToScroll: 1,
+    responsive: {
+      0: {
+        items: 1,
+        nav: true
+      },
+      600: {
+        items: 1,
+        nav: true
+      },
+      1000: {
+        items: 6,
+        nav: true,
+        loop: false
+      },
+      1500: {
+        items: 6,
+        nav: true,
+        loop: false
+      }
+    }
+  }
+ 
+  images = [
+    {
+      text: "Everfresh Flowers",
+      image: "https://freakyjolly.com/demo/jquery/PreloadJS/images/1.jpg"
+    },
+    {
+      text: "Festive Deer",
+      image: "https://freakyjolly.com/demo/jquery/PreloadJS/images/2.jpg"
+    },
+    {
+      text: "Morning Greens",
+      image: "https://freakyjolly.com/demo/jquery/PreloadJS/images/3.jpg"
+    },
+    {
+      text: "Bunch of Love",
+      image: "https://freakyjolly.com/demo/jquery/PreloadJS/images/4.jpg"
+    },
+    {
+      text: "Blue Clear",
+      image: "https://freakyjolly.com/demo/jquery/PreloadJS/images/5.jpg"
+    },
+    {
+      text: "Evening Clouds",
+      image: "https://freakyjolly.com/demo/jquery/PreloadJS/images/7.jpg"
+    },
+    {
+      text: "Fontains in Shadows",
+      image: "https://freakyjolly.com/demo/jquery/PreloadJS/images/8.jpg"
+    },
+    {
+      text: "Kites in the Sky",
+      image: "https://freakyjolly.com/demo/jquery/PreloadJS/images/9.jpg"
+    },
+    {
+      text: "Sun Streak",
+      image: "https://freakyjolly.com/demo/jquery/PreloadJS/images/10.jpg"
+    }
+  ]
 
   constructor(
     private fb: FormBuilder,
@@ -84,6 +159,7 @@ export class ProductComponent implements OnInit {
   // }
 
   ngOnInit() {
+    localStorage.setItem("isWorkorder","false")
     this.getBanners();
     this.spinner.show();
     this.users.getArea(this.area).subscribe(data => {
@@ -102,43 +178,108 @@ export class ProductComponent implements OnInit {
   }
 
   
-  filterItem(event){
-    if(event.target.value && event.keyCode == 13){
+  filterItem(searchString : string){
+    if(searchString){
       this.spinner.show();
-      event.target.value = event.target.value.toString().toLowerCase();
+      searchString = searchString.toString().toLowerCase();
       if(this.foodFilteredItems && this.foodFilteredItems.length>0) {
         this.areaRestaurents = this.foodFilteredItems;
       }
-      this.filteredItems = this.areaRestaurents = Object.assign([], this.areaRestaurents).filter(
-      category => category.restaurant_name.toLowerCase().includes(event.target.value)
-      );
+      if(this.areaRestaurents.length == 0) {
+        this.areaRestaurents = this.lists.list
+        this.filteredItems = this.areaRestaurents = Object.assign([], this.areaRestaurents).filter(
+          category => category.resto_cuisine1.toLowerCase().includes(searchString)
+        );
+      }else {
+        this.filteredItems = this.areaRestaurents = Object.assign([], this.areaRestaurents).filter(
+          category => category.resto_cuisine1.toLowerCase().includes(searchString)
+        );
+      }
       setTimeout(() => this.spinner.hide(),200);
     } else {
       this.areaRestaurents = this.lists.list;
     }
   }
 
+
+  sortByFilter() {
+    this.areaRestaurents = this.lists.list;
+    if(this.selectedContent == 1) {
+      this.areaRestaurents = _.sortBy(this.areaRestaurents, function(result) { return -result.popularity; });
+    } else {
+      this.areaRestaurents = _.sortBy(this.areaRestaurents, function(result) { return -result.rating_average; });
+    }
+    this.areaRestaurents = _.uniq(this.areaRestaurents, function (item) {
+      return item;
+    });
+    this.divShowHide = !this.divShowHide;
+  }
+
   setZipCode(postalCode) {
     this.users.setZipcode(postalCode).subscribe(data => {
-  });
-}
+    });
+  }
 
-  checkValue(value) {
-    //value = "Casablanca kolgrillsbar";
-    if(value){
-      value = value.toString().toLowerCase();
-      if(this.filteredItems && this.filteredItems.length>0) {
-        this.areaRestaurents = this.filteredItems;
+  checkValue(isChecked, searchString) {
+  //  event.stopPropagation();
+    if(isChecked) {
+
+      var data = [];
+      // this.areaRestaurents = [];
+      this.selectedVal.push(searchString.toLowerCase())
+      var aa = ''
+      for (var i = 0; i < this.selectedVal.length; i++) {
+        aa = this.selectedVal[i];
+        data = _.filter(this.lists.list, function(person) {
+          return person.resto_cuisine1.toLowerCase().includes(aa);
+        });
       }
-      // this.checkedItems.push({resto_cuisine1: value});
-      // console.log("this.checkedItems",this.checkedItems);
-      // this.checkedItems
-      this.foodFilteredItems = this.areaRestaurents = Object.assign([], this.areaRestaurents).filter(
-        category => category.resto_cuisine1.toLowerCase().includes(value)
-      );
-    } else {
-      this.areaRestaurents = this.lists.list;
+      for (var i = 0; i < data.length; i++) {
+        this.filteredList.push(data[i]);
+      }
+      this.areaRestaurents = this.filteredList;
+    }else {
+      var data = [];
+      this.filteredList = [];
+     // console.log("this.lists.list", this.lists.list);
+
+      for (var i=this.selectedVal.length-1; i>=0; i--) {
+        if (this.selectedVal[i] === searchString.toLowerCase()) {
+          this.selectedVal.splice(i, 1);
+        }
+      }
+      //console.log("this.selectedVal", this.selectedVal);
+      var foodType = ''
+      for (var i = 0; i < this.selectedVal.length; i++) {
+        foodType = this.selectedVal[i].toLowerCase();
+        data = _.filter(this.lists.list, function(person) {
+          return person.resto_cuisine1.toLowerCase().includes(foodType);
+        });
+     //   console.log("this.data", data);
+        for (var i = 0; i < data.length; i++) {
+          this.filteredList.push(data[i]);
+        }
+      }
+
+      
+
+
+     // console.log("this.filteredList", this.filteredList);
+      // this.areaRestaurents = this.filteredList;
+      // if(this.areaRestaurents.length == 0) {
+      //   this.areaRestaurents = this.lists.list;
+      // }
     }
+
+    if(this.selectedContent == 1) {
+      this.areaRestaurents = _.sortBy(this.areaRestaurents, function(result) { return -result.popularity; });
+    } else {
+      this.areaRestaurents = _.sortBy(this.areaRestaurents, function(result) { return -result.rating_average; });
+    }
+
+    this.areaRestaurents = _.uniq(this.areaRestaurents, function (item) {
+      return item;
+    });
   }
 
   
@@ -171,7 +312,6 @@ export class ProductComponent implements OnInit {
       if(data.code == 1) {
         this.bannersList = data.details;
         this.enableBanner = true;
-        console.log("banners--->", this.bannersList);
       } else {
           this.enableBanner = false;
       }
@@ -179,51 +319,13 @@ export class ProductComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-
     $(document).ready(function () {
 
-      $('.customer-logos').slick({
-        slidesToShow: 6,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 1500,
-        arrows: false,
-        dots: false,
-        centerMode: true,
-        pauseOnHover: false,
-        responsive: [{
-          breakpoint: 1440,
-          settings: {
-            slidesToShow: 5
-          }
-        }, {
-          breakpoint: 1199,
-          settings: {
-            slidesToShow: 4
-          }
-        }, {
-          breakpoint: 992,
-          settings: {
-            slidesToShow: 3
-          }
-        }, {
-          breakpoint: 768,
-          settings: {
-            slidesToShow: 2
-          }
-        }, {
-          breakpoint: 520,
-          settings: {
-            slidesToShow: 1
-          }
-        }]
-      });
-      
       $(".showScrolledHeader").css("display","none !important");
+      $(".showFixedHeader").css("display","block !important");
       $(".showFixedHeader").css("background","#fff !important");
       $(".showScrolledHeader").hide();
       $(".showFixedHeader").show();
-
       // $("#navbar-left-brand").click(function () {
       //   $("#locate-search").show();
       //   $("#locate-me").show();
@@ -250,8 +352,13 @@ export class ProductComponent implements OnInit {
     });
   }
 
-  closeFielterBox(){
+  closeFilterBox(){
     this.divShowHide = !this.divShowHide; 
   }
 
+  closeFilterBoxOut() {
+    if(this.divShowHide) {
+      this.divShowHide = false;
+    }
+  }
 }
