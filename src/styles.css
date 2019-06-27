@@ -14,3 +14,12 @@
 .mat-form-field-infix{
   width: 204px !important;
 }
+.mat-slide-toggle-thumb {
+  /* background-color: #7A0003; */
+}
+.mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+  background-color: #cca0a1;
+}
+.mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+  background-color: #7A0003;
+}

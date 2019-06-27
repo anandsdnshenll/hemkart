@@ -566,8 +566,9 @@ section.cSection.cSectionSearch {
  }    
     @media only screen and (max-width: 400px) and (min-width: 320px) {
         .modal-content {
-            width: 319px !important;
-            height: 346px !important;
+            width: 96%;
+            margin: 0 auto;
+            height: 100%;
         }
         .today_span {
             
@@ -716,7 +717,7 @@ section.cSection.cSectionSearch {
     margin-bottom: 30px !important;
 }
 #panelpic1 {
-    content: url(../images/icon.png);
+    /* content: url(../images/icon.png); */
      float: none !important; 
     /* vertical-align: middle; */
     /* margin-right: 25px; */

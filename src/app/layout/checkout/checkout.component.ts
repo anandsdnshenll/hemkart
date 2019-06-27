@@ -1,10 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import * as $ from 'jquery';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UsersService, ApiService } from 'src/app/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { interval } from 'rxjs';
+import { DomSanitizer } from '@angular/platform-browser';
+import { Directive, ElementRef } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-checkout',
@@ -13,6 +16,8 @@ import { interval } from 'rxjs';
   providers: [ToastrService],
 })
 export class CheckoutComponent implements OnInit {
+  @ViewChild("checkoutcontainer") MyContainer: ElementRef;
+
   LoginForm: FormGroup;
   registerForm: FormGroup;
   instatRegisterForm: FormGroup;
@@ -69,10 +74,27 @@ export class CheckoutComponent implements OnInit {
   enableSwishForm = false;
   stopCheckConfirmation = true;
   timerInterval: any;
+  orderId: any;
+  klarnaForm: string;
+  showLoad =  false;
+  currentMerchantInfo: any = [];
+  merchantDetails: any = [];
+  added_sub_item: any = [];
+  isWorkorder: boolean;
+  currentAddress: any;
+  selctedCity: any;
+  userDetails: any = [];
+  showCartSec = false;
 
-  constructor(private fb: FormBuilder, private user:UsersService, private router: Router, private toastr: ToastrService, private apiService: ApiService,) {
+  constructor(private spinner: NgxSpinnerService, private elementRef: ElementRef, private sanitizer:DomSanitizer, private fb: FormBuilder, private user:UsersService, private router: Router, private toastr: ToastrService, private apiService: ApiService,) {
     this.isLoggedIn = localStorage.getItem("isLoggedin");
     this.postalCode = localStorage.getItem("postalCode");;
+    if(localStorage.getItem("restaurentDetail")) {
+      this.merchantid = JSON.parse(localStorage.getItem("restaurentDetail"))[0].merchantid;
+    } else {
+      this.merchantid = 0;
+    }
+
 
     this.LoginForm = this.fb.group({
       email: ['', Validators.compose([Validators.required, Validators.email, Validators.pattern(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)])],
@@ -87,154 +109,116 @@ export class CheckoutComponent implements OnInit {
       password: ['', Validators.required],
     });
     
-
-    this.instatRegisterForm = this.fb.group({
-      first_name: [''],
-      last_name: [''],
-      email: ['', Validators.compose([Validators.required, Validators.email, Validators.pattern(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)])],
-      password: ['', Validators.required],
-      mobilnumber: [''],
-      apartment: [''],
-      floor: [''],
-      door: [''],
-      address: ['', Validators.required],
-      information: [''],
-      location_name: [''],
-      zipcode: [this.postalCode],
-    });
-    console.log("purchased===>", localStorage.getItem("purchased"));
+    if(localStorage.getItem("isWorkorder") ==  "true") {
+      this.isWorkorder = true;
+      this.getCity();
+      this.instatRegisterForm = this.fb.group({
+        first_name: ['', Validators.required],
+        last_name: ['', Validators.required],
+        email: ['', Validators.compose([Validators.required, Validators.email, Validators.pattern(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)])],
+        password: ['', Validators.required],
+        mobilnumber: ['', Validators.required],
+        information: [''],
+      });
+    } else {
+      this.isWorkorder = false;
+      this.getMerchantInfo();
+      this.instatRegisterForm = this.fb.group({
+        first_name: ['', Validators.required],
+        last_name: ['', Validators.required],
+        email: ['', Validators.compose([Validators.required, Validators.email, Validators.pattern(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)])],
+        password: ['', Validators.required],
+        mobilnumber: ['', Validators.required],
+        apartment: [''],
+        floor: [''],
+        door: [''],
+        address: ['', Validators.required],
+        information: [''],
+        location_name: [''],
+        zipcode: [this.postalCode],
+      });
+    }
 
     this.user.orderData$.subscribe(data => this.checkConfirmation(data));
   }
 
-  checkConfirmation(data){
-    
-    this.timerInterval = interval(5000 * 2).subscribe(x => {
-      console.log("time interval");
-      this.orderConfirmation(11)
-
+  getCity() {
+    this.user.getWorkCompany().subscribe(data => {
+      if(data.code == 1) {
+        this.currentAddress = data.details[0];
+        this.selctedCity = this.currentAddress.city;
+        // this.getWorkMenu(this.selctedCity);
+      }
     });
   }
+  
+  checkConfirmation(data){
+    
+    // this.timerInterval = interval(5000 * 2).subscribe(x => {
+    //  // console.log("time interval");
+    //  this.orderId = data;
+    //   this.orderConfirmation(data)
+
+    // });
+  }
+
   get f() { return this.registerForm.controls; }
   get login_Form() { return this.LoginForm.controls; }
   get cod_Form() { return this.CODForm.controls; }
   get instacod_Form() { return this.instatRegisterForm.controls; }
 
   ngOnInit() {
-    if(localStorage.getItem("purchased") == "true"){
-      this.timerInterval = interval(5000 * 2).subscribe(x => {
-        console.log("time interval");
-        // this.orderConfirmation(11)
-      });
+    if(!this.postalCode && !localStorage.getItem("isWorkorder")){
+      this.router.navigate(["/"]);
     }
-
+    this.showKlarnaForm();
     this.userProfileDetails();
-    this.merchantid = JSON.parse(localStorage.getItem("restaurentDetail"))[0].merchantid;
-    this.availableTypes = JSON.parse(localStorage.getItem("restaurentDetail"))[0].availableTypes;
-    this.productImage = JSON.parse(localStorage.getItem("restaurentDetail"))[0].productImage;
-    this.rating_value = JSON.parse(localStorage.getItem("restaurentDetail"))[0].rating_value;
-    this.restaurant_name = JSON.parse(localStorage.getItem("restaurentDetail"))[0].restaurant_name;
-    this.isClosed = JSON.parse(localStorage.getItem("restaurentDetail"))[0].isClosed;
-    this.disabled_cod = JSON.parse(localStorage.getItem("restaurentDetail"))[0].disabled_cod;
-    this.merchant_phone = JSON.parse(localStorage.getItem("restaurentDetail"))[0].contact_phone;
-    this.delieveryType(localStorage.getItem("delieveryType"));
-
-    // this.user.getReciept(11).subscribe(data => {
-    //   console.log("receiptDetails ----->", data);
-    //   if(data.code == 1) {
-    //     this.enableOrderInfo = true;
-    //     this.orderDetails = data.details;
-    //     this.orderInfo = this.orderDetails.order_info;
-    //     this.customerInfo = this.orderInfo.customer_info;
-    //     this.otherdetails = this.orderDetails.raw;
-    //     this.orderItems = this.otherdetails.item;
-    //     this.orderTotal = this.otherdetails.total;
-    //     localStorage.setItem("purchased","true");
-    //     this.user.callConfirmation(11);
-
-    //   }
-    // });
+    if(this.isWorkorder) {
+      this.loadCart(0);
+    } else {
+      this.delieveryType(localStorage.getItem("delieveryType"));
+    }
   }
-
-//   ngOnDestroy() {
-//     // Will clear when component is destroyed e.g. route is navigated away from.
-//     clearInterval(this.timerInterval);
-//  }
-  print(): void {
-    let printContents, popupWin;
-    printContents = document.getElementById('sticky').innerHTML;
-    popupWin = window.open(window.location.href, '_blank', 'height=600,width=650,top=100,left=100');
-    // popupWin.document.open();
-    popupWin.document.write(`
-      <html>
-        <head>
-          <style>
-          .your-order {
-            text-align: center;
-            font-size: 25px;
-            font-weight: 600;
-            margin-bottom: 0;
-            font-size: 24x;
-
-        }
-          #sticky {
-            padding: 15px;
-            background-color: #fff;
-            transition: height .4s ease;
-            overflow: auto;
-            position: -webkit-sticky;
-            position: sticky;
-            top: 10%;
-            font-size: 24x;
-
-          }
-          .slide-body_res
-          {
-            width: 50%;
-            margin: 0 auto;
-            font-size: 18px;
-          }
-          .res-ord_list {
-            font-size: 24x;
-          }
-          .res-ord_list {
-            font-size: 24x;
-            font-weight: 600;
-          }
-          .padd-zero {
-            padding: 0;
-          }
-          .to_pay_delsumma {
-            font-size: 13px;
-            color: #464646;
-            font-weight: 700;
-            text-transform: uppercase;
-            padding-right: 30px;
-        }
-        .to_paysuma {
-          padding-right: 30px;
-        }
-        .to_paysuma {
-          padding-right: 30px;
-        }
-        .to_pay_amt_delsumma {
-          font-weight: bold;
-        }
-        .checkoutBtn {
-          display: none;
-        }
-          </style>
-        </head>
-    <body onload="window.print();window.close()">${printContents}</body>
-      </html>`
-    );
-    
-    popupWin.document.close();
+  
+  getMerchantInfo() {
+    this.spinner.show();
+    this.user.getMerchantInfo(this.postalCode, this.merchantid).subscribe(data=>{
+      this.spinner.hide();
+      if(data.code == 2) {
+        this.currentMerchantInfo = data.details;
+        this.merchantDetails = this.currentMerchantInfo.list[0];
+        this.availableTypes = this.merchantDetails.resto_cuisine1;
+        this.productImage = this.merchantDetails.image;
+        this.rating_value = this.merchantDetails.rating_value;
+        this.restaurant_name = this.merchantDetails.restaurant_name;
+        this.isClosed = this.merchantDetails.resto_sta;
+        this.disabled_cod = this.merchantDetails.disabled_cod;
+        this.merchant_phone = this.merchantDetails.phone_no;
+        // console.log("merchantDetails", this.merchantDetails, "mapLink", this.mapLink);
+      } else {
+        setTimeout(() => this.toastr.error('Fail', data.msg), 0);
+      }
+    });
   }
 
   userProfileDetails() {
     this.isLoggedIn = localStorage.getItem("isLoggedin");
-    console.log("----->", this.isLoggedIn)
+    // this.user.currentClientDetails().subscribe(data => {
+    //   if(data.code==1) {
+    //     this.alreadyLogin = true;
+    //     this.userDetails = data.details.details;
+    //     this.user_profile = this.userDetails;
+    //     this.userName = this.user_profile.first_name;
+    //     this.email_address = this.user_profile.email_address;
+    //     this.last_name = this.user_profile.last_name;
+    //     this.contact_phone = this.user_profile.contact_phone;
+    //     this.door = this.user_profile.door;
+    //     this.floor = this.user_profile.floor;
+    //     this.street = this.user_profile.street;
+    //     this.location_name = this.user_profile.location_name;
+    //     this.zipcode = this.user_profile.zipcode;
+    //   }
+    // });
     if(this.isLoggedIn == "true") {
       this.alreadyLogin = true;
       this.user_profile = JSON.parse(localStorage.getItem("user_profile"));
@@ -247,7 +231,13 @@ export class CheckoutComponent implements OnInit {
       this.street = this.user_profile.street;
       this.location_name = this.user_profile.location_name;
       this.zipcode = this.user_profile.zipcode;
-
+    }
+    if(this.isWorkorder) {
+      this.CODForm = this.fb.group({
+        mobilnumber: [this.contact_phone, Validators.required],
+        information: [''],
+      });
+    } else {
       this.CODForm = this.fb.group({
         mobilnumber: [this.contact_phone, Validators.required],
         apartment: [''],
@@ -257,25 +247,36 @@ export class CheckoutComponent implements OnInit {
         information: [''],
         first_name: [this.userName],
         last_name: [this.last_name],
-        email_address: [this.email_address],
+        email_address: [this.email_address, Validators.required],
         location_name: [this.location_name],
         zipcode: [this.postalCode],
       });
     }
+
+    
   }
 
   orderConfirmation(data) {
     this.user.checkConfirmation(data).subscribe(data => {
+      // console.log("data", data);
       if(data.code == 1 && data.masg == "Pending") {
         this.stopCheckConfirmation = true;
+        return false;
       }else if(data.code == 1 && data.msg == "Accepted") {
         this.stopCheckConfirmation = false;
-        clearInterval(this.timerInterval);
+        return true;
       }
       this.confirmationDetails = data.details;
     });
 
   }
+  ngOnDestroy() {
+    if (this.timerInterval) {
+      clearInterval(this.timerInterval);
+      localStorage.setItem("purchased","false");
+    }
+  }
+
   delieveryType(type){
     this.user.delieveryType(type).subscribe(data=>{
       this.loadCart(this.merchantid);
@@ -304,11 +305,37 @@ export class CheckoutComponent implements OnInit {
 
   showKlarnaForm() {
     // console.log("klarna form")
+    this.userProfileDetails();
     this.enableCODForm = false;
     this.enableKlarnaForm = true;
     this.enableSwishForm = false;
     this.cardProcessingFee = 5;
+    this.user.checkoutKlarna().subscribe(data => {
+      this.showLoad = true;
+      this.getSnippet(data);
+    });
+    
   }
+
+  getSnippet(htmlSnippet) {
+    this.MyContainer.nativeElement.innerHTML = htmlSnippet
+    const scripts = <HTMLScriptElement[]>this.elementRef.nativeElement.getElementsByTagName('script');
+    this.showLoad = false;
+    const scriptsInitialLength = scripts.length;
+    for (let i = 0; i < scriptsInitialLength; i++) {
+        const script = scripts[i];
+        const scriptCopy = <HTMLScriptElement>document.createElement('script');
+        scriptCopy.type = script.type ? script.type : 'text/javascript';
+        if (script.innerHTML) {
+            scriptCopy.innerHTML = script.innerHTML;
+        } else if (script.src) {
+            scriptCopy.src = script.src;
+        }
+        scriptCopy.async = false;
+        script.parentNode.replaceChild(scriptCopy, script);
+    }
+  }
+
   showSwishForm() {
     this.enableCODForm = false;
     this.enableKlarnaForm = false;
@@ -352,7 +379,11 @@ export class CheckoutComponent implements OnInit {
     if (this.LoginForm.invalid) {
         return;
     }
-    this.user.clientLogin(this.LoginForm.value).subscribe(data => {
+    this.login(this.LoginForm.value);
+  }
+
+  login(formValue) {
+    this.user.clientLogin(formValue).subscribe(data => {
       if(data.code == 2) {
         this.alreadyLogin = false;
         this.erroMsg = data.msg;
@@ -378,74 +409,46 @@ export class CheckoutComponent implements OnInit {
 
   cashondelievery() {
     this.CODsubmitted = true;
-    console.log("this.CODForm.value", this.CODForm.value);
-
     if (this.CODForm.invalid) {
       return;
     }
+
     this.user.cashOnDelievery(this.CODForm.value).subscribe(data => {
-      // console.log("data ----->", data);
       if(data.code == 1) {
         this.receiptDetails = data.details;
-        this.user.getReciept(this.receiptDetails.order_id).subscribe(data => {
-          console.log("receiptDetails ----->", data);
-          if(data.code == 1) {
-            this.enableOrderInfo = true;
-            this.orderDetails = data.details;
-            this.orderInfo = this.orderDetails.order_info;
-            this.customerInfo = this.orderInfo.customer_info;
-            this.otherdetails = this.orderDetails.raw;
-            this.orderItems = this.otherdetails.item;
-            this.orderTotal = this.otherdetails.total;
-            this.orderConfirmation(this.receiptDetails.order_id);
-          }
-        });
         this.ClearCart();
         setTimeout(() => this.toastr.success('Success', 'Your order has been placed.'), 500);
+        this.router.navigate(['/success/'], { queryParams: { order_id: this.receiptDetails.order_id } });
       } else {
         this.codErrMsg = data.msg
       }
-      // console.log("after cart deleted*****", data);
-      // this.CODForm.reset();
     });
   }
 
   onInstantSubmit() {
     this.instaCODsubmitted = true;
-    console.log("this.CODForm.value---->", this.instatRegisterForm.value);
-    if (this.instatRegisterForm.invalid) {
+     if (this.instatRegisterForm.invalid) {
       return;
     }
+    var loginDetails = {
+      email: this.instatRegisterForm.value.email,
+      password: this.instatRegisterForm.value.password,
+    }
     this.user.CODNewUser(this.instatRegisterForm.value).subscribe(data => {
-      // console.log("data ----->", data);
       if(data.code == 1) {
         this.receiptDetails = data.details;
-        this.user.getReciept(this.receiptDetails.order_id).subscribe(data => {
-          console.log("receiptDetails ----->", data);
-          if(data.code == 1) {
-            this.enableOrderInfo = true;
-            this.orderDetails = data.details;
-            this.orderInfo = this.orderDetails.order_info;
-            this.customerInfo = this.orderInfo.customer_info;
-            this.otherdetails = this.orderDetails.raw;
-            this.orderItems = this.otherdetails.item;
-            this.orderTotal = this.otherdetails.total;
-          }
-        });
+        this.login(loginDetails);
         this.ClearCart();
         setTimeout(() => this.toastr.success('Success', 'Your order has been placed.'), 500);
+        this.router.navigate(['/success/'], { queryParams: { order_id: this.receiptDetails.order_id } });
       } else {
         this.instErrMsg = data.msg
       }
-      // console.log("after cart deleted*****", data);
-      // this.CODForm.reset();
     });
     
   }
   ClearCart() {
     this.user.ClearCart().subscribe(data => {
-      // console.log("ClearCart*****", data);
-      // this.loadCart(this.merchantid);
     });
   }
 
@@ -459,9 +462,33 @@ export class CheckoutComponent implements OnInit {
         this.totalAmt = details.raw.total;
         this.totalOrderAmt = this.totalAmt.total;
         this.user.setAddedCart(data.details['item-count']);
-        this.user.currentClientDetails().subscribe(data => {
-          // console.log("currentClientDetails*****", data);
-        });
+        for(var j = 0; j< this.listCart.length; j++) {
+          if(this.listCart[j].sub_item) {
+            //console.log("inside", this.listCart[j].sub_item);
+            let addOnItems = '';
+            let addOnPrice = 0;
+            this.added_sub_item = this.listCart[j].sub_item;
+            for (let i = 0; i < this.listCart[j].sub_item.length; i++) {
+              if(this.listCart[j].sub_item[i].removed && this.listCart[j].sub_item[i].default) {
+                addOnItems += " -"+this.listCart[j].sub_item[i].addon_name + ",";
+              } 
+              if(!this.listCart[j].sub_item[i].removed && this.listCart[j].sub_item[i].default){
+                addOnItems += " "+this.listCart[j].sub_item[i].addon_name + ",";
+              } 
+              if(!this.listCart[j].sub_item[i].default){
+                addOnItems += " +"+this.listCart[j].sub_item[i].addon_name + ",";
+              }
+              if(this.listCart[j].sub_item[i].addon_price) {
+                addOnPrice += + parseInt(this.listCart[j].sub_item[i].addon_price);
+              }
+              this.listCart[j].addOnItems = addOnItems;
+              this.listCart[j].addOnPrice = (parseInt(this.listCart[j].discounted_price) + addOnPrice) *  parseInt(this.listCart[j].qty);
+            }
+          }
+        }
+        // this.user.currentClientDetails().subscribe(data => {
+        //   // console.log("currentClientDetails*****", data);
+        // });
 
         // this.restaurentsDetails = data.details;
         // this.lists = data.details;
@@ -479,7 +506,6 @@ export class CheckoutComponent implements OnInit {
 
   deleteCart(index){
     this.user.deleteCart(index).subscribe(data => {
-      console.log("after cart deleted*****", data);
         this.loadCart(this.merchantid);
     });
   }
@@ -507,32 +533,31 @@ export class CheckoutComponent implements OnInit {
     return type ? "("+ type+")" : "";
   }
 
-  ngAfterViewInit() {
-
+  showCart() {
     $(document).ready(function () {
-    //   function sticky_relocate() {
-    //     var window_top = parseFloat($(window).scrollTop());
-    //     var footer_top = parseFloat($(".fooder_bg").offset().top);
-    //     var div_top = parseFloat($('#sticky-anchor').offset().top);
-    //     var div_height = parseFloat($("#sticky").height());             
-    //     if (window_top + div_height > footer_top)
-    //         $('#sticky').removeClass('stick');    
-    //     else if (window_top > div_top) {
-    //         $('#sticky').addClass('stick');
-    //     } else {
-    //         $('#sticky').removeClass('stick');
-    //     }
-    // }
-    
-    // $(function () {
-    //     $(window).scroll(sticky_relocate);
-    //     sticky_relocate();
-    // });
+      $(".showFixedHeader").hide();
+      $(".showFixedHeadermob").removeClass("visible-xs");
+      $("#sticky").removeClass("hidden-xs");
+    });
+    this.showCartSec = true;
+  }
 
+  closeCart() {
+    this.showCartSec = false;
+    $(document).ready(function () {
+      $(".showFixedHeader").show();
+      $(".showFixedHeadermob").addClass("visible-xs");
+      // $(".showFixedHeaderdsk").addClass("hidden-xs");
+      $("#sticky").addClass("hidden-xs");
+    });
+  }
+  
+  ngAfterViewInit() {
+    $(document).ready(function () {
       $("#navbar-left-brand-tab").hide();
       $(".showScrolledHeader").hide();
-      $(".showFixedHeader").show();
-
+      $(".navbar-fixed-top").show();
+      $("#navbar-left-brand-mob").hide();
     });
   }
 

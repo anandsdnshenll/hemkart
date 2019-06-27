@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HeaderService } from './header.service';
 import { LoginComponent } from './layout/login/login.component';
 import { GrdFilterPipe } from './shared/pipe/grd-filter.pipe';
+import { RoundPipe } from './shared/pipe/round.pipe';
 import { FilterPipeModule } from 'ngx-filter-pipe';
 import { ProductComponent } from './layout/product/product.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
@@ -39,10 +40,22 @@ import {
   MatTableModule,
   MatTabsModule,
   MatFormFieldModule,
+  MatSlideToggleModule,
 } from '@angular/material';
 
 import {MatIconModule} from '@angular/material/icon'
 import {MatExpansionModule} from '@angular/material/expansion';
+import { InfomodalComponent } from './layout/infomodal/infomodal.component';
+import { SuccessComponent } from './layout/success/success.component';
+import { KlarnainfoComponent } from './layout/klarnainfo/klarnainfo.component';
+import { PostcodemodalComponent } from './layout/postcodemodal/postcodemodal.component';
+import { OrderhistoryComponent } from './layout/orderhistory/orderhistory.component';
+import { ReceiptModalComponent } from './layout/receipt-modal/receipt-modal.component';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { WorkorderComponent } from './layout/workorder/workorder.component';
+import { SelectcityComponent } from './layout/selectcity/selectcity.component';
+import { NotfoundComponent } from './layout/notfound/notfound.component';
+import { OwlModule } from 'ngx-owl-carousel';
 
 @NgModule({
   declarations: [
@@ -53,12 +66,22 @@ import {MatExpansionModule} from '@angular/material/expansion';
     LandingComponent,
     LoginComponent,
     GrdFilterPipe,
+    RoundPipe,
     ProductComponent,
     Restaurentdetail,
     ListfoodModal,
     ShowrestaurantsComponent,
     CheckoutComponent,
     AddreviewComponent,
+    InfomodalComponent,
+    SuccessComponent,
+    KlarnainfoComponent,
+    PostcodemodalComponent,
+    OrderhistoryComponent,
+    ReceiptModalComponent,
+    WorkorderComponent,
+    SelectcityComponent,
+    NotfoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -78,17 +101,24 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatIconModule,
     MatExpansionModule,
     MatBadgeModule,
+    MatSliderModule,
+    MatSlideToggleModule,
     FilterPipeModule,
     NgbModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
-    DeviceDetectorModule.forRoot()
+    DeviceDetectorModule.forRoot(),
+    OwlModule
   ],
   providers: [HeaderService],
   bootstrap: [AppComponent],
   entryComponents: [
     ListfoodModal,
-    AddreviewComponent
+    AddreviewComponent,
+    InfomodalComponent,
+    PostcodemodalComponent,
+    ReceiptModalComponent,
+    SelectcityComponent
   ]
 })
 export class AppModule { }

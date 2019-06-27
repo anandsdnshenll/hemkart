@@ -47,7 +47,7 @@ export class HomeComponent implements OnInit {
     this.spinnerService.show();
     setTimeout(() => this.spinnerService.hide(),800);
     this.showRestCity("Västerås");
-
+    this.clearWorkCompanyid();
    }
    url:string;
 
@@ -59,6 +59,7 @@ export class HomeComponent implements OnInit {
     this.headerService.title.subscribe(title => {
       this.title = title;
     });
+    localStorage.setItem("isWorkorder","false")
   }
 
   showRestCity(cityName) {
@@ -76,6 +77,12 @@ export class HomeComponent implements OnInit {
       }
     });
   }
+
+  clearWorkCompanyid() {
+    this.user.clearWorkCompanyid().subscribe(data => {
+    });
+  }
+
 
   showRestCity1(cityName) {
     this.user.getCity(cityName).subscribe(data => {
@@ -109,7 +116,7 @@ export class HomeComponent implements OnInit {
       this.input=this.cSearchForm.value.search_address;
       $('.cSearchInput').attr('value',this.cSearchForm.value.search_address);
       setTimeout(() => this.spinnerService.hide(), 1000);
-      this.router.navigate(['/allmerchants/']);
+      this.router.navigate(['/Restauranglista/']);
     }
 
   }
@@ -128,6 +135,8 @@ export class HomeComponent implements OnInit {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
         this.user.getLocation(position.coords.latitude, position.coords.longitude).subscribe(results => {
+          this.geoLoading = false;
+          setTimeout(() => this.spinnerService.hide(), 1500);
           for(var i=0;i<results.length;++i){
             if(results[i].types[0]=="postal_code"){
                this.postalcode = results[i].long_name;
@@ -141,8 +150,6 @@ export class HomeComponent implements OnInit {
             $('.cSearchInput').attr('value',this.postalcode);
              //Postal Code found
           }
-          this.geoLoading = false;
-          setTimeout(() => this.spinnerService.hide(), 1500);
         });
       });
     } else {
@@ -150,4 +157,17 @@ export class HomeComponent implements OnInit {
     }
   }
   
+  ngAfterViewInit() {
+    $(document).ready(function () {
+
+      $(".showScrolledHeader").show();
+      $(".showFixedHeader").hide();
+      // $(".showFixedHeader").css("background","red !important");
+      // $(".showScrolledHeader").hide();
+      // $(".showFixedHeader").show();
+
+    });
+  }
+
+
 }

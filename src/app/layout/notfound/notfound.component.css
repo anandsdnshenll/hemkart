@@ -1,0 +1,17 @@
+.notfound {
+    text-align: center;
+    margin-top: 74px;
+}
+.notfound p {
+    font-size: 18px;
+    color: #7A0003;
+}
+
+.error-code {
+    color: #dcd5d5;
+    margin: 0;
+    font-weight: normal;
+    text-transform: uppercase;
+    font-size: 16rem;
+    text-shadow: rgba(100, 100, 0, 0.05) 0px 0px 1px, rgba(100, 100, 0, 0.05) 4px 2px 3px, rgba(100, 100, 0, 0.05) 11px 5px 6px, rgba(100, 100, 0, 0.05) 21px 11px 10px, rgba(100, 100, 0, 0.05) 35px 18px 15px, rgba(100, 100, 0, 0.05) 54px 28px 21px
+}

@@ -99,9 +99,10 @@
      </div>
   </div>
 </div>
-<div class="container-fluid fluid-bg fluid-bg-tab restaruentTabs" style="position: relative;top: 298px;">
+
+<div class="container-fluid fluid-bg fluid-bg-tab restaruentTabs">
   <div class="container wrapper">
-     <div class="col-md-8 bg-marg-30" style="margin: 45px auto 30px;">
+      <div class="col-md-8 bg-marg-30" style="margin: 45px auto 30px;">
         <section class="vendor-section">
            <div class="menu__blocks-wrapper">
               <div class="menu__blocks">
@@ -109,12 +110,15 @@
                     <div class="dish-control-holder">
                        <div class="nav-holder">
                           <ul style="touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+                             <li class=""><a (click)="goback();" style="cursor: pointer; color:#780300;" class="" href="javascript:;"><i class="fa fa-arrow-left" aria-hidden="true"></i> Backa</a></li>
                              <li class="li_active active"><a class="border_bottom_class" data-toggle="tab" href="#home">meny</a></li>
-                             <li><a class="border_bottom_class" data-toggle="tab" href="#menu1">Recensioner</a></li>                                                  
+                             <li><a class="border_bottom_class" data-toggle="tab" href="#menu1">Recensioner</a></li>                                              
                           </ul>
                           <ul>
                           </ul>
                        </div>
+                       
+                       <div class="info_sec" (click)="openInfo()"><span class="glyphicon">&#xe086;</span></div>
                        <button class="nav-scroller prev hide">
                           <svg width="12" height="14" xmlns="http://www.w3.org/2000/svg">
                              <path class="svg-stroke-container" stroke-linejoin="round" stroke-linecap="round" fill-rule="evenodd" fill="none" stroke="#D70F64" d="m3.5,1.5l5,5.5l-5,5.5"></path>
@@ -139,7 +143,7 @@
                                          </button>
                                          <ul class="dropdown-menu" style="position: absolute;left: -30px">
                                             <li *ngFor="let details of restaurentsDetails let i=index;">
-                                               <a href="javascript:;" (click)="gotoTop('menucategoryid2')" data-id="menu__category-id-{{i}}" data-master-category-id="" data-anchor-nav="" class="selected">
+                                               <a href="javascript:;" (click)="gotoTop('menucategoryid'+i)" data-id="menu__category-id-{{i}}" data-master-category-id="" data-anchor-nav="" class="selected">
                                                {{details.category_name}}           
                                                </a>
                                             </li>
@@ -148,10 +152,10 @@
                                    </div>
                                 </div>
                                  <div *ngFor="let details of restaurentsDetails let i=index;">
-                                    <div class="dish-category-header" #menucategoryid2 >
-                                             <div class="dish-category-title-wrapper">
-                                                   <h2 class="dish-category-title">{{details.category_name}}</h2>
-                                             </div>
+                                    <div class="dish-category-header" id="menucategoryid{{i}}" >
+                                          <div class="dish-category-title-wrapper">
+                                             <h2 class="dish-category-title">{{details.category_name}}</h2>
+                                          </div>
                                        </div>
                                     <div class="dish-list" >
                                        <div >
@@ -171,7 +175,7 @@
                                                             <span class="price p-price">
                                                                {{items.prices[0].price}} Kr
                                                             </span>
-                                                            <button class="button js-ripple" (click)="addToCart(items.item_id,items.prices[0])">Add<i class="ripple"></i></button>
+                                                            <button class="button js-ripple" (click)="addToCart(items.item_index, items.item_id,items.prices[0], 'add', '', 1,'', details.ownpizza, details.submenu)">Add<i class="ripple"></i></button>
                                                          </footer>
                                                 <!-- </li> -->
                                           </div>
@@ -197,16 +201,16 @@
 																								{{reviews.date}}
                                             </abbr></span>
                                          </div>
-                                         <div class="vendor-name vcard item">
+                                         <!-- <div class="vendor-name vcard item">
                                             <span class="fn">Mr Falafel</span>
-                                         </div>
+                                         </div> -->
                                          <div class="description">
                                             {{reviews.review}}
                                          </div>
-                                         <div class="ratings-component " style="background: #f7f7f7 !important;">
-                                            <span class="stars">
+                                         <div class="ratings-component">
+                                            <!-- <span class="stars">
                                             <img alt="" src="https://assets.foodora.com/7489233/img/icons/ic-star-half.svg?7489233">
-                                            </span>
+                                            </span> -->
                                             <span class="rating">{{reviews.rating}}</span>
                                          </div>
                                       </div>
@@ -217,34 +221,7 @@
                        </div>
                     </div>
                  </div>
-                 <!-- <div class="modal fade" id="myModal" role="dialog">
-                     <div class="modal-dialog">
-                        <div class="modal-content" style="width: 400px;   height: 339px;">
-                           <div class="modal-header" style="text-align: center;text-transform: uppercase;  border-bottom: 1px solid #ebebeb;    padding: 0 15px 8px;   font-weight: 700; margin-top: 13px;">
-                              <button type="button" class="close" data-dismiss="modal" style="position: relative;
-                                 top: -38px;
-                                 background-color: #780300;
-                                 opacity: unset !important;
-                                 padding: 6px 11px;
-                                 color: #ffffff;
-                                 border: 1px solid #fffdfd;
-                                 border-radius: 50px;">&times;</button>
-                              <h4 class="modal-title">Pre-order for Monday</h4>
-                           </div>
-                           <div class="modal-body" style="text-align: center;
-                              font-size: 15px;
-                              letter-spacing: 2px;
-                              text-shadow: 2px 2px 11px red;">
-                              <p>You are placing a pre-order for Mon, Dec 24,  6:00 PM. Would you like to continue or review the order date?</p>
-                           </div>
-                           <div class="modal-footer1" style="border-top: 1px solid #ebe7e7; padding: 15px;">
-                              <button type="button" class="check_btn_class1">Continue with checkout</button>
-                              <button type="button" class="check_btn_class2" data-dismiss="modal">Add more items</button>
-                           </div>
-                        </div>
-                     </div>
-                  </div> -->
-                 <div class="menu__bottom-info">
+                <div class="menu__bottom-info">
                     <div class="menu__footer">
                        <div class="menu-bottom-info-restaurant-description full-container">
                        </div>
@@ -259,34 +236,56 @@
            </div>
         </section>
      </div>
-     <!-- <div id="sticky-anchor"></div> -->
+     <div id="sticky-anchor" class="hidden-xs"></div>
      <div class="col-md-4 bg-marg-30" style="margin: 45px auto 30px;">
+      <div id="sticky" [ngClass]="showCartSec ? 'desktop-cart' : 'hidden-xs'">
          <section class="cart_section">
-            <div id="sticky" style="top: 155px;">
+            <div class="added_cart" style="top: 155px;">
+               <div *ngIf="showCartSec" class="icon-close pos-a" (click)="closeCart()"><img class="close_img" src="./assets/images/close_icon.svg" alt="Close Button"></div>
                <div>
+                  <div class="toggleBtn">
+                     <span class="toggleLeft">Avhämtning</span>
+                     <mat-slide-toggle [checked]="useDefaultType" (change)="changeDelieveryType($event)"></mat-slide-toggle>
+                     <span class="toggleRight">Hemkörning</span>
+                  </div>
                   <div class="slide_head_order">
-                     <p class="your-order">Din beställning</p>
-                  </div>                                    
-                  <div  class="static-height" *ngIf="!emptyCarts">
+                     <p class="your-order">Din beställning <span *ngIf="!emptyCarts" class="pull-right clearcart" (click)="clearCart()"><i class="fa fa-trash"></i></span></p>
+                  </div>
+                     <div  class="cart-static-height" *ngIf="!emptyCarts && showCartSec">
+                        <div *ngFor="let cartData of listCart let i=index;">
+                           <div class="cartitem">
+                              <div class="cartMinus" (click)="decreaseValue(cartData.item_id, cartData.qty,cartData.discounted_price, cartData.item_index, cartData)" id="decrease-btn"><i class="fa fa-minus" aria-hidden="true"></i></div>
+                              <div class="cartQty">{{cartData.qty}}</div>
+                              <div class="cartPlus" id="increase-btn" (click)="increaseValue(cartData.item_id, cartData.qty,cartData.discounted_price, cartData.item_index, cartData)"><i class="fa fa-plus" aria-hidden="true"></i></div>
+                              <div class="cartItemName">{{cartData.item_name}} {{itemType(cartData.size_words)}}</div>
+                              <div class="cartPrice">{{cartData.addOnPrice ? cartData.addOnPrice : cartData.qty * cartData.discounted_price}}</div>
+                              <div class="editBtn"><i class="fa fa-edit" (click)="updateToCart(cartData.item_index, cartData.item_id, (cartData.addOnPrice ? cartData.addOnPrice : (cartData.qty * cartData.discounted_price)), 'edit', cartData.sub_item, cartData.qty, cartData.size_words)"></i></div>
+                              <div class="trashBtn"><i class="fa fa-trash" (click)="deleteCart(cartData.item_index)"></i></div>
+                           </div>
+                           <div class="col-sm-12"><span class="addonItems"> {{cartData.addOnItems}}</span></div>
+                        </div>
+                  </div>
+                  <div  class="static-height" *ngIf="!emptyCarts && !showCartSec">
                      <div class="col-sm-12 col-md-12 padd-zero" style="margin: 5px auto;" *ngFor="let cartData of listCart let i=index;">
-                        <div class="col-sm-5 col-md-5 product_name">{{cartData.item_name}}</div>
+
+                        <div class="col-sm-5 col-md-5 product_name">{{cartData.item_name}} {{itemType(cartData.size_words)}}</div>
                         <div class="col-sm-3 col-md-3 dev-inc-val-div">
-                           <span class="value-button" id="decrease-btn" (click)="decreaseValue(cartData.item_id, cartData.qty,cartData.normal_price, cartData.item_index)" value="Decrease Value">
+                           <span class="value-button" id="decrease-btn" (click)="decreaseValue(cartData.item_id, cartData.qty,cartData.discounted_price, cartData.item_index, cartData)" value="Decrease Value">
                               <i class="fa fa-minus" aria-hidden="true"></i>
                            </span>
                            <span>
-                              <input type="text" id="number-btn" value="{{cartData.qty}}">
+                              <input type="text" id="number-btn" (keypress)="omit_special_char($event)" value="{{cartData.qty}}">
                            </span>
-                           <span class="value-button" id="increase-btn" (click)="increaseValue(cartData.item_id, cartData.qty,cartData.normal_price, cartData.item_index)" value="Increase Value">
+                           <span class="value-button" id="increase-btn" (click)="increaseValue(cartData.item_id, cartData.qty,cartData.discounted_price, cartData.item_index, cartData)" value="Increase Value">
                               <i class="fa fa-plus" aria-hidden="true"></i>
                            </span>
                         </div>
                         <div class="col-sm-4 col-md-4 sub_total_amt">
-                           <span class="pull-right distance">{{cartData.discounted_price}}
-                              <a href="javascript:;" class="btn btn" (click)="addToCart(cartData.item_id,cartData.normal_price)" style="color: #7B0003;padding: 0;margin: 0 5px;font-size: 13px;">
+                           <span class="pull-right distance">{{cartData.addOnPrice ? cartData.addOnPrice : cartData.qty * cartData.discounted_price}}
+                              <a href="javascript:;" class="btn btn editBtn" (click)="updateToCart(cartData.item_index, cartData.item_id, (cartData.addOnPrice ? cartData.addOnPrice : (cartData.qty * cartData.discounted_price)), 'edit', cartData.sub_item, cartData.qty, cartData.size_words)" >
                                  <i class="fa fa-edit"></i>
                               </a>&nbsp;
-                              <a href="javascript:;" (click)="deleteCart(cartData.item_index)" class="btn" style="color: #7B0003;padding: 0;font-size: 13px;">
+                              <a href="javascript:;" (click)="deleteCart(cartData.item_index)" class="btn trashBtn">
                                  <i class="fa fa-trash"></i>
                               </a>
                            </span>
@@ -295,33 +294,85 @@
                      </div>
                   </div>
                   <div class="emptyCart" *ngIf="emptyCarts">
-                     No items in the Cart.
+                     Ingen artikel tillagd ännu.
                   </div>
                   <HR style="border-top: 2px solid #2B2B3F;margin: 10px auto 0;clear: both;margin-right: 10px;">
-                  <div class="total_div" *ngIf="!emptyCarts">
-                        <span class="to_pay">Summa</span><span class="to_pay_amt">{{totalAmt.subtotal}}{{totalAmt.curr}}</span>
+                  <div class="total_div cartTot" *ngIf="!emptyCarts">
+                     <span class="to_pay">Summa</span><span class="to_pay_amt">{{totalAmt.subtotal | round}} &nbsp;{{totalAmt.curr}}</span>
+                  </div>
+
+                  <div class="voucher_wrap" style="display: block;" *ngIf="!emptyCarts">                      
+                     <input placeholder="Ange Kampanjkod här" [(ngModel)]="voucherCode" class="uk-width-1-1" style="" type="text" value="" name="voucher_code" id="voucher_code">
+                     <a href="javascript:;" (click)="!showRemove ? applyVoucher() : removeVoucher()" class="uk-button uk-button-danger apply_voucher ">
+                           
+                        <i [ngClass]="!showRemove ? 'fa fa-angle-right' : 'fa fa-remove'" [ngStyle]="{'color':showRemove ? 'red' : '' }"></i>    
+                           
+                     </a>            
                   </div>
                   <div class="bill-cont">
                      <p>Hemkörningsvillkor</p>
-                     <span>Ditt postnummer : <strong>{{postalCode}}</strong><br>
+                     <span class="orderInfo">Ditt postnummer : <strong>{{postalCode}}</strong><br>
                         ÖPPNAR INOM KORT FÖR HEMKÖRNING.<br>
                         {{terms}}
                      </span>
-                     <p>Leveranssätt</p>
-                     <mat-form-field>
-                        <mat-select placeholder="Hemkörning">
-                           <mat-option (click)="setDelievery('delivery')">Hemkörning</mat-option>
-                           <mat-option (click)="setDelievery('pickup')">Avhämtning</mat-option>
+                    <!-- <p>Leveranssätt</p>
+                      <mat-form-field>
+                        <mat-select [(ngModel)]="selectedOption">
+                           <mat-option value="delivery" (click)="setDelievery('delivery')">Hemkörning</mat-option>
+                           <mat-option value="pickup" (click)="setDelievery('pickup')">Avhämtning</mat-option>
                         </mat-select>
-                     </mat-form-field>
+                     </mat-form-field> -->
                   </div>
                </div>
-               <div class="checkoutBtn_hold" id="checkoutBtn">
+               <div [ngClass]="showCartSec ? 'checkout_button_container' : 'checkoutBtn_hold'"  id="checkoutBtn" *ngIf="isClosed === 'Öppet'">
                   <a routerLink="" (click)="goToCheckout()" class="btn-checkout btn-block" *ngIf="!emptyCarts">Till kassan</a>
+               </div>
+               <div class="warningBtn" id="checkoutBtn" *ngIf="isClosed !== 'Öppet'">
+                  <img src="./assets/images/warning.png">Tyvärr, restaurangen har stängt
                </div>
             </div>
          </section>
+      </div>
      </div> 
+      <div class="sticky-cart-button-container"  *ngIf="!emptyCarts">
+         <button class="sticky-cart-button" (click)="showCart();">
+            <span class="cart-icon">
+               <a class="vendor-cart-icon ">
+                  <svg width="18px" height="26px" viewBox="0 0 18 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                  <defs>
+                     <rect id="path-1" x="0" y="4" width="18" height="22"></rect>
+                     <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="18" height="22" fill="white">
+                     <use xlink:href="#path-1"></use>
+                     </mask>
+                     <rect id="path-3" x="0" y="19" width="18" height="7"></rect>
+                     <mask id="mask-4" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="18" height="7" fill="white">
+                     <use xlink:href="#path-3"></use>
+                     </mask>
+                  </defs>
+                  <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                     <g class="svg-stroke-container" transform="translate(-23.000000, -19.000000)" stroke="#D70F64">
+                        <g transform="translate(1.000000, 0.000000)">
+                           <g transform="translate(22.000000, 19.000000)">
+                              <use id="Rectangle-2" mask="url(#mask-2)" stroke-width="2" xlink:href="#path-1"></use>
+                              <path d="M4.5,6.5 L4.5,1.49077797 C4.5,0.943586406 4.9463114,0.5 5.49754465,0.5 L12.5024554,0.5 C13.053384,0.5 13.5,0.95097518 13.5,1.49077797 L13.5,6.5" id="Path-3" stroke-linecap="round" stroke-linejoin="round"></path>
+                              <use id="Rectangle-5" mask="url(#mask-4)" stroke-width="2" xlink:href="#path-3"></use>
+                           </g>
+                        </g>
+                     </g>
+                  </g>
+                  </svg>
+               <span class="products-count"></span>
+               </a>
+            </span>
+            <span>View cart</span>
+            <span class="products-value">{{totalAmt.subtotal | round}}&nbsp;{{totalAmt.curr}}</span>
+            <span class="calcul-animation">
+               <span class="dot"></span>
+               <span class="dot"></span>
+               <span class="dot"></span>
+            </span>
+         </button>
+      </div>
   </div>
 </div>
 <ngx-spinner

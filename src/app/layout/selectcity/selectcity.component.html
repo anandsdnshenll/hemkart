@@ -1,0 +1,46 @@
+<div class="modal-content" style="padding: 2px;">
+    <div class="modal-header" style="margin-bottom: 0px !important;">
+      <!-- <button type="button" class="close" data-dismiss="modal" (click)="closeModel()">&times;</button> -->
+      <h4 class="modal-title"  *ngIf="!emptyCity" >Dagens lunch!</h4>
+    </div>
+    <div class="modal-body" style="font-size: 16px; text-align: center" *ngIf="emptyCity">
+      <span>{{noCity}}</span>
+    </div>
+    <div class="modal-body" style="font-size: 13px;" *ngIf="!emptyCity">
+      <h4 class="cityTitle">Välj din stad</h4>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="errMsg">{{validMsg}}</div>
+
+            <div class="imageGrid">
+                <div class="col-md-6 left-side_popup_img_hole_div" *ngFor= "let city of cityDetails; let i = index">
+                  <div class="imageandtext image_grid" (click)="getCity(city.city_name, i)">
+                      <img class="check" *ngIf="selectedImage == i" src="./assets/images/tick-mark.png">
+                    <label for="selimg1">
+                      <img src="{{image_url}}{{city.city_img}}" width="220px" height="165px">
+                    </label>
+                    <!-- <input type="radio" value="uppsala" [(ngModel)]="selectCity"  (ngModelChange)="getCity('uppsala', 1)"> -->
+                    <div class="caption">
+                      <p>{{city.city_name}}</p> 
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <div class="col-md-12 company-div" style="padding-top: 18px;" *ngIf="showCompAddress">
+              <mat-form-field>
+                  <mat-label style="padding-top: 8px;font-size: 12px" class="col-md-4 padd-zero">Välj din företäg:</mat-label>
+                  <select #selectAdd matNativeControl [(ngModel)]="selectedAddress">
+                      <option value="undefined">select city</option>
+                    <optgroup *ngFor="let details of companyDetails; let i = index;" label="{{details.company_name}}">
+                      <option value="{{details.id}}">{{details.company_address}}</option>
+                    </optgroup>
+                  </select>
+                </mat-form-field>   
+                <div class="errMsg" style="text-align: unset">{{emptyAddress}}</div>
+
+            </div> 
+            <button class="btn btn-default submitBtn" (click)="submit()" *ngIf="showCompAddress"> Submit</button>
+        </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,54 @@
+
+    <div class="modal-content">
+       <button type="button" class="close modal-close" data-dismiss="modal" (click)="closeModal()" >&times;</button>
+       <div class="modal_header_style">
+          <h4 class="modal-title">Beställningsinformation</h4>
+       </div>
+       <div class="container-fluid fluid-pay enableOrderInfo">
+          <div class="recieptwrapper">
+             <div class="recieptCont">
+                    <div class="slide_head_order">
+                        <p class="your-order">Order Details</p>
+                    </div>                                    
+                    <div class="slide-body_res">
+                        <p class="res-ord_list"><span class="label">Name</span> : <span class="res-ord_list-span">{{customerInfo.full_name}}</span></p>
+                        <p class="res-ord_list"><span class="label">Leverantörens namn</span> : <span class="res-ord_list-span">{{orderInfo.merchant_name}}</span></p>
+                        <p class="res-ord_list"><span class="label">Delivery Type</span> : <span class="res-ord_list-span">{{orderInfo.delivery_type}}</span></p>
+                        <p class="res-ord_list"><span class="label">Payment Type</span> : <span class="res-ord_list-span">{{orderInfo.payment_type}}</span></p>
+                        <p class="res-ord_list"><span class="label">Reference #</span> : <span class="res-ord_list-span">{{orderInfo.reference_no}}</span></p>
+                        <p class="res-ord_list"><span class="label">Leveransdatum</span> : <span class="res-ord_list-span">{{orderInfo.delivery_date}}</span></p>
+                        <p class="res-ord_list"><span class="label">Leveranstid</span> : <span class="res-ord_list-span">{{orderInfo.delivery_time}}</span></p>
+                        <p class="res-ord_list"><span class="label">Levereras till</span> : <span class="res-ord_list-span">{{orderInfo.delivery_instruction}}</span></p>
+                        <p class="res-ord_list"><span class="label">Meddelande</span> : <span class="res-ord_list-span">{{customerInfo.full_address}}</span></p>
+                        <p class="res-ord_list"><span class="label">Lägenhet nummer</span> : <span class="res-ord_list-span">{{customerInfo.full_address}}</span></p>
+                        <p class="res-ord_list"><span class="label">Door Code</span> : <span class="res-ord_list-span">{{customerInfo.full_address}}</span></p>
+                        <p class="res-ord_list"><span class="label">Kontaktnummer</span> : <span class="res-ord_list-span">{{customerInfo.contact_phone}}</span></p>
+                        <p class="res-ord_list"><span class="label">Total Order In Hemkört&Klart</span> : <span class="res-ord_list-span">{{totalOrder}}</span></p>
+                        <p class="res-ord_list"><span class="label">Total Order In {{orderInfo.merchant_name}}</span> : <span class="res-ord_list-span">{{orderItems.length}}</span></p>
+
+                        <div class="col-md-12 padd-zero cartData" style="margin: 5px auto;">
+                          <div class="col-md-12 padd-zero" style="margin: 5px auto;" *ngFor="let cartData of orderItems let i=index;">
+                              <div class="col-md-10 product_name" style="float: left;" ><span class="qtySec">{{cartData.qty}}</span> {{cartData.item_name}}</div>
+                              <div class="col-md-2">
+                                <span class="distance">{{cartData.discounted_price}} Kr</span>
+                              </div>
+                          </div>
+                          <HR style="border-top: 2px solid #2B2B3F;margin: 40px auto 0;clear: both;margin-right: 10px;">
+                          <div class="total_div">
+                              <span class="to_pay_delsumma">DelSumma</span><span class="to_pay_amt_delsumma">{{orderTotal.subtotal}}{{orderTotal.curr}}</span>
+                          </div>
+                          <div class="total_div">
+                              <span class="to_pay_delsumma">Hemkörningsavgift</span><span class="to_pay_amt_delsumma">{{orderTotal.delivery_charges}}{{orderTotal.curr}}</span>
+                          </div>
+                          <div class="total_div">
+                              <span class="to_pay to_paysuma">Summa</span><span class="to_pay_amt to_pay_amt_delsumma">{{orderTotal.taxable_total}}{{orderTotal.curr}}</span>
+                          </div>
+                              <!-- <div class="checkoutBtn" id="checkoutBtn">
+                                <a href="javascript:;" (click)="print()" class="btn-checkout btn-block" *ngIf="!emptyCarts">Skriv ut</a>
+                              </div> -->
+                        </div>
+                    </div>
+             </div>
+          </div>
+       </div>
+    </div>

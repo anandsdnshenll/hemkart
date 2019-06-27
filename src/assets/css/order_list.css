@@ -216,23 +216,7 @@
     text-align: center;
     /*margin: 30px auto;*/
 }
-.bill-cont{
-    margin-top: 20px;
-    border: 1px solid #ddd;
-    padding: 15px;
-    border-radius: 10px;
-}
-.bill-cont p{
-    margin-bottom: 10px;
-    font-size: 16px;
-    font-weight: 600;
-    text-align: center;
-}
-.bill-cont span{
-    color: #7B0003;
-    font-weight: 400;
-    font-size: 13px;
-}
+
 /*.btn-checkout{
     border: 2px solid #7A0003;
     padding: 10px 50px;
@@ -261,7 +245,7 @@
 }
 .static-height{
     height: 75px;
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
     overflow-x: hidden;
 }
 .static-height-list{
@@ -289,7 +273,7 @@
 	    margin: 0px auto 20px;
    }
    .sub_total_amt{
-   		padding: 5px;
+   		/* padding: 5px; */
    }
    #increase-btn, #decrease-btn{
    	padding: 0;
@@ -496,8 +480,8 @@ ul.work-order-list li {
 }
 @media (max-width: 1431px) {
     .work-order-list>li {
-        width: calc(37% - 24px);
-        max-width: calc(37% - 24px);
+        /* width: calc(37% - 24px);
+        max-width: calc(37% - 24px); */
     }
     .work-order-list>li .vendor-tile picture{
         height: 140px;
@@ -562,8 +546,8 @@ ul.work-order-list li {
 }
 @media (max-width: 767px) and (min-width: 400px){
     .work-order-list>li {
-        width: calc(53% - 24px);
-        max-width: calc(53% - 24px);
+        /* width: calc(53% - 24px);
+        max-width: calc(53% - 24px); */
     }
     .IJsqo{
         font-size: 10px;

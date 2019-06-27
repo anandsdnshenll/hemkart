@@ -4,7 +4,8 @@ import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { HeaderService } from './header.service';
 import { environment } from 'src/environments/environment';
 import { interval } from 'rxjs';
-
+import { filter, map, mergeMap } from 'rxjs/operators';
+import { Title } from '@angular/platform-browser';
 
 declare var $: any;
 @Component({
@@ -15,27 +16,39 @@ declare var $: any;
 export class AppComponent{
   show=true;
   currentUrl: string;
-  constructor(private activeRoute:ActivatedRoute,
+  constructor(private activatedRoute:ActivatedRoute,
     private spinnerService: Ng4LoadingSpinnerService, 
     private headerService: HeaderService, 
-    public router: Router) {
+    public router: Router,
+    private titleService: Title) {
     this.spinnerService.show();
     setTimeout(() => this.spinnerService.hide(),800);
     // interval(5000 * 2).subscribe(x => {
     //   console.log("time interval");
     // });
    }
-  title = 'hemkart';
-
   ngOnInit() {
-    this.headerService.title.subscribe(title => {
-      this.title = title;
-    });
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd ) {
         this.currentUrl = event.url;
       }
     });
+    this.router.events
+      .pipe(
+        filter(event => event instanceof NavigationEnd),
+        map(() => this.activatedRoute),
+        map((route) => {
+          while (route.firstChild) route = route.firstChild;
+          return route;
+        }),
+        map((route) => {
+          while (route.firstChild) route = route.firstChild;
+          return route;
+        }),
+        filter((route) => route.outlet === 'primary'),
+        mergeMap((route) => route.data)
+      )
+      .subscribe((event) => this.titleService.setTitle(event['title']));
     localStorage.setItem("image_url", environment.image_url);
   }
 }
